@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/head :: head ('Register for Dungeons and Dust Bunnies')"></head>
+<body>
+<div class="page-wrapper">
+  <header th:replace="partials/navbar :: navbar"></header>
+  <div class="container grow">
+    <div class="row">
+      <div class="column">
+        <h1>Join the Fight!</h1>
+        <form th:action="@{/register}" th:method="post">
+            <label class="row" for="username">Username</label>
+            <input class="row" type="text" id="username" name="username">
+            <br>
+            <label class="row" for="email">Email</label>
+            <input class="row" type="text" id="email" name="email">
+            <br>
+            <label class="row" for="password">Password</label>
+            <input class="row" type="text" id="password" name="password">
+            <br>
+            <label class="row" for="password">Confirm Password</label>
+            <input class="row" type="text" id="passwordConfirmation" name="passwordConfirmation">
+            <br>
+            <div class="row">
+                <input type="submit" value="Sign me up!">
+            </div>
+        </form>
+          <br>
+          <div class="row">
+              <a href="/login">Already Registered? Click Me To Log In!</a>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
