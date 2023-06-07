@@ -1,6 +1,6 @@
 package com.example.capstoneprojectteam3.models;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,29 +11,50 @@ public class MonsterImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "url")
-    private String url;
+    @Column(name = "monster_img")
+    private String monster_img;
 
     @Column(name = "stage")
     private int monster_stage;
 
-    public MonsterImage(){
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "monster_img_id")
+    private Monster monster;
 
+    //    ----- Constructors START -----
+    public MonsterImage(){
     }
 
-    public MonsterImage(Long id, String url, int monster_stage) {
+    public MonsterImage(String monster_img, int monster_stage, Monster monster) {
+        this.monster_img = monster_img;
+        this.monster_stage = monster_stage;
+        this.monster = monster;
+    }
+
+    public MonsterImage(Long id, String monster_img, int monster_stage) {
         this.id = id;
-        this.url = url;
+        this.monster_img = monster_img;
         this.monster_stage = monster_stage;
     }
+    //    ----- Constructors END -----
 
-    public String getUrl() {
-        return url;
+    //    ----- Getters and Setters START -----
+
+    public Monster getMonster() {
+        return monster;
     }
 
+    public void setMonster(Monster monster) {
+        this.monster = monster;
+    }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public String getMonster_img() {
+        return monster_img;
+    }
+
+    public void setMonster_img(String monster_img) {
+        this.monster_img = monster_img;
     }
 
     public int getMonster_stage() {
@@ -44,7 +65,6 @@ public class MonsterImage {
         this.monster_stage = monster_stage;
     }
 
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -52,4 +72,5 @@ public class MonsterImage {
     public Long getId() {
         return id;
     }
+    //    ----- Getters and Setters END -----
 }

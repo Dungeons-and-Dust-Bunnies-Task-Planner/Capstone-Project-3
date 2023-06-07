@@ -2,6 +2,9 @@ package com.example.capstoneprojectteam3.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
+
 @Entity
 @Table(name="monsters")
 public class Monster {
@@ -13,14 +16,29 @@ public class Monster {
     @Column(unique = true)
     private String name;
 
-//    FOREIGN KEY TO monster_imgs
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "monster")
+    private List<MonsterImage> monsterImages;
+
+
+    //    ----- Constructors START -----
 
     public Monster(){
     }
 
-    public Monster(Long id, String name) {
-        this.id = id;
+    public Monster(String name) {
         this.name = name;
+    }
+
+    //    ----- Constructors END -----
+
+    //    ----- Getters and Setters START -----
+
+    public List<MonsterImage> getMonsterImages() {
+        return monsterImages;
+    }
+
+    public void setMonsterImages(List<MonsterImage> monsterImages) {
+        this.monsterImages = monsterImages;
     }
 
     public void setId(Long id) {
@@ -38,4 +56,6 @@ public class Monster {
     public void setName(String name) {
         this.name = name;
     }
+
+    //    ----- Getters and Setters END -----
 }
