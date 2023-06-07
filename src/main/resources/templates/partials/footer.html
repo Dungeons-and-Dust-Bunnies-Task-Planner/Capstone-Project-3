@@ -1,37 +1,17 @@
-<header th:fragment="footer" class="container" xmlns:sec="http://www.w3.org/1999/xhtml">
-    <footer>
-    <div class="row grow">
-        <div class="column">
-<!--  middle column-->
-    <ul>
-        <li>
-          <a href="#">Back to Top</a>
-        </li>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/profile">Profile</a>
-        </li>
-        <li>
-          <a href="#">Other</a>
-        </li>
-      </ul>
-  </div>
-<!--  right column-->
-    <div class="column align-right">
-        <ul>
-          <li>
-              <a href="#">Facebook</a>
-          </li>
-          <li>
-              <a href="#">Insta</a>
-          </li>
-          <li>
-              <a href="#">Twitter</a>
-          </li>
-        </ul>
+<div th:fragment="footer">
+    <div class="footerWrap">
+        <div class="leftFoot">
+            <p>Join our newsletter</p>
+        </div>
     </div>
+    <div class="middleFooter">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/profile}">Profile</a>
+            <a th:href="@{/login}">Login</a>
+        </div>
+    <div class="rightFoot">
+          <a th:href="@{/}">Facebook</a>
+            <a th:href="@{/}">Twitter</a>
+            <a th:href="@{/}">Instagram</a>
     </div>
-    </footer>
-</header>
+</div>
