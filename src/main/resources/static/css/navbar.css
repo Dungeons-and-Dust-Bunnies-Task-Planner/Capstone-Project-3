@@ -1,0 +1,49 @@
+.nav-wrap {
+
+}
+
+nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80px;
+    width: 100vw;
+    padding: 10px 20px;
+    font-size: 24px;
+    background: #fff;
+}
+
+ul {
+    display: flex;
+    column-gap: 10px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all ease-in .3s;
+}
+
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    border-bottom: 1px solid #000;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    text-align: center;
+}
