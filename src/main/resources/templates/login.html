@@ -1,22 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="partials/head :: head ('Log In')"></head>
 <body>
 <div class="page-wrapper">
-    <div class="container grow justify-center">
-        <div class="row justify-center">
-            <div class="column shrink">
-                <h1>Log In</h1>
-                <form action="/login" method="post">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username">
-                    <label for="password">Password</label>
-                    <input type="text" id="password" name="password">
-                    <input type="submit" value="Log In">
-                </form>
+    <header th:replace="partials/navbar :: navbar"></header>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <div class="row">
+                    <div class="column">
+                        <h1>Log In</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <form th:action="@{/login}" th:method="post">
+                            <label  class="row" for="username">Username</label>
+                            <input class="row" type="text" id="username" name="username">
+                            <br>
+                            <label class="row" for="password">Password</label>
+                            <input class="row" type="text" id="password" name="password">
+                            <br>
+                            <div class="row">
+                                <input type="submit" value="Log In">
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
