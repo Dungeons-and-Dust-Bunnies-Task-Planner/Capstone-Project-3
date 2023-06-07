@@ -1,6 +1,9 @@
 package com.example.capstoneprojectteam3.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -13,26 +16,28 @@ public class User {
     private String email;
     @Column(nullable = false, length = 50, unique = true)
     private String username;
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
     @Column()
     private String avatar_img;
-//    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
-//    private List<Battle> battles;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
+    private List<Badge> badges;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
+    private List<Battle> battles;
 
 
 //    ----- Constructors START -----
     public User() {
     }
 
-    public User(long id, String email, String username, String password, String avatar_img) {
-        this.id = id;
+    public User(String email, String username, String password, String avatar_img) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.avatar_img = avatar_img;
     }
-//    ----- Constructors END -----
 
 //    ----- Getters and Setters START -----
 
@@ -76,13 +81,21 @@ public class User {
         this.avatar_img = avatar_img;
     }
 
-//    public List<Battle> getBattles() {
-//        return battles;
-//    }
-//
-//    public void setBattles(List<Battle> battles) {
-//        this.battles = battles;
-//    }
+    public List<Badge> getBadges() {
+        return badges;
+    }
+
+    public void setBadges(List<Badge> badges) {
+        this.badges = badges;
+    }
+
+        public List<Battle> getBattles() {
+        return battles;
+    }
+
+    public void setBattles(List<Battle> battles) {
+        this.battles = battles;
+    }
 
     //    ----- Getters and Setters END -----
 }
