@@ -34,8 +34,6 @@ public class User {
     }
 //    ----- Constructors END -----
 
-
-
 //    ----- Getters and Setters START -----
 
     public long getId() {
@@ -85,6 +83,6 @@ public class User {
 //    public void setBattles(List<Battle> battles) {
 //        this.battles = battles;
 //    }
-    //    ----- Getters and Setters END -----
 
+    //    ----- Getters and Setters END -----
 }
