@@ -1,0 +1,15 @@
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 150px;
+    width: 100vw;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #fff;
+}
+
+.middleFooter {
+    display: flex;
+    flex-direction: column;
+}
