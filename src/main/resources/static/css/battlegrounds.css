@@ -6,11 +6,12 @@
     width: 569px;
     background: var(--background);
     padding: 180px 20px 0 0;
+    transform: translateX(-102%);
     transition: all ease-out .4s;
 }
 
 .battle-slide-out.open {
-    transform: translateX(-102%);
+    transform: translateX(0%);
 }
 
 .battle-icon {
@@ -30,4 +31,54 @@
 
 .battle-icon:hover {
     transform: rotate(360deg);
+}
+
+.add-battle-container {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    right: 0;
+    top: 80px;
+    height: 80px;
+    width: 100%;
+    background: transparent;
+}
+
+.add-battle-wrap {
+    position:relative;
+}
+
+.add-battle-input,
+.add-battle-btn {
+    position: absolute;
+    top:-30px;
+    right:15px;
+    height: 50px;
+    width: 50px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 5px #000;
+}
+
+.add-battle-input {
+    transition: width .3s ease-out;
+}
+
+.add-battle-btn {
+    background: var(--primary);
+    transition: transform .3s ease-out;
+}
+
+.add-battle-input:focus,
+.add-battle-btn:focus {
+    outline: none;
+}
+
+.add-battle-wrap.active .add-battle-input {
+    width: 250px
+}
+
+.add-battle-wrap.active .add-battle-btn {
+    transform: translateX(-251px);
 }
