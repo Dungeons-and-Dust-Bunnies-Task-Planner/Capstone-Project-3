@@ -23,7 +23,11 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column()
+    @JsonIgnore
+    @Column
+    private String confirmPassword;
+
+    @Column
     private String avatarImage;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
@@ -54,7 +58,13 @@ public class User {
         this.battles = battles;
     }
 
-//    ----- Getters and Setters START -----
+    public User(String email, String username, String password) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
+
+    //    ----- Getters and Setters START -----
 
     public long getId() {
         return id;
