@@ -5,6 +5,7 @@ import com.example.capstoneprojectteam3.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +48,30 @@ public class UserController {
         } else {
             return "redirect:/register";
         }
+    }
+
+    @GetMapping("/profile")
+    public String showProfile(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long userId = user.getId();
+        user = usersDao.findUserById(userId);
+        model.addAttribute("user", user);
+        return "profile";
+    }
+
+    @PostMapping("/edit/profile")
+    public String changeProfile(
+            @RequestParam(name="email") String email,
+            @RequestParam(name = "username") String username,
+            @RequestParam(name = "password") String password,
+            @RequestParam(name = "passwordConfirmation") String passwordConfirmation){
+        System.out.println("Edit Profile Post mapping hit");
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long userId = user.getId();
+        user = usersDao.findUserById(userId);
+        user.setEmail(email);
+        usersDao.save(user);
+        return "redirect:/profile";
     }
 
 }
