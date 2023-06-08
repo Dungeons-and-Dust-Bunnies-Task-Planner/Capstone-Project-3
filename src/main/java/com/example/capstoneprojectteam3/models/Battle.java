@@ -2,7 +2,6 @@ package com.example.capstoneprojectteam3.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.springframework.scheduling.config.Task;
 
 import java.util.List;
 
@@ -25,8 +24,7 @@ public class Battle {
     private Monster monster;
 
     @JsonIgnore
-    @OneToMany
-    @JoinColumn(name = "task_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "battle")
     private List<Task> tasks;
 
 
@@ -44,6 +42,15 @@ public class Battle {
         this.user = user;
         this.monster = monster;
     }
+
+    public Battle(Long id, User user, Monster monster, List<Task> tasks) {
+        this.id = id;
+        this.user = user;
+        this.monster = monster;
+        this.tasks = tasks;
+    }
+
+
     //    ----- Constructors END -----
 
     //    ----- Getters and Setters START -----
@@ -79,5 +86,7 @@ public class Battle {
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
+
+
     //    ----- Getters and Setters END -----
 }

@@ -12,15 +12,20 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(nullable = false)
     private String email;
+
     @Column(nullable = false, length = 50, unique = true)
     private String username;
+
     @JsonIgnore
     @Column(nullable = false)
     private String password;
+
     @Column()
-    private String avatar_img;
+    private String avatarImage;
+
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Badge> badges;
 
@@ -29,14 +34,24 @@ public class User {
 
 
 //    ----- Constructors START -----
+
     public User() {
     }
 
-    public User(String email, String username, String password, String avatar_img) {
+    public User(String email, String username, String password, String avatarImage) {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.avatar_img = avatar_img;
+        this.avatarImage = avatarImage;
+    }
+
+    public User(String email, String username, String password, String avatarImage, List<Badge> badges, List<Battle> battles) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.avatarImage = avatarImage;
+        this.badges = badges;
+        this.battles = battles;
     }
 
 //    ----- Getters and Setters START -----
@@ -73,12 +88,12 @@ public class User {
         this.password = password;
     }
 
-    public String getAvatar_img() {
-        return avatar_img;
+    public String getAvatarImage() {
+        return avatarImage;
     }
 
-    public void setAvatar_img(String avatar_img) {
-        this.avatar_img = avatar_img;
+    public void setAvatarImage(String avatarImage) {
+        this.avatarImage = avatarImage;
     }
 
     public List<Badge> getBadges() {
@@ -89,7 +104,7 @@ public class User {
         this.badges = badges;
     }
 
-        public List<Battle> getBattles() {
+    public List<Battle> getBattles() {
         return battles;
     }
 

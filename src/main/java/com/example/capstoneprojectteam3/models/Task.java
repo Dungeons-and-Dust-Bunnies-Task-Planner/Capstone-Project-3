@@ -12,30 +12,33 @@ public class Task {
     private long id;
 
     @Column(nullable = false)
-    private String task_body;
+    private String taskBody;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="battle_id")
-    private Battle battles;
+    @JoinColumn(name = "battle_id")
+    private Battle battle;
 
 
+    //    ----- Constructors START -----
 
-
-//    ----- Constructors START -----
-
-    public Task() {
-    }
+    public Task() {}
 
     public Task(String task_body) {
-        this.task_body = task_body;
+        this.taskBody = taskBody;
+    }
+
+    public Task(long id, String taskBody, Battle battle) {
+        this.id = id;
+        this.taskBody = taskBody;
+        this.battle = battle;
     }
 
     //    ----- Constructors END -----
 
     // =========================
 
-//    ----- Getters and Setters START -----
+    //    ----- Getters and Setters START -----
 
     public long getId() {
         return id;
@@ -45,20 +48,28 @@ public class Task {
         this.id = id;
     }
 
-    public String getTask_body() {
-        return task_body;
+    public String getTaskBody() {
+        return taskBody;
     }
 
-    public void setTask_body(String task_body) {
-        this.task_body = task_body;
+    public void setTaskBody(String taskBody) {
+        this.taskBody = taskBody;
+    }
+
+    public Battle getBattle() {
+        return battle;
+    }
+
+    public void setBattle(Battle battle) {
+        this.battle = battle;
     }
 
     public Battle getBattles() {
-        return battles;
+        return battle;
     }
 
-    public void setBattles(Battle battles) {
-        this.battles = battles;
+    public void setBattles(Battle battle) {
+        this.battle = battle;
     }
 
 
