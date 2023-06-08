@@ -1,9 +1,34 @@
+/*   COVER PHOTO    */
 .coverPhoto {
     width: 100vw;
     height: 300px;
-    background-image: url("https://picsum.photos/id/237/200/300");
+    z-index: -1;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+}
+
+.picParent {
+  margin-top: 80px;
+}
+/*  AVATAR   */
+.avatar-wrapper {
+    height: 200px;
+    width: 200px;
+    max-width: 33vw;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+}
+
+.avatarPlacement {
+    margin-right: 200px;
+    margin-top: -200px;
+}
+
+.editButton {
+    display: flex;
+    max-width: 33vw;
+    justify-content: end;
 }
