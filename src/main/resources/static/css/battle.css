@@ -1,0 +1,25 @@
+.battle {
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    column-gap: 15px;
+}
+
+.battle-checkbox {
+    background: var(--primary);
+    width: 30px;
+    height: 30px;
+    box-shadow: inset 0 0 8px #000;
+    cursor: pointer;
+    transition: all ease-out .4s;
+}
+
+.battle-checkbox:hover {
+    background: #000;
+    box-shadow: inset 0 0 8px var(--primary);
+}
+
+.battle-text {
+    font-size: x-large;
+    text-decoration-color: var(--primary);
+}

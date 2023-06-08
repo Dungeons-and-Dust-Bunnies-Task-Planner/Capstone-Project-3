@@ -3,6 +3,10 @@
 }
 
 .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -12,28 +16,38 @@
     padding: 0;
     color: #fff;
     font-family: Barrio, Inter, sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     text-shadow: 0 0 5px var(--primary);
     overflow: hidden;
 }
 
 h2 {
-    font-size: 2.8rem;
+    font-size: 2rem;
 }
 
 .logo {
-    display:flex;
+    display: flex;
     align-items: center;
-    height:100%;
-    width:100%;
-    padding-left:40px;
+    height: 100%;
+    width: 100%;
+    padding-left: 40px;
     column-gap: 15px;
-    background: linear-gradient(var(--primary), rgba(0,0,0,.2));
+    background: linear-gradient(var(--primary), rgba(0, 0, 0, .2));
     color: #000;
 }
 
+.nav-logo {
+    flex: 1;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: flex-end;
+    flex: 2;
+}
+
 .icon {
-    background: linear-gradient(to left, rgba(0,0,0,.2), transparent)
+    background: linear-gradient(to left, rgba(0, 0, 0, .2), transparent)
 }
 
 img {
@@ -63,10 +77,4 @@ a:visited {
 a:hover {
     color: #fff;
     background: var(--primary);
-}
-
-.nav {
-    position: absolute;
-    top: 0;
-    left: 0;
 }

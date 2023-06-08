@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{partials/head :: head ('Battleground')}"></head>
+<body>
+<nav th:insert="~{partials/navbar :: navbar}"></nav>
+<div class="page-wrapper">
+  <div class="container grow">
+    <div class="row grow full-width no-padding">
+      <div class="battle-icon">
+        <img src="/images/battle-axe.svg" alt="">
+      </div>
+      <section class="battle-slide-out">
+        <div th:insert="~{partials/battle :: battle ('Battle One')}"></div>
+      </section>
+      <section class="tasks-list"></section>
+      <section class="monster">
+        <div class="monster-image">
+          <div class="monster-response"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<footer th:insert="~{partials/footer :: footer}"></footer>
+<script src="/js/script.js"></script>
+</body>
+</html>

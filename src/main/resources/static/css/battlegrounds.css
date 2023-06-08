@@ -1,0 +1,33 @@
+.battle-slide-out {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 569px;
+    background: var(--background);
+    padding: 180px 20px 0 0;
+    transition: all ease-out .4s;
+}
+
+.battle-slide-out.open {
+    transform: translateX(-102%);
+}
+
+.battle-icon {
+    position: absolute;
+    top: 80px;
+    left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    z-index: 2;
+    cursor: pointer;
+    transition: all ease-out .4s;
+}
+
+
+.battle-icon:hover {
+    transform: rotate(360deg);
+}

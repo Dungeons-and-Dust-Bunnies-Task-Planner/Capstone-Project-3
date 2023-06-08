@@ -1,17 +1,18 @@
 <div th:fragment="navbar" class="nav">
   <div class="nav-wrap">
     <div class="logo">
-      <h2>Dungeons and Dust Bunnies</h2>
+      <h2 class="nav-logo">Dungeons and Dust Bunnies</h2>
       <div class="icon">
         <img src="/images/dustBunny.png" alt="icon">
       </div>
     </div>
   </div>
-  <div class="nav-wrap">
+  <div class="nav-wrap nav-menu">
     <ul>
       <li><a th:href="@{/}">Home</a></li>
       <li><a th:href="@{/profile}">Profile</a></li>
       <li><a th:href="@{/login}">Login</a></li>
+      <li><a th:href="@{/battlegrounds}">Battlegrounds</a></li>
       <li><a th:href="@{/register}">Register</a></li>
     </ul>
     <ul class="dropdown">
