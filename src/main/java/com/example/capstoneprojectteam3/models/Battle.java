@@ -27,7 +27,6 @@ public class Battle {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "battle")
     private List<Task> tasks;
 
-
     //    ----- Constructors START -----
 
     public Battle(){}
@@ -49,7 +48,6 @@ public class Battle {
         this.monster = monster;
         this.tasks = tasks;
     }
-
 
     //    ----- Constructors END -----
 
