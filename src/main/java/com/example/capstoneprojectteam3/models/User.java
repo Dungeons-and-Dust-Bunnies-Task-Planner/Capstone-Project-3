@@ -2,6 +2,7 @@ package com.example.capstoneprojectteam3.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity
@@ -22,7 +23,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column()
+    @Column
     private String avatarImage;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
@@ -30,6 +31,7 @@ public class User {
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Battle> battles;
+
 
 //    ----- Constructors START -----
 
@@ -46,6 +48,13 @@ public class User {
     public User(String username, String email, String password) {
         this.email = email;
         this.username = username;
+        this.password = password;
+    }
+
+    public User(long id, String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
         this.password = password;
     }
     //    ----- Getters and Setters START -----
