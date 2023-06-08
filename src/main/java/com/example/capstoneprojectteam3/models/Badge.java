@@ -12,10 +12,10 @@ public class Badge {
     private long id;
 
     @Column(nullable = false)
-    private String badge_title;
+    private String badgeTitle;
 
     @Column(nullable = false)
-    private String badge_body;
+    private String badgeBody;
 
     @JsonIgnore
     @ManyToOne
@@ -23,15 +23,14 @@ public class Badge {
     private User user;
 
 
-
 //    ----- Constructors START -----
 
     public Badge() {
     }
 
-    public Badge(String badge_title, String badge_body) {
-        this.badge_title = badge_title;
-        this.badge_body = badge_body;
+    public Badge(String badgeTitle, String badgeBody) {
+        this.badgeTitle = badgeTitle;
+        this.badgeBody = badgeBody;
     }
 
     //    ----- Constructors END -----
@@ -48,20 +47,20 @@ public class Badge {
         this.id = id;
     }
 
-    public String getBadge_title() {
-        return badge_title;
+    public String getBadgeTitle() {
+        return badgeTitle;
     }
 
-    public void setBadge_title(String badge_title) {
-        this.badge_title = badge_title;
+    public void setBadgeTitle(String badgeTitle) {
+        this.badgeTitle = badgeTitle;
     }
 
-    public String getBadge_body() {
-        return badge_body;
+    public String getBadgeBody() {
+        return badgeBody;
     }
 
-    public void setBadge_body(String badge_body) {
-        this.badge_body = badge_body;
+    public void setBadgeBody(String badgeBody) {
+        this.badgeBody = badgeBody;
     }
 
     public User getUser() {
@@ -72,13 +71,7 @@ public class Badge {
         this.user = user;
     }
 
-
 //    ----- Getters and Setters END -----
-
-
-
-
-
 
 
 }

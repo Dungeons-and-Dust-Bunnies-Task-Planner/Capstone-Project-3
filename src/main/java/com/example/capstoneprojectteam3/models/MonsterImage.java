@@ -72,5 +72,7 @@ public class MonsterImage {
     public Long getId() {
         return id;
     }
+
+
     //    ----- Getters and Setters END -----
 }
