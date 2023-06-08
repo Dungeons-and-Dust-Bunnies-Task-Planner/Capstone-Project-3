@@ -1,0 +1,9 @@
+.column {
+    padding: 60px;
+    flex: 1;
+    font-family: Barrio, Inter, sans-serif
+}
+
+h1 {
+    font-size: 3em;
+}
