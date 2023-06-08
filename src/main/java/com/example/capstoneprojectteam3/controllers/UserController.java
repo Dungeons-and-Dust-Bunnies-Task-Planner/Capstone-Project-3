@@ -22,7 +22,7 @@ public class UserController {
 
     @GetMapping("/home")
     public String showHome(){
-        return "/index";
+        return "index";
     }
 
     @GetMapping("/login")
@@ -38,9 +38,15 @@ public class UserController {
     @PostMapping("/register")
     public String registerUser(@RequestParam(name="username") String username,
                                @RequestParam(name="email") String email,
-                               @RequestParam(name = "password") String password){
-        usersDao.save(new User(email, username, password));
-        return "redirect:/home";
+                               @RequestParam(name = "password") String password,
+                               @RequestParam(name = "passwordConfirmation") String passwordConfirm){
+        if(password.equals(passwordConfirm)){
+            password = passwordEncoder.encode(password);
+            usersDao.save(new User(username, email, password));
+            return "redirect:/home";
+        } else {
+            return "redirect:/register";
+        }
     }
 
 }

@@ -23,10 +23,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @JsonIgnore
-    @Column
-    private String confirmPassword;
-
     @Column
     private String avatarImage;
 
@@ -55,6 +51,12 @@ public class User {
         this.password = password;
     }
 
+    public User(long id, String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
     //    ----- Getters and Setters START -----
 
     public long getId() {

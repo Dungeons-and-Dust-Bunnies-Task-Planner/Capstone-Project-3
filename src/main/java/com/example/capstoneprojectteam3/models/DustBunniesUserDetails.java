@@ -36,6 +36,6 @@ public class DustBunniesUserDetails extends User implements UserDetails {
     }
 
     public DustBunniesUserDetails(long id, String username, String email, String password) {
-        super(String.valueOf(id), username, email, password);
+        super(id, username, email, password);
     }
 }

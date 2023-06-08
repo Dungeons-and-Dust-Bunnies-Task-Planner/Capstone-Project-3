@@ -15,12 +15,12 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/posts/create", "/posts/comment", "/posts/*/edit", "/profile").authenticated()
-                .requestMatchers("/posts", "/posts/**", "/register", "/login").permitAll()
+                .requestMatchers("/tasks/create", "/tasks/*/edit", "/profile").authenticated()
+                .requestMatchers("/tasks", "/templates/**", "/register", "/login", "/home").permitAll()
                 .requestMatchers("/css/**", "/js/**").permitAll()
         );
 
-        http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/index"));
+        http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/home"));
         http.logout((form) -> form.logoutSuccessUrl("/login"));
         http.httpBasic(withDefaults());
         return http.build();
