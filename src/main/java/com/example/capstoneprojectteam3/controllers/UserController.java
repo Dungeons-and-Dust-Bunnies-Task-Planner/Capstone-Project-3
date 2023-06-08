@@ -20,21 +20,27 @@ public class UserController {
         this.usersDao = usersDao;
     }
 
+    @GetMapping("/home")
+    public String showHome(){
+        return "/index";
+    }
+
     @GetMapping("/login")
     public String showLoginForm(){
         return "/login";
     }
+
     @GetMapping("/register")
     public String showRegistrationForm(){
         return "/registration";
     }
 
     @PostMapping("/register")
-    public String registerUser(@RequestParam(name="username") String username, @RequestParam(name="email") String email, @RequestParam(name = "password") String password){
-        password = passwordEncoder.encode(password);
+    public String registerUser(@RequestParam(name="username") String username,
+                               @RequestParam(name="email") String email,
+                               @RequestParam(name = "password") String password){
         usersDao.save(new User(email, username, password));
-        return "redirect:/posts/create";
+        return "redirect:/home";
     }
-
 
 }

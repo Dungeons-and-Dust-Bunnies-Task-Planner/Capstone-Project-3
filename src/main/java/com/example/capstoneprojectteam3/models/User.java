@@ -13,7 +13,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false, length = 50, unique = true)
@@ -42,23 +42,14 @@ public class User {
     public User() {
     }
 
-    public User(String email, String username, String password, String avatarImage) {
+    public User(String username, String email, String password, String avatarImage) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.avatarImage = avatarImage;
     }
 
-    public User(String email, String username, String password, String avatarImage, List<Badge> badges, List<Battle> battles) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.avatarImage = avatarImage;
-        this.badges = badges;
-        this.battles = battles;
-    }
-
-    public User(String email, String username, String password) {
+    public User(String username, String email, String password) {
         this.email = email;
         this.username = username;
         this.password = password;
