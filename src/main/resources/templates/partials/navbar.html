@@ -11,9 +11,10 @@
     <ul>
       <li><a th:href="@{/}">Home</a></li>
       <li><a th:href="@{/profile}">Profile</a></li>
-      <li><a th:href="@{/login}">Login</a></li>
+      <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
+      <li sec:authorize="isAuthenticated()"><a id="logOutButton">Logout</a></li>
       <li><a th:href="@{/battlegrounds}">Battlegrounds</a></li>
-      <li><a th:href="@{/register}">Register</a></li>
+      <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}">Register</a></li>
     </ul>
     <ul class="dropdown">
       <li></li>
@@ -21,5 +22,15 @@
       <li></li>
       <li></li>
     </ul>
+    <form style="visibility: hidden" th:action="@{/logout}" th:method="post" id="logOutForm">
+      <button>#</button>
+    </form>
   </div>
+  <script>
+    const logOutForm = document.getElementById("logOutForm");
+    const logOutButton = document.getElementById("logOutButton");
+    logOutButton.addEventListener('click', () => {
+      logOutForm.submit();
+    });
+  </script>
 </div>

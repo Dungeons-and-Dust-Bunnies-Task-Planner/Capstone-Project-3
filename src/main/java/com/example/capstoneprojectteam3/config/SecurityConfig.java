@@ -16,24 +16,25 @@ public class SecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/tasks/create", "/tasks/*/edit", "/profile").authenticated()
-                .requestMatchers("/tasks", "/templates/**", "/register", "/login", "/home").permitAll()
-                .requestMatchers("/css/**", "/js/**").permitAll()
-        );
-
-        http.formLogin((form) -> form.loginPage("/login").defaultSuccessUrl("/home"));
-        http.logout((form) -> form.logoutSuccessUrl("/login"));
-        http.httpBasic(withDefaults());
+                .requestMatchers("/tasks", "/templates/**", "/register", "/login", "/home", "/").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+        )
+                .formLogin((login) -> login.loginPage("/login").defaultSuccessUrl("/home"))
+                .logout((logout) -> logout.logoutSuccessUrl("/home"))
+                .httpBasic(withDefaults());
         return http.build();
 
-        //        http.authorizeHttpRequests((requests) -> requests
-//                .anyRequest().permitAll()
-//        );
+
     }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+  //  http.authorizeHttpRequests((requests) -> requests
+//                .anyRequest().permitAll()
+//        );
 
 
 }
