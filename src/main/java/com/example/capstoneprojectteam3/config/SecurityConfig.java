@@ -27,7 +27,7 @@ public class SecurityConfig {
                                 .anyRequest().permitAll()
                         )
 //                --------------------------------------------------------------
-          
+
                 .formLogin((login) -> login.loginPage("/login").defaultSuccessUrl("/home"))
                 .logout((logout) -> logout.logoutSuccessUrl("/home"))
                 .httpBasic(withDefaults());
@@ -41,7 +41,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    //  http.authorizeHttpRequests((requests) -> requests
+//      http.authorizeHttpRequests((requests) -> requests
 //                .anyRequest().permitAll()
 //        );
 }
