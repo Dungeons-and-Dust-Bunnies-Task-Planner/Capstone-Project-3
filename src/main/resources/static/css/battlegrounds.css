@@ -1,3 +1,72 @@
+.task-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    max-height: 165px;
+    height: 100%;
+    max-width: 500px;
+    width: 100%;
+    background: var(--background);
+    font-family: Barrio, Inter, sans-serif;
+    z-index: 4;
+}
+
+
+.task-modal > form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    row-gap: 15px;
+    padding: 15px;
+}
+
+.task-modal > form > input {
+    height: 50px;
+    padding: 6px 8px;
+    border: none;
+    outline: none;
+    box-shadow: inset 0 0 5px #000;
+    background: var(--secondary);
+    color: var(--primary);
+    text-shadow: 0 1px 3px #000;
+    font-size: 2.5em;
+}
+
+.task-modal > form > input:focus {
+}
+
+.task-modal > form > button {
+    padding: 6px 8px;
+    height: 70px;
+    box-shadow: 0 0 3px #000;
+    background: var(--primary);
+    text-shadow: 0 1px 3px #000;
+    color: #fff;
+    font-size: 2em;
+    border: none;
+    outline: none;
+    transition: all ease-out .3s;
+}
+
+.task-modal > form > button:hover {
+    box-shadow: inset 0 0 3px #000;
+    font-size: 2.1em;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 3;
+    backdrop-filter: blur(5px);
+}
+
 .battle-slide-out {
     position: absolute;
     top: 0;
@@ -46,14 +115,14 @@
 }
 
 .add-battle-wrap {
-    position:relative;
+    position: relative;
 }
 
 .add-battle-input,
 .add-battle-btn {
     position: absolute;
-    top:-30px;
-    right:15px;
+    top: -30px;
+    right: 15px;
     height: 50px;
     width: 50px;
     border: none;
