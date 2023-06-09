@@ -5,7 +5,9 @@ const battleText = document.querySelector('.battle-text')
 const addBattleWrap = document.querySelector('.add-battle-wrap')
 const addBattleInput = document.querySelector('.add-battle-input')
 const addBattleBtn = document.querySelector('.add-battle-btn')
-
+const taskModal = document.querySelector('.task-modal');
+const modalOverlay = document.querySelector('.modal-overlay');
+const openTaskModal = document.querySelector('.new-task-wrap');
 
 battleIcon.addEventListener('click', e => {
     e.preventDefault()
@@ -22,6 +24,16 @@ battleCheckbox.addEventListener('click', e => {
 addBattleBtn.addEventListener('click', () => {
     addBattleWrap.classList.toggle('active')
     addBattleInput.focus()
+})
+
+openTaskModal.addEventListener('click', e => {
+    modalOverlay.classList.toggle('hidden');
+    taskModal.classList.toggle('hidden');
+})
+
+modalOverlay.addEventListener('click', e => {
+    modalOverlay.classList.toggle('hidden');
+    taskModal.classList.toggle('hidden')
 })
 
 
