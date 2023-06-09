@@ -5,35 +5,28 @@
 <div class="page-wrapper">
   <header th:replace="partials/navbar :: navbar"></header>
   <div class="container grow">
-    <div class="row">
-      <div class="column">
-        <h1>Join the Fight!</h1>
+    <div class="row grow">
+      <div class="column grow">
+        <h1>Join the Fight!</h1><br><br>
         <form th:action="@{/register}" th:method="post">
-            <label class="row" for="username">Username</label>
-            <input class="row" type="text" id="username" name="username">
-            <br>
-            <label class="row" for="email">Email</label>
-            <input class="row" type="email" id="email" name="email">
-            <br>
-            <label class="row" for="password">Password</label>
-            <input class="row" type="password" id="password" name="password">
-            <br>
-            <label class="row" for="password">Confirm Password</label>
-            <input class="row" type="password" id="passwordConfirmation" name="passwordConfirmation">
-            <br>
-            <div class="row">
-                <input type="submit" value="Sign me up!">
-            </div>
-        </form>
-          <br>
-          <div class="row">
-              <a href="/login">Already Registered? Click Me To Log In!</a>
+            <label for="username">Username</label><br>
+            <input class="row" type="text" id="username" name="username"><br>
+            <label for="email">Email</label><br>
+            <input class="row" type="email" id="email" name="email"><br>
+            <label for="password">Password</label><br>
+            <input class="row" type="password" id="password" name="password"><br>
+            <label for="password">Confirm Password</label><br>
+            <input class="row" type="password" id="passwordConfirmation" name="passwordConfirmation"><br>
+            <input class="row submit" type="submit" value="                         Sign me up !"><br>
+          <div class="row register-link">
+              <a th:href="@{/login}">Already Registered? Click Me To Log In!</a>
           </div>
+        </form>
 
       </div>
     </div>
   </div>
 </div>
-
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
