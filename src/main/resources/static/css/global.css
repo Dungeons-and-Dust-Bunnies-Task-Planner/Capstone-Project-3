@@ -10,9 +10,12 @@
 }
 
 body {
-    background: rgba(0, 0, 0, .4);
+    background-image: url("https://cdn.discordapp.com/attachments/526187085741162498/1116809491128782958/Untitled_Artwork.png");
+    /*no repeat on background ;*/
+    background-size: cover;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    color: #ffffff;
 }
 
 .hidden {
