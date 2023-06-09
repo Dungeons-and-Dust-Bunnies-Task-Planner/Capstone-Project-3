@@ -23,3 +23,11 @@ addBattleBtn.addEventListener('click', () => {
     addBattleWrap.classList.toggle('active')
     addBattleInput.focus()
 })
+
+
+
+const logOutForm = document.getElementById("logOutForm");
+const logOutButton = document.getElementById("logOutButton");
+logOutButton.addEventListener('click', () => {
+    logOutForm.submit();
+});
