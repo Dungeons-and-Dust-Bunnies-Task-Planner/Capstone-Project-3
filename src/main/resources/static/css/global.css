@@ -11,7 +11,7 @@
 body {
     background: rgba(0, 0, 0, .4);
     font-family: 'Inter', sans-serif;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 .hidden {
@@ -20,8 +20,8 @@ body {
 
 .page-wrapper {
     min-height: 100vh;
-    width:100vw;
-    display:flex;
+    width: 100vw;
+    display: flex;
     flex-direction: column;
 }
 
@@ -35,9 +35,11 @@ body {
 .container.grow {
     flex: 1 0 0;
 }
+
 .container.justify-center {
     justify-content: center;
 }
+
 .container.justify-bottom {
     justify-content: end;
 }
@@ -49,37 +51,48 @@ body {
     padding: 0 20px;
     gap: 20px;
 }
+
 /* Combo classes to extend the row's versatility */
 .row.full-width {
     max-width: unset;
 }
+
 .row.align-center {
     align-items: center;
 }
+
 .row.align-top {
     align-items: start;
 }
+
 .row.align-bottom {
     align-items: end;
 }
+
 .row.justify-center {
     justify-content: center;
 }
+
 .row.justify-right {
     justify-content: end;
 }
+
 .row.justify-space-between {
     justify-content: space-between;
 }
+
 .row.no-padding {
     padding: unset;
 }
+
 .row.no-gap {
     gap: unset;
 }
+
 .row.grow {
     flex: 1 0 0;
 }
+
 .column {
     display: flex;
     flex-direction: column;
@@ -87,54 +100,71 @@ body {
     align-items: center;
     max-height: 100vh;
 }
+
 .column.shrink {
     flex: 0 1 auto;
 }
+
 .column.align-center {
     align-items: center;
 }
+
 .column.align-right {
     align-items: end;
 }
+
 .column.justify-center {
     justify-content: center;
 }
+
 .column.justify-bottom {
     justify-content: end;
 }
+
 .column.justify-space-between {
     justify-content: space-between;
 }
+
 .d-flex {
     display: flex;
 }
+
 .d-flex.flex-column {
     flex-direction: column;
 }
+
 .d-flex.justify-center {
     justify-content: center;
 }
+
 .d-flex.justify-end {
     justify-content: end;
 }
+
 .d-flex.justify-space-between {
     justify-content: space-between;
 }
+
 .d-flex.justify-space-evenly {
     justify-content: space-evenly;
 }
+
 .d-flex.justify-space-around {
     justify-content: space-around;
 }
+
 .d-flex.align-center {
     align-items: center;
 }
+
 .d-flex.align-end {
     align-items: end;
 }
+
 .d-flex.align-self-stretch {
     align-self: stretch;
 }
+
 .d-flex.full-width {
     width: 100%;
 }

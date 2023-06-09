@@ -5,30 +5,27 @@
 
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
 <div class="page-wrapper">
-<div class="container picParent">
-    <img class="coverPhoto" src="https://plchldr.co/i/1000x200?&bg=111111&fc=ffffff" alt="Cover Photo">
-    <div class="avatarPlacement row grow">
-        <img class="avatar-wrapper" src="https://dummyimage.com/100x100/bf2a2a/ffffff" alt="Avatar Photo">
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                <h1 th:text="${user.username}">Username</h1>
+    <div class="container picParent">
+        <img class="coverPhoto" src="https://plchldr.co/i/1000x200?&bg=111111&fc=ffffff" alt="Cover Photo">
+        <div class="avatarPlacement row grow">
+            <img class="avatar-wrapper" src="https://dummyimage.com/100x100/bf2a2a/ffffff" alt="Avatar Photo">
+            <div class="column">
+                <div class="row">
+                    <div class="column">
+                        <h1 th:text="${user.username}">Username</h1>
                     </div>
-                <div class="column">
-                <button class="editButton">Edit Profile</button>
+                    <div class="column">
+                        <button class="editButton">Edit Profile</button>
                     </div>
+                </div>
             </div>
-         </div>
-    </div>
-    <div class="row">
-        <div class="column">
+        </div>
+        <div class="row">
+            <div class="column">
 
             </div>
         </div>
     </div>
-
-
-
 </div>
 <footer th:insert="~{partials/footer :: footer}"></footer>
 
