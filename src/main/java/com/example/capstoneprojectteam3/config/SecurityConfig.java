@@ -15,7 +15,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/tasks/create", "/tasks/*/edit", "/profile").authenticated()
+                .requestMatchers("/tasks/create", "/tasks/*/edit", "/profile", "/battlegrounds").authenticated()
                 .requestMatchers("/tasks", "/templates/**", "/register", "/login", "/home", "/").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
         )
