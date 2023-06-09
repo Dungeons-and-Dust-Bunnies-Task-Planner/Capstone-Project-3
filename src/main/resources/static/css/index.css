@@ -1,7 +1,7 @@
 .column {
     padding: 60px;
     flex: 1;
-    font-family: Barrio, Inter, sans-serif;
+    font-family: Inconsolata, Inter, sans-serif;
 
 }
 
@@ -23,15 +23,18 @@
     padding: 10px 10px;
     border-radius: .5em;
     transition: all ease-in .3s;
-
-}
-
-.land-h2 a:hover {
     color: #fff;
-    background: var(--primary);
+    background: #5f9a01;
+
 }
+
+
 
 .land-h2 a:visited {
     text-decoration: none;
     color: inherit;
+}
+
+.land-BG {
+background: linear-gradient(to left, rgba(0, 0, 0, .2), transparent)
 }
