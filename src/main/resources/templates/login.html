@@ -4,33 +4,27 @@
 <body>
 <div class="page-wrapper">
     <header th:replace="partials/navbar :: navbar"></header>
-    <div class="container">
-        <div class="row">
-            <div class="column">
-                <div class="row">
-                    <div class="column">
-                        <h1>Log In</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column">
+    <div class="container grow">
+        <div class="row grow">
+            <div class="column grow">
+                        <h1>Log In</h1><br><br>
+
+
                         <form th:action="@{/login}" th:method="post">
-                            <label for="username">Username</label>
-                            <input class="row" type="text" id="username" name="username">
-                            <br>
-                            <label class="row" for="password">Password</label>
-                            <input class="row" type="password" id="password" name="password">
-                            <br>
-                            <div class="row">
-                                <input type="submit" value="Log In">
+                            <label for="username">Username</label><br>
+                            <input class="row" type="text" id="username" name="username"><br>
+                            <label for="password">Password</label><br>
+                            <input class="row" type="password" id="password" name="password"><br><br>
+                            <input class="row" type="submit" value="                Log In"><br><br><br>
+                            <div class="row register-link">
+                                <a th:href="@{/register}">Not Registered? Click Me To Sign Up!</a>
                             </div>
                         </form>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
 </div>
-
+<footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
