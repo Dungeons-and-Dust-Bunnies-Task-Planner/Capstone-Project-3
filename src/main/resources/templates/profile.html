@@ -6,28 +6,108 @@
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
 <div class="page-wrapper">
     <div class="container picParent">
+        <!--        COVER PHOTO     -->
         <img class="coverPhoto" src="https://plchldr.co/i/1000x200?&bg=111111&fc=ffffff" alt="Cover Photo">
+        <!--    AVATAR PHOTO        -->
         <div class="avatarPlacement row grow">
             <img class="avatar-wrapper" src="https://dummyimage.com/100x100/bf2a2a/ffffff" alt="Avatar Photo">
-            <div class="column">
-                <div class="row">
-                    <div class="column">
-                        <h1 th:text="${user.username}">Username</h1>
+            <!--        <div class="form-group">-->
+            <!--            <div name="image" class="image-add" id="open">Add Image</div>-->
+            <!--            <input id="image-url" name="image-url" hidden />-->
+            <!--                USERNAME            -->
+            <div class="column username">
+                <h1 th:text="${user.username}">Username</h1>
+            </div>
+            <!--                EDIT PROFILE BUTTON         -->
+            <div class="column editProfile">
+                <button class="editButton">Edit Profile</button>
+            </div>
+        </div>
+    </div>
+    <!--    BATTLE SECTION       -->
+    <div class="container grow">
+        <div class="row battleRow grow">
+            <div class="column battleArea">
+                <h2 class="h2Profile">Your Active Battles</h2>
+                <div class="row activeBattleRow">
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
                     </div>
-                    <div class="column">
-                        <button class="editButton">Edit Profile</button>
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
+                    </div>
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
+                    </div>
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
+                    </div>
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
+                    </div>
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="column">
-
+    </div>
+    <!--    BADGES AREA        -->
+    <div class="container grow">
+        <div class="row badgeRow grow">
+            <div class="column badgeArea">
+                <h2 class="h2Profile">Your Badges</h2>
+                <div class="row activeBadgeRow">
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+
 </div>
-<footer th:insert="~{partials/footer :: footer}"></footer>
+        <footer th:insert="~{partials/footer :: footer}"></footer>
 
 </body>
 </html>

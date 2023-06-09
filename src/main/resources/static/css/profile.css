@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+
+/*      FONT FOR PAGE */
+.h2Profile {
+    font-family: 'Inconsolata', monospace;
+}
+
+.h4Profile {
+    font-family: 'Inconsolata', monospace;
+}
+
 /*   COVER PHOTO    */
 .coverPhoto {
     width: 100vw;
@@ -17,19 +28,114 @@
 .avatar-wrapper {
     height: 200px;
     width: 200px;
-    max-width: 33vw;
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid white;
 }
 
 .avatarPlacement {
-    margin-right: 200px;
+    margin-right: 350px;
     margin-top: -200px;
+}
+
+/*  USER NAME   */
+.username {
+    font-family: 'Inconsolata', monospace;
+    color: #fff;
+    padding: 0;
+    margin-top: 56px;
+    align-items: start;
+    overflow: hidden;
+}
+
+
+/*  EDIT BUTTON */
+.editProfile {
+    margin-right: -500px;
+    max-width: 150px;
+    margin-bottom: 35px;
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+    align-content: end;
+    justify-content: end;
 }
 
 .editButton {
     display: flex;
     max-width: 33vw;
     justify-content: end;
+}
+
+/*  BATTLE AREA     */
+
+.battleRow {
+    margin: 50px 50px;
+    width: 75vw;
+    display: flex;
+}
+
+.battleArea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Change to flex-start */
+    align-content: flex-start; /* Add this line */
+    background-color: rgba(155, 58, 227, 0.7);
+}
+
+.battleCard {
+    margin: 10px;
+    width: calc(25% - 20px); /* Change the width calculation */
+    height: 200px;
+    max-width: 190px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.activeBattleRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Change to flex-start */
+    align-content: flex-start; /* Add this line */
+}
+
+
+/*      BADGES      */
+
+.badgeRow {
+    margin: 50px 50px;
+    width: 75vw;
+    display: flex;
+}
+
+.badgeArea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Change to flex-start */
+    align-content: flex-start; /* Add this line */
+    background-color: rgba(155, 58, 227, 0.7);
+}
+
+.badgeCard {
+    margin: 10px;
+    width: calc(25% - 20px); /* Change the width calculation */
+    height: 200px;
+    max-width: 190px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.activeBadgeRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Change to flex-start */
+    align-content: flex-start; /* Add this line */
 }

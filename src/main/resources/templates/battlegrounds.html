@@ -4,30 +4,38 @@
 <body>
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
 <div class="page-wrapper">
-    <div class="container grow">
-        <div class="row grow full-width no-padding">
-            <div class="battle-icon">
-                <img src="/images/battle-axe.svg" alt="battle icon">
-            </div>
+  <div class="container grow">
+    <div class="row grow full-width no-padding">
 
-            <section class="battle-slide-out">
-                <div class="add-battle-container">
-                    <div class="add-battle-wrap">
-                        <input class="add-battle-input" type="text" placeholder="Add your battle..."/>
-                        <button class="add-battle-btn"><img src="/images/plus-6.png" alt=""></button>
-                    </div>
-                </div>
+      <div class="modal-overlay"></div>
 
-                <div th:insert="~{partials/battle :: battle ('Battle One')}"></div>
-            </section>
-            <section class="tasks-list"></section>
-            <section class="monster">
-                <div class="monster-image">
-                    <div class="monster-response"></div>
-                </div>
-            </section>
+      <div class="task-modal">
+        <form action="/battlegrounds/create-task" method="post" th:object="${task}">
+            <input type="text" placeholder="Enter your task..." name="task-body" id="task-body" autofocus />
+          <button class="create-task-btn">Create Task</button>
+        </form>
+
+      </div>
+      <div class="battle-icon">
+        <img src="/images/battle-axe.svg" alt="battle icon">
+      </div>
+      <section class="battle-slide-out">
+        <div class="add-battle-container">
+          <div class="add-battle-wrap">
+            <input class="add-battle-input" type="text" placeholder="Add your battle..."/>
+            <button class="add-battle-btn"><img src="/images/plus-6.png" alt=""></button>
+          </div>
         </div>
+        <div th:insert="~{partials/battle :: battle ('Battle One')}"></div>
+      </section>
+      <section class="tasks-list"></section>
+      <section class="monster">
+        <div class="monster-image">
+          <div class="monster-response"></div>
+        </div>
+      </section>
     </div>
+  </div>
 </div>
 <footer th:insert="~{partials/footer :: footer}"></footer>
 <script src="/js/script.js"></script>
