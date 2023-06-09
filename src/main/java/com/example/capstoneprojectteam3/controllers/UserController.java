@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class UserController {
@@ -64,14 +65,36 @@ public class UserController {
             @RequestParam(name="email") String email,
             @RequestParam(name = "username") String username,
             @RequestParam(name = "password") String password,
-            @RequestParam(name = "passwordConfirmation") String passwordConfirmation){
-        System.out.println("Edit Profile Post mapping hit");
+            @RequestParam(name = "passwordConfirmation") String passwordConfirm,
+            @RequestParam(name = "image-url") String imageUrl  ) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        long userId = user.getId();
-        user = usersDao.findUserById(userId);
-        user.setEmail(email);
-        usersDao.save(user);
+        if (password.isEmpty() && passwordConfirm.isEmpty() || email.equals(user.getEmail())){
+            long userId = user.getId();
+            user = usersDao.findUserById(userId);
+            user.setUsername(username);
+            String oldEmail = user.getEmail();
+            user.setEmail(oldEmail);
+            String oldPassword = user.getPassword();
+            user.setPassword(oldPassword);
+            user.setAvatarImage(String.valueOf(imageUrl));
+            usersDao.save(user);
+        } else {
+            if (password.equals(passwordConfirm)){
+                password = passwordEncoder.encode(password);
+                long userId = user.getId();
+                user = usersDao.findUserById(userId);
+                user.setUsername(username);
+                user.setEmail(email);
+                user.setPassword(password);
+                user.setAvatarImage(String.valueOf(imageUrl));
+                usersDao.save(user);
+                return "redirect:/profile";
+            } else {
+                return "redirect:/profile";
+            }
+        }
         return "redirect:/profile";
     }
+
 
 }

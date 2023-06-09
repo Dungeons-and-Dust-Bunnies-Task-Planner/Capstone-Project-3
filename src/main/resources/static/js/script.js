@@ -35,3 +35,11 @@ modalOverlay.addEventListener('click', e => {
     modalOverlay.classList.toggle('hidden');
     taskModal.classList.toggle('hidden')
 })
+
+
+
+const logOutForm = document.getElementById("logOutForm");
+const logOutButton = document.getElementById("logOutButton");
+logOutButton.addEventListener('click', () => {
+    logOutForm.submit();
+});
