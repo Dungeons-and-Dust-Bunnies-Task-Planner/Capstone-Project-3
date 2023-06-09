@@ -7,19 +7,27 @@
   <div class="container grow">
     <div class="row grow full-width no-padding">
       <div class="battle-icon">
-        <img src="/images/battle-axe.svg" alt="">
+        <img src="/images/battle-axe.svg" alt="battle icon">
       </div>
+
       <section class="battle-slide-out">
-        <div th:insert="~{partials/battle :: battle ('Battle One')}"></div>
-      </section>
-      <section class="tasks-list"></section>
-      <section class="monster">
-        <div class="monster-image">
-          <div class="monster-response"></div>
+        <div class="add-battle-container">
+          <div class="add-battle-wrap">
+            <input class="add-battle-input" type="text" placeholder="Add your battle..." />
+            <button class="add-battle-btn"><img src="/images/plus-6.png" alt=""></button>
+          </div>
         </div>
-      </section>
-    </div>
+
+    <div th:insert="~{partials/battle :: battle ('Battle One')}"></div>
+    </section>
+    <section class="tasks-list"></section>
+    <section class="monster">
+      <div class="monster-image">
+        <div class="monster-response"></div>
+      </div>
+    </section>
   </div>
+</div>
 </div>
 <footer th:insert="~{partials/footer :: footer}"></footer>
 <script src="/js/script.js"></script>
