@@ -14,9 +14,18 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests((requests) -> requests
-                .anyRequest().permitAll()
-        )
+        http.authorizeHttpRequests((requests) -> requests
+//    -------------------UNCOMMENT THIS CODE FOR SECURED ACCESS ---------------------------
+//                        .requestMatchers("/tasks/create", "/tasks/*/edit", "/profile", "/battlegrounds").authenticated()
+//                        .requestMatchers("/tasks", "/templates/**", "/register", "/login", "/home", "/").permitAll()
+//                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+//                )
+//                --------------------------------------------------------------
+//
+//    -------------------UNCOMMENT THIS CODE FOR ALL ACCESS -  NO SECURITY----------------
+                                .anyRequest().permitAll()
+                        )
+//                --------------------------------------------------------------
                 .formLogin((login) -> login.loginPage("/login").defaultSuccessUrl("/home"))
                 .logout((logout) -> logout.logoutSuccessUrl("/home"))
                 .httpBasic(withDefaults());
@@ -29,10 +38,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
-//    http.authorizeHttpRequests((requests) -> requests
-//                .anyRequest().permitAll()
-//        );
-
 
 }

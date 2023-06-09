@@ -1,10 +1,12 @@
 use dungeons_and_dust_bunnies_db;
 
-INSERT INTO badges (badge_title, badge_body) VALUES
-                                                 ('First blood', 'Completed your first battle!'),
-                                                 ('Novice do-er', 'Completed 3 battles'),
-                                                 ('Regular getter-doner', 'Completed 5 battles'),
-                                                 ('Cosmic Cleaner', 'Defeated the cosmic hat octopuss of filth');
+# YOU HAVE TO HAVE AT LEAST 1 USER IN THE DB, THIS IS SET UP TO WORK WITH user_id = 1
+
+INSERT INTO badges (badge_title, badge_body, user_id) VALUES
+                                                          ('First blood', 'Completed your first battle!', 1),
+                                                          ('Novice do-er', 'Completed 3 battles', 1),
+                                                          ('Regular getter-doner', 'Completed 5 battles', 1),
+                                                          ('Cosmic Cleaner', 'Defeated the cosmic hat octopuss of filth', 1);
 
 INSERT INTO monsters (name) VALUES
                                 ('Zoglon the Vacuumizer'),
@@ -18,10 +20,10 @@ INSERT INTO monsters (name) VALUES
                                 ('Floragor the Plant Purifier'),
                                 ('Pantryx the Organization Overlord');
 
-INSERT INTO battles (monster_id, user_id) VALUES
-                                              (1,1),
-                                              (2,1),
-                                              (3,1);
+INSERT INTO battles (monster_id, user_id, title) VALUES
+                                                     (1,1,'Battle name 1 placholder'),
+                                                     (2,1,'Battle name 2 placholder'),
+                                                     (3,1,'Battle name 3 placholder');
 
 INSERT INTO tasks (battle_id, task_body) VALUES
                                              (1, 'Clean the living room'),

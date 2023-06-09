@@ -26,7 +26,15 @@
             <button class="add-battle-btn"><img src="/images/plus-6.png" alt=""></button>
           </div>
         </div>
-        <div th:insert="~{partials/battle :: battle ('Battle One')}"></div>
+          <div th:each="battle : ${battles}">
+              <div>
+                  <div class="battle">
+                      <div class="battle-checkbox"></div>
+                      <h3 class="battle-text" th:text="${battle.title}"></h3>
+                      <div class="battle-delete"></div>
+                  </div>
+              </div>
+          </div>
       </section>
       <section class="tasks-container">
         <div class="tasks-list">
@@ -36,10 +44,10 @@
             </div>
             <h3>New Task...</h3>
           </div>
-          <ul th:each="task : ${tasks}">
+          <ul th:each="battle : ${battles}">
             <li class="task">
               <div class="checkbox"></div>
-              <h3 class="task-text" th:text="${task.taskBody}"></h3>
+              <h3 class="task-text" th:text="${battle.tasks}"></h3>
               <div class="delete-task"></div>
             </li>
           </ul>
