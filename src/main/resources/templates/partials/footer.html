@@ -1,12 +1,12 @@
 <footer th:fragment="footer" xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="container footerWrap">
-            <div class="leftFoot row">
-                <p>Join our newsletter</p>
-                <div class="newsletter">
-                    <label for="email">Email: </label>
-                    <input type="text" id="email" name="email">
-                </div>
+        <div class="leftFoot row">
+            <p>Join our newsletter</p>
+            <div class="newsletter">
+                <label for="email">Email: </label>
+                <input type="text" id="email" name="email">
             </div>
+        </div>
 
         <div class="middleFooter row">
                 <a th:href="@{/}">Home</a>
@@ -20,11 +20,3 @@
         </div>
     </div>
 </footer>
-
-<script>
-    const logOutForm = document.getElementById("logOutForm");
-    const logOutButton = document.getElementById("logOutButton");
-    logOutButton.addEventListener('click', () => {
-        logOutForm.submit();
-    });
-</script>

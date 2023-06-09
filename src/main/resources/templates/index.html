@@ -3,33 +3,35 @@
 <head th:insert="~{partials/head :: head ('Home Page')}"></head>
 <body>
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
-<div class="page-wrapper">
+<div class="page-wrapper index">
   <div class="container grow">
     <div class="row grow full-width no-padding">
       <div class="column">
 
-          <h1>
-            Conquer chores
-          </h1>
+                <h1>
+                    Conquer chores
+                </h1>
 
-          <br>
+                <br>
 
-          <h1>
-          Battle Beasts
-          </h1>
+                <h1>
+                    Battle Beasts
+                </h1>
 
-          <br>
+                <br>
 
-          <h2 class="land-h2">
-             Transforming Mundane Tasks into Epic Quests!
-          </h2>
+                <h2 class="land-h2">
+                    Transforming Mundane Tasks into Epic Quests!
+                </h2>
 
-        <br>
-        <br>
-        <br>
+                <br>
+                <br>
+                <br>
 
-          <h3 class="land-h2">Join The Battle Here!</h3>
-          <h3 class="land-h2"><a href="register">-> Register <-</a></h3>
+          <h3 sec:authorize="!isAuthenticated()" class="land-h2">Join The Battle Here!</h3>
+          <h3 sec:authorize="!isAuthenticated()" class="land-h2"><a href="register">-> Register <-</a></h3>
+          <h3 sec:authorize="isAuthenticated()" class="land-h2">Create Your Battle!</h3>
+          <h3 sec:authorize="isAuthenticated()" class="land-h2"><a href="/battlegrounds">-> Create <-</a></h3>
       </div>
       <div class="column">
         <h1>monster</h1>

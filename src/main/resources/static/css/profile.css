@@ -9,6 +9,11 @@
     font-family: 'Inconsolata', monospace;
 }
 
+profileColumn {
+    display: flex;
+    flex: 0 0 1;
+}
+
 /*   COVER PHOTO    */
 .coverPhoto {
     width: 100vw;
@@ -22,7 +27,9 @@
 
 .picParent {
   margin-top: 80px;
+    width: 100vw;
 }
+
 /*  AVATAR   */
 .avatar-wrapper {
     height: 200px;
@@ -33,7 +40,7 @@
 }
 
 .avatarPlacement {
-    margin-right: 350px;
+    /*margin-right: 350px;*/
     margin-top: -200px;
 }
 
@@ -138,3 +145,4 @@
     justify-content: flex-start; /* Change to flex-start */
     align-content: flex-start; /* Add this line */
 }
+
