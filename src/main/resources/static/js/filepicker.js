@@ -23,8 +23,8 @@ const options = {
     onFileUploadFinished: (file) => {
         console.log('file upload complete')
         console.log(file);
-        const imageURL = document.getElementById("image-url");
-        imageURL.value = file.url;
+        const imageFormField = document.getElementById("image-url");
+        imageFormField.value = file.url;
     },
 };
 
