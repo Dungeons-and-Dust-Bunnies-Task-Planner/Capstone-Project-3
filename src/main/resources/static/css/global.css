@@ -6,6 +6,7 @@
     --primary: rgb(155, 58, 227);
     --secondary: rgb(180, 180, 180);
     --background: rgba(56, 56, 56, 0.4);
+    --slide-out-bg: rgba(140, 140, 140, 0.7);
 }
 
 body {

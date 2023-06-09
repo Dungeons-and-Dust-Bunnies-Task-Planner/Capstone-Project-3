@@ -7,11 +7,11 @@
   <div class="container grow">
     <div class="row grow full-width no-padding">
 
-      <div class="modal-overlay"></div>
+      <div class="modal-overlay hidden"></div>
 
-      <div class="task-modal">
+      <div class="task-modal hidden">
         <form action="/battlegrounds/create-task" method="post" th:object="${task}">
-            <input type="text" placeholder="Enter your task..." name="task-body" id="task-body" autofocus />
+          <input type="text" placeholder="Enter your task..." name="task-body" id="task-body" autofocus/>
           <button class="create-task-btn">Create Task</button>
         </form>
 
@@ -28,7 +28,23 @@
         </div>
         <div th:insert="~{partials/battle :: battle ('Battle One')}"></div>
       </section>
-      <section class="tasks-list"></section>
+      <section class="tasks-container">
+        <div class="tasks-list">
+          <div class="new-task-wrap">
+            <div class="img-wrap">
+              <img src="/images/plus-6.png" alt="add-icon"/>
+            </div>
+            <h3>New Task...</h3>
+          </div>
+          <ul th:each="task : ${tasks}">
+            <li class="task">
+              <div class="checkbox"></div>
+              <h3 class="task-text" th:text="${task.taskBody}"></h3>
+              <div class="delete-task"></div>
+            </li>
+          </ul>
+        </div>
+      </section>
       <section class="monster">
         <div class="monster-image">
           <div class="monster-response"></div>

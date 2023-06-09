@@ -14,10 +14,8 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/tasks/create", "/tasks/*/edit", "/profile", "/battlegrounds").authenticated()
-                .requestMatchers("/tasks", "/templates/**", "/register", "/login", "/home", "/").permitAll()
-                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+    http.authorizeHttpRequests((requests) -> requests
+                .anyRequest().permitAll()
         )
                 .formLogin((login) -> login.loginPage("/login").defaultSuccessUrl("/home"))
                 .logout((logout) -> logout.logoutSuccessUrl("/home"))
@@ -32,7 +30,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-  //  http.authorizeHttpRequests((requests) -> requests
+//    http.authorizeHttpRequests((requests) -> requests
 //                .anyRequest().permitAll()
 //        );
 
