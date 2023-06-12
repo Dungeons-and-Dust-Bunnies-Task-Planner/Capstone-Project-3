@@ -4,17 +4,15 @@
 /* FONT FOR PAGE */
 
 .h1Profile {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Nunito', sans-serif;
     font-size: 75px;
 }
 
 .h2Profile {
-    font-family: 'Inconsolata', monospace;
-}
+    font-family: 'Nunito', sans-serif;}
 
 .h4Profile {
-    font-family: 'Inconsolata', monospace;
-}
+    font-family: 'Nunito', sans-serif;}
 
 .profileColumn {
     display: flex;
@@ -143,7 +141,7 @@
 
 /* USER NAME */
 .username {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Nunito', sans-serif;
     color: #fff;
     max-width: 33vw;
     padding: 0;
@@ -218,6 +216,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: flex-start;
+    min-width: calc(25% - 20px);
     background-color: rgba(155, 58, 227, 0.1);
     border-radius: .5em;
 }
