@@ -1,5 +1,6 @@
 package com.example.capstoneprojectteam3.controllers;
 
+import com.example.capstoneprojectteam3.models.Badge;
 import com.example.capstoneprojectteam3.models.User;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -56,7 +59,11 @@ public class UserController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long userId = user.getId();
         user = usersDao.findUserById(userId);
+        List<Badge> badges = user.getBadges();
+
         model.addAttribute("user", user);
+        model.addAttribute("badges", badges);
+
         return "profile";
     }
 
@@ -95,6 +102,9 @@ public class UserController {
         }
         return "redirect:/profile";
     }
+
+
+
 
 
 }
