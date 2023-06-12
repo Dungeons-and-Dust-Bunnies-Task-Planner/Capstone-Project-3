@@ -33,7 +33,7 @@
                 <form th:action="@{/edit/profile}" th:method="post">
                     <p>Add a Profile Pic!</p>
                     <div name="image" class="image-add" id="open">Add Image</div>
-                    <input type="hidden" id="image-url" name="image-url" />
+                    <input th:value="${user.avatarImage}" type="hidden" id="image-url" name="image-url" />
                     <label for="username">Username</label><br>
                     <input th:value="${user.username}" class="row" type="text" id="username" name="username"><br>
                     <label for="email">Email</label><br>
