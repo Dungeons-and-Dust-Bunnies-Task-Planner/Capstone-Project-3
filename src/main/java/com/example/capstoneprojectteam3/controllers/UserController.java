@@ -66,7 +66,9 @@ public class UserController {
             @RequestParam(name = "username") String username,
             @RequestParam(name = "password") String password,
             @RequestParam(name = "passwordConfirmation") String passwordConfirm,
-            @RequestParam(name = "image-url") String imageUrl  ){
+            @RequestParam(name = "profile-image-url") String profileImageUrl,
+            @RequestParam(name = "background-image-url") String backgroundImageUrl
+            ){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (password.isEmpty() && passwordConfirm.isEmpty()){
             long userId = user.getId();
@@ -75,7 +77,8 @@ public class UserController {
             user.setEmail(email);
             String oldPassword = user.getPassword();
             user.setPassword(oldPassword);
-            user.setAvatarImage(imageUrl);
+            user.setAvatarImage(profileImageUrl);
+            user.setBackgroundImage(backgroundImageUrl);
             System.out.println("This is conditional where password fields are empty");
             usersDao.save(user);
         } else {
@@ -86,7 +89,8 @@ public class UserController {
                 user.setUsername(username);
                 user.setEmail(email);
                 user.setPassword(password);
-                user.setAvatarImage(imageUrl);
+                user.setAvatarImage(profileImageUrl);
+                user.setBackgroundImage(backgroundImageUrl);
                 System.out.println("This is conditional where passwords are changed");
                 usersDao.save(user);
             }

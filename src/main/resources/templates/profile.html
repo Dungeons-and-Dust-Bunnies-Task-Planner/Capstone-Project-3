@@ -7,7 +7,7 @@
 <div class="page-wrapper">
     <div class="container picParent">
         <!--        COVER PHOTO     -->
-        <img class="coverPhoto" src="https://plchldr.co/i/1000x200?&bg=111111&fc=ffffff" alt="Cover Photo">
+        <img class="coverPhoto" th:src="${user.backgroundImage}" alt="https://plchldr.co/i/1000x200?&bg=111111&fc=ffffff">
 
 
         <!--    AVATAR PHOTO        -->
@@ -31,9 +31,18 @@
             <div class="edit-modal-overlay hidden"></div>
             <div class="edit-modal hidden">
                 <form th:action="@{/edit/profile}" th:method="post">
-                    <p>Add a Profile Pic!</p>
-                    <div name="image" class="image-add" id="open">Add Image</div>
-                    <input th:value="${user.avatarImage}" type="hidden" id="image-url" name="image-url" />
+
+<!--                    <div name="image" class="image-add" id="open">Add Profile Image</div>-->
+<!--                    <input th:value="${user.avatarImage}" type="hidden" id="image-url" name="image-url" />-->
+
+                    <div class="image-add" id="profile-image-add">Add Profile Image</div>
+                    <input th:value="${user.avatarImage}" type="hidden" id="profile-image-url" name="profile-image-url" field='profileImage'/>
+
+                    <div class="image-add" id="background-image-add">Add Background Image</div>
+                    <input th:value="${user.backgroundImage}" type="hidden" id="background-image-url" name="background-image-url" field='backgroundImage' />
+
+
+
                     <label for="username">Username</label><br>
                     <input th:value="${user.username}" class="row" type="text" id="username" name="username"><br>
                     <label for="email">Email</label><br>
