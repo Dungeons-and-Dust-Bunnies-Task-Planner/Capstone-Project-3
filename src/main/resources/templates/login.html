@@ -5,8 +5,8 @@
 <div class="page-wrapper">
     <header th:replace="partials/navbar :: navbar"></header>
     <div class="container grow">
-        <div class="row grow">
-            <div class="column grow">
+        <div class="row grow justify-center">
+            <div class="column grow loginForm">
                         <h1>Log In</h1><br><br>
 
 
@@ -15,7 +15,7 @@
                             <input class="row" type="text" id="username" name="username"><br>
                             <label for="password">Password</label><br>
                             <input class="row" type="password" id="password" name="password"><br><br>
-                            <input class="row" type="submit" value="                Log In"><br><br><br>
+                            <input class="row justify-center" type="submit" value="Log In"><br><br><br>
                             <div class="row register-link">
                                 <a th:href="@{/register}">Not Registered? Click Me To Sign Up!</a>
                             </div>
