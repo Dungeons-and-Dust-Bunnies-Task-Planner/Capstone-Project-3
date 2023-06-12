@@ -22,15 +22,8 @@
       <li></li>
       <li></li>
     </ul>
-    <form style="visibility: hidden" th:action="@{/logout}" th:method="post" id="logOutForm">
-      <button>#</button>
+    <form class="logout-form hidden" th:action="@{/logout}" th:method="post" id="logout-form">
+      <button class="logout-btn">#</button>
     </form>
   </div>
-  <script>
-    const logOutForm = document.getElementById("logOutForm");
-    const logOutButton = document.getElementById("logOutButton");
-    logOutButton.addEventListener('click', () => {
-      logOutForm.submit();
-    });
-  </script>
 </div>
