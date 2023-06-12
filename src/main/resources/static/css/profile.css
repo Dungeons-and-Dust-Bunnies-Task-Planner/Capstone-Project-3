@@ -185,16 +185,16 @@
 }
 
 .battleCard {
-    margin: 10px;
-    width: calc(25% - 20px);
-    height: 200px;
-    max-width: 190px;
+
+    min-height: 330px;
+    min-width: 330px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    padding: 0px;
 }
 
 .activeBattleRow {
@@ -221,18 +221,21 @@
     border-radius: .5em;
 }
 
-.badgeCard {
-    margin: 10px;
-    width: calc(25% - 20px);
-    height: 200px;
-    max-width: 190px;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-}
-
 .activeBadgeRow {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-content: flex-start;
+    gap: 15px;
+    padding: 0 20px;
 }
+.badgeCard {
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    display: flex;
+    flex: 0 0 200px;
+    flex-direction: column;
+    padding: 20px;
+}
+
