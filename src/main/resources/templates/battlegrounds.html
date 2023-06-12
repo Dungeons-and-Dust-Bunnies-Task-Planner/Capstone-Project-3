@@ -1,21 +1,23 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:insert="~{partials/head :: head ('Battleground')}"></head>
+<head th:insert="~{partials/head :: head ('Battlegrounds')}"></head>
 <body>
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
 <div class="page-wrapper">
   <div class="container grow">
     <div class="row grow full-width no-padding">
 
+      <!--      CREATE A TASK MODAL-->
       <div class="modal-overlay hidden"></div>
-
       <div class="task-modal hidden">
         <form action="/battlegrounds/create-task" method="post" th:object="${task}">
           <input type="text" placeholder="Enter your task..." name="task-body" id="task-body" autofocus/>
           <button class="create-task-btn">Create Task</button>
         </form>
-
       </div>
+      <!--      CREATE A TASK MODAL-->
+
+      <!--      BATTLE SLIDE OUT-->
       <div class="battle-icon">
         <img src="/images/battle-axe.svg" alt="battle icon">
       </div>
@@ -26,16 +28,17 @@
             <button class="add-battle-btn"><img src="/images/plus-6.png" alt=""></button>
           </div>
         </div>
+        <div class="battles-list">
           <div th:each="battle : ${battles}">
-              <div>
-                  <div class="battle">
-                      <div class="battle-checkbox"></div>
-                      <h3 class="battle-text" th:text="${battle.title}"></h3>
-                      <div class="battle-delete"></div>
-                  </div>
-              </div>
+            <div class="battle">
+              <h3 class="battle-text" th:text="${battle.title}"></h3>
+            </div>
           </div>
+        </div>
       </section>
+      <!--      BATTLE SLIDE OUT-->
+
+      <!--      TASK CONTAINER-->
       <section class="tasks-container">
         <div class="tasks-list">
           <div class="new-task-wrap">
@@ -44,20 +47,23 @@
             </div>
             <h3>New Task...</h3>
           </div>
-          <ul th:each="battle : ${battles}">
-            <li class="task">
-              <div class="checkbox"></div>
-              <h3 class="task-text" th:text="${battle.tasks}"></h3>
-              <div class="delete-task"></div>
+          <ul class="battle-tasks" th:each="battle : ${battles}">
+            <h2 class="battle-name" th:text="${battle.title}"></h2>
+            <li class="task not-complete" th:each="task : ${battle.tasks}">
+              <h3 class="task-text" th:text="${task.taskBody}"></h3>
             </li>
           </ul>
         </div>
       </section>
+      <!--      TASK CONTAINER-->
+
+      <!--      MONSTER DISPLAY-->
       <section class="monster">
         <div class="monster-image">
           <div class="monster-response"></div>
         </div>
       </section>
+      <!--      MONSTER DISPLAY-->
     </div>
   </div>
 </div>
