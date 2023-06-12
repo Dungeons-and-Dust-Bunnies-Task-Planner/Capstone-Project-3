@@ -26,6 +26,8 @@ public class User {
     @Column
     private String avatarImage;
 
+    @Column String backgroundImage;
+
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Badge> badges;
 
@@ -43,6 +45,14 @@ public class User {
         this.username = username;
         this.password = password;
         this.avatarImage = avatarImage;
+    }
+
+    public User(String email, String username, String password, String avatarImage, String backgroundImage) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.avatarImage = avatarImage;
+        this.backgroundImage = backgroundImage;
     }
 
     public User(String username, String email, String password) {
@@ -97,6 +107,14 @@ public class User {
 
     public void setAvatarImage(String avatarImage) {
         this.avatarImage = avatarImage;
+    }
+
+    public String getBackgroundImage() {
+        return backgroundImage;
+    }
+
+    public void setBackgroundImage(String backgroundImage) {
+        this.backgroundImage = backgroundImage;
     }
 
     public List<Badge> getBadges() {
