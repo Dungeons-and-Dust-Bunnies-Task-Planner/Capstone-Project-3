@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{partials/head :: head ('Profile')}"></head>
+<body>
+
+<nav th:insert="~{partials/navbar :: navbar}"></nav>
+<div class="page-wrapper">
+    <div class="container picParent">
+        <!--        COVER PHOTO     -->
+        <img class="coverPhoto" src="https://plchldr.co/i/1000x200?&bg=111111&fc=ffffff" alt="Cover Photo">
+
+
+        <!--    AVATAR PHOTO        -->
+        <div class="avatarPlacement row grow">
+            <img class="avatar-wrapper" th:src="${user.avatarImage}" alt="Avatar Photo">
+
+
+
+            <!--                USERNAME            -->
+            <div class="column profileColumn username">
+                <h1 class="h1Profile" th:text="${user.username}">Username</h1>
+            </div>
+            <!--                EDIT PROFILE BUTTON         -->
+
+
+
+
+            <div class="column profileColumn editProfile">
+                <button class="editButton profileColumn">Edit Profile</button>
+            </div>
+            <div class="edit-modal-overlay hidden"></div>
+            <div class="edit-modal hidden">
+                <form th:action="@{/edit/profile}" th:method="post">
+                    <p>Add a Profile Pic!</p>
+                    <div name="image" class="image-add" id="open">Add Image</div>
+                    <input type="hidden" id="image-url" name="image-url" />
+                    <label for="username">Username</label><br>
+                    <input th:value="${user.username}" class="row" type="text" id="username" name="username"><br>
+                    <label for="email">Email</label><br>
+                    <input th:value="${user.email}" class="row" type="email" id="email" name="email"><br>
+                    <label for="password">Password</label><br>
+                    <input class="row" type="password" id="password" name="password"><br>
+                    <label for="password">Confirm Password</label><br>
+                    <input class="row" type="password" id="passwordConfirmation" name="passwordConfirmation"><br>
+                    <input class="row submit" type="submit" value="Edit"><br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!--    BATTLE SECTION       -->
+    <div class="container grow">
+        <div class="row battleRow grow">
+            <div class="column battleArea">
+                <h2 class="h2Profile">Your Active Battles</h2>
+                <div class="row activeBattleRow">
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
+                    </div>
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
+                    </div>
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
+                    </div>
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
+                    </div>
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
+                    </div>
+                    <div class="column activeBattle battleCard">
+                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Battle Image">
+                        <h4 class="h4Profile">Active Battle Name</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    BADGES AREA        -->
+    <div class="container grow">
+        <div class="row badgeRow grow">
+            <div class="column badgeArea">
+                <h2 class="h2Profile">Your Badges</h2>
+                <div class="row activeBadgeRow">
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                    <div class="column activeBadge badgeCard">
+                        <img class="activeBadgeImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
+                             alt="Active Badge Image">
+                        <h4 class="h4Profile">Badge Name</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+        <footer th:insert="~{partials/footer :: footer}"></footer>
+<script src="/js/profile.js"></script>
+<script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+<script type="module" src="/js/filepicker.js"></script>
+</body>
+</html>

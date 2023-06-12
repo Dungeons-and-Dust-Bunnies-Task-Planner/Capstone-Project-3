@@ -1,0 +1,54 @@
+.column {
+    padding: 60px;
+    flex: 1;
+    font-family: Inconsolata, Inter, sans-serif;
+
+}
+
+.index h1 {
+    font-size: 5em;
+    text-align: center;
+
+}
+
+
+
+.land-h2 {
+    font-size: 3em;
+    text-align: center;
+
+}
+
+.land-h2 a {
+    text-decoration: none;
+    padding: 10px 10px;
+    border-radius: .5em;
+    transition: all ease-in .3s;
+    color: #fff;
+    background: #5f9a01;
+    box-shadow: inset black 0px 0px 2px 1px;
+    border: none;
+    text-shadow: 0px 0px 3px black;
+
+
+}
+
+.land-h2 a:hover {
+    text-decoration: inherit;
+    background: #5f9a90;
+    transition: all ease-in .3s;
+    padding: 10px 15px;
+    max-height: 10px;
+    /*font-size: 1.2em;*/
+}
+
+
+
+.land-h2 a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.land-BG {
+/*background: linear-gradient(to left, rgba(0, 0, 0, .2), transparent)*/
+}

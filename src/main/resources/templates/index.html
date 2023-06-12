@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{partials/head :: head ('Home Page')}"></head>
+<body>
+<nav th:insert="~{partials/navbar :: navbar}"></nav>
+<div class="page-wrapper index">
+  <div class="container grow">
+    <div class="row grow full-width no-padding">
+      <div class="column land-BG">
+
+                <h1>
+                    <strong>Conquer Chores</strong>
+                </h1>
+
+
+                <h1>
+                    <strong>Battle Beasts</strong>
+                </h1>
+
+                <br>
+
+                <h2 class="land-h2">
+                    Transforming Mundane Tasks into Epic Quests!
+                </h2>
+
+                <br>
+
+          <h3 sec:authorize="!isAuthenticated()" class="land-h2">Join The Battle Here!</h3><br>
+          <h3 sec:authorize="!isAuthenticated()" class="land-h2"><a href="register">-> Register <-</a></h3>
+          <h3 sec:authorize="isAuthenticated()" class="land-h2">Create Your Battle!</h3><br>
+          <h3 sec:authorize="isAuthenticated()" class="land-h2"><a href="/battlegrounds">-> Create <-</a></h3>
+      </div>
+      <div class="column">
+        <h1>monster</h1>
+        <h1>monster</h1>
+        <h1>monster</h1>
+        <h1>monster</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<footer th:insert="~{partials/footer :: footer}"></footer>
+</body>
+</html>

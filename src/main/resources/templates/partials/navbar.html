@@ -1,0 +1,36 @@
+<div th:fragment="navbar" class="nav" xmlns:sec="http://www.w3.org/1999/xhtml">
+  <div class="nav-wrap">
+    <div class="logo">
+      <h2 class="nav-logo">Dungeons and Dust Bunnies</h2>
+      <div class="icon">
+        <img src="/images/dustBunny.png" alt="icon">
+      </div>
+    </div>
+  </div>
+  <div class="menu-wrap">
+    <ul>
+      <li><a th:href="@{/}">Home</a></li>
+      <li><a th:href="@{/profile}">Profile</a></li>
+      <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
+      <li sec:authorize="isAuthenticated()"><a id="logOutButton">Logout</a></li>
+      <li><a th:href="@{/battlegrounds}">Battlegrounds</a></li>
+      <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}">Register</a></li>
+    </ul>
+    <ul class="dropdown">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <form style="visibility: hidden" th:action="@{/logout}" th:method="post" id="logOutForm">
+      <button>#</button>
+    </form>
+  </div>
+  <script>
+    const logOutForm = document.getElementById("logOutForm");
+    const logOutButton = document.getElementById("logOutButton");
+    logOutButton.addEventListener('click', () => {
+      logOutForm.submit();
+    });
+  </script>
+</div>

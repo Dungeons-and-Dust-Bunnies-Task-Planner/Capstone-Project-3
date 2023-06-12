@@ -1,0 +1,85 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 80px;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 0;
+    color: #fff;
+    font-family: Barrio, Inter, sans-serif;
+    font-size: 1.3rem;
+    text-shadow: 0 0 5px var(--primary);
+    overflow: hidden;
+}
+
+.nav-wrap,
+.menu-wrap {
+    display:flex;
+}
+
+.logo-wrap {
+    width:35vw;
+}
+
+.nav-logo {
+    font-size: 2.1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding-left: 40px;
+    column-gap: 15px;
+    background: linear-gradient(var(--primary), rgba(0, 0, 0, .2));
+    color: #000;
+}
+
+.nav-logo {
+    flex: 1;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: flex-end;
+    flex: 2;
+}
+
+.icon {
+    background: linear-gradient(to left, rgba(0, 0, 0, .2), transparent)
+}
+
+.icon img {
+    height: 90px;
+    aspect-ratio: auto;
+}
+
+.menu-wrap ul {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    list-style: none;
+}
+
+.menu-wrap a {
+    text-decoration: none;
+    padding: 10px 10px;
+    border-radius: .5em;
+    transition: all ease-in .3s;
+}
+
+.menu-wrap a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-wrap a:hover {
+    color: #fff;
+    background: var(--primary);
+}

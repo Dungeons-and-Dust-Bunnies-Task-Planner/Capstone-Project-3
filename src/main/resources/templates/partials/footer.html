@@ -1,0 +1,22 @@
+<footer th:fragment="footer" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="container footerWrap">
+        <div class="leftFoot row">
+            <p>Join our newsletter</p>
+            <div class="newsletter">
+                <label for="email">Email: </label>
+                <input type="text" id="email" name="email">
+            </div>
+        </div>
+
+        <div class="middleFooter row">
+                <a th:href="@{/}">Home</a>
+                <a th:href="@{/profile}">Profile</a>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+        </div>
+        <div class="rightFoot row">
+            <a th:href="@{/}">Facebook</a>
+            <a th:href="@{/}">Twitter</a>
+            <a th:href="@{/}">Instagram</a>
+        </div>
+    </div>
+</footer>
