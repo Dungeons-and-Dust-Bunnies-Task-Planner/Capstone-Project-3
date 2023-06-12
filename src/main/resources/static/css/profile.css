@@ -111,8 +111,8 @@
 
 .image-add {
     background-color: #4CAF50;
-    width: 146px;
     border: none;
+    width: 48%;
     color: white;
     padding: 5px 10px;
     text-align: center;
@@ -123,8 +123,6 @@
     cursor: pointer;
     border-radius: 12px;
 }
-
-
 
 /* AVATAR */
 .avatar-wrapper {
