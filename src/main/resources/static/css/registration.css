@@ -30,5 +30,8 @@
 
 .submit {
     align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
     margin-top: 1em;
 }
