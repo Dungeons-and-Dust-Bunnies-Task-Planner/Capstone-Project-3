@@ -10,9 +10,9 @@
   <div class="menu-wrap">
     <ul>
       <li><a th:href="@{/}">Home</a></li>
-      <li><a th:href="@{/profile}">Profile</a></li>
       <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
       <li sec:authorize="isAuthenticated()"><a id="logOutButton">Logout</a></li>
+      <li sec:authorize="isAuthenticated()"><a th:href="@{/profile}">Profile</a></li>
       <li><a th:href="@{/battlegrounds}">Battlegrounds</a></li>
       <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}">Register</a></li>
     </ul>
