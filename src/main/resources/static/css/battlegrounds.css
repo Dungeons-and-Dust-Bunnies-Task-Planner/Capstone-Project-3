@@ -301,20 +301,20 @@
 }
 
 
-.task.complete {
-    background: var(--primary);
-    text-decoration: line-through;
-    color: #000;
-}
-
-.task.complete:hover {
-    background: var(--background);
-    text-decoration: none;
-    color: #fff;
-}
-
+.task.complete,
 .task.not-complete:hover {
     background: var(--primary);
     text-decoration: line-through;
     color: #000;
+}
+
+.task.not-complete,
+.task.complete:hover {
+    background:var(--background);
+    text-decoration: none;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
 }
