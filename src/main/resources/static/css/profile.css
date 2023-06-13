@@ -177,13 +177,11 @@
     margin: 50px 50px;
     width: 75vw;
     display: flex;
-    flex-direction: column;
 }
 
 .battleArea {
     width: 75vw;
     display: flex;
-    flex-wrap: wrap;
     justify-content: flex-start;
     align-content: flex-start;
     background-color: rgba(155, 58, 227, 0.1);
@@ -208,6 +206,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: flex-start;
+    flex-direction: column;
 }
 
 /* BADGES */

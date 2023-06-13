@@ -73,11 +73,11 @@
                              alt="Active Battle Image">
                         <h4 class="h4Profile">Active Battle Name</h4>
                     </div>
-                    <div class="battleCard">
-                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
-                             alt="Active Battle Image">
-                        <h4 class="h4Profile">Active Battle Name</h4>
+                    <div th:each="battle : ${battles}" class="battleCard">
+                        <h2 class="battleTitle" th:text="${battle.title}"></h2>
+                        <p class="battleTasks" th:text="${battle.tasks}"></p>
                     </div>
+
                 </div>
             </div>
         </div>
