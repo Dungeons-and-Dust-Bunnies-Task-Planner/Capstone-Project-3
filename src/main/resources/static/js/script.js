@@ -12,8 +12,9 @@
 		const battleTasks = document.querySelector('.tasks-list')
 		const task = document.querySelectorAll('.task')
 		const battle = document.querySelector('.battle')
-		const modalOverlay = document.querySelector('.modal-overlay')
 		const openTaskModal = document.querySelector('.new-task-wrap')
+		const modalOverlay = document.querySelector('.modal-overlay')
+		const slideOutOverlay = document.querySelector('.slide-out-overlay')
 		const logOutForm = document.querySelector('.logout-form')
 		const logOutBtn = document.querySelector('.logout-btn')
 
@@ -32,6 +33,13 @@
 // BATTLE ICON
 		battleIcon.addEventListener('click', e => {
 				e.preventDefault()
+				battleSlideOut.classList.toggle('open')
+				slideOutOverlay.classList.toggle('hidden')
+		})
+
+// SLIDEOUT OVERLAY
+		slideOutOverlay.addEventListener('click', e => {
+				slideOutOverlay.classList.toggle('hidden')
 				battleSlideOut.classList.toggle('open')
 		})
 
@@ -57,6 +65,13 @@
 // DYNAMIC TASKS
 		document.addEventListener('DOMContentLoaded', () => {
 				console.log('Battlegrounds page loaded')
+				document.querySelectorAll('.battle').forEach(function(battleElement) {
+						battleElement.addEventListener('click', function() {
+								battleElement.classList.toggle('active')
+								battleElement.classList.toggle('inactive')
+
+						})
+				})
 				document.querySelectorAll('.task').forEach(el => {
 						el.addEventListener('click', () => {
 								el.classList.toggle('complete')

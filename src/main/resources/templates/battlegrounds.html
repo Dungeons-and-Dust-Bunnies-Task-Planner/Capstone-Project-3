@@ -9,6 +9,7 @@
 
       <!--      CREATE A TASK MODAL-->
       <div class="modal-overlay hidden"></div>
+      <div class="slide-out-overlay hidden"></div>
       <div class="task-modal hidden">
         <form action="/battlegrounds/create-task" method="post" th:object="${task}">
           <input type="text" placeholder="Enter your task..." name="task-body" id="task-body" autofocus/>

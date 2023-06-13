@@ -1,6 +1,6 @@
 /*BATTLE SLIDE OUT*/
 .battle-slide-out {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
@@ -9,6 +9,7 @@
     backdrop-filter: blur(10px);
     padding: 190px 20px 0 0;
     transform: translateX(-102%);
+    z-index: 4;
     transition: all ease-out .4s;
 }
 
@@ -17,7 +18,7 @@
 }
 
 .battle-icon {
-    position: absolute;
+    position: fixed;
     top: 90px;
     left: 30px;
     display: flex;
@@ -25,7 +26,7 @@
     align-items: center;
     height: 75px;
     width: 75px;
-    z-index: 5;
+    z-index: 6;
     cursor: pointer;
     transition: all ease-out .4s;
 }
@@ -95,10 +96,10 @@
     padding-right: 15px;
 }
 
-    /*TASKS */
-    /*TASK MODAL*/
+/*TASKS */
+/*TASK MODAL*/
 .task-modal {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     translate: -50% -50%;
@@ -162,14 +163,19 @@
 }
 
 /*MODAL OVERLAY*/
-.modal-overlay {
-    position: absolute;
+.modal-overlay,
+.slide-out-overlay{
+    position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100vw;
     z-index: 3;
     backdrop-filter: blur(5px);
+}
+
+.slide-out-overlay {
+    background: rgba(0,0,0,.5);
 }
 
 .tasks-container {
@@ -237,19 +243,19 @@
     border-radius: 1.5em;
 }
 
-.checkbox {
-    background: var(--primary);
-    width: 30px;
-    height: 30px;
-    box-shadow: inset 0 0 8px #000;
-    cursor: pointer;
-    transition: all ease-out .4s;
-}
+/*.checkbox {*/
+/*    background: var(--primary);*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    box-shadow: inset 0 0 8px #000;*/
+/*    cursor: pointer;*/
+/*    transition: all ease-out .4s;*/
+/*}*/
 
-.checkbox:hover {
-    background: #000;
-    box-shadow: inset 0 0 8px var(--primary);
-}
+/*.checkbox:hover {*/
+/*    background: #000;*/
+/*    box-shadow: inset 0 0 8px var(--primary);*/
+/*}*/
 
 .task-text {
     font-size: x-large;
@@ -282,22 +288,31 @@
     border-radius: .5em;
 }
 
-.battle.complete,
+.battle.active,
+.battle.inactive:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+.battle.inactive,
+.battle.active:hover {
+    background: var(--background);
+    color: #000;
+}
+
+
 .task.complete {
-    background:var(--primary);
+    background: var(--primary);
     text-decoration: line-through;
     color: #000;
 }
 
-.battle.complete:hover,
-.task.complete:hover
-{
+.task.complete:hover {
     background: var(--background);
     text-decoration: none;
     color: #fff;
 }
 
-.battle.not-complete:hover,
 .task.not-complete:hover {
     background: var(--primary);
     text-decoration: line-through;
