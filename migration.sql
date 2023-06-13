@@ -3,11 +3,11 @@ use dungeons_and_dust_bunnies_db;
 
 # YOU HAVE TO HAVE AT LEAST 1 USER IN THE DB, THIS IS SET UP TO WORK WITH user_id = 1
 
-INSERT INTO badges (badge_title, badge_body, user_id)
-VALUES ('First blood', 'Completed your first battle!', 1),
-       ('Novice do-er', 'Completed 3 battles', 1),
-       ('Regular getter-doner', 'Completed 5 battles', 1),
-       ('Cosmic Cleaner', 'Defeated the cosmic hat octopuss of filth', 1);
+INSERT INTO badges (badge_title, badge_body)
+VALUES ('First blood', 'Completed your first battle!'),
+       ('Novice do-er', 'Completed 3 battles'),
+       ('Regular getter-doner', 'Completed 5 battles'),
+       ('Cosmic Cleaner', 'Defeated the cosmic hat octopuss of filth');
 
 INSERT INTO monsters (name)
 VALUES ('Zoglon the Vacuumizer'),

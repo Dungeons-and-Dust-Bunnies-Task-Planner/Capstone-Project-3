@@ -3,6 +3,8 @@ package com.example.capstoneprojectteam3.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name="badges")
 public class Badge {
@@ -17,10 +19,12 @@ public class Badge {
     @Column(nullable = false)
     private String badgeBody;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name="user_id")
+//    private User user;
+    @ManyToMany(mappedBy = "badges")
+    private Set<User> users;
 
 
 //    ----- Constructors START -----
@@ -63,14 +67,21 @@ public class Badge {
         this.badgeBody = badgeBody;
     }
 
-    public User getUser() {
-        return user;
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
-
 //    ----- Getters and Setters END -----
 
 

@@ -67,6 +67,17 @@ public class UserController {
         return "profile";
     }
 
+    @PostMapping("/claim/badge")
+    public String claimBadge(@RequestParam(name="badgeId") long badgeId){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long userId = user.getId();
+        user = usersDao.findUserById(userId);
+        Badge badge = usersDao.findBadgeById(badgeId);
+        user.addBadge(badge);
+        usersDao.save(user);
+        return "redirect:/profile";
+    }
+
     @PostMapping("/edit/profile")
     public String changeProfile(
             @RequestParam(name="email") String email,
