@@ -2,17 +2,10 @@
 
 		const battleIcon = document.querySelector('.battle-icon')
 		const battleSlideOut = document.querySelector('.battle-slide-out')
-		// const battlesList = document.querySelector('.battles-list')
-		// const battleCheckbox = document.querySelector('.battle-checkbox')
-		// const battleText = document.querySelector('.battle-text')
 		const addBattleWrap = document.querySelector('.add-battle-wrap')
 		const addBattleInput = document.querySelector('.add-battle-input')
 		const addBattleBtn = document.querySelector('.add-battle-btn')
 		const taskModal = document.querySelector('.task-modal')
-		const battleTasks = document.querySelector('.tasks-list')
-		const task = document.querySelectorAll('.task')
-		const battle = document.querySelector('.battle')
-		const openTaskModal = document.querySelector('.new-task-wrap')
 		const modalOverlay = document.querySelector('.modal-overlay')
 		const slideOutOverlay = document.querySelector('.slide-out-overlay')
 		const logOutForm = document.querySelector('.logout-form')
@@ -49,10 +42,7 @@
 				addBattleInput.focus()
 		})
 // OPEN TASK MODAL
-		openTaskModal.addEventListener('click', e => {
-				modalOverlay.classList.toggle('hidden')
-				taskModal.classList.toggle('hidden')
-		})
+
 // MODAL OVERLAY CLICK EVENT
 		modalOverlay.addEventListener('click', e => {
 				modalOverlay.classList.toggle('hidden')
@@ -65,23 +55,38 @@
 // DYNAMIC TASKS
 		document.addEventListener('DOMContentLoaded', () => {
 				console.log('Battlegrounds page loaded')
-				document.querySelectorAll('.battle').forEach(function(battleElement) {
-						battleElement.addEventListener('click', function() {
+				document.querySelector('.battle').classList.toggle('active')
+				document.querySelector('.battle').classList.toggle('inactive')
+				document.querySelector('.battle-tasks').classList.toggle('hidden')
+				document.querySelectorAll('.battle').forEach(function (battleElement, idx) {
+						battleElement.addEventListener('click', function (e) {
 								battleElement.classList.toggle('active')
 								battleElement.classList.toggle('inactive')
-
+								const battles = document.querySelectorAll('.battle')
+								const battleTasks = document.querySelectorAll('.battle-tasks')
+								if (battles[idx].classList.contains('active')) {
+										battleTasks[idx].classList.remove('hidden')
+								}
+								if (battles[idx].classList.contains('inactive')) {
+										battleTasks[idx].classList.add('hidden')
+								}
 						})
 				})
-				document.querySelectorAll('.task').forEach(el => {
-						el.addEventListener('click', () => {
-								el.classList.toggle('complete')
-								el.classList.toggle('not-complete')
+				document.querySelectorAll('.new-task-wrap').forEach(openModalElement => {
+						openModalElement.addEventListener('click', e => {
+								modalOverlay.classList.toggle('hidden')
+								taskModal.classList.toggle('hidden')
+						})
+				})
+				document.querySelectorAll('.task').forEach(taskElement => {
+						taskElement.addEventListener('click', () => {
+								console.log('task click fired')
+								taskElement.classList.toggle('complete')
+								taskElement.classList.toggle('not-complete')
+								console.log('task class changed')
 						})
 				})
 		})
 })()
-
-
-
 
 
