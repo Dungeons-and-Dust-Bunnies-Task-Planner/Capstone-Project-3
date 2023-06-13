@@ -1,25 +1,21 @@
 package com.example.capstoneprojectteam3.controllers;
 
 import com.example.capstoneprojectteam3.models.Battle;
-import com.example.capstoneprojectteam3.models.Task;
 import com.example.capstoneprojectteam3.models.User;
 import com.example.capstoneprojectteam3.repositories.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
 public class BattleController {
-    private BattleRepository battlesDao;
+    private final BattleRepository battlesDao;
     private final TaskRepository tasksDao;
-    private MonsterRepository monstersDao;
-    private MonsterImageRepository monsterImagesDao;
-    private UserRepository usersDao;
+    private final MonsterRepository monstersDao;
+    private final MonsterImageRepository monsterImagesDao;
+    private final UserRepository usersDao;
 
 
     public BattleController(BattleRepository battlesDao, TaskRepository tasksDao, MonsterRepository monstersDao, MonsterImageRepository monsterImagesDao, UserRepository usersDao){

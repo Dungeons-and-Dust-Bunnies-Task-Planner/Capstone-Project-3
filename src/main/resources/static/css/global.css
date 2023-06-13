@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
-
+/*ROOT*/
 :root {
     --cta: #63FFF6;
     --primary: rgb(155, 58, 227);
     --secondary: rgb(180, 180, 180);
     --background: rgba(56, 56, 56, 0.4);
-    --slide-out-bg: rgba(140, 140, 140, 0.7);
+    --slide-out-bg: rgba(180, 180, 180, 0.7);
 }
 
 body {
@@ -16,6 +16,7 @@ body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     color: #ffffff;
+    background-color: #29002E;
 }
 
 .hidden {

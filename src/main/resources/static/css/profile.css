@@ -125,16 +125,25 @@
 }
 
 /* AVATAR */
+
+/* AVATAR */
+.picName {
+    display: flex;
+}
+
 .avatar-wrapper {
     height: 200px;
     width: 200px;
+    display: flex;
     border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid white;
+    border: 5px solid #fff;
 }
 
 .avatarPlacement {
     margin-top: -200px;
+    max-width: 90vw;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* USER NAME */
@@ -142,7 +151,7 @@
     font-family: 'Nunito', sans-serif;
     color: #fff;
     max-width: 33vw;
-    padding: 0;
+    padding: 0 15px;
     margin-top: 56px;
     align-items: start;
     overflow: hidden;
@@ -150,15 +159,12 @@
 
 /* EDIT BUTTON */
 .editProfile {
-    margin-right: -500px;
     max-width: 150px;
     margin-bottom: 35px;
-    display: flex;
-    padding: 0;
     flex-wrap: wrap;
-    align-content: end;
     justify-content: end;
 }
+
 
 .editButton {
     display: flex;
@@ -171,9 +177,11 @@
     margin: 50px 50px;
     width: 75vw;
     display: flex;
+    flex-direction: column;
 }
 
 .battleArea {
+    width: 75vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
