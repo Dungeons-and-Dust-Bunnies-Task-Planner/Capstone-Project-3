@@ -64,9 +64,9 @@ public class UserController {
         List<Badge> badges = user.getBadges();
 
         // CHAT-GPT API REQUEST AND RESPONSE CODE BELOW, COMMENTED OUT TO MINIMIZE API REQUESTS
-//        OpenAIResponse aiResponse = OpenAIRequest.sendOpenAIRequest("You are a monster who hates people cleaning! A cleaner attacks you! Respond with only two sentences!");
-//        String text = aiResponse.getChoices().get(0).getText();
-//        System.out.println(text);
+        OpenAIResponse aiResponse = OpenAIRequest.sendOpenAIRequest("You are a monster who hates people cleaning! A cleaner attacks you! Respond with only two sentences!");
+        String text = aiResponse.getChoices().get(0).getText();
+        System.out.println(text);
 
         model.addAttribute("user", user);
         model.addAttribute("badges", badges);

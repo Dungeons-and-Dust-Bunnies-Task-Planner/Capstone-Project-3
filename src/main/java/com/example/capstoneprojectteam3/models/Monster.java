@@ -1,7 +1,9 @@
 package com.example.capstoneprojectteam3.models;
 
 import jakarta.persistence.*;
+
 import java.util.List;
+
 
 @Entity
 @Table(name="monsters")
@@ -17,6 +19,9 @@ public class Monster {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "monster")
     private List<MonsterImage> monsterImages;
 
+    private int hp;
+
+
     //    ----- Constructors START -----
 
     public Monster(){
@@ -26,6 +31,9 @@ public class Monster {
         this.name = name;
     }
 
+    public Monster(int hp) {
+        this.hp = hp;
+    }
     //    ----- Constructors END -----
 
     //    ----- Getters and Setters START -----
@@ -53,6 +61,11 @@ public class Monster {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getHp() {return hp;}
+
+    public void setHp(int hp) {this.hp = hp;}
+
 
     //    ----- Getters and Setters END -----
 }
