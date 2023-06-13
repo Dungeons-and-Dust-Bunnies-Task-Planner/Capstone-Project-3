@@ -7,15 +7,19 @@
 <div class="page-wrapper">
     <div class="container picParent">
         <!--        COVER PHOTO     -->
-        <img class="coverPhoto" th:src="${user.backgroundImage}" alt="https://plchldr.co/i/1000x200?&bg=111111&fc=ffffff">
+        <img class="coverPhoto" th:src="${user.backgroundImage}" alt="Background Image">
+
+<!--        https://plchldr.co/i/1000x200?&bg=111111&fc=ffffff-->
 
         <!--    AVATAR PHOTO        -->
         <div class="avatarPlacement row grow">
             <img class="avatar-wrapper" th:src="${user.avatarImage}" alt="Avatar Photo">
 
             <!--                USERNAME            -->
-            <div class="column profileColumn username">
-                <h1 class="h1Profile" th:text="${user.username}">Username</h1>
+                <!--                USERNAME            -->
+                <div class="column profileColumn username">
+                    <h1 class="h1Profile" th:text="'@' + ${user.username}">Username</h1>
+                </div>
             </div>
             <!--                EDIT PROFILE BUTTON         -->
 
@@ -27,10 +31,10 @@
                 <form th:action="@{/edit/profile}" th:method="post">
 
                     <div class="image-add" id="profile-image-add">Add Profile Image</div>
-                    <input th:value="${user.avatarImage}" type="hidden" id="profile-image-url" name="profile-image-url" field='profileImage'/>
+                    <input th:value="${user.avatarImage}" type="hidden" id="profile-image-url" name="profile-image-url"/>
 
                     <div class="image-add" id="background-image-add">Add Background</div>
-                    <input th:value="${user.backgroundImage}" type="hidden" id="background-image-url" name="background-image-url" field='backgroundImage' />
+                    <input th:value="${user.backgroundImage}" type="hidden" id="background-image-url" name="background-image-url"/>
                   
                     <br>     
                   
