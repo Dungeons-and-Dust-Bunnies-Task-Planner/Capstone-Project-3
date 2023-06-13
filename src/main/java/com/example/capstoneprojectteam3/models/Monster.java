@@ -1,9 +1,7 @@
 package com.example.capstoneprojectteam3.models;
 
 import jakarta.persistence.*;
-
 import java.util.List;
-
 
 @Entity
 @Table(name="monsters")
@@ -18,7 +16,6 @@ public class Monster {
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "monster")
     private List<MonsterImage> monsterImages;
-
 
     //    ----- Constructors START -----
 

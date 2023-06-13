@@ -28,8 +28,14 @@ public class User {
 
     @Column String backgroundImage;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
+//    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
+//    private List<Badge> badges;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "user_badge",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "badge_id"))
     private List<Badge> badges;
+
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Battle> battles;
@@ -131,6 +137,11 @@ public class User {
 
     public void setBattles(List<Battle> battles) {
         this.battles = battles;
+    }
+
+    public void addBadge(Badge badge) {
+this.badges.add(badge);
+
     }
 
     //    ----- Getters and Setters END -----

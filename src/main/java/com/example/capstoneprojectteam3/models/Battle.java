@@ -30,6 +30,18 @@ public class Battle {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "battle")
     private List<Task> tasks;
 
+//    @Column(nullable = false)
+//    private String battleImage;
+//
+//    public String getBattleImage() {
+//        return battleImage;
+//    }
+//
+//    public void setBattleImage(String battleImage) {
+//        this.battleImage = battleImage;
+//    }
+
+
     //    ----- Constructors START -----
 
     public Battle(){}

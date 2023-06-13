@@ -13,3 +13,5 @@ public interface BattleRepository extends JpaRepository<Battle, Long> {
     List<Battle> findAllByUserId(@Param("userId") Long userId);
 
 }
+
+
