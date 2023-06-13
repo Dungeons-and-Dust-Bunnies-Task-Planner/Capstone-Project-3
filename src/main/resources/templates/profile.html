@@ -11,11 +11,14 @@
 
         <!--    AVATAR PHOTO        -->
         <div class="avatarPlacement row grow">
-            <img class="avatar-wrapper" th:src="${user.avatarImage}" alt="Avatar Photo">
+            <div class="picName">
+                <img class="avatar-wrapper" th:src="${user.avatarImage}" alt="Avatar Photo">
 
             <!--                USERNAME            -->
-            <div class="column profileColumn username">
-                <h1 class="h1Profile" th:text="${user.username}">Username</h1>
+                <!--                USERNAME            -->
+                <div class="column profileColumn username">
+                    <h1 class="h1Profile" th:text="${user.username}">Username</h1>
+                </div>
             </div>
             <!--                EDIT PROFILE BUTTON         -->
 
@@ -27,7 +30,7 @@
                 <form th:action="@{/edit/profile}" th:method="post">
 
                     <div class="image-add" id="profile-image-add">Add Profile Image</div>
-                    <input th:value="${user.avatarImage}" type="hidden" id="profile-image-url" name="profile-image-url" field='profileImage'/>
+                    <input th:value="${user.avatarImage}" type="hidden" id="image-url" name="image-url"/>
 
                     <div class="image-add" id="background-image-add">Add Background</div>
                     <input th:value="${user.backgroundImage}" type="hidden" id="background-image-url" name="background-image-url" field='backgroundImage' />
