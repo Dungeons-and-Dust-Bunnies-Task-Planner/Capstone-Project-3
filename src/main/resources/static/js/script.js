@@ -7,8 +7,8 @@
 		const taskModal = document.querySelector('.task-modal')
 		const modalOverlay = document.querySelector('.modal-overlay')
 		const slideOutOverlay = document.querySelector('.slide-out-overlay')
-		const logOutForm = document.querySelector('.logout-form')
-		const logOutBtn = document.querySelector('.logout-btn')
+		// const logOutForm = document.getElementById("logOutForm");
+		// const logOutButton = document.getElementById("logOutButton");
 
 
 		const checkForClassValue = (element, className) => {
@@ -46,9 +46,9 @@
 				}
 		}
 
-		logOutButton.addEventListener('click', () => {
-				logOutForm.submit()
-		})
+		// logOutButton.addEventListener('click', () => {
+		// 	logOutForm.submit();
+		// })
 
 		battleIcon.addEventListener('click', e => {
 				e.preventDefault()
