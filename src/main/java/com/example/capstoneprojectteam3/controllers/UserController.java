@@ -47,9 +47,11 @@ public class UserController {
                                @RequestParam(name="email") String email,
                                @RequestParam(name = "password") String password,
                                @RequestParam(name = "passwordConfirmation") String passwordConfirm){
+        String defaultAvatar = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
+        String defaultBackground = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
         if(password.equals(passwordConfirm)){
             password = passwordEncoder.encode(password);
-            usersDao.save(new User(username, email, password));
+            usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground ));
             return "redirect:/home";
         } else {
             return "redirect:/register";
@@ -64,9 +66,9 @@ public class UserController {
         List<Badge> badges = user.getBadges();
 
         // CHAT-GPT API REQUEST AND RESPONSE CODE BELOW, COMMENTED OUT TO MINIMIZE API REQUESTS
-        OpenAIResponse aiResponse = OpenAIRequest.sendOpenAIRequest("You are a monster who hates people cleaning! A cleaner attacks you! Respond with only two sentences!");
-        String text = aiResponse.getChoices().get(0).getText();
-        System.out.println(text);
+//        OpenAIResponse aiResponse = OpenAIRequest.sendOpenAIRequest("You are a monster who hates people cleaning! A cleaner attacks you! Respond with only two sentences!");
+//        String text = aiResponse.getChoices().get(0).getText();
+//        System.out.println(text);
 
         model.addAttribute("user", user);
         model.addAttribute("badges", badges);

@@ -79,4 +79,12 @@ public class BattleController{
 		// Example logic: if HP < 50, set a new image; otherwise, keep the existing image
 	}
 
+    @GetMapping("/battlegrounds")
+    public String showBattlegrounds(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Battle> battles = battlesDao.findAllByUserId(user.getId());
+        model.addAttribute("battles", battles);
+        return "/battlegrounds";
+    }
+
 }
