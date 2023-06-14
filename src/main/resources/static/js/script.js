@@ -10,6 +10,7 @@
 		const logOutForm = document.querySelector('.logout-form')
 		const logOutBtn = document.querySelector('.logout-btn')
 
+
 		const checkForClassValue = (element, className) => {
 				return element.classList.contains(className)
 		}
@@ -44,6 +45,10 @@
 						console.error(error)
 				}
 		}
+
+		logOutButton.addEventListener('click', () => {
+				logOutForm.submit()
+		})
 
 		battleIcon.addEventListener('click', e => {
 				e.preventDefault()
