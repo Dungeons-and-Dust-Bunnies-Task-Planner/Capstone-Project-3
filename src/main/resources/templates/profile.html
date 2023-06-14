@@ -9,8 +9,6 @@
         <!--        COVER PHOTO     -->
         <img class="coverPhoto" th:src="${user.backgroundImage}" alt="Background Image">
 
-<!--        https://plchldr.co/i/1000x200?&bg=111111&fc=ffffff-->
-
         <!--    AVATAR PHOTO        -->
         <div class="avatarPlacement row grow">
             <div class="picName">
@@ -25,7 +23,7 @@
             <!--                EDIT PROFILE BUTTON         -->
 
             <div class="column profileColumn editProfile">
-                <button class="editButton profileColumn">Edit Profile</button>
+                <button class="editButton profileColumn">Edit</button>
             </div>
             <div class="edit-modal-overlay hidden"></div>
             <div class="edit-modal hidden">
@@ -47,7 +45,7 @@
                     <input class="row passwordRow" type="password" id="password" name="password"><br>
                     <label for="password">Confirm Password</label><br>
                     <input class="row confirmPasswordRow" type="password" id="passwordConfirmation" name="passwordConfirmation"><br>
-                    <input class="row submit" type="submit" value="Edit"><br>
+                    <input class="row submit-btn" type="submit" value="Confirm"><br>
                 </form>
             </div>
         </div>
