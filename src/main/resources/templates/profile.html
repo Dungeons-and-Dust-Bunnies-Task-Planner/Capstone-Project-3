@@ -58,32 +58,87 @@
     <div class="container grow">
         <div class="row battleRow grow">
             <div class="column battleArea">
-                <h2 class="h2Profile">Your Active Battles</h2>
-                <div class="row activeBattleRow">
-                    <!------------  BTN FOR battle Complete increment      ------------>
+                <br><h1>Your Active Battles</h1><br><br>
+                <div class="row cardRow">
+                  <!------------  BTN FOR battle Complete increment      ------------>
 <!--                    <form th:action="@{/battlegrounds/complete}" th:method="post">-->
 <!--                        <button type="submit"  id="battleComplete" name="battleComplete">Finish Him/They</button>-->
 <!--                    </form>-->
 
                     <div class="battleCard">
-                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
-                             alt="Active Battle Image">
-                        <h4 class="h4Profile">Active Battle Name</h4>
+                        <div class="column">
+                            <img src="https://dummyimage.com/100x100/bf2a2a/ffffff">
+                        </div>
+                        <div class="column battleTitle">
+                            <h1>The Name Of The Task List</h1>
+                        </div>
                     </div>
+
+                    <br>
+
                     <div class="battleCard">
-                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
-                             alt="Active Battle Image">
-                        <h4 class="h4Profile">Active Battle Name</h4>
+                        <div class="column">
+                            <img src="https://dummyimage.com/100x100/bf2a2a/ffffff">
+                        </div>
+                        <div class="column battleTitle">
+                            <h1>The Name Of The Task List</h1>
+                        </div>
                     </div>
+
+                    <br>
+
                     <div class="battleCard">
-                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
-                             alt="Active Battle Image">
-                        <h4 class="h4Profile">Active Battle Name</h4>
+                        <div class="column">
+                            <img src="https://dummyimage.com/100x100/bf2a2a/ffffff">
+                        </div>
+                        <div class="column battleTitle">
+                            <h1>The Name Of The Task List</h1>
+                        </div>
                     </div>
-                    <div th:each="battle : ${battles}" class="battleCard">
-                        <h2 class="battleTitle" th:text="${battle.title}"></h2>
-                        <p class="battleTasks" th:text="${battle.tasks}"></p>
+
+                    <br>
+
+                    <div class="battleCard">
+                        <div class="column">
+                            <img src="https://dummyimage.com/100x100/bf2a2a/ffffff">
+                        </div>
+                        <div class="column battleTitle">
+                            <h1>The Name Of The Task List</h1>
+                        </div>
                     </div>
+
+                    <br>
+
+                    <div class="battleCard">
+                        <div class="column">
+                            <img src="https://dummyimage.com/100x100/bf2a2a/ffffff">
+                        </div>
+                        <div class="column battleTitle">
+                            <h1>The Name Of The Task List</h1>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="battleCard">
+                        <div class="column">
+                            <img src="https://dummyimage.com/100x100/bf2a2a/ffffff">
+                        </div>
+                        <div class="column battleTitle">
+                            <h1>The Name Of The Task List</h1>
+                        </div>
+                    </div>
+
+
+<!--                    <div class="battleCard">-->
+<!--                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"-->
+<!--                             alt="Active Battle Image">-->
+<!--                        <h4 class="h4Profile">Active Battle Name</h4>-->
+<!--                    </div>-->
+<!--                    <div th:each="battle : ${battles}" class="battleCard">-->
+<!--                        <h2 class="battleTitle" th:text="${battle.title}"></h2>-->
+<!--                        <p class="battleTasks" th:text="${battle.tasks}"></p>-->
+<!--                    </div>-->
 
                 </div>
             </div>
@@ -96,19 +151,19 @@
                 <br><h2 class="h2Profile">Battle Badge Unlocks</h2><br><br>
                 <div class="activeBadgeRow">
                     <div th:each="badge : ${badges}" class="badgeCard">
-                        <p><a id="claimButton">Claim</a></p>
+                        <div>
 <!--                        <img class="activeBadgeImage" th:src="${badge.badgeImage}" alt="Active Badge Image">-->
+                        </div>
+                        <div>
                         <h2 class="badgeTitle" th:text="${badge.badgeTitle}"></h2>
                         <p class="badgeBody" th:text="${badge.badgeBody}"></p>
+                        </div>
 
 
                     </div>
                 </div>
             </div>
         </div>
-        <form style="visibility: hidden" th:action="@{/claim/badge}" th:method="post" id="badgeClaimForm" >
-            <button>#</button>
-        </form>
     </div>
 
 <!-- This is the JS for Badge Claiming -->
