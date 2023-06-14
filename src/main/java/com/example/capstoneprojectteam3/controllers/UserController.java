@@ -1,10 +1,12 @@
 package com.example.capstoneprojectteam3.controllers;
 
 import com.example.capstoneprojectteam3.models.Badge;
-import com.example.capstoneprojectteam3.models.OpenAI.OpenAIResponse;
+import com.example.capstoneprojectteam3.models.Monster;
+import com.example.capstoneprojectteam3.models.MonsterImage;
 import com.example.capstoneprojectteam3.models.User;
+import com.example.capstoneprojectteam3.repositories.MonsterImageRepository;
+import com.example.capstoneprojectteam3.repositories.MonsterRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
-import com.example.capstoneprojectteam3.utils.OpenAIRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -20,15 +22,29 @@ import java.util.List;
 public class UserController {
 
     private final UserRepository usersDao;
+    private final MonsterRepository monstersDao;
+    private final MonsterImageRepository monsterImagesDao;
     private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository usersDao, PasswordEncoder passwordEncoder){
+    public UserController(UserRepository usersDao, MonsterRepository monstersDao, MonsterImageRepository monsterImagesDao, PasswordEncoder passwordEncoder){
+        this.monstersDao = monstersDao;
+        this.monsterImagesDao = monsterImagesDao;
         this.passwordEncoder = passwordEncoder;
         this.usersDao = usersDao;
     }
-
     @GetMapping("/home")
-    public String showHome(){
+    public String showHome(Model model){
+//        List<Monster> monsters = monstersDao.findAll();
+        List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
+        model.addAttribute("monsterImages", monsterImages);
+        return "index";
+    }
+
+    @GetMapping("/")
+    public String showIndex(Model model){
+//        List<Monster> monsters = monstersDao.findAll();
+        List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
+        model.addAttribute("monsterImages", monsterImages);
         return "index";
     }
 
