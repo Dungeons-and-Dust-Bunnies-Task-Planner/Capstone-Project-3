@@ -30,6 +30,7 @@ public class User {
 
 //    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
 //    private List<Badge> badges;
+
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_badge",
             joinColumns = @JoinColumn(name = "user_id"),
