@@ -7,12 +7,19 @@
 /*ROOT*/
 :root {
     --cta: #609a96;
-    --cta2: #50FF00;
+    --cta2: rgba(80,255,0,1);
     --primary: rgb(155, 58, 227);
     --secondary: rgb(180, 180, 180);
     --background: rgba(56, 56, 56, 0.4);
     --slide-out-bg: rgba(180, 180, 180, 0.7);
+    --blue: rgb(0, 128, 224);
+    --fade-blue: linear-gradient(120deg, rgba(63,94,251,1), rgba(106,208,217,1));
+    --fade-purple: linear-gradient(120deg, rgba(155, 58, 227,1), rgba(106,208,217,1));
+    --fade-dark-purple: linear-gradient(120deg, rgba(155, 58, 227,1), rgba(86,0,178,1));
+    --fade-green-purple:linear-gradient(120deg, rgba(80,255,0,1), rgba(86,0,178,1));
+
 }
+
 
 body {
     background-image: url("https://cdn.discordapp.com/attachments/526187085741162498/1116809491128782958/Untitled_Artwork.png");

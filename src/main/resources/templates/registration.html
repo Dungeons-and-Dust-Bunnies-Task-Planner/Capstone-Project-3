@@ -4,9 +4,9 @@
 <body>
 <div class="page-wrapper">
   <header th:replace="partials/navbar :: navbar"></header>
-  <div class="container grow">
-    <div class="row grow justify-center">
-      <div class="column grow">
+  <div class="container grow align-center justify-center">
+    <div class="row justify-center align-center">
+      <div class="column register-form align-center">
         <h1>Join the Fight!</h1><br><br>
         <form th:action="@{/register}" th:method="post">
             <label for="username">Username</label><br>
@@ -20,7 +20,7 @@
 
             <div class="justify-center align-center text-center" id="message"></div>
 
-            <input class="row justify-center submit" type="submit" value="Sign me up !"><br>
+            <input class="row justify-center submit login-register-Btn" type="submit" value="Sign me up !"><br>
           <div class="row register-link">
               <a th:href="@{/login}">Already Registered? Click Me To Log In!</a>
           </div>
