@@ -6,23 +6,22 @@
 <div class="page-wrapper">
   <div class="container grow">
     <div class="row grow full-width no-padding">
-      <!--      CREATE A TASK MODAL-->
-      <div class="modal-overlay hidden"></div>
-      <div class="slide-out-overlay hidden"></div>
       <!--      BATTLE SLIDE OUT-->
       <div class="battle-icon">
-        <img src="/images/battle-axe.svg" alt="battle icon">
+        <img src="/images/battle-axe-update.png" alt="battle icon">
       </div>
       <section class="battle-slide-out">
-        <div class="add-battle-container">
-          <div class="add-battle-wrap">
-            <input class="add-battle-input" type="text" placeholder="Add your battle..."/>
-            <button class="add-battle-btn"><img src="/images/plus-6.png" alt=""></button>
+        <form th:action="@{/battlegrounds/create-battle}" method="post">
+          <div class="add-battle-container">
+            <div class="add-battle-wrap">
+              <input class="add-battle-input" type="text" placeholder="Add your battle..." name="title"/>
+              <button class="add-battle-btn"><img src="/images/plus-6.png" alt=""></button>
+            </div>
           </div>
-        </div>
+        </form>
         <div class="battles-list">
           <div th:each="battle : ${battles}">
-            <div class="battle inactive">
+            <div class="battle inactive" th:data-battle-id="${battle.id}">
               <h3 class="battle-text" th:text="${battle.title}"></h3>
             </div>
           </div>
@@ -32,12 +31,16 @@
       <section class="tasks-container">
         <div class="tasks-list">
           <ul class="battle-tasks hidden" th:each="battle : ${battles}">
+            <!--      CREATE A TASK MODAL-->
+            <div class="modal-overlay hidden"></div>
+            <div class="slide-out-overlay hidden"></div>
             <div class="task-modal hidden">
-              <form action="/battlegrounds/battle{id}/create-task" method="post" th:object="${battle.tasks}">
+              <form th:action="@{/battlegrounds/battle/{id}/create-task}" method="post">
                 <input type="text" placeholder="Enter your task..." name="task-body" id="task-body" autofocus/>
                 <button class="create-task-btn">Create Task</button>
-                <!--          <input type="hidden" name="battleId" th:value="${battles.}"/>-->
+                <input type="hidden" name="battleId" th:value="${battle.id}" data-update-elements=".task-text">
               </form>
+
             </div>
             <h2 class="battle-name" th:text="${battle.title}"></h2>
             <div class="new-task-wrap">
@@ -46,7 +49,8 @@
               </div>
               <h3>New Task...</h3>
             </div>
-            <li class="task not-complete" th:each="task : ${battle.tasks}">
+            <li class="task not-complete" th:each="task : ${battle.tasks}" data-battle-id="${battle.id}"
+                data-battle-status="${battle.status}">
               <h3 class="task-text" th:text="${task.taskBody}"></h3>
             </li>
           </ul>
@@ -62,6 +66,6 @@
   </div>
 </div>
 <footer th:insert="~{partials/footer :: footer}"></footer>
-<script src="/js/script.js"></script>
+<script src="/js/tests.js"></script>
 </body>
 </html>
