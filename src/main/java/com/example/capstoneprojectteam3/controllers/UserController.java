@@ -47,9 +47,11 @@ public class UserController {
                                @RequestParam(name="email") String email,
                                @RequestParam(name = "password") String password,
                                @RequestParam(name = "passwordConfirmation") String passwordConfirm){
+        String defaultAvatar = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
+        String defaultBackground = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
         if(password.equals(passwordConfirm)){
             password = passwordEncoder.encode(password);
-            usersDao.save(new User(username, email, password));
+            usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground ));
             return "redirect:/home";
         } else {
             return "redirect:/register";
