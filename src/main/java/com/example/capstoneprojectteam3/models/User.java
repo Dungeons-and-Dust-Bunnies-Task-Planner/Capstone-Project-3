@@ -53,7 +53,7 @@ public class User {
         this.avatarImage = avatarImage;
     }
 
-    public User(String email, String username, String password, String avatarImage, String backgroundImage) {
+    public User(String username, String email, String password, String avatarImage, String backgroundImage) {
         this.email = email;
         this.username = username;
         this.password = password;
