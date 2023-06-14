@@ -26,4 +26,11 @@
       <button class="logout-btn">#</button>
     </form>
   </div>
+  <script>
+      const logOutForm = document.getElementById("logOutForm");
+      const logOutButton = document.getElementById("logOutButton");
+      logOutButton.addEventListener('click', () => {
+      logOutForm.submit();
+    });
+  </script>
 </div>
