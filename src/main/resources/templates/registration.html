@@ -14,9 +14,12 @@
             <label for="email">Email</label><br>
             <input class="row" type="email" id="email" name="email"><br>
             <label for="password">Password</label><br>
-            <input class="row" type="password" id="password" name="password"><br>
+            <input class="row" type="password" id="password" name="password" onkeyup="passConfirm()"><br>
             <label for="password">Confirm Password</label><br>
-            <input class="row" type="password" id="passwordConfirmation" name="passwordConfirmation"><br>
+            <input class="row" type="password" id="passwordConfirmation" name="passwordConfirmation" onkeyup="passConfirm()"><br>
+
+            <div class="justify-center align-center text-center" id="message"></div>
+
             <input class="row justify-center submit" type="submit" value="Sign me up !"><br>
           <div class="row register-link">
               <a th:href="@{/login}">Already Registered? Click Me To Log In!</a>
@@ -28,5 +31,23 @@
   </div>
 </div>
 <footer th:replace="partials/footer :: footer"></footer>
+<script>
+
+    function passConfirm() {
+        let password = document.getElementById(`password`).value;
+        let confirmPassword = document.getElementById(`passwordConfirmation`).value;
+        let message = document.getElementById(`message`);
+        if (password === confirmPassword) {
+            message.style.color = `teal`;
+            message.innerHTML = `Passwords match.`
+        } else {
+            message.style.color = `red`;
+            message.innerHTML = `Passwords do not match.`
+        }
+        document.getElementById(`password`).onkeyup = passConfirm;
+        document.getElementById(`confirm_password`).onkeyup = passConfirm;
+    }
+
+</script>
 </body>
 </html>
