@@ -7,7 +7,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import com.example.capstoneprojectteam3.config.SecurityConstants;
+//import com.example.capstoneprojectteam3.config.SecurityConstants;
 import com.example.capstoneprojectteam3.models.OpenAI.OpenAIResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -18,14 +18,14 @@ public class OpenAIRequest {
         try {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             String apiUrl = "https://api.openai.com/v1/completions";
-            String apiKey = SecurityConstants.openApiKey;
-            String authorizationHeader = "Bearer " + apiKey;
+//            String apiKey = SecurityConstants.openApiKey;
+//            String authorizationHeader = "Bearer " + apiKey;
             String requestBody = "{\"prompt\":\"" + message + "\"," +
                     "\"max_tokens\":30," +
                     " \"model\":\"text-davinci-003\"}";
 
             HttpPost request = new HttpPost(apiUrl);
-            request.setHeader(HttpHeaders.AUTHORIZATION, authorizationHeader);
+//            request.setHeader(HttpHeaders.AUTHORIZATION, authorizationHeader);
             request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
             request.setEntity(new StringEntity(requestBody));
 

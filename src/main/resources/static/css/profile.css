@@ -186,19 +186,19 @@
     align-content: flex-start;
     background-color: rgba(155, 58, 227, 0.1);
     border-radius: .5em;
+    overflow: scroll;
 }
 
 .battleCard {
-
-    min-height: 330px;
-    min-width: 330px;
+    width: 75vw;
+    min-height: 200px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    flex-direction: row;
     padding: 0px;
+    align-self: stretch;
+    justify-content: space-evenly;
 }
 
 .activeBattleRow {
@@ -207,6 +207,15 @@
     justify-content: flex-start;
     align-content: flex-start;
     flex-direction: column;
+}
+
+.cardRow {
+    flex-wrap: wrap;
+}
+
+.battleTitle {
+    align-content: center;
+    justify-content: center;
 }
 
 /* BADGES */
@@ -242,5 +251,13 @@
     flex: 0 0 200px;
     flex-direction: column;
     padding: 20px;
+}
+
+.badgeTitle {
+    text-align: center;
+}
+
+.badgeBody {
+    text-align: center;
 }
 
