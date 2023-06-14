@@ -1,6 +1,5 @@
 package com.example.capstoneprojectteam3.services;
 
-
 import com.example.capstoneprojectteam3.models.Battle;
 import com.example.capstoneprojectteam3.models.Task;
 import com.example.capstoneprojectteam3.repositories.BattleRepository;
@@ -21,14 +20,10 @@ public class BattleService {
     }
 
     public List<Battle> getBattlesByUserId(Long userId) {
-        // Implement the logic to retrieve battles by user ID
-        // You can use the battleRepository to access the database
         return battleRepository.findAllByUserId(userId);
     }
 
     public void updateBattleStatus(Long battleId, String status) {
-        // Implement the logic to update the battle status
-        // You can use the battleRepository to update the battle
         Battle battle = battleRepository.findById(battleId).orElse(null);
         if (battle != null) {
             int statusValue = battle.getStatus().getValue();
@@ -39,7 +34,7 @@ public class BattleService {
      public void createBattle(String title) {
     Battle battle = new Battle();
     battle.setTitle(title);
-    battle.setStatus(Battle.BattleStatus.inactive); // Set the initial status to 0 (inactive)
+    battle.setStatus(Battle.BattleStatus.inactive); // SET THE INITIAL VALUE TO 0 ('INACTIVE')
     battleRepository.save(battle);
   }
 
@@ -54,6 +49,4 @@ public class BattleService {
             taskRepository.save(task);
         }
     }
-
-    // Add other methods for additional operations if needed
 }

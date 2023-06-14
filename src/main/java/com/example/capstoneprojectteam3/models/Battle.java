@@ -2,13 +2,14 @@ package com.example.capstoneprojectteam3.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
 @Table(name="battles")
 public class Battle{
 
+	// SETS SPECIFIC VALUES FOR BATTLE STATUS
+	// TAKES THE CLASS OF THE BATTLE, AND CONVERTS IT INTO EITHER A 0 OR 1 TO COMPLY WITH MYSQL'S BOOLEAN REQUIREMENTS OF 0 OR 1 INSTEAD OF TRUE OR FALSE
 	public enum BattleStatus{
 		inactive(0),
 		active(1);
