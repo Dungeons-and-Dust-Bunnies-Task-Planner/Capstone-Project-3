@@ -8,15 +8,27 @@
             </div>
         </div>
 
-        <div class="middleFooter row">
+        <div class="middleFooter row justify-center">
+            <div class="column shrink">
                 <a th:href="@{/}">Home</a>
+            </div>
+            <div class="column">
                 <a th:href="@{/profile}">Profile</a>
+            </div>
+            <div class="column">
                 <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+            </div>
         </div>
         <div class="rightFoot row">
-            <a th:href="@{/}">Facebook</a>
-            <a th:href="@{/}">Twitter</a>
-            <a th:href="@{/}">Instagram</a>
+            <div class="column shrink flex-direction-row">
+                <a th:href="@{/}">Facebook</a>
+            </div>
+            <div class="column">
+                <a th:href="@{/}">Twitter</a>
+            </div>
+            <div class="column">
+                <a th:href="@{/}">Instagram</a>
+            </div>
         </div>
     </div>
 </footer>

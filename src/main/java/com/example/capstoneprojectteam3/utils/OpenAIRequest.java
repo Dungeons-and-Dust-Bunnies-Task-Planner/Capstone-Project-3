@@ -21,8 +21,8 @@ public class OpenAIRequest {
 //            String apiKey = SecurityConstants.openApiKey;
 //            String authorizationHeader = "Bearer " + apiKey;
             String requestBody = "{\"prompt\":\"" + message + "\"," +
-                    "\"max_tokens\":30," +
-                    " \"model\":\"text-davinci-003\"}";
+                                 "\"max_tokens\":30," +
+                                 " \"model\":\"text-davinci-003\"}";
 
             HttpPost request = new HttpPost(apiUrl);
 //            request.setHeader(HttpHeaders.AUTHORIZATION, authorizationHeader);
