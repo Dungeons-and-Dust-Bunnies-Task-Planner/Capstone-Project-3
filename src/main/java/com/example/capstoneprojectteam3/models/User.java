@@ -26,10 +26,12 @@ public class User {
     @Column
     private String avatarImage;
 
-    @Column String backgroundImage;
+    @Column
+    private String backgroundImage;
 
-//    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
-//    private List<Badge> badges;
+    @Column(name = "battles_complete")
+    private int battlesComplete;
+
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_badge",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -73,6 +75,12 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+    public User(long id, int battlesComplete) {
+        this.id = id;
+        this.battlesComplete = battlesComplete;
+    }
+
     //    ----- Getters and Setters START -----
 
     public long getId() {
@@ -140,9 +148,15 @@ public class User {
     }
 
     public void addBadge(Badge badge) {
-this.badges.add(badge);
-
+        this.badges.add(badge);
     }
 
+    public int getBattlesComplete() {
+        return battlesComplete;
+    }
+
+    public void setBattlesComplete(int battlesComplete) {
+        this.battlesComplete = battlesComplete;
+    }
     //    ----- Getters and Setters END -----
 }

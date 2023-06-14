@@ -3,6 +3,7 @@ package com.example.capstoneprojectteam3.controllers;
 import com.example.capstoneprojectteam3.models.Battle;
 import com.example.capstoneprojectteam3.models.MonsterImage;
 import com.example.capstoneprojectteam3.models.User;
+import com.example.capstoneprojectteam3.repositories.UserRepository;
 import com.example.capstoneprojectteam3.services.BattleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,11 @@ import java.util.List;
 @Controller
 @RequestMapping("/battlegrounds")
 public class BattleController{
+
+	private final UserRepository usersDao;
+	public BattleController(UserRepository usersDao) {
+		this.usersDao = usersDao;
+	}
 
 	@Autowired
 	private BattleService battleService;
@@ -79,12 +85,26 @@ public class BattleController{
 		// Example logic: if HP < 50, set a new image; otherwise, keep the existing image
 	}
 
-    @GetMapping("/battlegrounds")
-    public String showBattlegrounds(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Battle> battles = battlesDao.findAllByUserId(user.getId());
-        model.addAttribute("battles", battles);
-        return "/battlegrounds";
-    }
+//    @GetMapping("/battlegrounds")
+//    public String showBattlegrounds(Model model) {
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        List<Battle> battles = battlesDao.findAllByUserId(user.getId());
+//        model.addAttribute("battles", battles);
+//        return "/battlegrounds";
+//    }
+
+	@PostMapping("/complete")
+	public String completedBattle() {
+		System.out.println("Made it in to /complete");
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		long userId = user.getId();
+		user = usersDao.findUserById(userId);
+		int battleCounter = user.getBattlesComplete();
+		System.out.println(battleCounter);
+		user.setBattlesComplete(battleCounter + 1);
+		usersDao.save(user);
+		return "redirect:/profile";
+	}
 
 }
+
