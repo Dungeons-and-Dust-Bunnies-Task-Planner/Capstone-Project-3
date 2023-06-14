@@ -17,8 +17,8 @@ public class MonsterImage {
     @Column(name = "stage")
     private int monster_stage;
 
-    @Column(name = "hp")
-    private int hp;  // New property for representing HP
+//    @Column(name = "hp")
+//    private int hp;  // New property for representing HP
 
     @JsonIgnore
     @ManyToOne
@@ -30,18 +30,16 @@ public class MonsterImage {
     public MonsterImage() {
     }
 
-    public MonsterImage(String monster_img, int monster_stage, int hp, Monster monster) {
+    public MonsterImage(String monster_img, int monster_stage, Monster monster) {
         this.monster_img = monster_img;
         this.monster_stage = monster_stage;
-        this.hp = hp;
         this.monster = monster;
     }
 
-    public MonsterImage(Long id, String monster_img, int monster_stage, int hp) {
+    public MonsterImage(Long id, String monster_img, int monster_stage) {
         this.id = id;
         this.monster_img = monster_img;
         this.monster_stage = monster_stage;
-        this.hp = hp;
     }
 
     // Getters and Setters
@@ -68,16 +66,7 @@ public class MonsterImage {
 
     public void setMonster_stage(int monster_stage) {
         this.monster_stage = monster_stage;
-        updateImageBasedOnHP();  // Call the method to update the image based on the new monster stage
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-        updateImageBasedOnHP();  // Call the method to update the image based on the new HP
+//        updateImageBasedOnHP();  // Call the method to update the image based on the new monster stage
     }
 
     public void setId(Long id) {
@@ -88,7 +77,7 @@ public class MonsterImage {
         return id;
     }
 
-    private void updateImageBasedOnHP() {
+//    private void updateImageBasedOnHP() {
 //        MonsterImage monsterImage = getMonsterImages();
 //        int currentHP = getHp();
 //        int currentStage = monsterImage.getMonster_stage();
@@ -119,6 +108,6 @@ public class MonsterImage {
 //                monsterImagesDao.save(monsterImage);
 //            }
 //        }
-    }
+//    }
 
 }
