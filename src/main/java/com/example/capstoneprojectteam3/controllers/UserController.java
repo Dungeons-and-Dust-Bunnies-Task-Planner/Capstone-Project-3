@@ -1,9 +1,10 @@
 package com.example.capstoneprojectteam3.controllers;
 
 import com.example.capstoneprojectteam3.models.Badge;
-import com.example.capstoneprojectteam3.models.Monster;
+import com.example.capstoneprojectteam3.models.Battle;
 import com.example.capstoneprojectteam3.models.MonsterImage;
 import com.example.capstoneprojectteam3.models.User;
+import com.example.capstoneprojectteam3.repositories.BattleRepository;
 import com.example.capstoneprojectteam3.repositories.MonsterImageRepository;
 import com.example.capstoneprojectteam3.repositories.MonsterRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
@@ -25,12 +26,14 @@ public class UserController {
     private final MonsterRepository monstersDao;
     private final MonsterImageRepository monsterImagesDao;
     private final PasswordEncoder passwordEncoder;
+    private final BattleRepository battlesDao;
 
-    public UserController(UserRepository usersDao, MonsterRepository monstersDao, MonsterImageRepository monsterImagesDao, PasswordEncoder passwordEncoder){
+    public UserController(UserRepository usersDao, MonsterRepository monstersDao, MonsterImageRepository monsterImagesDao, PasswordEncoder passwordEncoder, BattleRepository battlesDao){
         this.monstersDao = monstersDao;
         this.monsterImagesDao = monsterImagesDao;
         this.passwordEncoder = passwordEncoder;
         this.usersDao = usersDao;
+        this.battlesDao = battlesDao;
     }
     @GetMapping("/home")
     public String showHome(Model model){
@@ -80,6 +83,7 @@ public class UserController {
         long userId = user.getId();
         user = usersDao.findUserById(userId);
         List<Badge> badges = user.getBadges();
+        List<Battle> battles = battlesDao.findAllByUserId(userId);
 
         // CHAT-GPT API REQUEST AND RESPONSE CODE BELOW, COMMENTED OUT TO MINIMIZE API REQUESTS
 //        OpenAIResponse aiResponse = OpenAIRequest.sendOpenAIRequest("You are a monster who hates people cleaning! A cleaner attacks you! Respond with only two sentences!");
@@ -88,6 +92,7 @@ public class UserController {
 
         model.addAttribute("user", user);
         model.addAttribute("badges", badges);
+        model.addAttribute("battles", battles);
 
         return "profile";
     }
