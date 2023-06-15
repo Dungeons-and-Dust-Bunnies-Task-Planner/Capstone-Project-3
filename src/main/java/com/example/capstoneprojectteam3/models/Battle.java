@@ -47,7 +47,7 @@ public class Battle{
 	@JoinColumn(name="monster_id")
 	private Monster monster;
 
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="battle")
 	private List<Task> tasks;
 

@@ -28,23 +28,29 @@
         </div>
       </section>
       <!--      TASK CONTAINER-->
-      <section class="tasks">
-        <div class="tasks-list">
-          <ul class="battle-tasks hidden" th:each="battle : ${battles}">
-            <h2 class="tasks-battle-title" th:text="${battle.title}"></h2>
-            <form class="create-task-form" th:action="@{/battlegrounds/create-task}">
-              <input type="hidden" name="battleId" th:value="${battle.id}">
-              <input class="create-task-input" type="text" name="create-task" placeholder="Create a new task">
-              <button class="create-task-btn" type="submit"><img src="/images/plus-6.png" alt="button icon"></button>
-            </form>
-            <li class="task" th:each="task : ${battle.tasks}">
-              <input type="hidden" name="battleStatus" th:value="${battle.status}">
-              <input type="hidden" name="battleId" th:value="${battle.id}">
-              <h3 class="task-body" th:text="${task.taskBody}"></h3>
-            </li>
-          </ul>
-        </div>
-      </section>
+           <section class="tasks">
+                <div class="tasks-list">
+
+                    <ul class="battle-tasks hidden" th:each="battle : ${battles}">
+                        <h2 class="battle-name" th:text="${battle.getTitle()}"></h2>
+                        <li class="task not-complete" th:each="task : ${battle.getTasks()}">
+
+                            <p class="complete" th:if="${task.getTaskComplete() > 0}" th:text="${task.getTaskBody()}"></p>
+                            <p class="not-complete" th:unless="${task.getTaskComplete() == 0}" th:text="${task.getTaskBody()}"></p>
+
+                            <form th:action="@{/battlegrounds/edit-task}" th:method="post">
+                                <input type="hidden" name="taskId" th:value="${task.getId()}">
+                                <button type="submit">complete task</button>
+                            </form>
+
+                            <button class="open-edit-task-btn" type="button">
+                                <img src="/images/plus-6.png" alt="button icon" class="open-edit-task-btn-img">
+                            </button>
+                        </li>
+                    </ul>
+
+                </div>
+            </section>
       <!--      MONSTER DISPLAY-->
       <section class="monster">
         <div class="monster-image">

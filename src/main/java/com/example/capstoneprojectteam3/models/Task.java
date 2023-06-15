@@ -19,13 +19,22 @@ public class Task {
     @JoinColumn(name = "battle_id")
     private Battle battle;
 
+    @Column(nullable = false)
+    private int taskComplete;
+
 
     //    ----- Constructors START -----
 
     public Task() {}
 
-    public Task(String task_body) {
+    public Task(String taskBody) {
         this.taskBody = taskBody;
+    }
+
+    public Task(String taskBody, Battle battle, int taskComplete) {
+        this.taskBody = taskBody;
+        this.battle = battle;
+        this.taskComplete = taskComplete;
     }
 
     public Task(long id, String taskBody, Battle battle) {
@@ -39,6 +48,14 @@ public class Task {
     // =========================
 
     //    ----- Getters and Setters START -----
+
+    public int getTaskComplete() {
+        return taskComplete;
+    }
+
+    public void setTaskComplete(int taskComplete) {
+        this.taskComplete = taskComplete;
+    }
 
     public long getId() {
         return id;
@@ -63,15 +80,6 @@ public class Task {
     public void setBattle(Battle battle) {
         this.battle = battle;
     }
-
-    public Battle getBattles() {
-        return battle;
-    }
-
-    public void setBattles(Battle battle) {
-        this.battle = battle;
-    }
-
 
 //    ----- Getters and Setters END -----
 
