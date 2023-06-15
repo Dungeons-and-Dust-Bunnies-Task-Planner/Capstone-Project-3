@@ -1,5 +1,4 @@
 footer {
-    margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
     /*position: absolute;*/
@@ -16,6 +15,7 @@ footer {
 }
 
 .footerWrap {
+    /*margin-top: 50px;*/
     display: flex;
     flex-direction: row;
     width: 100vw;

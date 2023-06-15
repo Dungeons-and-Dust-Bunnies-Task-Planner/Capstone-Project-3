@@ -25,9 +25,12 @@
               <a th:href="@{/login}">Already Registered? Click Me To Log In!</a>
           </div>
         </form>
-
       </div>
     </div>
+      <div class="row" style="height: 50px">
+          <img class="monster-sneak3" th:src="${monsterImages.get(2).getMonster_img()}">
+          <img class="monster-sneak4" th:src="${monsterImages.get(3).getMonster_img()}">
+      </div>
   </div>
 </div>
 <footer th:replace="partials/footer :: footer"></footer>
