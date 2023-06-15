@@ -2,6 +2,7 @@ package com.example.capstoneprojectteam3.controllers;
 
 import com.example.capstoneprojectteam3.models.Battle;
 import com.example.capstoneprojectteam3.models.MonsterImage;
+import com.example.capstoneprojectteam3.models.Task;
 import com.example.capstoneprojectteam3.models.User;
 import com.example.capstoneprojectteam3.services.BattleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,8 @@ public class BattleController{
 	@ResponseBody
 	public ResponseEntity<String> activateBattle(@PathVariable("id") Long battleId){
 		try{
-			battleService.updateBattleStatus(battleId, "active");
+			Battle battle = battleService.getBattlesById(battleId);
+			battleService.updateBattleStatus(battle, Battle.BattleStatus.active);
 			return ResponseEntity.ok("Battle activated successfully");
 		}catch(Exception e){
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to activate battle");
@@ -44,7 +46,8 @@ public class BattleController{
 	@ResponseBody
 	public ResponseEntity<String> deactivateBattle(@PathVariable("id") Long battleId){
 		try{
-			battleService.updateBattleStatus(battleId, "inactive");
+			Battle battle = battleService.getBattlesById(battleId);
+			battleService.updateBattleStatus(battle, Battle.BattleStatus.inactive);
 			return ResponseEntity.ok("Battle deactivated successfully");
 		}catch(Exception e){
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to deactivate battle");
@@ -52,24 +55,26 @@ public class BattleController{
 	}
 
 	@PostMapping("/create-battle")
-	public String createBattle(@RequestParam("title") String title) {
-		battleService.createBattle(title);
+	public String createBattle(@RequestParam("title") String title, Model model){
+		Battle createdBattle = battleService.createBattle(title);
+		if(createdBattle != null){
+			model.addAttribute("battle", createdBattle);
+			model.addAttribute("task", new Task());
+		}
 		return "redirect:/battlegrounds";
 	}
 
 	@PostMapping("/battle/{id}/create-task")
-	@ResponseBody
-	public ResponseEntity<String> createTask(
+	public String createTask(
 			@PathVariable("id") Long battleId,
-			@RequestParam("task-body") String taskBody,
-			@RequestParam("battleId") long id
+			@ModelAttribute("task") Task task,
+			Model model
 	){
-		try{
-			battleService.createTask(battleId, taskBody);
-			return ResponseEntity.ok("Task created successfully");
-		}catch(Exception e){
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create task");
+		Task createdTask = battleService.createTask(battleId, task.getTaskBody());
+		if(createdTask != null){
+			model.addAttribute("task", new Task());
 		}
+		return "redirect:/battlegrounds";
 	}
 
 	// Update the monster image based on the current HP
@@ -78,13 +83,4 @@ public class BattleController{
 		// You can use if-else statements, switch-case, or any other logic here
 		// Example logic: if HP < 50, set a new image; otherwise, keep the existing image
 	}
-
-    @GetMapping("/battlegrounds")
-    public String showBattlegrounds(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Battle> battles = battlesDao.findAllByUserId(user.getId());
-        model.addAttribute("battles", battles);
-        return "/battlegrounds";
-    }
-
 }

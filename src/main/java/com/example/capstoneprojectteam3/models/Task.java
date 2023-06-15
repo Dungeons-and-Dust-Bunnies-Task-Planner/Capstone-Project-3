@@ -24,7 +24,7 @@ public class Task {
 
     public Task() {}
 
-    public Task(String task_body) {
+    public Task(String taskBody) {
         this.taskBody = taskBody;
     }
 
@@ -63,15 +63,6 @@ public class Task {
     public void setBattle(Battle battle) {
         this.battle = battle;
     }
-
-    public Battle getBattles() {
-        return battle;
-    }
-
-    public void setBattles(Battle battle) {
-        this.battle = battle;
-    }
-
 
 //    ----- Getters and Setters END -----
 

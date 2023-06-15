@@ -9,44 +9,48 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BattleService {
+public class BattleService{
 
-    private final BattleRepository battleRepository;
-    private final TaskRepository taskRepository;
+	private final BattleRepository battlesDao;
+	private final TaskRepository tasksDao;
 
-    public BattleService(BattleRepository battleRepository, TaskRepository taskRepository) {
-        this.battleRepository = battleRepository;
-        this.taskRepository = taskRepository;
-    }
+	public BattleService(BattleRepository battlesDao, TaskRepository tasksDao){
+		this.battlesDao = battlesDao;
+		this.tasksDao = tasksDao;
+	}
 
-    public List<Battle> getBattlesByUserId(Long userId) {
-        return battleRepository.findAllByUserId(userId);
-    }
+	public List<Battle> getBattlesByUserId(Long userId){
+		return battlesDao.findAllByUserId(userId);
+	}
 
-    public void updateBattleStatus(Long battleId, String status) {
-        Battle battle = battleRepository.findById(battleId).orElse(null);
-        if (battle != null) {
-            int statusValue = battle.getStatus().getValue();
-            battleRepository.save(battle);
-        }
-    }
+	public List<Battle> getAllBattles(){
+		return battlesDao.findAll();
+	}
 
-     public void createBattle(String title) {
-    Battle battle = new Battle();
-    battle.setTitle(title);
-    battle.setStatus(Battle.BattleStatus.inactive); // SET THE INITIAL VALUE TO 0 ('INACTIVE')
-    battleRepository.save(battle);
-  }
+	public Battle getBattlesById(Long battleId){
+		return battlesDao.findByIdWithTasks(battleId);
+	}
 
-    public void createTask(Long battleId, String taskBody) {
-        // Implement the logic to create a new task
-        // You can use the taskRepository to save the new task
-        Battle battle = battleRepository.findById(battleId).orElse(null);
-        if (battle != null) {
-            Task task = new Task();
-            task.setBattle(battle);
-            task.setTaskBody(taskBody);
-            taskRepository.save(task);
-        }
-    }
+	public void updateBattleStatus(Battle battle, Battle.BattleStatus newStatus){
+		battle.setStatus(newStatus);
+		battlesDao.save(battle);
+	}
+
+	public Battle createBattle(String title){
+		Battle battle = new Battle();
+		battle.setTitle(title);
+		battle.setStatus(Battle.BattleStatus.inactive);
+		return battlesDao.save(battle);
+	}
+
+	public Task createTask(Long battleId, String taskBody){
+		Battle battle = battlesDao.findById(battleId).orElse(null);
+		if(battle != null){
+			Task task = new Task();
+			task.setBattle(battle);
+			task.setTaskBody(taskBody);
+			return tasksDao.save(task);
+		}
+		return null;
+	}
 }
