@@ -28,6 +28,7 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final BattleRepository battlesDao;
 
+
     public UserController(UserRepository usersDao, MonsterRepository monstersDao, MonsterImageRepository monsterImagesDao, PasswordEncoder passwordEncoder, BattleRepository battlesDao){
         this.monstersDao = monstersDao;
         this.monsterImagesDao = monsterImagesDao;
@@ -37,7 +38,6 @@ public class UserController {
     }
     @GetMapping("/home")
     public String showHome(Model model){
-//        List<Monster> monsters = monstersDao.findAll();
         List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
         model.addAttribute("monsterImages", monsterImages);
         return "index";
@@ -45,19 +45,22 @@ public class UserController {
 
     @GetMapping("/")
     public String showIndex(Model model){
-//        List<Monster> monsters = monstersDao.findAll();
         List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
         model.addAttribute("monsterImages", monsterImages);
         return "index";
     }
 
     @GetMapping("/login")
-    public String showLoginForm(){
+    public String showLoginForm(Model model){
+        List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
+        model.addAttribute("monsterImages", monsterImages);
         return "/login";
     }
 
     @GetMapping("/register")
-    public String showRegistrationForm(){
+    public String showRegistrationForm(Model model){
+        List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
+        model.addAttribute("monsterImages", monsterImages);
         return "/registration";
     }
 
@@ -70,7 +73,7 @@ public class UserController {
         String defaultBackground = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
         if(password.equals(passwordConfirm)){
             password = passwordEncoder.encode(password);
-            usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground ));
+            usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground, 0));
             return "redirect:/home";
         } else {
             return "redirect:/register";

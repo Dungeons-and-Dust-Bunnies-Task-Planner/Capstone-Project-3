@@ -20,10 +20,13 @@
                     </div>
                 </form>
             </div>
-            <div class="column monster-sneak1">
-
-            </div>
+            <div class="anchor"></div>
         </div>
+        <div class="row" style="height: 50px">
+            <img class="monster-sneak1" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(0).getMonster_img()}">
+            <img class="monster-sneak2" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(1).getMonster_img()}">
+        </div>
+
     </div>
 </div>
 <footer th:replace="~{partials/footer :: footer}"></footer>

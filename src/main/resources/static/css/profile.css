@@ -9,10 +9,12 @@
 }
 
 .h2Profile {
-    font-family: 'Nunito', sans-serif;}
+    font-family: 'Nunito', sans-serif;
+}
 
 .h4Profile {
-    font-family: 'Nunito', sans-serif;}
+    font-family: 'Nunito', sans-serif;
+}
 
 .profileColumn {
     display: flex;
@@ -41,16 +43,16 @@
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    max-height: 522px;
+    max-height: 570px;
     height: 100%;
     max-width: 500px;
     width: 100%;
     border-radius: .5em;
-    box-shadow: #000 0 0 3px 1px;
-    border:none;
-    outline:none;
-    background: var(--background);
-    /*font-family: Barrio, Inter, sans-serif;*/
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+    background: var(--fade-dark-purple);
+    border: none;
+    outline: none;
+    font-family: Poppin, Inter, sans-serif;
     color: white;
     z-index: 4;
 }
@@ -69,20 +71,18 @@
     border: 1px solid cornflowerblue;
     outline: none;
     box-shadow: inset #000 0 0 3px 1px;
-    color: white;
     font-size: 2.25em;
     border-radius: 0.2em;
     justify-content: center;
     font-weight: 400;
-    background: transparent;
 }
+input.submit-btn{
+    color: white;
+    background: var(--cta2);
+}
+
 input.submit-btn:hover {
-    background:
-            linear-gradient(
-                    120deg,
-                    rgba(63, 94, 251, 1),
-                    rgba(106, 208, 217, 1)
-            );
+    background: var(--fade-purple);
     cursor: pointer;
 }
 
@@ -119,7 +119,7 @@ input.submit-btn:hover {
 }
 
 .image-add {
-    background-color: rgb(0,128,224);
+    background: var(--fade-blue);
     border: none;
     width: 48%;
     color: white;
@@ -128,7 +128,7 @@ input.submit-btn:hover {
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
-    margin: 4px 2px;
+    margin: 20px 2px;
     cursor: pointer;
     border-radius: 12px;
 }
@@ -252,6 +252,7 @@ input.submit-btn:hover {
     gap: 15px;
     padding: 0 20px;
 }
+
 .badgeCard {
     height: 200px;
     background-color: rgba(255, 255, 255, 0.4);
