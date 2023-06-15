@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    height: 100px;
+    height: 75px;
     width: 100vw;
     padding: 0;
     color: #fff;
@@ -21,6 +21,7 @@
 .nav-wrap,
 .menu-wrap {
     display: flex;
+    align-items: center;
 }
 
 .logo-wrap {
@@ -28,7 +29,7 @@
 }
 
 .nav-logo {
-    font-size: 2.7rem;
+    font-size: 1.7rem;
 }
 
 .logo {
@@ -59,7 +60,7 @@
 /*}*/
 
 .icon img {
-    height: 90px;
+    height: 65px;
     aspect-ratio: auto;
     background-color: var(--cta2);
     border-radius: 18px;
@@ -100,40 +101,58 @@
 
 /*///////*/
 /* Dropdown Button */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 901px) {
     .menu-wrap {
         display: none;
     }
-
+    .dropdown {
+        display: none;
+    }
 
     .dropdown {
         display: block;
         position: relative;
         padding: 10px 100px 0px 0px;
-
     }
 
-
     .dropbtn {
-        background-color: darkslategrey;
+        background-color: var(--cta2);
         color: white;
-        /*padding: 16px;*/
         font-size: 16px;
         border: none;
         cursor: pointer;
         border-radius: .5em;
+        padding: 5px;
     }
 
     /* Dropdown button on hover & focus */
-    .dropbtn:hover, .dropbtn:focus {
-        background-color: #2980B9;
+    .dropbtn:hover,
+    .dropbtn:focus {
+        background-color: var(--fade-green-purple);
     }
 
-    /* The container <div> - needed to position the dropdown content */
-    /*.dropdown {*/
-    /*    position: relative;*/
-    /*    display: inline-block;*/
-    /*}*/
+    /* Hamburger Bars */
+    .bar {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 4px 0;
+        transition: 0.4s;
+    }
+
+    /* Animate the Hamburger Bars to X */
+    .dropbtn.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .dropbtn.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .dropbtn.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
     /* Dropdown Content (Hidden by Default) */
     .dropdown-content {
         display: none;

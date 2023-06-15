@@ -14,6 +14,9 @@ public class Task {
     @Column(nullable = false)
     private String taskBody;
 
+    @Column(nullable = false)
+    private int taskComplete;
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "battle_id")
