@@ -1,6 +1,6 @@
 
 .index h1 {
-    font-size: 5em;
+    font-size: 4em;
     text-align: center;
 
 }
@@ -39,4 +39,45 @@
 .land-h2 a:visited {
     text-decoration: none;
     color: inherit;
+}
+
+.CCBB {
+    display: flex;
+    justify-content: center;
+}
+
+.attentionGetter {
+    font-weight: 400;
+}
+
+.leftSide {
+    display: flex;
+    justify-content: start;
+    width: 40vw;
+}
+
+.description {
+    display: flex;
+    justify-content: start;
+    width: 40vw;
+    margin: 20px;
+    background: var(--fade-dark-purple);
+    padding-bottom: 20px;
+    font-weight: 400;
+}
+
+.registrationButton {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 30vw;
+    margin: 20px;
+    background: var(--fade-dark-purple);
+    padding-bottom: 20px;
+    font-weight: 400;
+}
+
+.blurb {
+    margin-top: 10px;
+    font-weight: 400;
 }
