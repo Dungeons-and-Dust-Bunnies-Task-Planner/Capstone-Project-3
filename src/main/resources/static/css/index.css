@@ -54,16 +54,16 @@
     display: flex;
     justify-content: start;
     width: 40vw;
+    margin: 20px;
 }
 
 .description {
     display: flex;
     justify-content: start;
-    width: 40vw;
-    margin: 20px;
     background: var(--fade-dark-purple);
     padding-bottom: 20px;
     font-weight: 400;
+    border-radius: 1em;
 }
 
 .registrationButton {
@@ -75,9 +75,17 @@
     background: var(--fade-dark-purple);
     padding-bottom: 20px;
     font-weight: 400;
+    border-radius: 1em;
 }
 
 .blurb {
     margin-top: 10px;
     font-weight: 400;
+}
+
+.rightSide {
+    display: flex;
+    justify-content: end;
+    width: 40vw;
+    margin: 20px;
 }
