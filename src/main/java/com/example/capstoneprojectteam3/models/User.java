@@ -63,6 +63,15 @@ public class User {
         this.backgroundImage = backgroundImage;
     }
 
+    public User(String username, String email, String password, String avatarImage, String backgroundImage, int battlesComplete) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.avatarImage = avatarImage;
+        this.backgroundImage = backgroundImage;
+        this.battlesComplete = battlesComplete;
+    }
+
     public User(String username, String email, String password) {
         this.email = email;
         this.username = username;
@@ -74,6 +83,17 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public User(String email, String username, String password, String avatarImage, String backgroundImage, int battlesComplete, List<Badge> badges, List<Battle> battles) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.avatarImage = avatarImage;
+        this.backgroundImage = backgroundImage;
+        this.battlesComplete = battlesComplete;
+        this.badges = badges;
+        this.battles = battles;
     }
 
     public User(long id, int battlesComplete) {

@@ -73,7 +73,7 @@ public class UserController {
         String defaultBackground = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
         if(password.equals(passwordConfirm)){
             password = passwordEncoder.encode(password);
-            usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground ));
+            usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground, 0));
             return "redirect:/home";
         } else {
             return "redirect:/register";
