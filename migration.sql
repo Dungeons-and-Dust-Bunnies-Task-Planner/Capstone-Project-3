@@ -1,4 +1,4 @@
-# create database if not exists dungeons_and_dust_bunnies_db;
+create database if not exists dungeons_and_dust_bunnies_db;
 use dungeons_and_dust_bunnies_db;
 
 # BEFORE RUNNING THE REST OF THIS----------------------------------------------------

@@ -8,50 +8,39 @@
     <div class="row grow full-width no-padding">
       <!--      BATTLE SLIDE OUT-->
       <div class="battle-icon">
-        <img src="/images/battle-axe-update.png" alt="battle icon">
+        <img src="/images/battle-axes.png" alt="battle icon">
       </div>
       <section class="battle-slide-out">
-        <form th:action="@{/battlegrounds/create-battle}" method="post">
+        <form class="create-battle-form" th:action="@{/battlegrounds/create-battle}" method="post">
           <div class="add-battle-container">
             <div class="add-battle-wrap">
-              <input class="add-battle-input" type="text" placeholder="Add your battle..." name="title"/>
-              <button class="add-battle-btn"><img src="/images/plus-6.png" alt=""></button>
+              <input class="create-battle-input" type="text" placeholder="Add your battle..." name="title"/>
+              <button class="create-battle-btn"><img src="/images/plus-6.png" alt=""></button>
             </div>
           </div>
         </form>
         <div class="battles-list">
           <div th:each="battle : ${battles}">
             <div class="battle inactive" th:data-battle-id="${battle.id}">
-              <h3 class="battle-text" th:text="${battle.title}"></h3>
+              <h3 class="battle-title" th:text="${battle.title}"></h3>
             </div>
           </div>
         </div>
       </section>
       <!--      TASK CONTAINER-->
-      <section class="tasks-container">
+      <section class="tasks">
         <div class="tasks-list">
           <ul class="battle-tasks hidden" th:each="battle : ${battles}">
-            <!--      CREATE A TASK MODAL-->
-            <div class="modal-overlay hidden"></div>
-            <div class="slide-out-overlay hidden"></div>
-            <div class="task-modal hidden">
-              <form th:action="@{/battlegrounds/battle/{id}/create-task}" method="post">
-                <input type="text" placeholder="Enter your task..." name="task-body" id="task-body" autofocus/>
-                <button class="create-task-btn">Create Task</button>
-                <input type="hidden" name="battleId" th:value="${battle.id}" data-update-elements=".task-text">
-              </form>
-
-            </div>
-            <h2 class="battle-name" th:text="${battle.title}"></h2>
-            <div class="new-task-wrap">
-              <div class="img-wrap">
-                <img src="/images/plus-6.png" alt="add-icon"/>
-              </div>
-              <h3>New Task...</h3>
-            </div>
-            <li class="task not-complete" th:each="task : ${battle.tasks}" data-battle-id="${battle.id}"
-                data-battle-status="${battle.status}">
-              <h3 class="task-text" th:text="${task.taskBody}"></h3>
+            <h2 class="tasks-battle-title" th:text="${battle.title}"></h2>
+            <form class="create-task-form" th:action="@{/battlegrounds/create-task}">
+              <input type="hidden" name="battleId" th:value="${battle.id}">
+              <input class="create-task-input" type="text" name="create-task" placeholder="Create a new task">
+              <button class="create-task-btn" type="submit"><img src="/images/plus-6.png" alt="button icon"></button>
+            </form>
+            <li class="task" th:each="task : ${battle.tasks}">
+              <input type="hidden" name="battleStatus" th:value="${battle.status}">
+              <input type="hidden" name="battleId" th:value="${battle.id}">
+              <h3 class="task-body" th:text="${task.taskBody}"></h3>
             </li>
           </ul>
         </div>
