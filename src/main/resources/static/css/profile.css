@@ -75,6 +75,8 @@
     border-radius: 0.2em;
     justify-content: center;
     font-weight: 400;
+    flex-wrap: wrap;
+    align-content: center;
 }
 input.submit-btn{
     color: white;
@@ -193,7 +195,7 @@ input.submit-btn:hover {
     display: flex;
     justify-content: flex-start;
     align-content: flex-start;
-    background-color: rgba(155, 58, 227, 0.1);
+    background: var(--fade-dark-purple);
     border-radius: .5em;
     overflow: scroll;
 }
@@ -220,6 +222,7 @@ input.submit-btn:hover {
 
 .cardRow {
     flex-wrap: wrap;
+    padding-bottom: 25px;
 }
 
 .battleTitle {
@@ -238,16 +241,18 @@ input.submit-btn:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    align-content: flex-start;
+    align-content: center;
     min-width: calc(25% - 20px);
-    background-color: rgba(155, 58, 227, 0.1);
+    background: var(--fade-dark-purple);
     border-radius: .5em;
+    width: 75vw;
+    padding-bottom: 25px;
 }
 
 .activeBadgeRow {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-content: flex-start;
     gap: 15px;
     padding: 0 20px;
@@ -271,3 +276,52 @@ input.submit-btn:hover {
     text-align: center;
 }
 
+/*  MEDIA QUERY         */
+
+/* Small (less than 640px) */
+@media (max-width: 639px) {
+    .avatarPlacement {
+        margin-top: -100px;
+    }
+
+    .username {
+        margin-top: 35px;
+    }
+
+    .avatar-wrapper {
+        height: 100px;
+        width: 100px;
+    }
+
+    .editProfile {
+        margin-bottom: 35px;
+    }
+
+    .h1Profile {
+        font-size: 35px;
+        margin-top: -35px;
+    }
+}
+
+/* Medium (641px to 1007px) */
+@media (min-width: 641px) and (max-width: 1007px) {
+    .avatarPlacement {
+        margin-top: -150px;
+    }
+
+    .username {
+        margin-top: 25px;
+    }
+
+    .avatar-wrapper {
+        height: 150px;
+        width: 150px;
+    }
+
+    .h1Profile {
+        font-size: 60px;
+        margin-top: 0;
+    }
+
+    .editProfile {}
+}
