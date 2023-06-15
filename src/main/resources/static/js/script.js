@@ -5,6 +5,10 @@
 		const addBattleInput = document.querySelector('.add-battle-input')
 		const addBattleBtn = document.querySelector('.add-battle-btn')
 		const taskModal = document.querySelector('.task-modal')
+		const modalOverlay = document.querySelector('.modal-overlay')
+		const slideOutOverlay = document.querySelector('.slide-out-overlay')
+		// const logOutForm = document.getElementById("logOutForm");
+		// const logOutButton = document.getElementById("logOutButton");
 		// const taskFormOverlay = document.querySelector('.modal-overlay')
 		const battlesContainerOverlay = document.querySelector('.battles-container-overlay')
 		const logOutForm = document.querySelector('.logout-form')
@@ -248,9 +252,9 @@
 				}
 		}
 
-		logOutBtn.addEventListener('click', () => {
-				logOutForm.submit()
-		})
+		// logOutButton.addEventListener('click', () => {
+		// 	logOutForm.submit();
+		// })
 
 		battleIcon.addEventListener('click', e => {
 				e.preventDefault()

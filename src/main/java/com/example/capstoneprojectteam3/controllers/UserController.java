@@ -1,10 +1,13 @@
 package com.example.capstoneprojectteam3.controllers;
 
 import com.example.capstoneprojectteam3.models.Badge;
-import com.example.capstoneprojectteam3.models.OpenAI.OpenAIResponse;
+import com.example.capstoneprojectteam3.models.Battle;
+import com.example.capstoneprojectteam3.models.MonsterImage;
 import com.example.capstoneprojectteam3.models.User;
+import com.example.capstoneprojectteam3.repositories.BattleRepository;
+import com.example.capstoneprojectteam3.repositories.MonsterImageRepository;
+import com.example.capstoneprojectteam3.repositories.MonsterRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
-import com.example.capstoneprojectteam3.utils.OpenAIRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -20,25 +23,44 @@ import java.util.List;
 public class UserController {
 
     private final UserRepository usersDao;
+    private final MonsterRepository monstersDao;
+    private final MonsterImageRepository monsterImagesDao;
     private final PasswordEncoder passwordEncoder;
+    private final BattleRepository battlesDao;
 
-    public UserController(UserRepository usersDao, PasswordEncoder passwordEncoder){
+
+    public UserController(UserRepository usersDao, MonsterRepository monstersDao, MonsterImageRepository monsterImagesDao, PasswordEncoder passwordEncoder, BattleRepository battlesDao){
+        this.monstersDao = monstersDao;
+        this.monsterImagesDao = monsterImagesDao;
         this.passwordEncoder = passwordEncoder;
         this.usersDao = usersDao;
+        this.battlesDao = battlesDao;
+    }
+    @GetMapping("/home")
+    public String showHome(Model model){
+        List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
+        model.addAttribute("monsterImages", monsterImages);
+        return "index";
     }
 
-    @GetMapping("/home")
-    public String showHome(){
+    @GetMapping("/")
+    public String showIndex(Model model){
+        List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
+        model.addAttribute("monsterImages", monsterImages);
         return "index";
     }
 
     @GetMapping("/login")
-    public String showLoginForm(){
+    public String showLoginForm(Model model){
+        List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
+        model.addAttribute("monsterImages", monsterImages);
         return "/login";
     }
 
     @GetMapping("/register")
-    public String showRegistrationForm(){
+    public String showRegistrationForm(Model model){
+        List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
+        model.addAttribute("monsterImages", monsterImages);
         return "/registration";
     }
 
@@ -51,7 +73,7 @@ public class UserController {
         String defaultBackground = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
         if(password.equals(passwordConfirm)){
             password = passwordEncoder.encode(password);
-            usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground ));
+            usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground, 0));
             return "redirect:/home";
         } else {
             return "redirect:/register";
@@ -64,6 +86,7 @@ public class UserController {
         long userId = user.getId();
         user = usersDao.findUserById(userId);
         List<Badge> badges = user.getBadges();
+        List<Battle> battles = battlesDao.findAllByUserId(userId);
 
         // CHAT-GPT API REQUEST AND RESPONSE CODE BELOW, COMMENTED OUT TO MINIMIZE API REQUESTS
 //        OpenAIResponse aiResponse = OpenAIRequest.sendOpenAIRequest("You are a monster who hates people cleaning! A cleaner attacks you! Respond with only two sentences!");
@@ -72,6 +95,7 @@ public class UserController {
 
         model.addAttribute("user", user);
         model.addAttribute("badges", badges);
+        model.addAttribute("battles", battles);
 
         return "profile";
     }

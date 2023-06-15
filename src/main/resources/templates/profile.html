@@ -4,108 +4,99 @@
 <body>
 
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
-<div class="page-wrapper">
-    <div class="container picParent">
-        <!--        COVER PHOTO     -->
-        <img class="coverPhoto" th:src="${user.backgroundImage}" alt="Background Image">
+    <div class="page-wrapper">
+        <div class="container picParent margin-bottom-3rem">
+            <!--        COVER PHOTO     -->
+            <img class="coverPhoto" th:src="${user.backgroundImage}" alt="Background Image">
 
-<!--        https://plchldr.co/i/1000x200?&bg=111111&fc=ffffff-->
+            <!--    AVATAR PHOTO        -->
+            <div class="avatarPlacement row grow">
+                <div class="picName">
+                    <img class="avatar-wrapper" th:src="${user.avatarImage}" alt="Avatar Photo">
 
-        <!--    AVATAR PHOTO        -->
-        <div class="avatarPlacement row grow">
-            <div class="picName">
-                <img class="avatar-wrapper" th:src="${user.avatarImage}" alt="Avatar Photo">
-
-            <!--                USERNAME            -->
-                <!--                USERNAME            -->
-                <div class="column profileColumn username">
-                    <h1 class="h1Profile" th:text="'@' + ${user.username}">Username</h1>
+                    <!--                USERNAME            -->
+                    <div class="column profileColumn username">
+                        <h1 class="h1Profile" th:text="'@' + ${user.username}">Username</h1>
+                    </div>
                 </div>
-            </div>
-            <!--                EDIT PROFILE BUTTON         -->
+                <!--                EDIT PROFILE BUTTON         -->
 
-            <div class="column profileColumn editProfile">
-                <button class="editButton profileColumn">Edit Profile</button>
-            </div>
-            <div class="edit-modal-overlay hidden"></div>
-            <div class="edit-modal hidden">
-                <form th:action="@{/edit/profile}" th:method="post">
+                <div class="column profileColumn editProfile">
+                    <button class="editButton profileColumn">Edit</button>
+                </div>
+                <div class="edit-modal-overlay hidden"></div>
+                <div class="edit-modal hidden">
+                    <form th:action="@{/edit/profile}" th:method="post">
 
-                    <div class="image-add" id="profile-image-add">Add Profile Image</div>
-                    <input th:value="${user.avatarImage}" type="hidden" id="profile-image-url" name="profile-image-url"/>
+                        <div class="image-add" id="profile-image-add">Add Profile Image</div>
+                        <input th:value="${user.avatarImage}" type="hidden" id="profile-image-url" name="profile-image-url"/>
 
-                    <div class="image-add" id="background-image-add">Add Background</div>
-                    <input th:value="${user.backgroundImage}" type="hidden" id="background-image-url" name="background-image-url"/>
-                  
-                    <br>     
-                  
-                    <label for="username">Username</label><br>
-                    <input th:value="${user.username}" class="row usernameRow" type="text" id="username" name="username"><br>
-                    <label for="email">Email</label><br>
-                    <input th:value="${user.email}" class="row emailRow" type="email" id="email" name="email"><br>
-                    <label for="password">Password</label><br>
-                    <input class="row passwordRow" type="password" id="password" name="password"><br>
-                    <label for="password">Confirm Password</label><br>
-                    <input class="row confirmPasswordRow" type="password" id="passwordConfirmation" name="passwordConfirmation"><br>
-                    <input class="row submit" type="submit" value="Edit"><br>
-                </form>
-            </div>
-        </div>
-    </div>
+                        <div class="image-add" id="background-image-add">Add Background</div>
+                        <input th:value="${user.backgroundImage}" type="hidden" id="background-image-url" name="background-image-url"/>
 
+                        <br>
 
-    <!--    BATTLE SECTION       -->
-    <div class="container grow">
-        <div class="row battleRow grow">
-            <div class="column battleArea">
-                <h2 class="h2Profile">Your Active Battles</h2>
-                <div class="row activeBattleRow">
-                    <div class="battleCard">
-                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
-                             alt="Active Battle Image">
-                        <h4 class="h4Profile">Active Battle Name</h4>
-                    </div>
-                    <div class="battleCard">
-                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
-                             alt="Active Battle Image">
-                        <h4 class="h4Profile">Active Battle Name</h4>
-                    </div>
-                    <div class="battleCard">
-                        <img class="activeBattleImage" src="https://dummyimage.com/100x100/bf2a2a/ffffff"
-                             alt="Active Battle Image">
-                        <h4 class="h4Profile">Active Battle Name</h4>
-                    </div>
-                    <div th:each="battle : ${battles}" class="battleCard">
-                        <h2 class="battleTitle" th:text="${battle.title}"></h2>
-                        <p class="battleTasks" th:text="${battle.tasks}"></p>
-                    </div>
-
+                        <label for="username">Edit Username</label><br>
+                        <input th:value="${user.username}" class="row usernameRow" type="text" id="username" name="username"><br>
+                        <label for="email">Edit Email</label><br>
+                        <input th:value="${user.email}" class="row emailRow" type="email" id="email" name="email"><br>
+                        <label for="password">Edit Password</label><br>
+                        <input class="row passwordRow" type="password" id="password" name="password"><br>
+                        <label for="password">Confirm Password</label><br>
+                        <input class="row confirmPasswordRow" type="password" id="passwordConfirmation" name="passwordConfirmation"><br>
+                        <input class="row submit-btn" type="submit" value="Confirm"><br>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
-    <!--    BADGES AREA        -->
-    <div class="container grow">
-        <div class="row badgeRow grow">
-            <div class="column badgeArea">
-                <br><h2 class="h2Profile">Battle Badge Unlocks</h2><br><br>
-                <div class="activeBadgeRow">
-                    <div th:each="badge : ${badges}" class="badgeCard">
-                        <p><a id="claimButton">Claim</a></p>
-<!--                        <img class="activeBadgeImage" th:src="${badge.badgeImage}" alt="Active Badge Image">-->
-                        <h2 class="badgeTitle" th:text="${badge.badgeTitle}"></h2>
-                        <p class="badgeBody" th:text="${badge.badgeBody}"></p>
 
 
+        <!--    BATTLE SECTION       -->
+        <div class="container grow">
+            <div class="row battleRow grow">
+                <div class="column battleArea">
+                    <br><h1>Your Active Battles</h1><br><br>
+                    <div class="row cardRow">
+                      <!------------  BTN FOR battle Complete increment      ------------>
+    <!--                    <form th:action="@{/battlegrounds/complete}" th:method="post">-->
+    <!--                        <button type="submit"  id="battleComplete" name="battleComplete">Finish Him!</button>-->
+    <!--                    </form>-->
+                        <div th:each="battle : ${battles}" class="battleCard">
+                            <div class="column">
+                                <img src="https://dummyimage.com/100x100/bf2a2a/ffffff" alt="Active Battle Image">
+                            </div>
+                            <div class="column battleTitle">
+                                <h2 class="battleTitle" th:text="${battle.title}"></h2>
+                                <p class="battleTasks" th:text="${battle.status}"></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <form style="visibility: hidden" th:action="@{/claim/badge}" th:method="post" id="badgeClaimForm" >
-            <button>#</button>
-        </form>
-    </div>
+        <!--    BADGES AREA        -->
+        <div class="container grow">
+            <div class="row badgeRow grow">
+                <div class="column badgeArea">
+                    <br><h2 class="h2Profile">Battle Badge Unlocks</h2><br><br>
+                    <div class="activeBadgeRow">
+                        <div th:each="badge : ${badges}" class="badgeCard">
+                            <div>
+    <!--                        <img class="activeBadgeImage" th:src="${badge.badgeImage}" alt="Active Badge Image">-->
+                            </div>
+                            <div>
+                            <h2 class="badgeTitle" th:text="${badge.badgeTitle}"></h2>
+                            <p class="badgeBody" th:text="${badge.badgeBody}"></p>
+                            </div>
 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:insert="~{partials/footer :: footer}"></div>
+    </div>
 <!-- This is the JS for Badge Claiming -->
 
 <script>
@@ -115,8 +106,6 @@
         badgrClaimForm.submit();
     });
 </script>
-</div>
-        <footer th:insert="~{partials/footer :: footer}"></footer>
 <script src="/js/profile.js"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="module" src="/js/filepicker.js"></script>

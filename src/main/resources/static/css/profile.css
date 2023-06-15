@@ -9,10 +9,12 @@
 }
 
 .h2Profile {
-    font-family: 'Nunito', sans-serif;}
+    font-family: 'Nunito', sans-serif;
+}
 
 .h4Profile {
-    font-family: 'Nunito', sans-serif;}
+    font-family: 'Nunito', sans-serif;
+}
 
 .profileColumn {
     display: flex;
@@ -37,20 +39,20 @@
 
 /*  EDIT PROFILE MODAL  */
 .edit-modal {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    max-height: 522px;
+    max-height: 570px;
     height: 100%;
     max-width: 500px;
     width: 100%;
     border-radius: .5em;
-    box-shadow: #000 0 0 3px 1px;
-    border:none;
-    outline:none;
-    background: var(--background);
-    /*font-family: Barrio, Inter, sans-serif;*/
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+    background: var(--fade-dark-purple);
+    border: none;
+    outline: none;
+    font-family: Poppin, Inter, sans-serif;
     color: white;
     z-index: 4;
 }
@@ -63,18 +65,25 @@
 }
 
 .edit-modal > form > input {
-    height: 40px;
+    height: 54px;
     width: 450px;
     padding: 6px 8px;
-    border: none;
+    border: 1px solid cornflowerblue;
     outline: none;
     box-shadow: inset #000 0 0 3px 1px;
-    background: var(--secondary);
-    color: var(--primary);
-    /* text-shadow: 0 1px 3px #000; */
-    font-size: 1.25em;
+    font-size: 2.25em;
     border-radius: 0.2em;
     justify-content: center;
+    font-weight: 400;
+}
+input.submit-btn{
+    color: white;
+    background: var(--cta2);
+}
+
+input.submit-btn:hover {
+    background: var(--fade-purple);
+    cursor: pointer;
 }
 
 .edit-modal > form > input:focus {
@@ -84,7 +93,7 @@
     padding: 6px 8px;
     height: 70px;
     box-shadow: inset #000 0 0 3px 1px;
-    background: var(--primary);
+    background: cornflowerblue;
     text-shadow: 0 1px 3px #000;
     color: #fff;
     font-size: 2em;
@@ -100,7 +109,7 @@
 }
 
 .edit-modal-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -110,7 +119,7 @@
 }
 
 .image-add {
-    background-color: #4CAF50;
+    background: var(--fade-blue);
     border: none;
     width: 48%;
     color: white;
@@ -119,7 +128,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
-    margin: 4px 2px;
+    margin: 20px 2px;
     cursor: pointer;
     border-radius: 12px;
 }
@@ -186,19 +195,19 @@
     align-content: flex-start;
     background-color: rgba(155, 58, 227, 0.1);
     border-radius: .5em;
+    overflow: scroll;
 }
 
 .battleCard {
-
-    min-height: 330px;
-    min-width: 330px;
+    width: 75vw;
+    min-height: 200px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    flex-direction: row;
     padding: 0px;
+    align-self: stretch;
+    justify-content: space-evenly;
 }
 
 .activeBattleRow {
@@ -207,6 +216,15 @@
     justify-content: flex-start;
     align-content: flex-start;
     flex-direction: column;
+}
+
+.cardRow {
+    flex-wrap: wrap;
+}
+
+.battleTitle {
+    align-content: center;
+    justify-content: center;
 }
 
 /* BADGES */
@@ -234,6 +252,7 @@
     gap: 15px;
     padding: 0 20px;
 }
+
 .badgeCard {
     height: 200px;
     background-color: rgba(255, 255, 255, 0.4);
@@ -242,5 +261,13 @@
     flex: 0 0 200px;
     flex-direction: column;
     padding: 20px;
+}
+
+.badgeTitle {
+    text-align: center;
+}
+
+.badgeBody {
+    text-align: center;
 }
 

@@ -2,21 +2,36 @@
     <div class="container footerWrap">
         <div class="leftFoot row">
             <p>Join our newsletter</p>
-            <div class="newsletter">
-                <label for="email">Email: </label>
-                <input type="text" id="email" name="email">
+            <div class="newsletter justify-center">
+                <form>
+                    <label for="email">Email: </label>
+                    <input type="text" id="email" name="email">
+                    <button type="submit">Sign up</button>
+                </form>
             </div>
         </div>
 
-        <div class="middleFooter row">
+        <div class="middleFooter row justify-center">
+            <div class="column shrink">
                 <a th:href="@{/}">Home</a>
+            </div>
+            <div class="column">
                 <a th:href="@{/profile}">Profile</a>
+            </div>
+            <div class="column">
                 <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+            </div>
         </div>
         <div class="rightFoot row">
-            <a th:href="@{/}">Facebook</a>
-            <a th:href="@{/}">Twitter</a>
-            <a th:href="@{/}">Instagram</a>
+            <div class="column shrink flex-direction-row">
+                <a th:href="@{/}">Facebook</a>
+            </div>
+            <div class="column">
+                <a th:href="@{/}">Twitter</a>
+            </div>
+            <div class="column">
+                <a th:href="@{/}">Instagram</a>
+            </div>
         </div>
     </div>
 </footer>
