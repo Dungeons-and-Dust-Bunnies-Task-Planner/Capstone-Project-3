@@ -1,5 +1,6 @@
 // DOM ELEMENTS
 const battleIcon = document.querySelector('.battle-icon')
+const battleIconPopOut = document.querySelector('.battle-icon-pop-out')
 const battleSlideOut = document.querySelector('.battle-slide-out')
 const createBattleForm = document.querySelector('.create-battle-form')
 const createBattleInput = document.querySelector('.create-battle-input')
@@ -15,3 +16,6 @@ const createTaskInput = document.querySelector('.create-task-input')
 const createTaskBtn = document.querySelector('.create-task-btn')
 const task = document.querySelector('.task')
 const taskBody = document.querySelector('.task-body')
+
+
+

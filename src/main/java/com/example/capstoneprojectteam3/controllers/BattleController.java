@@ -21,25 +21,41 @@ public class BattleController{
 	private final BattleRepository battlesDao;
 	private final TaskRepository tasksDao;
 
-	public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao) {
+	public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao){
 		this.usersDao = usersDao;
 		this.battlesDao = battlesDao;
 		this.tasksDao = tasksDao;
 	}
 
 	@GetMapping("/battlegrounds")
-	public String showBattlegrounds(Model model) {
+	public String showBattlegrounds(Model model){
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		List<Battle> battles = battlesDao.findAllByUserId(user.getId());
 		model.addAttribute("battles", battles);
 		return "/battlegrounds";
 	}
 
-	@PostMapping("/battlegrounds/edit-task")
-	public String editTask(@RequestParam(name = "taskId") Long taskId){
+	@PostMapping("/battlegrounds/complete-task")
+	public String editTask(@RequestParam(name="taskId") Long taskId){
 		Task editTask = tasksDao.findTaskById(taskId);
 		editTask.setTaskComplete(1);
 		tasksDao.save(editTask);
+		return "redirect:/battlegrounds";
+	}
+
+	@PostMapping("/battlegrounds/edit-task-body")
+	public String editTaskBody(@RequestParam(name="editTaskBody") String taskBody,
+							   @RequestParam(name="taskId") Long taskId){
+
+		Task editTask = tasksDao.findTaskById(taskId);
+		editTask.setTaskBody(taskBody);
+		tasksDao.save(editTask);
+		return "redirect:/battlegrounds";
+	}
+
+		@PostMapping("/battlegrounds/delete-task")
+	public String deleteTask(@RequestParam(name="taskId") Long taskId){
+		tasksDao.deleteById(taskId);
 		return "redirect:/battlegrounds";
 	}
 
@@ -51,7 +67,7 @@ public class BattleController{
 	}
 
 	@PostMapping("/complete")
-	public String completedBattle() {
+	public String completedBattle(){
 		System.out.println("Made it in to /complete");
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		long userId = user.getId();

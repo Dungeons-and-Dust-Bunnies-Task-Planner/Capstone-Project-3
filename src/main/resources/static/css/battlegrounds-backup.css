@@ -1,17 +1,17 @@
 /*!*BATTLE SLIDE OUT*!*/
-/*.battle-slide-out {*/
-/*    position: fixed;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    height: 100vh;*/
-/*    width: 35vw;*/
-/*    background: var(--slide-out-bg);*/
-/*    backdrop-filter: blur(10px);*/
-/*    padding: 190px 20px 0 0;*/
-/*    transform: translateX(-102%);*/
-/*    z-index: 4;*/
-/*    transition: all ease-out .4s;*/
-/*}*/
+.battle-slide-out {
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*height: 100vh;*/
+    /*width: 35vw;*/
+    /*background: var(--slide-out-bg);*/
+    /*backdrop-filter: blur(10px);*/
+    /*padding: 190px 20px 0 0;*/
+    /*transform: translateX(-102%);*/
+    /*z-index: 4;*/
+    /*transition: all ease-out .4s;*/
+}
 
 /*.battle-slide-out.open {*/
 /*    transform: translateX(0%);*/
