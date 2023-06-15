@@ -16,21 +16,36 @@
       <li><a th:href="@{/battlegrounds}">Battlegrounds</a></li>
       <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}">Register</a></li>
     </ul>
-    <ul class="dropdown">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
     <form class="logout-form hidden" th:action="@{/logout}" th:method="post" id="logOutForm">
       <button class="logout-btn">#</button>
     </form>
   </div>
+  <div class="dropdown">
+    <button onclick="openDD()" class="dropbtn" id="drpobtn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content">
+      <a th:href="@{/}">Home</a>
+      <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+      <a sec:authorize="isAuthenticated()" id="logOutButtonDD">Logout</a>
+      <a sec:authorize="isAuthenticated()" th:href="@{/profile}">Profile</a>
+      <a th:href="@{/battlegrounds}">Battlegrounds</a>
+      <a sec:authorize="!isAuthenticated()" th:href="@{/register}">Register</a>
+    </div>
+  </div>
   <script>
       const logOutForm = document.getElementById("logOutForm");
       const logOutButton = document.getElementById("logOutButton");
+        const logOutButtonDD = document.getElementById("logOutButtonDD");
       logOutButton.addEventListener('click', () => {
       logOutForm.submit();
     });
+        logOutButtonDD.addEventListener('click', () => {
+            logOutForm.submit();
+        });
+
+        /* When the user clicks on the button with the id="drpobtn", it opens the dropdown menu by adding the show class to the button */
+        function openDD() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+
   </script>
 </div>
