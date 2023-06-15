@@ -4,11 +4,9 @@ import com.example.capstoneprojectteam3.models.Battle;
 import com.example.capstoneprojectteam3.models.MonsterImage;
 import com.example.capstoneprojectteam3.models.Task;
 import com.example.capstoneprojectteam3.models.User;
+import com.example.capstoneprojectteam3.repositories.BattleRepository;
+import com.example.capstoneprojectteam3.repositories.TaskRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
-import com.example.capstoneprojectteam3.services.BattleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,77 +15,31 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/battlegrounds")
 public class BattleController{
 
 	private final UserRepository usersDao;
-	public BattleController(UserRepository usersDao) {
+	private final BattleRepository battlesDao;
+	private final TaskRepository tasksDao;
+
+	public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao) {
 		this.usersDao = usersDao;
+		this.battlesDao = battlesDao;
+		this.tasksDao = tasksDao;
 	}
 
-	@Autowired
-	private BattleService battleService;
-
-	@GetMapping
-	public String showBattlegrounds1(Model model){
+	@GetMapping("/battlegrounds")
+	public String showBattlegrounds(Model model) {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		List<Battle> battles = battleService.getBattlesByUserId(user.getId());
+		List<Battle> battles = battlesDao.findAllByUserId(user.getId());
 		model.addAttribute("battles", battles);
-		return "battlegrounds";
+		return "/battlegrounds";
 	}
 
-//	@GetMapping("/battlegrounds")
-//	public String showBattlegrounds(Model model) {
-//		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		List<Battle> battles = battlesDao.findAllByUserId(user.getId());
-//		model.addAttribute("battles", battles);
-//		return "/battlegrounds";
-//	}
-
-	@PostMapping("/battle/{id}/activate")
-	@ResponseBody
-	public ResponseEntity<String> activateBattle(@PathVariable("id") Long battleId){
-		try{
-			Battle battle = battleService.getBattlesById(battleId);
-			battleService.updateBattleStatus(battle, Battle.BattleStatus.active);
-			return ResponseEntity.ok("Battle activated successfully");
-		}catch(Exception e){
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to activate battle");
-		}
-	}
-
-	@PostMapping("/battle/{id}/deactivate")
-	@ResponseBody
-	public ResponseEntity<String> deactivateBattle(@PathVariable("id") Long battleId){
-		try{
-			Battle battle = battleService.getBattlesById(battleId);
-			battleService.updateBattleStatus(battle, Battle.BattleStatus.inactive);
-			return ResponseEntity.ok("Battle deactivated successfully");
-		}catch(Exception e){
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to deactivate battle");
-		}
-	}
-
-	@PostMapping("/create-battle")
-	public String createBattle(@RequestParam("title") String title, Model model){
-		Battle createdBattle = battleService.createBattle(title);
-		if(createdBattle != null){
-			model.addAttribute("battle", createdBattle);
-			model.addAttribute("task", new Task());
-		}
-		return "redirect:/battlegrounds";
-	}
-
-	@PostMapping("/battle/{id}/create-task")
-	public String createTask(
-			@PathVariable("id") Long battleId,
-			@ModelAttribute("task") Task task,
-			Model model
-	){
-		Task createdTask = battleService.createTask(battleId, task.getTaskBody());
-		if(createdTask != null){
-			model.addAttribute("task", new Task());
-		}
+	@PostMapping("/battlegrounds/edit-task")
+	public String editTask(@RequestParam(name = "taskId") Long taskId){
+		Task editTask = tasksDao.findTaskById(taskId);
+		editTask.setTaskComplete(1);
+		tasksDao.save(editTask);
 		return "redirect:/battlegrounds";
 	}
 
