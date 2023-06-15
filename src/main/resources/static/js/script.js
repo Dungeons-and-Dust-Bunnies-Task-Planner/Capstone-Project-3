@@ -1,11 +1,9 @@
 (() => {
 		const battleIcon = document.querySelector('.battle-icon')
 		const battleSlideOut = document.querySelector('.battle-slide-out')
-		// const addBattleWrap = document.querySelector('.add-battle-wrap')
 		const addBattleInput = document.querySelector('.add-battle-input')
 		const addBattleBtn = document.querySelector('.add-battle-btn')
 		const taskModal = document.querySelector('.task-modal')
-		// const taskFormOverlay = document.querySelector('.modal-overlay')
 		const battlesContainerOverlay = document.querySelector('.battles-container-overlay')
 		const logOutForm = document.querySelector('.logout-form')
 		const logOutBtn = document.querySelector('.logout-btn')
@@ -23,10 +21,6 @@
 				// TASKS CONTAINER
 				const tasksContainer = document.querySelector('.tasks')
 				tasksContainer.innerHTML = ''
-				// const taskModalOverlay = document.createElement('div')
-				// taskModalOverlay.classList.add('task-modal-overlay hidden')
-				// tasksContainer.appendChild(taskModalOverlay)
-
 
 				battles.forEach(battle => {
 						const battleDiv = document.createElement('div')
@@ -43,13 +37,14 @@
 								battleDiv.classList.add('inactive')
 								console.log(battleDiv.classList)
 						}
+
 						const titleHeading = document.createElement('h2')
 						titleHeading.textContent = battle.title
 						battleDiv.appendChild(titleHeading)
+
 						const statusParagraph = document.createElement('p')
 						statusParagraph.textContent = `${battle.status}`
 						battleDiv.appendChild(statusParagraph)
-
 
 						// HIDDEN FORM TO EDIT THE BATTLE
 						const editBattleForm = document.createElement('form')
@@ -282,8 +277,10 @@
 		document.addEventListener('DOMContentLoaded', async () => {
 				console.log('Battlegrounds page loaded')
 				await fetchBattles()
+				console.log(fetchBattles())
 				document.querySelector('.battle').classList.toggle('active')
 				document.querySelector('.battle').classList.toggle('inactive')
+
 				document.querySelector('.battle-tasks').classList.toggle('hidden')
 				const tasksListElement = document.querySelector('.tasks-list')
 				tasksListElement.children.length <= 0 ? tasksListElement.textContent = `Activate a battle to show it's tasks` : ''

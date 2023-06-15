@@ -14,14 +14,14 @@
       <section class="battle-slide-out">
         <!--        BATTLES CONTAINER-->
         <div class="battles">
-                    <form action="/battlegrounds/create-battle" method="post" class="add-battle-form">
-                      <input type="text" name="title" class="add-battle-input" autofocus>
-                      <button type="submit" class="add-battle-btn">Create Battle</button>
-                    </form>
+          <form action="/battlegrounds/create-battle" method="post" class="add-battle-form">
+            <input type="text" name="title" class="add-battle-input" autofocus>
+            <button type="submit" class="add-battle-btn">Create Battle</button>
+          </form>
           <div th:each="battle : ${battles}">
             <div class="battle">
-              <h2 th:text="${battle.title}"></h2>
-              <p th:text="${battle.status}"></p>
+              <!--              <h2 th:text="${battle.title}"></h2>-->
+              <!--              <p th:text="${battle.status}"></p>-->
               <!--              <form class="edit-battle-form" th:action=`@{/battlegrounds/battle/{id}/edit-battle?id=${battle.id}}`>-->
               <!--                <input class="edit-battle-input hidden" type="text" name="edit-battle" placeholder="Edit battle"-->
               <!--                       autofocus>-->
@@ -35,22 +35,22 @@
       <!--      TASKS CONTAINER-->
       <section class="tasks">
         <div class="tasks-list">
-          <ul class="battle-tasks hidden" th:each="battle : ${battles}">
-            <h2 class="battle-name" th:text="${battle.title}"></h2>
-            <li class="task not-complete" th:each="task : ${battle.tasks}" data-battle-id="${battle.id}"
-                data-battle-status="${battle.status}">
-              <h3 class="task-body" th:text="${task.taskBody}"></h3>
-              <!--              <form class="edit-task-form hidden"-->
-              <!--                    th:action=`@{/battlegrounds/battle/{b-id}/task/{t-id}/edit-task?b-id=${battle.id}&t-id=${task.id}}`-->
-              <!--                    method="post">-->
-              <!--                <input class="edit-task-input" type="text" name="taskBodyEdit" th:placeholder=`${task.taskBody}`-->
-              <!--                       autofocus>-->
-              <!--                <button class="edit-task-btn hidden" type="submit">Edit</button>-->
-              <!--              </form>-->
-              <button class="open-edit-task-btn" type="button">
-                <img src="/images/plus-6.png" alt="button icon" class="open-edit-task-btn-img">
-              </button>
-            </li>
+          <ul class="battle-tasks">
+<!--          <h2 class="battle-name" th:text="${battle.title}"></h2>-->
+<!--          <li class="task not-complete" th:each="task : ${battle.tasks}" data-battle-id="${battle.id}"-->
+<!--              data-battle-status="${battle.status}">-->
+<!--            <h3 class="task-body" th:text="${task.taskBody}"></h3>-->
+<!--            <form class="edit-task-form hidden"-->
+<!--                  th:action=`@{/battlegrounds/battle/{b-id}/task/{t-id}/edit-task?b-id=${battle.id}&t-id=${task.id}}`-->
+<!--                  method="post">-->
+<!--              <input class="edit-task-input" type="text" name="taskBodyEdit" th:placeholder=`${task.taskBody}`-->
+<!--                     autofocus>-->
+<!--              <button class="edit-task-btn hidden" type="submit">Edit</button>-->
+<!--            </form>-->
+<!--            <button class="open-edit-task-btn" type="button">-->
+<!--              <img src="/images/plus-6.png" alt="button icon" class="open-edit-task-btn-img">-->
+<!--            </button>-->
+<!--          </li>-->
           </ul>
         </div>
       </section>

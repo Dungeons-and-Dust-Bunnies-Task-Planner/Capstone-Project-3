@@ -33,7 +33,7 @@ public class Battle{
 	@Column(nullable=false)
 	private String title;
 
-	@Column
+	@Column(nullable=false)
 	@Enumerated(EnumType.STRING)
 	private BattleStatus status;
 
