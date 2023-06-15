@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    height: 100px;
+    height: 75px;
     width: 100vw;
     padding: 0;
     color: #fff;
@@ -21,6 +21,7 @@
 .nav-wrap,
 .menu-wrap {
     display: flex;
+    align-items: center;
 }
 
 .logo-wrap {
@@ -28,7 +29,7 @@
 }
 
 .nav-logo {
-    font-size: 2.7rem;
+    font-size: 1.7rem;
 }
 
 .logo {
@@ -59,7 +60,7 @@
 /*}*/
 
 .icon img {
-    height: 90px;
+    height: 65px;
     aspect-ratio: auto;
     background-color: var(--cta2);
     border-radius: 18px;
@@ -115,7 +116,7 @@
     }
 
     .dropbtn {
-        background-color: darkslategrey;
+        background-color: var(--cta2);
         color: white;
         font-size: 16px;
         border: none;
@@ -127,7 +128,7 @@
     /* Dropdown button on hover & focus */
     .dropbtn:hover,
     .dropbtn:focus {
-        background-color: #2980B9;
+        background-color: var(--fade-green-purple);
     }
 
     /* Hamburger Bars */
