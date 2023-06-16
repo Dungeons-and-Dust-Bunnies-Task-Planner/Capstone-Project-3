@@ -1,75 +1,70 @@
 .nav {
-    position: fixed;
+position: fixed;
     top: 0;
     left: 0;
     z-index: 5;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    height: 75px;
+    height: 100px;
     width: 100vw;
     color: #fff;
     font-family: Poppin, Inter, sans-serif;
     font-size: 1.3rem;
     text-shadow: 0 0 5px var(--primary);
-    /*overflow: hidden;*/
     background: rgba(0, 0, 0, .2);
     backdrop-filter: blur(10px);
-    padding-right: 40px;
+
 }
 
-.nav-wrap,
-.menu-wrap {
-    display: flex;
-    align-items: center;
-}
 
 .nav-logo {
+display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 15px;
+    width: 19vw;
+    /* padding: 10px; */
+    padding: 5px 5px -2px 30px;
+    height: 106px;
+    background: #000;
+    border: none;
+    /* box-shadow: var(--secondary) inset 0 0 3px 2px; */
+    margin: -5px 0 0 -5px;
+}
+
+.logo-text{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    padding: 10px 0;
-}
-
-.nav-logo-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0 10px 15px;
-    width: 35vw;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 40vw;
-    padding-left: 15px;
-    color: #fff;
-    border-radius: 10px;
     font-family: Barrio, Inter, sans-serif;
 }
 
-.nav-icon {
-    display: flex;
+.dungeons{
+    font-size: 2.3em;
+        margin: 0 0 -22px 0;
+}
+.dust-bunnies{
+    align-self:flex-end;
+}
+
+.logo-icon {
+display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0.9em;
     overflow: hidden;
-    width: 105px;
+    width: 100px;
     aspect-ratio: auto;
 }
 
-.nav-icon-img {
-
+.icon-img {
+    background:var(--cta2);
 }
 
-/*.nav-icon img {*/
-/*    height: 85%;*/
-/*    aspect-ratio: auto;*/
-/*    background-color: var(--cta2);*/
-/*    border-radius: 0.9em;*/
-/*}*/
+.menu-wrap {
+    display:flex;
+    padding-right:30px;
+    font-size:1.3em;
+}
 
 .menu-wrap ul {
     display: flex;
