@@ -28,9 +28,6 @@ public class Task {
     @ManyToMany(mappedBy = "tasks")
     private List<Badge> badges;
 
-    @Column(nullable = false)
-    private int taskComplete;
-
 
     //    ----- Constructors START -----
 
