@@ -12,7 +12,9 @@ footer {
     font-family: Poppin, Inter, sans-serif;
     font-size: 14px;
     text-shadow: 0 0 4px var(--primary);
+    margin-top: 50px;
 }
+
 
 .footerWrap {
     /*margin-top: 50px;*/
@@ -35,12 +37,12 @@ footer {
     justify-content: start;
 }
 
-/*.middleFooter {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*}*/
+.middleFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .rightFoot {
     display: flex;

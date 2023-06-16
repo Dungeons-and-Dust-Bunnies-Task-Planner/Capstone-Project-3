@@ -120,3 +120,39 @@
     position: relative;
     z-index: 2;
 }
+
+
+
+/* Medium (641px to 1007px) */
+@media (min-width: 641px) and (max-width: 1007px) {
+
+    .monster-sneak1 {
+       display: none;
+    }
+
+    .monster-sneak3 {
+        display: none;
+    }
+    .monster-sneak4 {
+        display: none;
+    }
+}
+
+
+
+/* Small (less than 640px) */
+@media (max-width: 639px) {
+
+    .monster-sneak1 {
+        display: none;
+    }
+    .monster-sneak2 {
+        display: none;
+    }
+    .monster-sneak3 {
+        display: none;
+    }
+    .monster-sneak4 {
+        display: none;
+    }
+}
