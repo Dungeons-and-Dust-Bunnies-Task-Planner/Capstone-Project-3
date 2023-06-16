@@ -58,6 +58,23 @@ public class BattleController{
 		return "redirect:/battlegrounds";
 	}
 
+	@PostMapping("/battlegrounds/edit-battle-title")
+	public String editBattleTitle(
+			@RequestParam(name="battleId") Long battleId
+			,@RequestParam(name="battleTitle") String newBattleTitle){
+		Battle editBattle = battlesDao.findBattleById(battleId);
+		editBattle.setTitle(newBattleTitle);
+		battlesDao.save(editBattle);
+		return "redirect:/battlegrounds";
+	}
+
+	@PostMapping("/battlegrounds/delete-battle")
+	public String deleteBattle(
+			@RequestParam(name="battleId") Long battleId){
+		battlesDao.deleteById(battleId);
+		return "redirect:/battlegrounds";
+	}
+
 	@PostMapping("/battlegrounds/edit-task-body")
 	public String editTaskBody(@RequestParam(name="editTaskBody") String taskBody,
 							   @RequestParam(name="taskId") Long taskId){
