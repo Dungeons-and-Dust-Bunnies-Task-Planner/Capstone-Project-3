@@ -1,4 +1,5 @@
 
+/*  TEXT SIZES      */
 .index h1 {
     font-size: 4em;
     text-align: center;
@@ -41,11 +42,23 @@
     color: inherit;
 }
 
+/*  TOP CONTAINER       */
 .CCBB {
     display: flex;
     justify-content: center;
 }
 
+
+/*  CONTAINER FOR THE MAIN INPUT    */
+.tooRight {
+    display: flex;
+    max-width: none;
+    justify-content: space-between;
+}
+
+
+
+/*      LEFT SIDE STUFF     */
 .attentionGetter {
     font-weight: 400;
 }
@@ -62,43 +75,49 @@
 .description {
     display: flex;
     justify-content: start;
-    background-color: rgba(0, 0, 0, 0.4);
+    /*background-color: rgba(0, 0, 0, 0.4);*/
     padding-bottom: 20px;
     font-weight: 400;
     border-radius: 1em;
 }
 
 
-.registrationButton {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 30vw;
-    margin: 20px;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-bottom: 20px;
-    font-weight: 400;
-    border-radius: 1em;
-}
+/*.registrationButton {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    flex-direction: column;*/
+/*    width: 30vw;*/
+/*    margin: 20px;*/
+/*    !*background-color: rgba(0, 0, 0, 0.4);*!*/
+/*    padding-bottom: 20px;*/
+/*    font-weight: 400;*/
+/*    border-radius: 1em;*/
+/*}*/
 
-.blurb {
-    margin-top: 10px;
+/*.blurb {*/
+/*    margin-top: 10px;*/
+/*    font-weight: 300;*/
+/*    font-size: large;*/
+/*}*/
+
+.joinOrCreate {
+    font-size: x-large;
     font-weight: 300;
-    font-size: large;
 }
 
+.attentionButton {
+    font-size: xxx-large;
+}
+
+
+
+/*      RIGHT SIDE STUFF        */
 .rightSide {
     display: flex;
     width: 40vw;
     margin: 20px;
-    background-color: rgba(0, 0, 0, 0.4);
+    /*background-color: rgba(0, 0, 0, 0.4);*/
     border-radius: 1em;
-}
-
-.tooRight {
-    display: flex;
-    max-width: none;
-    justify-content: space-between;
 }
 
 .battleItOut {
@@ -108,4 +127,55 @@
 
 .battleColumn {
     padding: 10px 10px;
+}
+
+
+/* Medium (641px to 1007px) */
+@media (min-width: 641px) and (max-width: 1007px) {
+
+    .tooRight {
+        flex-direction: column;
+    }
+
+    .leftSide {
+        width: 90vw;
+    }
+
+    .rightSide {
+        width: 90vw;
+    }
+}
+
+
+/* Small */
+@media (min-width: 412px) and (max-width: 640px) {
+    .tooRight {
+        flex-direction: column;
+    }
+
+    .leftSide {
+        width: 90vw;
+    }
+
+    .rightSide {
+        width: 90vw;
+    }
+}
+
+/*  smallest    */
+@media (max-width: 411px) {
+    .attentionButton {
+        font-size: xx-large;
+    }
+    .tooRight {
+        flex-direction: column;
+    }
+
+    .leftSide {
+        width: 90vw;
+    }
+
+    .rightSide {
+        width: 90vw;
+    }
 }
