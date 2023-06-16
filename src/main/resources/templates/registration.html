@@ -4,9 +4,9 @@
 <body>
 <div class="page-wrapper">
   <header th:replace="partials/navbar :: navbar"></header>
-  <div class="container grow">
-    <div class="row grow">
-      <div class="column grow">
+  <div class="container grow align-center justify-center" style="margin-top: 100px">
+    <div class="row justify-center align-center">
+      <div class="column register-form align-center">
         <h1>Join the Fight!</h1><br><br>
         <form th:action="@{/register}" th:method="post">
             <label for="username">Username</label><br>
@@ -14,19 +14,43 @@
             <label for="email">Email</label><br>
             <input class="row" type="email" id="email" name="email"><br>
             <label for="password">Password</label><br>
-            <input class="row" type="password" id="password" name="password"><br>
+            <input class="row" type="password" id="password" name="password" onkeyup="passConfirm()"><br>
             <label for="password">Confirm Password</label><br>
-            <input class="row" type="password" id="passwordConfirmation" name="passwordConfirmation"><br>
-            <input class="row submit" type="submit" value="               Sign me up !"><br>
+            <input class="row" type="password" id="passwordConfirmation" name="passwordConfirmation" onkeyup="passConfirm()"><br>
+
+            <div class="justify-center align-center text-center" id="message"></div>
+
+            <input class="row justify-center submit login-register-Btn" type="submit" value="Sign me up !"><br>
           <div class="row register-link">
               <a th:href="@{/login}">Already Registered? Click Me To Log In!</a>
           </div>
         </form>
-
       </div>
     </div>
+      <div class="row" style="height: 50px">
+          <img class="monster-sneak3" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(2).getMonster_img()}">
+          <img class="monster-sneak4" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(3).getMonster_img()}">
+      </div>
   </div>
 </div>
 <footer th:replace="partials/footer :: footer"></footer>
+<script>
+
+    function passConfirm() {
+        let password = document.getElementById(`password`).value;
+        let confirmPassword = document.getElementById(`passwordConfirmation`).value;
+        let message = document.getElementById(`message`);
+        if (password === confirmPassword) {
+            message.style.color = `teal`;
+            message.innerHTML = `Passwords match.`
+        } else {
+            message.style.color = `red`;
+            message.innerHTML = `Passwords do not match.`
+        }
+        document.getElementById(`password`).onkeyup = passConfirm;
+        document.getElementById(`confirm_password`).onkeyup = passConfirm;
+    }
+
+</script>
 </body>
 </html>

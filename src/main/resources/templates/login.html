@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
-<head th:replace="partials/head :: head ('Log In')"></head>
+<head th:replace="~{partials/head :: head ('Log In')}"></head>
 <body>
 <div class="page-wrapper">
-    <header th:replace="partials/navbar :: navbar"></header>
-    <div class="container grow">
-        <div class="row grow">
-            <div class="column grow">
-                        <h1>Log In</h1><br><br>
+    <nav th:replace="~{partials/navbar :: navbar}"></nav>
+    <div class="container grow align-center justify-center" style="margin-top: 120px">
+        <div class="row justify-center">
+            <div class="column shrink loginForm">
+                <h1>Log In</h1><br>
 
-
-                        <form th:action="@{/login}" th:method="post">
-                            <label for="username">Username</label><br>
-                            <input class="row" type="text" id="username" name="username"><br>
-                            <label for="password">Password</label><br>
-                            <input class="row" type="password" id="password" name="password"><br><br>
-                            <input class="row" type="submit" value="                Log In"><br><br><br>
-                            <div class="row register-link">
-                                <a th:href="@{/register}">Not Registered? Click Me To Sign Up!</a>
-                            </div>
-                        </form>
-
+                <form th:action="@{/login}" th:method="post">
+                    <label for="username">Username</label><br>
+                    <input class="row" type="text" id="username" name="username" autofocus><br>
+                    <label for="password">Password</label><br>
+                    <input class="row" type="password" id="password" name="password"><br><br>
+                    <input class="row justify-center login-register-Btn" type="submit" value="Log In"><br><br>
+                    <div class="row register-link">
+                        <a th:href="@{/register}">Not Registered? Click Me To Sign Up!</a>
+                    </div>
+                </form>
             </div>
+            <div class="anchor"></div>
         </div>
+        <div class="row" style="height: 50px">
+            <img class="monster-sneak1" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(0).getMonster_img()}">
+            <img class="monster-sneak2" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(1).getMonster_img()}">
+        </div>
+
     </div>
 </div>
-<footer th:replace="partials/footer :: footer"></footer>
+<footer th:replace="~{partials/footer :: footer}"></footer>
 </body>
 </html>

@@ -1,45 +1,21 @@
+// DOM ELEMENTS
 const battleIcon = document.querySelector('.battle-icon')
+const battleIconPopOut = document.querySelector('.battle-icon-pop-out')
 const battleSlideOut = document.querySelector('.battle-slide-out')
-const battleCheckbox = document.querySelector('.battle-checkbox')
-const battleText = document.querySelector('.battle-text')
-const addBattleWrap = document.querySelector('.add-battle-wrap')
-const addBattleInput = document.querySelector('.add-battle-input')
-const addBattleBtn = document.querySelector('.add-battle-btn')
-const taskModal = document.querySelector('.task-modal');
-const modalOverlay = document.querySelector('.modal-overlay');
-const openTaskModal = document.querySelector('.new-task-wrap');
-
-battleIcon.addEventListener('click', e => {
-    e.preventDefault()
-    battleSlideOut.classList.toggle('open')
-})
-
-battleCheckbox.addEventListener('click', e => {
-    e.preventDefault()
-    battleText.style.textDecoration === 'line-through' ? (battleText.style.textDecoration = 'none') && (battleCheckbox.style.background = 'var(--primary)') : (battleText.style.textDecoration = 'line-through') && (battleCheckbox.style.background = '#000')
-    battleCheckbox.style.background === 'var(--primary)' ? battleCheckbox.style.boxShadow = 'inset 0 0 8px #000' : battleCheckbox.style.boxShadow = 'inset 0 0 8px var(--primary)'
-    console.log('fired')
-})
-
-addBattleBtn.addEventListener('click', () => {
-    addBattleWrap.classList.toggle('active')
-    addBattleInput.focus()
-})
-
-openTaskModal.addEventListener('click', e => {
-    modalOverlay.classList.toggle('hidden');
-    taskModal.classList.toggle('hidden');
-})
-
-modalOverlay.addEventListener('click', e => {
-    modalOverlay.classList.toggle('hidden');
-    taskModal.classList.toggle('hidden')
-})
+const createBattleForm = document.querySelector('.create-battle-form')
+const createBattleInput = document.querySelector('.create-battle-input')
+const createBattleBtn = document.querySelector('.create-battle-btn')
+const battlesList = document.querySelector('.battles-list')
+const battle = document.querySelector('.battle')
+const battleTitle = document.querySelector('.battle-title')
+const tasks = document.querySelector('.tasks')
+const tasksList = document.querySelector('.tasks-list')
+const tasksBattleTitle = document.querySelector('.tasks-battle-title')
+const createTaskForm = document.querySelector('.create-task-form')
+const createTaskInput = document.querySelector('.create-task-input')
+const createTaskBtn = document.querySelector('.create-task-btn')
+const task = document.querySelector('.task')
+const taskBody = document.querySelector('.task-body')
 
 
 
-const logOutForm = document.getElementById("logOutForm");
-const logOutButton = document.getElementById("logOutButton");
-logOutButton.addEventListener('click', () => {
-    logOutForm.submit();
-});

@@ -1,36 +1,61 @@
 <div th:fragment="navbar" class="nav" xmlns:sec="http://www.w3.org/1999/xhtml">
-  <div class="nav-wrap">
+  <div class="logo-wrap">
+    <div class="icon">
+      <img src="/images/dustBunny.png" alt="icon">
+    </div>
     <div class="logo">
-      <h2 class="nav-logo">Dungeons and Dust Bunnies</h2>
-      <div class="icon">
-        <img src="/images/dustBunny.png" alt="icon">
-      </div>
+      <h2 class="nav-logo">Dungeons & Dust Bunnies</h2>
+      <h2 class="nav-logo-short">D&DB</h2>
     </div>
   </div>
   <div class="menu-wrap">
     <ul>
       <li><a th:href="@{/}">Home</a></li>
-      <li><a th:href="@{/profile}">Profile</a></li>
       <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
       <li sec:authorize="isAuthenticated()"><a id="logOutButton">Logout</a></li>
+      <li sec:authorize="isAuthenticated()"><a th:href="@{/profile}">Profile</a></li>
       <li><a th:href="@{/battlegrounds}">Battlegrounds</a></li>
       <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}">Register</a></li>
     </ul>
-    <ul class="dropdown">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-    <form style="visibility: hidden" th:action="@{/logout}" th:method="post" id="logOutForm">
-      <button>#</button>
+    <form class="logout-form hidden" th:action="@{/logout}" th:method="post" id="logOutForm">
+      <button class="logout-btn">#</button>
     </form>
   </div>
+  <div class="dropdown">
+    <button onclick="toggleDropdown()" class="dropbtn" id="drpobtn">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </button>
+    <div id="myDropdown" class="dropdown-content">
+      <a th:href="@{/}">Home</a>
+      <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
+      <a sec:authorize="isAuthenticated()" id="logOutButtonDD">Logout</a>
+      <a sec:authorize="isAuthenticated()" th:href="@{/profile}">Profile</a>
+      <a th:href="@{/battlegrounds}">Battlegrounds</a>
+      <a sec:authorize="!isAuthenticated()" th:href="@{/register}">Register</a>
+    </div>
+  </div>
+
   <script>
-    const logOutForm = document.getElementById("logOutForm");
-    const logOutButton = document.getElementById("logOutButton");
-    logOutButton.addEventListener('click', () => {
+      const logOutForm = document.getElementById("logOutForm");
+      const logOutButton = document.getElementById("logOutButton");
+        const logOutButtonDD = document.getElementById("logOutButtonDD");
+      logOutButton.addEventListener('click', () => {
       logOutForm.submit();
     });
+        logOutButtonDD.addEventListener('click', () => {
+            logOutForm.submit();
+        });
+
+        /* When the user clicks on the button with the id="drpobtn", it opens the dropdown menu by adding the show class to the button */
+      function toggleDropdown() {
+        var dropdown = document.getElementById("myDropdown");
+        var button = document.getElementById("drpobtn");
+
+        dropdown.classList.toggle("show");
+        button.classList.toggle("active");
+      }
+
   </script>
 </div>

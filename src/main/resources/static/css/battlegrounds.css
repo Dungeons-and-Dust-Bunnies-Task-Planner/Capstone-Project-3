@@ -1,231 +1,126 @@
-.task-modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    max-height: 165px;
+.battle-icon {
+    position: fixed;
+    top: 120px;
+    left: 15px;
+    z-index: 5;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: var(--cta2) inset 0 0 2px 2px;
+    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), rgba(155, 58, 255, .5);
+    backdrop-filter: blur(10px);
+}
+
+.battle-icon > img {
     height: 100%;
-    max-width: 500px;
-    width: 100%;
-    border-radius: .5em;
+    aspect-ratio: auto;
     box-shadow: #000 0 0 3px 1px;
-    border:none;
-    outline:none;
-    background: var(--background);
-    font-family: Barrio, Inter, sans-serif;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.battle-icon-pop-out {
+    position: fixed;
+    top: 125px;
+    left: 15px;
     z-index: 4;
-}
-
-
-.task-modal > form {
-    height: 100%;
-    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
-    row-gap: 15px;
-    padding: 15px;
-}
-
-.task-modal > form > input {
-    height: 50px;
-    padding: 6px 8px;
-    border: none;
-    outline: none;
-    box-shadow: inset #000 0 0 3px 1px;
-    background: var(--secondary);
-    color: var(--primary);
-    text-shadow: 0 1px 3px #000;
-    font-size: 2.5em;
-    border-radius: .2em;
-}
-
-.task-modal > form > input:focus {
-}
-
-.task-modal > form > button {
-    padding: 6px 8px;
-    height: 70px;
-    box-shadow: inset #000 0 0 3px 1px;
-    background: var(--primary);
-    text-shadow: 0 1px 3px #000;
+    height: 92px;
+    width: 0;
     color: #fff;
-    font-size: 2em;
     border: none;
-    outline: none;
-    border-radius: .2em;
-    transition: all ease-out .3s;
+    box-shadow: none;
+    padding: 10px;
+    background: none;
+    border-radius: 2.5em 0 0 2.5em;
+    text-align: center;
+    flex-direction: column;
+    font-size: 0;
+    justify-content: center;
+    align-items: center;
+    font-family: Barrio, Inter, sans-serif;
+    transition: all ease-out .4s .4s;
 }
 
-.task-modal > form > button:hover {
-    box-shadow: inset 0 0 3px #000;
-    font-size: 2.1em;
-}
-
-.modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    z-index: 3;
-    backdrop-filter: blur(5px);
+.battle-icon-pop-out.show {
+    width: 32vw;
+    font-size: 3em;
+    box-shadow: var(--cta2) inset 0 0 3px 2px;
+    background: var(--background);
 }
 
 .battle-slide-out {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 35vw;
-    background: var(--slide-out-bg);
+    position: fixed;
+    top: 126px;
+    left: 15px;
+    /*height: 100vh;*/
+    height: 0;
+    width: 32vw;
+    background:none;
     backdrop-filter: blur(10px);
-    padding: 190px 20px 0 0;
-    transform: translateX(-102%);
-    transition: all ease-out .4s;
+    padding-top: 105px;
+    /*transform: translateX(-102%);*/
+    z-index: 3;
+    border-radius: 2.5em 0 0 0;
+    overflow: hidden;
+    transition: all ease-out .4s .4s;
 }
 
 .battle-slide-out.open {
-    transform: translateX(0%);
+    /*transform: translateX(0%);*/
+    background: var(--background);
+    height: 100vh;
 }
 
-.battle-icon {
-    position: absolute;
-    top: 80px;
-    left: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    width: 100px;
-    z-index: 2;
-    cursor: pointer;
-    transition: all ease-out .4s;
-}
-
-
-.battle-icon:hover {
-    transform: rotate(360deg);
-}
-
-.add-battle-container {
-    position: absolute;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    right: 0;
-    top: 80px;
-    height: 80px;
-    width: 100%;
-    background: transparent;
-}
-
-.add-battle-wrap {
-    position: relative;
-}
-
-.add-battle-input,
-.add-battle-btn {
-    position: absolute;
-    top: -30px;
-    right: 15px;
-    height: 50px;
-    width: 50px;
-    border: none;
-    outline: none;
-    box-shadow: 0 0 5px #000;
-}
-
-.add-battle-input {
-    transition: width .3s ease-out;
-}
-
-.add-battle-btn {
-    background: var(--primary);
-    transition: transform .3s ease-out;
-}
-
-.add-battle-input:focus,
-.add-battle-btn:focus {
-    outline: none;
-}
-
-.add-battle-wrap.active .add-battle-input {
-    width: 250px
-}
-
-.add-battle-wrap.active .add-battle-btn {
-    transform: translateX(-251px);
-}
-
-.tasks-container {
+.battles-list {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 35vw;
-    padding: 190px 5px 0 40px;
-}
-
-.new-task-wrap {
-    display:flex;
-    align-items: center;
-    column-gap: 20px;
-    height: 50px;
-    width: 100%;
-    font-size: 1.5em;
-    font-family: Barrio, Inter, sans-serif;
-    cursor: pointer;
-    padding: 6px 8px;
+    row-gap: 20px;
+    padding: 10px;
     border: none;
-    border-radius: .5em;
-    box-shadow: inset #000 0 0 2px 1px;
-    transition: all ease-out .3s;
+    outline: none;
 }
 
-.new-task-wrap:hover{
-    background:var(--primary);
-    text-shadow: 0 0 3px #000;
+.create-battle-form {
+    /*display: none;*/
+}
+
+.hidden-form-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.create-battle-input {
+    height: 100px;
+    width: 100%;
+    background: var(--background);
+    border: none;
+    outline: none;
+    box-shadow: #000 inset 0 0 2px 1px;
     color: #fff;
 }
 
-.img-wrap {
-    height: 50px;
-    width: 50px;
-    padding: 6px 8px;
+.create-battle-input:focus {
+    background: var(--fade-green-purple)
 }
 
-.img-wrap > img {
-    height: 100%;
-    aspect-ratio: auto;
+.create-battle-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100px;
+    width: 100px;
+    background: var(--cta2);
 }
 
-.task {
-    display: flex;
-    align-items: center;
-    padding-left: 40px;
-    column-gap: 15px;
+.ul{
+    height:200px;
+    width:400px;
+    background:#fff;
 }
 
-.checkbox {
-    background: var(--primary);
-    width: 30px;
-    height: 30px;
-    box-shadow: inset 0 0 8px #000;
-    cursor: pointer;
-    transition: all ease-out .4s;
-}
-
-.checkbox:hover {
-    background: #000;
-    box-shadow: inset 0 0 8px var(--primary);
-}
-
-.task-text {
-    font-size: x-large;
-    text-decoration-color: var(--primary);
-}
-
-.monster {
-    flex: 3;
+.li{
+    background: var(--background);
+    color:#fff;
 }

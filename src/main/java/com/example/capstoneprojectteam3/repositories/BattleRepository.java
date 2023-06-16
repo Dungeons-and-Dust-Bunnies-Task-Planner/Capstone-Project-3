@@ -1,15 +1,25 @@
 package com.example.capstoneprojectteam3.repositories;
 
 import com.example.capstoneprojectteam3.models.Battle;
+import com.example.capstoneprojectteam3.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface BattleRepository extends JpaRepository<Battle, Long> {
+public interface BattleRepository extends JpaRepository<Battle, Long>{
 
-    @Query("from Battle b where b.user.id = :userId")
-    List<Battle> findAllByUserId(@Param("userId") Long userId);
+	@Query("select b from Battle b left join fetch b.tasks where b.id = :battleId")
+	Battle findByIdWithTasks(@Param("battleId") Long battleId);
+
+	@Query("from Battle b where b.user.id = :userId")
+	List<Battle> findAllByUserId(@Param("userId") Long userId);
+
+	boolean existsByTitleAndUser(String title, User user);
+
+
 
 }
+
+

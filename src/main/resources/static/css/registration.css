@@ -30,5 +30,129 @@
 
 .submit {
     align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
     margin-top: 1em;
+}
+
+.loginForm {
+    z-index: 99;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+    background: var(--fade-dark-purple);
+    border-radius: 12px;
+    width: 25rem;
+    height: 36rem;
+}
+
+.login-register-Btn {
+    height: 50px;
+    background: var(--cta2);
+    color: white;
+    font-weight: bold;
+    font-size: 23px;
+    border-radius: 10px;
+}
+
+.login-register-Btn:hover {
+    background: var(--fade-dark-purple);
+    cursor: pointer;
+}
+
+.loginForm {
+    z-index: 99;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+    background: var(--fade-dark-purple);
+    border-radius: 12px;
+    width: 25rem;
+    height: 36rem;
+}
+
+.register-form {
+    z-index: 99;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+    background: var(--fade-dark-purple);
+    border-radius: 12px;
+    width: 25rem;
+    height: 36rem;
+}
+
+.anchor {
+    height: 0;
+    width: 0;
+    position: absolute;
+}
+
+.monster-sneak1 {
+    transform: scaleX(-1);
+    top: -193px;
+    left: 156px;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    z-index: 1;
+}
+
+.monster-sneak2 {
+    top: -707px;
+    left: 331px;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    z-index: 2;
+}
+
+.monster-sneak3 {
+    top: -660px;
+    left: 178px;
+    height: 200px;
+    width: 258px;
+    position: relative;
+    z-index: 1;
+}
+
+.monster-sneak4 {
+    transform: scaleX(-1);
+    top: -212px;
+    left: 377px;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    z-index: 2;
+}
+
+
+
+/* Medium (641px to 1007px) */
+@media (min-width: 641px) and (max-width: 1007px) {
+
+    .monster-sneak1 {
+       display: none;
+    }
+
+    .monster-sneak3 {
+        display: none;
+    }
+    .monster-sneak4 {
+        display: none;
+    }
+}
+
+
+
+/* Small (less than 640px) */
+@media (max-width: 639px) {
+
+    .monster-sneak1 {
+        display: none;
+    }
+    .monster-sneak2 {
+        display: none;
+    }
+    .monster-sneak3 {
+        display: none;
+    }
+    .monster-sneak4 {
+        display: none;
+    }
 }

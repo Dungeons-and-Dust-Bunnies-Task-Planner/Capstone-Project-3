@@ -1,171 +1,19 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');*/
-
-/*!*      FONT FOR PAGE *!*/
-
-/*.h1Profile {*/
-/*    font-family: 'Inconsolata', monospace;*/
-/*    font-size: 75px;*/
-/*}*/
-/*.h2Profile {*/
-/*    font-family: 'Inconsolata', monospace;*/
-/*}*/
-
-/*.h4Profile {*/
-/*    font-family: 'Inconsolata', monospace;*/
-/*}*/
-
-/*.profileColumn {*/
-/*    display: flex;*/
-/*    flex: 0 0 1;*/
-/*}*/
-
-/*!*   COVER PHOTO    *!*/
-/*.coverPhoto {*/
-/*    width: 100vw;*/
-/*    height: 300px;*/
-/*    z-index: -1;*/
-/*    background-position: center;*/
-/*    background-repeat: no-repeat;*/
-/*    background-size: cover;*/
-/*    position: relative;*/
-/*}*/
-
-/*.picParent {*/
-/*  margin-top: 80px;*/
-/*    width: 100vw;*/
-/*}*/
-
-/*!*  AVATAR   *!*/
-/*.avatar-wrapper {*/
-/*    height: 200px;*/
-/*    width: 200px;*/
-/*    border-radius: 50%;*/
-/*    overflow: hidden;*/
-/*    border: 3px solid white;*/
-/*}*/
-
-/*.avatarPlacement {*/
-/*    margin-top: -200px;*/
-/*}*/
-
-/*!*  USER NAME   *!*/
-/*.username {*/
-/*    font-family: 'Inconsolata', monospace;*/
-/*    color: #fff;*/
-/*    max-width: 33vw;*/
-/*    padding: 0;*/
-/*    margin-top: 56px;*/
-/*    align-items: start;*/
-/*    overflow: hidden;*/
-/*}*/
-
-
-/*!*  EDIT BUTTON *!*/
-/*.editProfile {*/
-/*    margin-right: -500px;*/
-/*    max-width: 150px;*/
-/*    margin-bottom: 35px;*/
-/*    display: flex;*/
-/*    padding: 0;*/
-/*    flex-wrap: wrap;*/
-/*    align-content: end;*/
-/*    justify-content: end;*/
-/*}*/
-
-/*.editButton {*/
-/*    display: flex;*/
-/*    max-width: 33vw;*/
-/*    justify-content: end;*/
-/*}*/
-
-/*!*  BATTLE AREA     *!*/
-
-/*.battleRow {*/
-/*    margin: 50px 50px;*/
-/*    width: 75vw;*/
-/*    display: flex;*/
-/*}*/
-
-/*.battleArea {*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    justify-content: flex-start; !* Change to flex-start *!*/
-/*    align-content: flex-start; !* Add this line *!*/
-/*    background-color: rgba(155, 58, 227, 0.7);*/
-/*}*/
-
-/*.battleCard {*/
-/*    margin: 10px;*/
-/*    width: calc(25% - 20px); !* Change the width calculation *!*/
-/*    height: 200px;*/
-/*    max-width: 190px;*/
-/*    background-color: rgba(255, 255, 255, 0.7);*/
-/*    border-radius: 10px;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: space-evenly;*/
-/*    align-items: center;*/
-/*}*/
-
-/*.activeBattleRow {*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    justify-content: flex-start; !* Change to flex-start *!*/
-/*    align-content: flex-start; !* Add this line *!*/
-/*}*/
-
-
-/*!*      BADGES      *!*/
-
-/*.badgeRow {*/
-/*    margin: 50px 50px;*/
-/*    width: 75vw;*/
-/*    display: flex;*/
-/*}*/
-
-/*.badgeArea {*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    justify-content: flex-start; !* Change to flex-start *!*/
-/*    align-content: flex-start; !* Add this line *!*/
-/*    background-color: rgba(155, 58, 227, 0.7);*/
-/*}*/
-
-/*.badgeCard {*/
-/*    margin: 10px;*/
-/*    width: calc(25% - 20px); !* Change the width calculation *!*/
-/*    height: 200px;*/
-/*    max-width: 190px;*/
-/*    background-color: rgba(255, 255, 255, 0.7);*/
-/*    border-radius: 10px;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: space-evenly;*/
-/*    align-items: center;*/
-/*}*/
-
-/*.activeBadgeRow {*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*    justify-content: flex-start; !* Change to flex-start *!*/
-/*    align-content: flex-start; !* Add this line *!*/
-/*}*/
-
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,900;0,1000;1,800;1,900;1,1000&display=swap');
 
 /* FONT FOR PAGE */
 
 .h1Profile {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Nunito', sans-serif;
     font-size: 75px;
 }
 
 .h2Profile {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Nunito', sans-serif;
 }
 
 .h4Profile {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Nunito', sans-serif;
 }
 
 .profileColumn {
@@ -184,21 +32,27 @@
     position: relative;
 }
 
+.picParent {
+    margin-top: 80px;
+    width: 100vw;
+}
+
+/*  EDIT PROFILE MODAL  */
 .edit-modal {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    max-height: 522px;
+    max-height: 570px;
     height: 100%;
     max-width: 500px;
     width: 100%;
     border-radius: .5em;
-    box-shadow: #000 0 0 3px 1px;
-    border:none;
-    outline:none;
-    background: var(--background);
-    /*font-family: Barrio, Inter, sans-serif;*/
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+    background: var(--fade-dark-purple);
+    border: none;
+    outline: none;
+    font-family: Poppin, Inter, sans-serif;
     color: white;
     z-index: 4;
 }
@@ -207,25 +61,31 @@
 .edit-modal > form {
     height: 100%;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
-    row-gap: 1px;
     padding: 1px;
 }
 
 .edit-modal > form > input {
-    height: 50px;
+    height: 54px;
+    width: 450px;
     padding: 6px 8px;
-    border: none;
+    border: 1px solid cornflowerblue;
     outline: none;
     box-shadow: inset #000 0 0 3px 1px;
-    background: var(--secondary);
-    color: var(--primary);
-    text-shadow: 0 1px 3px #000;
-    font-size: 2.5em;
-    border-radius: .2em;
+    font-size: 2.25em;
+    border-radius: 0.2em;
+    justify-content: center;
+    font-weight: 400;
+    flex-wrap: wrap;
+    align-content: center;
+}
+input.submit-btn{
+    color: white;
+    background: var(--cta2);
+}
+
+input.submit-btn:hover {
+    background: var(--fade-purple);
+    cursor: pointer;
 }
 
 .edit-modal > form > input:focus {
@@ -235,7 +95,7 @@
     padding: 6px 8px;
     height: 70px;
     box-shadow: inset #000 0 0 3px 1px;
-    background: var(--primary);
+    background: cornflowerblue;
     text-shadow: 0 1px 3px #000;
     color: #fff;
     font-size: 2em;
@@ -251,7 +111,7 @@
 }
 
 .edit-modal-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -260,30 +120,49 @@
     backdrop-filter: blur(5px);
 }
 
-.picParent {
-    margin-top: 80px;
-    width: 100vw;
+.image-add {
+    background: var(--fade-blue);
+    border: none;
+    width: 48%;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 20px 2px;
+    cursor: pointer;
+    border-radius: 12px;
 }
 
 /* AVATAR */
+
+/* AVATAR */
+.picName {
+    display: flex;
+}
+
 .avatar-wrapper {
     height: 200px;
     width: 200px;
+    display: flex;
     border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid white;
+    border: 5px solid #fff;
 }
 
 .avatarPlacement {
     margin-top: -200px;
+    max-width: 90vw;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* USER NAME */
 .username {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Nunito', sans-serif;
     color: #fff;
     max-width: 33vw;
-    padding: 0;
+    padding: 0 15px;
     margin-top: 56px;
     align-items: start;
     overflow: hidden;
@@ -291,15 +170,12 @@
 
 /* EDIT BUTTON */
 .editProfile {
-    margin-right: -500px;
     max-width: 150px;
     margin-bottom: 35px;
-    display: flex;
-    padding: 0;
     flex-wrap: wrap;
-    align-content: end;
     justify-content: end;
 }
+
 
 .editButton {
     display: flex;
@@ -315,25 +191,25 @@
 }
 
 .battleArea {
+    width: 75vw;
     display: flex;
-    flex-wrap: wrap;
     justify-content: flex-start;
     align-content: flex-start;
-    background-color: rgba(155, 58, 227, 0.1);
+    background: var(--fade-dark-purple);
     border-radius: .5em;
+    overflow: scroll;
 }
 
 .battleCard {
-    margin: 10px;
-    width: calc(25% - 20px);
-    height: 200px;
-    max-width: 190px;
+    width: 75vw;
+    min-height: 200px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    padding: 0px;
+    align-self: stretch;
     justify-content: space-evenly;
-    align-items: center;
 }
 
 .activeBattleRow {
@@ -341,6 +217,17 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: flex-start;
+    flex-direction: column;
+}
+
+.cardRow {
+    flex-wrap: wrap;
+    padding-bottom: 25px;
+}
+
+.battleTitle {
+    align-content: center;
+    justify-content: center;
 }
 
 /* BADGES */
@@ -354,23 +241,87 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    align-content: flex-start;
-    background-color: rgba(155, 58, 227, 0.1);
+    align-content: center;
+    min-width: calc(25% - 20px);
+    background: var(--fade-dark-purple);
     border-radius: .5em;
-}
-
-.badgeCard {
-    margin: 10px;
-    width: calc(25% - 20px);
-    height: 200px;
-    max-width: 190px;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
+    width: 75vw;
+    padding-bottom: 25px;
 }
 
 .activeBadgeRow {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-content: flex-start;
+    gap: 15px;
+    padding: 0 20px;
+}
+
+.badgeCard {
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    display: flex;
+    flex: 0 0 200px;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.badgeTitle {
+    text-align: center;
+}
+
+.badgeBody {
+    text-align: center;
+}
+
+/*  MEDIA QUERY         */
+
+/* Small (less than 640px) */
+@media (max-width: 639px) {
+    .avatarPlacement {
+        margin-top: -100px;
+    }
+
+    .username {
+        margin-top: 35px;
+    }
+
+    .avatar-wrapper {
+        height: 100px;
+        width: 100px;
+    }
+
+    .editProfile {
+        margin-bottom: 35px;
+    }
+
+    .h1Profile {
+        font-size: 35px;
+        margin-top: -35px;
+    }
+}
+
+/* Medium (641px to 1007px) */
+@media (min-width: 641px) and (max-width: 1007px) {
+    .avatarPlacement {
+        margin-top: -150px;
+    }
+
+    .username {
+        margin-top: 25px;
+    }
+
+    .avatar-wrapper {
+        height: 150px;
+        width: 150px;
+    }
+
+    .h1Profile {
+        font-size: 60px;
+        margin-top: 0;
+    }
+
+    .editProfile {}
 }

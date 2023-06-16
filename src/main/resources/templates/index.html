@@ -2,43 +2,74 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="~{partials/head :: head ('Home Page')}"></head>
 <body>
-<nav th:insert="~{partials/navbar :: navbar}"></nav>
+<nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>
 <div class="page-wrapper index">
-  <div class="container grow">
-    <div class="row grow full-width no-padding">
-      <div class="column land-BG">
-
-                <h1>
-                    <strong>Conquer Chores</strong>
-                </h1>
-
-
-                <h1>
-                    <strong>Battle Beasts</strong>
-                </h1>
-
-                <br>
-
-                <h2 class="land-h2">
-                    Transforming Mundane Tasks into Epic Quests!
-                </h2>
-
-                <br>
-
-          <h3 sec:authorize="!isAuthenticated()" class="land-h2">Join The Battle Here!</h3><br>
-          <h3 sec:authorize="!isAuthenticated()" class="land-h2"><a href="register">-> Register <-</a></h3>
-          <h3 sec:authorize="isAuthenticated()" class="land-h2">Create Your Battle!</h3><br>
-          <h3 sec:authorize="isAuthenticated()" class="land-h2"><a href="/battlegrounds">-> Create <-</a></h3>
-      </div>
-      <div class="column">
-        <h1>monster</h1>
-        <h1>monster</h1>
-        <h1>monster</h1>
-        <h1>monster</h1>
-      </div>
+    <!--    HEADER      -->
+    <div class="container CCBB">
+        <div class="row">
+            <h1>
+                <strong>Conquer Chores, Battle Beasts!</strong>
+            </h1>
+        </div>
     </div>
-  </div>
+
+    <div class="container">
+        <div class="row tooRight">
+            <div class="column">
+                <!--    LEFT SIDE CONTAINER-->
+                <div class="container leftSide">
+                    <!--        TOP CONTAINER   -->
+                    <div class="container description">
+                        <div class="row">
+                            <div class="column landCol">
+                                <h2 class="land-h2 attentionGetter">
+                                    Transforming Mundane Tasks into Epic Quests!
+                                </h2>
+                                <h4 class="blurb">Unleash the hero within and conquer your chores with DnDB! This innovative app
+                                    turns
+                                    your to-do list into thrilling monster battles, where completing tasks chips away at the enemy's
+                                    health. Unlock badges, earn rewards, and transform mundane tasks into epic quests with DnDB's
+                                    gamified productivity experience!</h4>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--        REGISTRATION CONTAINER      -->
+                    <div class="container registrationButton">
+                        <div class="row justify-center">
+                            <h3 sec:authorize="!isAuthenticated()" class="land-h2 attentionGetter">Answer Your Calling, Join The
+                                Battle</h3><br>
+                            <h3 sec:authorize="isAuthenticated()" class="land-h2">Create Your Battle!</h3><br>
+                        </div>
+                        <div class="row justify-center">
+                            <h3 sec:authorize="!isAuthenticated()" class="land-h2"><a href="/register">-> Register <-</a></h3>
+                            <h3 sec:authorize="isAuthenticated()" class="land-h2"><a href="/battlegrounds">-> Create <-</a></h3>
+                        </div>
+                    </div>
+                </div>
+                <!--    LEFT SIDE END   -->
+
+
+            </div>
+            <div class="column">
+
+
+                <!--    RIGHT SIDE CONTAINER-->
+                <div class="rightSide container">
+                    <div class="row">
+                        <div class="column battleColumn">
+                            <h3 class="battleItOut">Battle It Out!</h3><br>
+                            <img class="MonsterImages" src="https://cdn.discordapp.com/attachments/415980182021603329/1119091591173382236/Untitled_Artwork.png" alt="monsters">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div th:insert="~{partials/footer :: footer}"></div>
 </div>
-<footer th:insert="~{partials/footer :: footer}"></footer>
 </body>
 </html>
