@@ -60,7 +60,14 @@
                       <!------------  BTN FOR battle Complete increment      ------------>
     <!--                    <form th:action="@{/battlegrounds/complete}" th:method="post">-->
     <!--                        <button type="submit"  id="battleComplete" name="battleComplete">Finish Him!</button>-->
-    <!--                    </form>-->
+        <!--                    </form>-->
+
+                        <div th:if="${battles.size() == 0}" class="battleCard">
+                            <div class="column battleTitle">
+                                <h2 class="battleTitle">No Active Battles</h2>
+                                <button class="non-Btn"><a th:href="@{/battlegrounds}" >Create Battle</a></button>
+                            </div>
+                        </div>
                         <div th:each="battle : ${battles}" class="battleCard">
                             <div class="column">
                                 <img src="https://dummyimage.com/100x100/bf2a2a/ffffff" alt="Active Battle Image">
