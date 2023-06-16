@@ -1,11 +1,14 @@
 <div th:fragment="navbar" class="nav" xmlns:sec="http://www.w3.org/1999/xhtml">
   <div class="logo-wrap">
-    <div class="icon">
-      <img src="/images/dustBunny.png" alt="icon">
+    <div class="logo-text">
+      <div class="nav-logo">
+        <span>Dungeons</span>
+        <span>& Dust Bunnies </span>
+      </div>
+      <div class="nav-logo-short">D&DB</div>
     </div>
-    <div class="logo">
-      <h2 class="nav-logo">Dungeons & Dust Bunnies</h2>
-      <h2 class="nav-logo-short">D&DB</h2>
+    <div class="nav-icon">
+      <img class="nav-icon-img" src="/images/dustBunny.png" alt="icon">
     </div>
   </div>
   <div class="menu-wrap">
@@ -38,24 +41,24 @@
   </div>
 
   <script>
-      const logOutForm = document.getElementById("logOutForm");
-      const logOutButton = document.getElementById("logOutButton");
-        const logOutButtonDD = document.getElementById("logOutButtonDD");
-      logOutButton.addEventListener('click', () => {
-      logOutForm.submit();
-    });
-        logOutButtonDD.addEventListener('click', () => {
-            logOutForm.submit();
-        });
+			const logOutForm = document.getElementById('logOutForm')
+			const logOutButton = document.getElementById('logOutButton')
+			const logOutButtonDD = document.getElementById('logOutButtonDD')
+			logOutButton.addEventListener('click', () => {
+					logOutForm.submit()
+			})
+			logOutButtonDD.addEventListener('click', () => {
+					logOutForm.submit()
+			})
 
-        /* When the user clicks on the button with the id="drpobtn", it opens the dropdown menu by adding the show class to the button */
-      function toggleDropdown() {
-        var dropdown = document.getElementById("myDropdown");
-        var button = document.getElementById("drpobtn");
+			/* When the user clicks on the button with the id="drpobtn", it opens the dropdown menu by adding the show class to the button */
+			function toggleDropdown() {
+					var dropdown = document.getElementById('myDropdown')
+					var button = document.getElementById('drpobtn')
 
-        dropdown.classList.toggle("show");
-        button.classList.toggle("active");
-      }
+					dropdown.classList.toggle('show')
+					button.classList.toggle('active')
+			}
 
   </script>
 </div>

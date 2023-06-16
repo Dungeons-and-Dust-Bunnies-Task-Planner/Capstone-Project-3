@@ -17,5 +17,14 @@ const createTaskBtn = document.querySelector('.create-task-btn')
 const task = document.querySelector('.task')
 const taskBody = document.querySelector('.task-body')
 
-
+// EVENT LISTENERS
+battleIcon.addEventListener('click', () => {
+		if (battleIconPopOut.classList.contains('show')) {
+				setTimeout((() => battleIconPopOut.classList.toggle('show')), 300)
+				battleSlideOut.classList.toggle('open')
+		} else {
+				setTimeout((() => battleSlideOut.classList.toggle('open')), 300)
+				battleIconPopOut.classList.toggle('show')
+		}
+})
 
