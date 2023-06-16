@@ -10,6 +10,7 @@
     box-shadow: var(--cta2) inset 0 0 2px 2px;
     background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), rgba(155, 58, 255, .5);
     backdrop-filter: blur(10px);
+    cursor: pointer;
 }
 
 .battle-icon > img {
@@ -54,13 +55,11 @@
     position: fixed;
     top: 126px;
     left: 15px;
-    /*height: 100vh;*/
     height: 0;
     width: 32vw;
-    background:none;
-    backdrop-filter: blur(10px);
+    background: none;
+    backdrop-filter: none;
     padding-top: 105px;
-    /*transform: translateX(-102%);*/
     z-index: 3;
     border-radius: 2.5em 0 0 0;
     overflow: hidden;
@@ -68,8 +67,8 @@
 }
 
 .battle-slide-out.open {
-    /*transform: translateX(0%);*/
     background: var(--background);
+    backdrop-filter: blur(10px);
     height: 100vh;
 }
 
@@ -111,16 +110,20 @@
     right: 0;
     height: 100px;
     width: 100px;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: var(--cta2) inset 0 0 2px 2px;
+    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), rgba(155, 58, 255, .5);
     background: var(--cta2);
 }
 
-.ul{
-    height:200px;
-    width:400px;
-    background:#fff;
+.ul {
+    height: 200px;
+    width: 400px;
+    background: #fff;
 }
 
-.li{
+.li {
     background: var(--background);
-    color:#fff;
+    color: #fff;
 }

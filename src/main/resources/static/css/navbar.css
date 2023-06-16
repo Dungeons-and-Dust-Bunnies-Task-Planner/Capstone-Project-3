@@ -8,7 +8,6 @@
     align-items: stretch;
     height: 75px;
     width: 100vw;
-    padding: 0;
     color: #fff;
     font-family: Poppin, Inter, sans-serif;
     font-size: 1.3rem;
@@ -25,16 +24,19 @@
     align-items: center;
 }
 
-.logo-wrap {
+.nav-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px 0;
+}
+
+.nav-logo-wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0 10px 15px;
     width: 35vw;
-}
-
-.nav-logo {
-    font-size: 1.7rem;
 }
 
 .logo {
@@ -48,17 +50,7 @@
     font-family: Barrio, Inter, sans-serif;
 }
 
-.nav-logo {
-    flex: 1;
-}
-
-.nav-menu {
-    display: flex;
-    justify-content: flex-end;
-    flex: 2;
-}
-
-.icon {
+.nav-icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,12 +60,16 @@
     aspect-ratio: auto;
 }
 
-.icon img {
-    height: 85%;
-    aspect-ratio: auto;
-    background-color: var(--cta2);
-    border-radius: 0.9em;
+.nav-icon-img {
+
 }
+
+/*.nav-icon img {*/
+/*    height: 85%;*/
+/*    aspect-ratio: auto;*/
+/*    background-color: var(--cta2);*/
+/*    border-radius: 0.9em;*/
+/*}*/
 
 .menu-wrap ul {
     display: flex;
@@ -99,6 +95,10 @@
     background: var(--primary);
 }
 
+.nav-logo-short {
+    display: none;
+}
+
 
 /*///////*/
 /* Dropdown */
@@ -107,12 +107,14 @@
     display: none;
 }
 
+
 /*///////*/
 /* Dropdown Button */
-@media screen and (max-width: 901px) {
+@media screen and (max-width: 1007px) {
     .menu-wrap {
         display: none;
     }
+
     .dropdown {
         display: none;
     }
@@ -120,7 +122,8 @@
     .dropdown {
         display: block;
         position: relative;
-        padding: 10px 100px 0px 0px;
+        padding: 10px 5px 0px 0px;
+
     }
 
     .dropbtn {
@@ -131,21 +134,22 @@
         border: none;
         cursor: pointer;
         border-radius: .5em;
-        padding: 5px;
+        padding: 10px;
     }
 
-    /* Dropdown button on hover & focus */
-    .dropbtn:hover,
-    .dropbtn:focus {
-        background-color: var(--fade-green-purple);
+    /* Dropdown button on hover & on click */
+    /*.dropbtn:active,*/
+    .dropbtn.active,
+    .dropbtn:hover {
+        background: var(--fade-green-purple);
     }
 
     /* Hamburger Bars */
     .bar {
-        width: 25px;
-        height: 3px;
+        width: 50px;
+        height: 5px;
         background-color: white;
-        margin: 4px 0;
+        margin: 5px 0;
         transition: 0.4s;
     }
 
@@ -170,6 +174,8 @@
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
+        margin-left: -4.8em;
+        border-radius: 1em;
     }
 
     /* Links inside the dropdown */
@@ -189,4 +195,19 @@
     .show {
         display: block;
     }
+
+}
+
+@media screen and (max-width: 640px) {
+
+    .nav-logo-short {
+        display: block;
+        position: absolute;
+    }
+
+    .nav-logo {
+        display: none;
+    }
+
+
 }
