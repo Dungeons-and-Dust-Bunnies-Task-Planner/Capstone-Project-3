@@ -3,6 +3,8 @@ package com.example.capstoneprojectteam3.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="tasks")
 public class Task {
@@ -18,6 +20,10 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "battle_id")
     private Battle battle;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "tasks")
+    private List<Badge> badges;
 
     @Column(nullable = false)
     private int taskComplete;
@@ -41,6 +47,13 @@ public class Task {
         this.id = id;
         this.taskBody = taskBody;
         this.battle = battle;
+    }
+
+    public Task(String taskBody, Battle battle, List<Badge> badges, int taskComplete){
+        this.taskBody = taskBody;
+        this.battle = battle;
+        this.badges = badges;
+        this.taskComplete = taskComplete;
     }
 
     //    ----- Constructors END -----
@@ -81,6 +94,15 @@ public class Task {
         this.battle = battle;
     }
 
-//    ----- Getters and Setters END -----
+    public List<Badge> getBadges(){
+        return badges;
+    }
+
+    public void setBadges(List<Badge> badges){
+        this.badges = badges;
+    }
+
+
+    //    ----- Getters and Setters END -----
 
 }

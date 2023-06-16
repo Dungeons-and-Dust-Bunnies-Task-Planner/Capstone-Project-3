@@ -2,6 +2,8 @@ package com.example.capstoneprojectteam3.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,45 +35,46 @@ public class Battle{
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true, mappedBy="battle")
 	private List<Task> tasks;
 
-//    @Column(nullable = false)
-//    private String battleImage;
-//
-//    public String getBattleImage() {
-//        return battleImage;
-//    }
-//
-//    public void setBattleImage(String battleImage) {
-//        this.battleImage = battleImage;
-//    }
-
-
 	//    ----- Constructors START -----
 
 	public Battle(){}
 
-	public Battle(User user, Monster monster, List<Task> tasks){
+	public Battle(String title, Long status, User user, Monster monster, List<Task> tasks){
+		this.title = title;
+		this.status = status;
 		this.user = user;
 		this.monster = monster;
 		this.tasks = tasks;
 	}
 
-	public Battle(User user, Monster monster){
+	public Battle(String title, Long status, User user, Monster monster){
+		this.title = title;
+		this.status = status;
 		this.user = user;
 		this.monster = monster;
 	}
 
-	public Battle(Long id, User user, Monster monster, List<Task> tasks, Long status){
-		this.id = id;
+	public Battle(String title, Long status, User user){
+		this.title = title;
+		this.status = status;
+		this.user = user;
+	}
+
+	public Battle(String title, User user, Monster monster){
+		this.title = title;
 		this.user = user;
 		this.monster = monster;
 		this.tasks = tasks;
 		this.status = status;
 	}
 
-	//    ----- Constructors END -----
+	public Long getId(){
+		return id;
+	}
 
-	//    ----- Getters and Setters START -----
-
+	public void setId(Long id){
+		this.id = id;
+	}
 
 	public String getTitle(){
 		return title;
@@ -81,12 +84,12 @@ public class Battle{
 		this.title = title;
 	}
 
-	public void setId(Long id){
-		this.id = id;
+	public Long getStatus(){
+		return status;
 	}
 
-	public Long getId(){
-		return id;
+	public void setStatus(Long status){
+		this.status = status;
 	}
 
 	public User getUser(){

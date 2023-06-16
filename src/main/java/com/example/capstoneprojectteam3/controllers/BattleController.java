@@ -1,10 +1,8 @@
 package com.example.capstoneprojectteam3.controllers;
 
-import com.example.capstoneprojectteam3.models.Battle;
-import com.example.capstoneprojectteam3.models.MonsterImage;
-import com.example.capstoneprojectteam3.models.Task;
-import com.example.capstoneprojectteam3.models.User;
+import com.example.capstoneprojectteam3.models.*;
 import com.example.capstoneprojectteam3.repositories.BattleRepository;
+import com.example.capstoneprojectteam3.repositories.MonsterRepository;
 import com.example.capstoneprojectteam3.repositories.TaskRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,23 +18,48 @@ public class BattleController{
 	private final UserRepository usersDao;
 	private final BattleRepository battlesDao;
 	private final TaskRepository tasksDao;
+	private final MonsterRepository monstersDao;
 
-	public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao) {
+	public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao, MonsterRepository monstersDao){
 		this.usersDao = usersDao;
 		this.battlesDao = battlesDao;
 		this.tasksDao = tasksDao;
+		this.monstersDao = monstersDao;
 	}
 
 	@GetMapping("/battlegrounds")
-	public String showBattlegrounds(Model model) {
+	public String showBattlegrounds(Model model){
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		List<Battle> battles = battlesDao.findAllByUserId(user.getId());
 		model.addAttribute("battles", battles);
 		return "/battlegrounds";
 	}
 
+	@PostMapping("/battlegrounds/create-battle")
+	public String createBattle(@RequestParam(name="battleTitle") String title){
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user = usersDao.findUserById(user.getId());
+//		Monster newMonster = monstersDao.findMonsterById(4L);
+
+		Long nextMonsterId = monstersDao.getMaxMonsterId() + 1L;
+		while(monstersDao.existsById(nextMonsterId)){
+			nextMonsterId++;
+		}
+
+		boolean battleExists = battlesDao.existsByTitleAndUser(title, user);
+		if(battleExists){
+			return "redirect:/battlegrounds?error=duplicate";
+		}
+
+
+		Battle newBattle = new Battle(title, 5L, user, newMonster);
+
+		battlesDao.save(newBattle);
+		return "redirect:/battlegrounds";
+	}
+
 	@PostMapping("/battlegrounds/complete-task")
-	public String completeTask(@RequestParam(name = "taskId") Long taskId){
+	public String editTask(@RequestParam(name="taskId") Long taskId){
 		Task editTask = tasksDao.findTaskById(taskId);
 		editTask.setTaskComplete(1);
 		tasksDao.save(editTask);
@@ -44,8 +67,8 @@ public class BattleController{
 	}
 
 	@PostMapping("/battlegrounds/edit-task-body")
-	public String editTaskBody(@RequestParam(name = "editTaskBody") String taskBody,
-							   @RequestParam(name = "taskId") Long taskId){
+	public String editTaskBody(@RequestParam(name="editTaskBody") String taskBody,
+							   @RequestParam(name="taskId") Long taskId){
 
 		Task editTask = tasksDao.findTaskById(taskId);
 		editTask.setTaskBody(taskBody);
@@ -54,7 +77,7 @@ public class BattleController{
 	}
 
 	@PostMapping("/battlegrounds/delete-task")
-	public String deleteTask(@RequestParam(name = "taskId") Long taskId){
+	public String deleteTask(@RequestParam(name="taskId") Long taskId){
 		tasksDao.deleteById(taskId);
 		return "redirect:/battlegrounds";
 	}

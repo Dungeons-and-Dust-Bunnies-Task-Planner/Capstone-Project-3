@@ -4,66 +4,73 @@
 <body>
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
 <div class="page-wrapper">
-    <div class="container grow">
-        <div class="row grow full-width no-padding">
-            <!--      BATTLE SLIDE OUT-->
-            <div class="battle-icon">
-                <img src="/images/centered_logo.png" alt="battle icon">
+  <div class="container grow">
+    <div class="row grow full-width no-padding">
+      <!--      BATTLE SLIDE OUT-->
+      <div class="battle-icon">
+        <img src="/images/battle-axes.png" alt="battle icon">
+      </div>
+      <div class="battle-icon-pop-out">
+        <p class="battle-icon-pop-out-text">Battles!</p>
+      </div>
+      <section class="battle-slide-out open">
+        <div class="battles-list">
+          <div th:each="battle : ${battles}">
+            <div class="battle inactive" th:data-battle-id="${battle.id}">
+              <h3 class="battle-title" th:text="${battle.title}"></h3>
             </div>
-            <div class="battles-container-overlay hidden"></div>
-            <section class="battle-slide-out">
-                <!--        BATTLES CONTAINER-->
-                <div class="battles">
-                    <form action="/battlegrounds/create-battle" method="post" class="add-battle-form">
-                        <input type="text" name="title" class="add-battle-input" autofocus>
-                        <button type="submit" class="add-battle-btn">Create Battle</button>
-                    </form>
-                    <div th:each="battle : ${battles}">
-                        <div class="battle">
-                            <h2 th:text="${battle.title}"></h2>
-                            <p th:text="${battle.status}"></p>
-                            <!--              <form class="edit-battle-form" th:action=`@{/battlegrounds/battle/{id}/edit-battle?id=${battle.id}}`>-->
-                            <!--                <input class="edit-battle-input hidden" type="text" name="edit-battle" placeholder="Edit battle"-->
-                            <!--                       autofocus>-->
-                            <!--                <button class="edit-battle-btn hidden" type="submit">Submit Edit</button>-->
-                            <!--                <button class="open-edit-battle-btn">Edit battle</button>-->
-                            <!--              </form>-->
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--      TASKS CONTAINER-->
-            <section class="tasks">
-                <div class="tasks-list">
-
-                    <ul class="battle-tasks hidden" th:each="battle : ${battles}">
-                        <h2 class="battle-name" th:text="${battle.getTitle()}"></h2>
-                        <li class="task not-complete" th:each="task : ${battle.getTasks()}">
-
-                            <p class="complete" th:if="${task.getTaskComplete() > 0}" th:text="${task.getTaskBody()}"></p>
-                            <p class="not-complete" th:unless="${task.getTaskComplete() == 0}" th:text="${task.getTaskBody()}"></p>
-
-                            <form th:action="@{/battlegrounds/edit-task}" th:method="post">
-                                <input type="hidden" name="taskId" th:value="${task.getId()}">
-                                <button type="submit">complete task</button>
-                            </form>
-
-                            <button class="open-edit-task-btn" type="button">
-                                <img src="/images/plus-6.png" alt="button icon" class="open-edit-task-btn-img">
-                            </button>
-                        </li>
-                    </ul>
-
-                </div>
-            </section>
-            <!--      MONSTER DISPLAY-->
-            <section class="monster">
-                <div class="monster-image">
-                    <div class="monster-response"></div>
-                </div>
-            </section>
+          </div>
         </div>
+
+        <form class="create-battle-form" th:action="@{/battlegrounds/create-battle}" th:method="post">
+          <div class="hidden-form-wrap">
+            <input class="create-battle-input" type="text" placeholder="Add your battle..." name="battleTitle"/>
+            <button class="create-battle-btn" type="submit">Submit</button>
+          </div>
+        </form>
+
+      </section>
+      <!--      TASK CONTAINER-->
+      <section class="tasks">
+        <div class="tasks-list">
+
+          <ul class="battle-tasks" th:each="battle : ${battles}">
+            <h2 class="battle-name" th:text="${battle.getTitle()}"></h2>
+            <li class="task not-complete" th:each="task : ${battle.getTasks()}">
+
+              <p th:text="${task.getTaskBody()}"></p>
+<!--              <p class="not-complete" th:unless="${task.getTaskComplete() == 0}" th:text="${task.getTaskBody()}"></p>-->
+
+              <form th:action="@{/battlegrounds/complete-task}" th:method="post">
+                <input type="hidden" name="taskId" th:value="${task.getId()}">
+                <button type="submit">complete task</button>
+              </form>
+              <form th:action="@{/battlegrounds/edit-task-body}" th:method="post">
+                <input type="hidden" name="taskId" th:value="${task.getId()}">
+                <input type="text" name="editTaskBody" th:value="${task.getTaskBody()}">
+                <button type="submit">Edit task</button>
+              </form>
+              <form th:action="@{/battlegrounds/delete-task}" th:method="post">
+                <input type="hidden" name="taskId" th:value="${task.getId()}">
+                <button type="submit">Delete task</button>
+              </form>
+
+              <button class="open-edit-task-btn" type="button">
+<!--                <img src="/images/plus-6.png" alt="button icon" class="open-edit-task-btn-img">-->
+              </button>
+            </li>
+          </ul>
+
+        </div>
+      </section>
+      <!--      MONSTER DISPLAY-->
+      <section class="monster">
+        <div class="monster-image">
+          <div class="monster-response"></div>
+        </div>
+      </section>
     </div>
+  </div>
 </div>
 <footer th:insert="~{partials/footer :: footer}"></footer>
 <script src="/js/script.js"></script>

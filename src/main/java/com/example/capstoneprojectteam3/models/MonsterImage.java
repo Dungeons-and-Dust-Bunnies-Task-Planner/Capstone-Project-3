@@ -77,6 +77,8 @@ public class MonsterImage {
         return id;
     }
 
+
+
 //    private void updateImageBasedOnHP() {
 //        MonsterImage monsterImage = getMonsterImages();
 //        int currentHP = getHp();
