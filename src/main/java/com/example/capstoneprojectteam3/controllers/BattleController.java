@@ -5,6 +5,7 @@ import com.example.capstoneprojectteam3.repositories.BattleRepository;
 import com.example.capstoneprojectteam3.repositories.MonsterRepository;
 import com.example.capstoneprojectteam3.repositories.TaskRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
+import com.example.capstoneprojectteam3.utils.RandomNumGen;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,9 +40,12 @@ public class BattleController{
 	public String createBattle(@RequestParam(name="battleTitle") String title){
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		user = usersDao.findUserById(user.getId());
-		Monster newMonster = monstersDao.findMonsterById(4L);
+
+		int monsterMax = monstersDao.findAll().size();
+		long randomMonsterId = RandomNumGen.GenerateRandomMonsterId(monsterMax);
+		Monster newMonster = monstersDao.findMonsterById(randomMonsterId);
+
 		Battle newBattle = new Battle(title, 0L, user, newMonster);
-//		public Battle(String title, Long status, User user, Monster monster){
 		battlesDao.save(newBattle);
 		return "redirect:/battlegrounds";
 	}
@@ -59,6 +63,23 @@ public class BattleController{
 		Task editTask = tasksDao.findTaskById(taskId);
 		editTask.setTaskComplete(1);
 		tasksDao.save(editTask);
+		return "redirect:/battlegrounds";
+	}
+
+	@PostMapping("/battlegrounds/edit-battle-title")
+	public String editBattleTitle(
+			@RequestParam(name="battleId") Long battleId
+			,@RequestParam(name="battleTitle") String newBattleTitle){
+		Battle editBattle = battlesDao.findBattleById(battleId);
+		editBattle.setTitle(newBattleTitle);
+		battlesDao.save(editBattle);
+		return "redirect:/battlegrounds";
+	}
+
+	@PostMapping("/battlegrounds/delete-battle")
+	public String deleteBattle(
+			@RequestParam(name="battleId") Long battleId){
+		battlesDao.deleteById(battleId);
 		return "redirect:/battlegrounds";
 	}
 
