@@ -16,6 +16,7 @@
     /*overflow: hidden;*/
     background: rgba(0, 0, 0, .2);
     backdrop-filter: blur(10px);
+    padding-right: 40px;
 }
 
 .nav-wrap,
@@ -25,6 +26,10 @@
 }
 
 .logo-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 10px 15px;
     width: 35vw;
 }
 
@@ -53,12 +58,21 @@
     flex: 2;
 }
 
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.9em;
+    overflow: hidden;
+    width: 105px;
+    aspect-ratio: auto;
+}
+
 .icon img {
-    height: 65px;
+    height: 85%;
     aspect-ratio: auto;
     background-color: var(--cta2);
-    border-radius: 18px;
-    margin-left: 15px;
+    border-radius: 0.9em;
 }
 
 .menu-wrap ul {
@@ -118,7 +132,8 @@
     .dropbtn {
         background-color: var(--cta2);
         color: white;
-        /*font-size: 16px;*/
+        /*padding: 16px;*/
+        font-size: 16px;
         border: none;
         cursor: pointer;
         border-radius: .5em;

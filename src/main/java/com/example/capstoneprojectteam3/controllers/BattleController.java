@@ -1,13 +1,10 @@
 package com.example.capstoneprojectteam3.controllers;
 
-import com.example.capstoneprojectteam3.models.Battle;
-import com.example.capstoneprojectteam3.models.MonsterImage;
-import com.example.capstoneprojectteam3.models.User;
+import com.example.capstoneprojectteam3.models.*;
+import com.example.capstoneprojectteam3.repositories.BattleRepository;
+import com.example.capstoneprojectteam3.repositories.MonsterRepository;
+import com.example.capstoneprojectteam3.repositories.TaskRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
-import com.example.capstoneprojectteam3.services.BattleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,74 +13,61 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/battlegrounds")
 public class BattleController{
 
 	private final UserRepository usersDao;
-	public BattleController(UserRepository usersDao) {
+	private final BattleRepository battlesDao;
+	private final TaskRepository tasksDao;
+	private final MonsterRepository monstersDao;
+
+	public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao, MonsterRepository monstersDao){
 		this.usersDao = usersDao;
+		this.battlesDao = battlesDao;
+		this.tasksDao = tasksDao;
+		this.monstersDao = monstersDao;
 	}
 
-	@Autowired
-	private BattleService battleService;
-
-	@GetMapping
+	@GetMapping("/battlegrounds")
 	public String showBattlegrounds(Model model){
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		List<Battle> battles = battleService.getBattlesByUserId(user.getId());
+		List<Battle> battles = battlesDao.findAllByUserId(user.getId());
 		model.addAttribute("battles", battles);
-		return "battlegrounds";
+		return "/battlegrounds";
 	}
 
-//	@GetMapping("/battlegrounds")
-//	public String showBattlegrounds(Model model) {
-//		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		List<Battle> battles = battlesDao.findAllByUserId(user.getId());
-//		model.addAttribute("battles", battles);
-//		return "/battlegrounds";
-//	}
-
-	@PostMapping("/battle/{id}/activate")
-	@ResponseBody
-	public ResponseEntity<String> activateBattle(@PathVariable("id") Long battleId){
-		try{
-			battleService.updateBattleStatus(battleId, "active");
-			return ResponseEntity.ok("Battle activated successfully");
-		}catch(Exception e){
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to activate battle");
-		}
-	}
-
-	@PostMapping("/battle/{id}/deactivate")
-	@ResponseBody
-	public ResponseEntity<String> deactivateBattle(@PathVariable("id") Long battleId){
-		try{
-			battleService.updateBattleStatus(battleId, "inactive");
-			return ResponseEntity.ok("Battle deactivated successfully");
-		}catch(Exception e){
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to deactivate battle");
-		}
-	}
-
-	@PostMapping("/create-battle")
-	public String createBattle(@RequestParam("title") String title) {
-		battleService.createBattle(title);
+	@PostMapping("/battlegrounds/create-battle")
+	public String createBattle(@RequestParam(name="battleTitle") String title){
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user = usersDao.findUserById(user.getId());
+		Monster newMonster = monstersDao.findMonsterById(4L);
+		Battle newBattle = new Battle(title, 0L, user, newMonster);
+//		public Battle(String title, Long status, User user, Monster monster){
+		battlesDao.save(newBattle);
 		return "redirect:/battlegrounds";
 	}
 
-	@PostMapping("/battle/{id}/create-task")
-	@ResponseBody
-	public ResponseEntity<String> createTask(
-			@PathVariable("id") Long battleId,
-			@RequestParam("task-body") String taskBody,
-			@RequestParam("battleId") long id
-	){
-		try{
-			battleService.createTask(battleId, taskBody);
-			return ResponseEntity.ok("Task created successfully");
-		}catch(Exception e){
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create task");
-		}
+	@PostMapping("/battlegrounds/complete-task")
+	public String editTask(@RequestParam(name="taskId") Long taskId){
+		Task editTask = tasksDao.findTaskById(taskId);
+		editTask.setTaskComplete(1);
+		tasksDao.save(editTask);
+		return "redirect:/battlegrounds";
+	}
+
+	@PostMapping("/battlegrounds/edit-task-body")
+	public String editTaskBody(@RequestParam(name="editTaskBody") String taskBody,
+							   @RequestParam(name="taskId") Long taskId){
+
+		Task editTask = tasksDao.findTaskById(taskId);
+		editTask.setTaskBody(taskBody);
+		tasksDao.save(editTask);
+		return "redirect:/battlegrounds";
+	}
+
+	@PostMapping("/battlegrounds/delete-task")
+	public String deleteTask(@RequestParam(name="taskId") Long taskId){
+		tasksDao.deleteById(taskId);
+		return "redirect:/battlegrounds";
 	}
 
 	// Update the monster image based on the current HP
@@ -107,4 +91,3 @@ public class BattleController{
 	}
 
 }
-

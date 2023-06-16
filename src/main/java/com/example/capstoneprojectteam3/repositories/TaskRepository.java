@@ -11,4 +11,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     @Query("from Task t where t.battle.id = :battleId")
     List<Task> findAllByBattleId(@Param("battleId") Long battleId);
+
+    @Query("from Task t where t.id = :taskId")
+    Task findTaskById(@Param("taskId") Long taskId);
 }

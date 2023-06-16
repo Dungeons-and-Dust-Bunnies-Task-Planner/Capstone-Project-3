@@ -3,6 +3,7 @@ package com.example.capstoneprojectteam3.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,12 +20,12 @@ public class Badge {
     @Column(nullable = false)
     private String badgeBody;
 
-//    @JsonIgnore
-//    @ManyToOne
-//    @JoinColumn(name="user_id")
-//    private User user;
     @ManyToMany(mappedBy = "badges")
     private Set<User> users;
+
+    @ManyToMany
+    @JoinTable(name = "badge_tasks", joinColumns = @JoinColumn(name = "badge_id"), inverseJoinColumns = @JoinColumn(name = "task_id"))
+    private List<Task> tasks;
 
 
 //    ----- Constructors START -----
@@ -35,6 +36,13 @@ public class Badge {
     public Badge(String badgeTitle, String badgeBody) {
         this.badgeTitle = badgeTitle;
         this.badgeBody = badgeBody;
+    }
+
+    public Badge(String badgeTitle, String badgeBody, Set<User> users, List<Task> tasks){
+        this.badgeTitle = badgeTitle;
+        this.badgeBody = badgeBody;
+        this.users = users;
+        this.tasks = tasks;
     }
 
     //    ----- Constructors END -----
@@ -67,13 +75,6 @@ public class Badge {
         this.badgeBody = badgeBody;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 
     public Set<User> getUsers() {
         return users;
@@ -82,7 +83,16 @@ public class Badge {
     public void setUsers(Set<User> users) {
         this.users = users;
     }
-//    ----- Getters and Setters END -----
+
+    public List<Task> getTasks(){
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks){
+        this.tasks = tasks;
+    }
+
+    //    ----- Getters and Setters END -----
 
 
 }
