@@ -39,21 +39,9 @@ public class BattleController{
 	public String createBattle(@RequestParam(name="battleTitle") String title){
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		user = usersDao.findUserById(user.getId());
-//		Monster newMonster = monstersDao.findMonsterById(4L);
-
-		Long nextMonsterId = monstersDao.getMaxMonsterId() + 1L;
-		while(monstersDao.existsById(nextMonsterId)){
-			nextMonsterId++;
-		}
-
-		boolean battleExists = battlesDao.existsByTitleAndUser(title, user);
-		if(battleExists){
-			return "redirect:/battlegrounds?error=duplicate";
-		}
-
-
-		Battle newBattle = new Battle(title, 5L, user, newMonster);
-
+		Monster newMonster = monstersDao.findMonsterById(4L);
+		Battle newBattle = new Battle(title, 0L, user, newMonster);
+//		public Battle(String title, Long status, User user, Monster monster){
 		battlesDao.save(newBattle);
 		return "redirect:/battlegrounds";
 	}

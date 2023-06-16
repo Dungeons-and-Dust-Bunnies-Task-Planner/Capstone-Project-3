@@ -60,13 +60,6 @@ public class Battle{
 		this.user = user;
 	}
 
-	public Battle(String title, User user, Monster monster){
-		this.title = title;
-		this.user = user;
-		this.monster = monster;
-		this.tasks = tasks;
-		this.status = status;
-	}
 
 	public Long getId(){
 		return id;
@@ -116,12 +109,5 @@ public class Battle{
 		this.tasks = tasks;
 	}
 
-	public Long getStatus() {
-		return status;
-	}
-
-	public void setStatus(Long status) {
-		this.status = status;
-	}
 	//    ----- Getters and Setters END -----
 }
