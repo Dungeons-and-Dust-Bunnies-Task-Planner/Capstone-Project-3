@@ -46,6 +46,14 @@ public class BattleController{
 		return "redirect:/battlegrounds";
 	}
 
+	@PostMapping("/battlegrounds/create-task")
+	public String createTask(@RequestParam(name="battleId") Long battleId, @RequestParam(name="taskBody") String taskBody){
+		Battle battle = battlesDao.findByIdWithTasks(battleId);
+		Task task = new Task(taskBody, battle, 0);
+		tasksDao.save(task);
+		return "redirect:/battlegrounds";
+	}
+
 	@PostMapping("/battlegrounds/complete-task")
 	public String editTask(@RequestParam(name="taskId") Long taskId){
 		Task editTask = tasksDao.findTaskById(taskId);
@@ -78,7 +86,7 @@ public class BattleController{
 	}
 
 	@PostMapping("/complete")
-	public String completedBattle() {
+	public String completedBattle(){
 		System.out.println("Made it in to /complete");
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		long userId = user.getId();
