@@ -45,6 +45,7 @@
                         <label for="password">Confirm Password</label><br>
                         <input class="row confirmPasswordRow" type="password" id="passwordConfirmation" name="passwordConfirmation"><br>
                         <input class="row submit-btn" type="submit" value="Confirm"><br>
+
                     </form>
                 </div>
             </div>
@@ -96,12 +97,15 @@
                             <p class="badgeBody" th:text="${badge.badgeBody}"></p>
                             </div>
 
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <form class="cat" th:action="@{/profile/{id}/delete(id=${id})}" method="POST">
+            <h1>Delete Profile</h1>
+            <input class="deleteAccount" type="submit" value="Delete">
+        </form>
         <div th:insert="~{partials/footer :: footer}"></div>
     </div>
 <!-- This is the JS for Badge Claiming -->

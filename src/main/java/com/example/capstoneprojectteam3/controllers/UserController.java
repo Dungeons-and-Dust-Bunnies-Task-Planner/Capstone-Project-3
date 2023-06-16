@@ -1,18 +1,18 @@
 package com.example.capstoneprojectteam3.controllers;
 
-import com.example.capstoneprojectteam3.models.Badge;
-import com.example.capstoneprojectteam3.models.Battle;
-import com.example.capstoneprojectteam3.models.MonsterImage;
-import com.example.capstoneprojectteam3.models.User;
+import com.example.capstoneprojectteam3.models.*;
 import com.example.capstoneprojectteam3.repositories.BattleRepository;
 import com.example.capstoneprojectteam3.repositories.MonsterImageRepository;
 import com.example.capstoneprojectteam3.repositories.MonsterRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -96,7 +96,7 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("badges", badges);
         model.addAttribute("battles", battles);
-
+        model.addAttribute("id", userId);
         return "profile";
     }
 
@@ -149,5 +149,25 @@ public class UserController {
         }
         return "redirect:/profile";
     }
+
+
+    @PostMapping("/profile/{id}/delete")
+    public String deleteAccount(@PathVariable("id") long userId, HttpServletRequest request) {
+        User user = usersDao.findUserById(userId);
+        List<Battle> battles = user.getBattles();
+        for (Battle battle : battles) {
+            battle.setUser(null);
+            battlesDao.save(battle);
+        }
+        usersDao.deleteById(userId);
+        SecurityContextHolder.clearContext();
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                session.invalidate();
+            }
+        return "redirect:/home";
+    }
+
+
 
 }
