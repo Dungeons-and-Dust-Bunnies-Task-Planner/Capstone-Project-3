@@ -10,6 +10,12 @@
     box-shadow: var(--cta2) inset 0 0 2px 2px;
     background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), rgba(155, 58, 255, .5);
     backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: all ease-out .4s
+}
+
+.battle-icon:hover {
+    transform: rotate(360deg);
 }
 
 .battle-icon > img {
@@ -54,13 +60,11 @@
     position: fixed;
     top: 126px;
     left: 15px;
-    /*height: 100vh;*/
     height: 0;
     width: 32vw;
-    background:none;
-    backdrop-filter: blur(10px);
+    background: none;
+    backdrop-filter: none;
     padding-top: 105px;
-    /*transform: translateX(-102%);*/
     z-index: 3;
     border-radius: 2.5em 0 0 0;
     overflow: hidden;
@@ -68,8 +72,8 @@
 }
 
 .battle-slide-out.open {
-    /*transform: translateX(0%);*/
     background: var(--background);
+    backdrop-filter: blur(10px);
     height: 100vh;
 }
 
@@ -111,16 +115,133 @@
     right: 0;
     height: 100px;
     width: 100px;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: var(--cta2) inset 0 0 2px 2px;
+    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), rgba(155, 58, 255, .5);
     background: var(--cta2);
 }
 
-.ul{
-    height:200px;
-    width:400px;
-    background:#fff;
+.ul {
+    height: 200px;
+    width: 400px;
+    background: #fff;
 }
 
-.li{
+.li {
     background: var(--background);
-    color:#fff;
+    color: #fff;
 }
+
+.tasks {
+    position: fixed;
+    top: 25vh;
+    left: 15px;
+    height: 75vh;
+    width: 30vw;
+    padding: 15px;
+    background: var(--secondary);
+}
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.battle-name {
+    text-align: center;
+}
+
+.task,
+.edit-task-form {
+    position: relative;
+    border: none;
+    outline: none;
+    box-shadow: var(--background) inset 0 0 3px 1px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.task > p {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    height: 100px;
+    width: 100%;
+    padding: 15px;
+    font-size: 2.3em;
+}
+
+.complete-task-form {
+    display: none;
+}
+
+.edit-task-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.edit-task-input {
+    position: absolute;
+    top: 0;
+    right: -85%;
+    height: 100px;
+    box-shadow: inset 0 0 3px var(--background);
+    border: none;
+    outline: none;
+    width: 85%;
+}
+
+.edit-task-submit-btn {
+    display: none;
+}
+
+.delete-task-btn {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    height: 100px;
+    width: 15%;
+    border: none;
+    outline: none;
+    background: indianred;
+    box-shadow: var(--background) inset 0 0 3px 2px;
+}
+
+.open-edit-task-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100px;
+    width: 15%;
+    border: none;
+    outline: none;
+    background: var(--secondary);
+    box-shadow: var(--background) inset 0 0 3px 2px;
+}
+
+.monster-container{
+    margin-top: 30px;
+    background: var(--background);
+    height: 80vh;
+    width:70vw;
+    margin-left: 30vw;
+}
+
+.battle-monster-img{
+    width: 32rem;
+}
+
+.battle-chat-box{
+    width: 100%;
+    height: 20vh;
+    background: var(--background);
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+

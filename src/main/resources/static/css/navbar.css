@@ -1,78 +1,69 @@
 .nav {
-    position: fixed;
+position: fixed;
     top: 0;
     left: 0;
     z-index: 5;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    height: 75px;
+    height: 100px;
     width: 100vw;
-    padding: 0;
     color: #fff;
     font-family: Poppin, Inter, sans-serif;
     font-size: 1.3rem;
     text-shadow: 0 0 5px var(--primary);
-    /*overflow: hidden;*/
     background: rgba(0, 0, 0, .2);
     backdrop-filter: blur(10px);
-    padding-right: 40px;
+
 }
 
-.nav-wrap,
-.menu-wrap {
-    display: flex;
-    align-items: center;
-}
-
-.logo-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0 10px 15px;
-    width: 35vw;
-}
 
 .nav-logo {
-    font-size: 1.7rem;
+display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 15px;
+    width: 19vw;
+    /* padding: 10px; */
+    padding: 5px 5px -2px 30px;
+    height: 106px;
+    background: #000;
+    border: none;
+    /* box-shadow: var(--secondary) inset 0 0 3px 2px; */
+    margin: -5px 0 0 -5px;
 }
 
-.logo {
+.logo-text{
     display: flex;
-    align-items: center;
-    height: 100%;
-    width: 40vw;
-    padding-left: 15px;
-    color: #fff;
-    border-radius: 10px;
+    flex-direction: column;
     font-family: Barrio, Inter, sans-serif;
 }
 
-.nav-logo {
-    flex: 1;
+.dungeons{
+    font-size: 2.3em;
+        margin: 0 0 -22px 0;
+}
+.dust-bunnies{
+    align-self:flex-end;
 }
 
-.nav-menu {
-    display: flex;
-    justify-content: flex-end;
-    flex: 2;
-}
-
-.icon {
-    display: flex;
+.logo-icon {
+display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0.9em;
     overflow: hidden;
-    width: 105px;
+    width: 100px;
     aspect-ratio: auto;
 }
 
-.icon img {
-    height: 85%;
-    aspect-ratio: auto;
-    background-color: var(--cta2);
-    border-radius: 0.9em;
+.icon-img {
+    background:var(--cta2);
+}
+
+.menu-wrap {
+    display:flex;
+    padding-right:30px;
+    font-size:1.3em;
 }
 
 .menu-wrap ul {
@@ -118,6 +109,7 @@
     .menu-wrap {
         display: none;
     }
+
     .dropdown {
         display: none;
     }
@@ -141,7 +133,6 @@
     }
 
     /* Dropdown button on hover & on click */
-
     /*.dropbtn:active,*/
     .dropbtn.active,
     .dropbtn:hover {
@@ -202,7 +193,7 @@
 
 }
 
-@media screen and (max-width: 640px){
+@media screen and (max-width: 640px) {
 
     .nav-logo-short {
         display: block;
@@ -212,7 +203,6 @@
     .nav-logo {
         display: none;
     }
-
 
 
 }

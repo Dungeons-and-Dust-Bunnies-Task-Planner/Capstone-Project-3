@@ -44,6 +44,7 @@ public class MonsterImage {
 
     // Getters and Setters
 
+
     public Monster getMonster() {
         return monster;
     }
