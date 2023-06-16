@@ -225,9 +225,23 @@
     box-shadow: var(--background) inset 0 0 3px 2px;
 }
 
-.monster{
-    background: var(--secondary);
-    height: 100vh;
+.monster-container{
+    margin-top: 30px;
+    background: var(--background);
+    height: 80vh;
     width:70vw;
     margin-left: 30vw;
 }
+
+.battle-monster-img{
+    width: 32rem;
+}
+
+.battle-chat-box{
+    width: 100%;
+    height: 20vh;
+    background: var(--background);
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+

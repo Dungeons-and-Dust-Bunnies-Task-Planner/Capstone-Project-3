@@ -48,4 +48,7 @@ openEditTaskBtn.addEventListener('click', () => {
 })
 
 
+//----------------- monster image JS ----------------
+
+
 
