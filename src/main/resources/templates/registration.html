@@ -10,9 +10,9 @@
         <h1>Join the Fight!</h1><br><br>
         <form th:action="@{/register}" th:method="post">
             <label for="username">Username</label><br>
-            <input class="row" type="text" id="username" name="username"><br>
+            <input class="row" type="text" id="username" name="username" required><br>
             <label for="email">Email</label><br>
-            <input class="row" type="email" id="email" name="email"><br>
+            <input class="row" type="email" id="email" name="email" required><br>
             <label for="password">Password</label><br>
             <input class="row" type="password" id="password" name="password" onkeyup="passConfirm()"><br>
             <label for="password">Confirm Password</label><br>
