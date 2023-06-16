@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{partials/head :: head ('About Page')}"></head>
+<body>
+<nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>
+<div class="page-wrapper">
+  <div class="container">
+    <div class="row">
+      <h1>
+        <strong>About Us</strong>
+      </h1>
+<!--      here is a column that will have 5 rows or "cards" containing 3 columns next to eachother, the first one for an image pertaining to the developer and -->
+      <div class="column">
+        <div class="aboutCard One">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div th:insert="~{partials/footer :: footer}"></div>
+</div>
+</body>
+</html>

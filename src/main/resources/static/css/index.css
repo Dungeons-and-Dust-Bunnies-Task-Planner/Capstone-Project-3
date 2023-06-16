@@ -109,3 +109,11 @@
 .battleColumn {
     padding: 10px 10px;
 }
+
+@media screen and (max-width: 1007px){
+
+    .tooRight {
+        flex-direction: column;
+    }
+
+}
