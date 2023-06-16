@@ -35,11 +35,27 @@ public class BattleController{
 		return "/battlegrounds";
 	}
 
-	@PostMapping("/battlegrounds/edit-task")
-	public String editTask(@RequestParam(name = "taskId") Long taskId){
+	@PostMapping("/battlegrounds/complete-task")
+	public String completeTask(@RequestParam(name = "taskId") Long taskId){
 		Task editTask = tasksDao.findTaskById(taskId);
 		editTask.setTaskComplete(1);
 		tasksDao.save(editTask);
+		return "redirect:/battlegrounds";
+	}
+
+	@PostMapping("/battlegrounds/edit-task-body")
+	public String editTaskBody(@RequestParam(name = "editTaskBody") String taskBody,
+							   @RequestParam(name = "taskId") Long taskId){
+
+		Task editTask = tasksDao.findTaskById(taskId);
+		editTask.setTaskBody(taskBody);
+		tasksDao.save(editTask);
+		return "redirect:/battlegrounds";
+	}
+
+	@PostMapping("/battlegrounds/delete-task")
+	public String deleteTask(@RequestParam(name = "taskId") Long taskId){
+		tasksDao.deleteById(taskId);
 		return "redirect:/battlegrounds";
 	}
 

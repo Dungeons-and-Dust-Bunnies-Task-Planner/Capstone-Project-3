@@ -17,6 +17,9 @@ public class Monster {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "monster")
     private List<MonsterImage> monsterImages;
 
+    @OneToMany(mappedBy = "monster")
+    private List<Battle> battles;
+
     //    ----- Constructors START -----
 
     public Monster(){

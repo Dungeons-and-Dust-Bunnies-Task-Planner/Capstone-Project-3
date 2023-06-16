@@ -8,23 +8,6 @@ import java.util.List;
 @Table(name="battles")
 public class Battle{
 
-	// SETS SPECIFIC VALUES FOR BATTLE STATUS
-	// TAKES THE CLASS OF THE BATTLE, AND CONVERTS IT INTO EITHER A 0 OR 1 TO COMPLY WITH MYSQL'S BOOLEAN REQUIREMENTS OF 0 OR 1 INSTEAD OF TRUE OR FALSE
-	public enum BattleStatus{
-		inactive(0),
-		active(1);
-
-		private final int value;
-
-		BattleStatus(int value){
-			this.value = value;
-		}
-
-		public int getValue(){
-			return value;
-		}
-	}
-
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,9 +16,8 @@ public class Battle{
 	@Column(nullable=false)
 	private String title;
 
-	@Column
-	@Enumerated(EnumType.STRING)
-	private BattleStatus status;
+	@Column(nullable = false)
+	private Long status;
 
 	@JsonIgnore
 	@ManyToOne
@@ -43,12 +25,12 @@ public class Battle{
 	private User user;
 
 	@JsonIgnore
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="monster_id")
 	private Monster monster;
 
 //	@JsonIgnore
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="battle")
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true, mappedBy="battle")
 	private List<Task> tasks;
 
 //    @Column(nullable = false)
@@ -78,7 +60,7 @@ public class Battle{
 		this.monster = monster;
 	}
 
-	public Battle(Long id, User user, Monster monster, List<Task> tasks, BattleStatus status){
+	public Battle(Long id, User user, Monster monster, List<Task> tasks, Long status){
 		this.id = id;
 		this.user = user;
 		this.monster = monster;
@@ -131,13 +113,12 @@ public class Battle{
 		this.tasks = tasks;
 	}
 
-	public BattleStatus getStatus(){
+	public Long getStatus() {
 		return status;
 	}
 
-	public void setStatus(BattleStatus status){
+	public void setStatus(Long status) {
 		this.status = status;
 	}
-
-//    ----- Getters and Setters END -----
+	//    ----- Getters and Setters END -----
 }
