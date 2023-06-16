@@ -17,6 +17,7 @@ openEditModal.addEventListener('click', e => {
 
 })
 
+
 deleteAccountButton.addEventListener('click', e => {
     e.preventDefault();
     if (confirm("Are you sure you want to delete your profile? This cannot be undone.")) {

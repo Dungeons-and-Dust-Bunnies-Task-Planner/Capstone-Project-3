@@ -150,6 +150,7 @@ public class UserController {
         return "redirect:/profile";
     }
 
+
     @PostMapping("/profile/{id}/delete")
     public String deleteAccount(@PathVariable("id") long userId, HttpServletRequest request) {
         User user = usersDao.findUserById(userId);
