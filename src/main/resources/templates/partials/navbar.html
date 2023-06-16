@@ -1,16 +1,17 @@
 <div th:fragment="navbar" class="nav" xmlns:sec="http://www.w3.org/1999/xhtml">
-  <div class="logo-wrap">
+
+
+  <div class="nav-logo">
     <div class="logo-text">
-      <div class="nav-logo">
-        <span>Dungeons</span>
-        <span>& Dust Bunnies </span>
-      </div>
-      <div class="nav-logo-short">D&DB</div>
+      <span class="dungeons">Dungeons</span>
+      <span class="dust-bunnies">& Dust Bunnies </span>
     </div>
-    <div class="nav-icon">
-      <img class="nav-icon-img" src="/images/dustBunny.png" alt="icon">
+    <div class="nav-logo-short hidden">D&DB</div>
+    <div class="logo-icon">
+      <img class="icon-img" src="/images/dustBunny.png" alt="icon">
     </div>
   </div>
+
   <div class="menu-wrap">
     <ul>
       <li><a th:href="@{/}">Home</a></li>
