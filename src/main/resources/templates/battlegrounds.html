@@ -13,7 +13,7 @@
       <div class="battle-icon-pop-out">
         <p class="battle-icon-pop-out-text">Battles!</p>
       </div>
-      <section class="battle-slide-out">
+      <section class="battle-slide-out open">
         <div class="battles-list">
           <div th:each="battle : ${battles}">
             <div class="battle inactive" th:data-battle-id="${battle.id}">
@@ -21,10 +21,11 @@
             </div>
           </div>
         </div>
-        <form class="create-battle-form" th:action="@{/battlegrounds/create-battle}" method="post">
+
+        <form class="create-battle-form" th:action="@{/battlegrounds/create-battle}" th:method="post">
           <div class="hidden-form-wrap">
-            <input class="create-battle-input" type="text" placeholder="Add your battle..." name="title"/>
-            <button class="create-battle-btn"><img src="/images/plus-6.png" alt=""></button>
+            <input class="create-battle-input" type="text" placeholder="Add your battle..." name="battleTitle"/>
+            <button class="create-battle-btn" type="submit">Submit</button>
           </div>
         </form>
 

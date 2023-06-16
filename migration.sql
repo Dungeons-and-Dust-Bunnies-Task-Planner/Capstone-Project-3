@@ -38,10 +38,10 @@ VALUES
         ('https://cdn.filestackcontent.com/ydXl8EWVS2y4M1EJbqK5',4,4),
         ('https://cdn.filestackcontent.com/VLOjOCFRyuZtOro7luaw',5,4);
 
-INSERT INTO battles (monster_id, user_id, title)
-VALUES (1, 1, 'Battle name 1 placholder'),
-       (2, 1, 'Battle name 2 placholder'),
-       (3, 1, 'Battle name 3 placholder');
+INSERT INTO battles (monster_id, user_id, title, status)
+VALUES (1, 1, 'Battle name 1 placholder', 0),
+       (2, 1, 'Battle name 2 placholder', 0),
+       (3, 1, 'Battle name 3 placholder', 0);
 
 INSERT INTO tasks (battle_id, task_body, task_complete)
 VALUES (1, 'Clean the living room',0),

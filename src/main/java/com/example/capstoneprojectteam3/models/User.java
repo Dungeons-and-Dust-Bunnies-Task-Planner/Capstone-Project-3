@@ -178,5 +178,7 @@ public class User{
 	public void setBattlesComplete(int battlesComplete){
 		this.battlesComplete = battlesComplete;
 	}
+
+
 	//    ----- Getters and Setters END -----
 }
