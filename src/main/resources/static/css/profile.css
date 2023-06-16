@@ -229,6 +229,19 @@ input.submit-btn:hover {
     align-content: center;
     justify-content: center;
 }
+.non-Btn {
+    height: 50px;
+    background: var(--cta2);
+    color: white;
+    font-weight: bold;
+    font-size: 23px;
+    border-radius: 10px;
+}
+
+.non-Btn:hover {
+    background: var(--fade-green-purple);
+    cursor: pointer;
+}
 
 /* BADGES */
 .badgeRow {
