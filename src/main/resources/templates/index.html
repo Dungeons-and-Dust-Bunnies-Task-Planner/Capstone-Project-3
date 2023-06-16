@@ -4,7 +4,7 @@
 <body>
 <nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>
 <div class="page-wrapper index">
-<!--    HEADER      -->
+    <!--    HEADER      -->
     <div class="container CCBB">
         <div class="row">
             <h1>
@@ -12,45 +12,62 @@
             </h1>
         </div>
     </div>
-<!--    LEFT SIDE CONTAINER-->
-    <div class="container leftSide">
-<!--        TOP CONTAINER   -->
-        <div class="container description">
-            <div class="row">
-                <div class="column landCol">
-                    <h2 class="land-h2 attentionGetter">
-                        Transforming Mundane Tasks into Epic Quests!
-                    </h2>
-                    <h4 class="blurb">Unleash the hero within and conquer your chores with DnDB! This innovative app
-                        turns
-                        your to-do list into thrilling monster battles, where completing tasks chips away at the enemy's
-                        health. Unlock badges, earn rewards, and transform mundane tasks into epic quests with DnDB's
-                        gamified productivity experience!</h4>
+
+    <div class="container">
+        <div class="row tooRight">
+            <div class="column">
+                <!--    LEFT SIDE CONTAINER-->
+                <div class="container leftSide">
+                    <!--        TOP CONTAINER   -->
+                    <div class="container description">
+                        <div class="row">
+                            <div class="column landCol">
+                                <h2 class="land-h2 attentionGetter">
+                                    Transforming Mundane Tasks into Epic Quests!
+                                </h2>
+                                <h4 class="blurb">Unleash the hero within and conquer your chores with DnDB! This innovative app
+                                    turns
+                                    your to-do list into thrilling monster battles, where completing tasks chips away at the enemy's
+                                    health. Unlock badges, earn rewards, and transform mundane tasks into epic quests with DnDB's
+                                    gamified productivity experience!</h4>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--        REGISTRATION CONTAINER      -->
+                    <div class="container registrationButton">
+                        <div class="row justify-center">
+                            <h3 sec:authorize="!isAuthenticated()" class="land-h2 attentionGetter">Answer Your Calling, Join The
+                                Battle</h3><br>
+                            <h3 sec:authorize="isAuthenticated()" class="land-h2">Create Your Battle!</h3><br>
+                        </div>
+                        <div class="row justify-center">
+                            <h3 sec:authorize="!isAuthenticated()" class="land-h2"><a href="/register">-> Register <-</a></h3>
+                            <h3 sec:authorize="isAuthenticated()" class="land-h2"><a href="/battlegrounds">-> Create <-</a></h3>
+                        </div>
+                    </div>
                 </div>
+                <!--    LEFT SIDE END   -->
+
 
             </div>
-        </div>
-<!--        REGISTRATION CONTAINER      -->
-        <div class="container registrationButton">
-            <div class="row justify-center">
-                <h3 sec:authorize="!isAuthenticated()" class="land-h2 attentionGetter">Answer Your Calling, Join The
-                    Battle</h3><br>
-                <h3 sec:authorize="isAuthenticated()" class="land-h2">Create Your Battle!</h3><br>
-            </div>
-            <div class="row justify-center">
-                <h3 sec:authorize="!isAuthenticated()" class="land-h2"><a href="/register">-> Register <-</a></h3>
-                <h3 sec:authorize="isAuthenticated()" class="land-h2"><a href="/battlegrounds">-> Create <-</a></h3>
-            </div>
-        </div>
-    </div>
-<!--    LEFT SIDE END   -->
-    <div class="rightSide container">
-        <div class="row">
             <div class="column">
-<!--                <img class="MonsterImages" src="https://cdn.discordapp.com/attachments/415980182021603329/1118994393861464144/IMG_1830.png" alt="monsters">-->
+
+                <!--    RIGHT SIDE CONTAINER-->
+                <div class="rightSide container">
+                    <div class="row">
+                        <div class="column battleColumn">
+                            <h3 class="battleItOut">Battle It Out!</h3><br>
+                            <img class="MonsterImages" src="https://cdn.discordapp.com/attachments/415980182021603329/1119091591173382236/Untitled_Artwork.png" alt="monsters">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+
+
     <div th:insert="~{partials/footer :: footer}"></div>
 </div>
 </body>
