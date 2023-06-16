@@ -67,6 +67,29 @@
                                 <button class="edit-task-submit-btn" type="submit">Edit task</button>
                             </form>
 
+                            <form class="edit-task-form" th:action="@{/battlegrounds/edit-task-body}" th:method="post">
+                              <input type="hidden" name="taskId" th:value="${task.getId()}">
+                              <input class="edit-task-input" type="text" name="editTaskBody" th:placeholder="${task.getTaskBody()}">
+                              <button class="edit-task-submit-btn" type="submit">Edit task</button>
+                            </form>
+
+                            <form class="delete-task-form" th:action="@{/battlegrounds/delete-task}" th:method="post">
+                              <input type="hidden" name="taskId" th:value="${task.getId()}">
+                              <button class="delete-task-btn" type="submit">Delete</button>
+                            </form>
+                            <button class="open-edit-task-btn" type="button">
+                                    Edit
+                            </button>
+                            </li>
+                            <li>
+                              <form class="create-task-form" th:action="@{/battlegrounds/create-task}">
+                                <input type="hidden" name="battleId" th:value="${battle.getId()}">
+                                <input class="create-task-input" type="text" name="taskBody" placeholder="Create your task">
+                                <button class="create-task-btn" type="submit">Create task</button>
+                              </form>
+                            </li>
+                            </ul>
+                            </section>
                             <form class="delete-task-form" th:action="@{/battlegrounds/delete-task}" th:method="post">
                                 <input type="hidden" name="taskId" th:value="${task.getId()}">
                                 <button class="delete-task-btn" type="submit">Delete</button>

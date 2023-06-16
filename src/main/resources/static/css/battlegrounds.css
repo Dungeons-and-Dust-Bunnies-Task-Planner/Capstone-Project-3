@@ -141,6 +141,7 @@
     width: 30vw;
     padding: 15px;
     background: var(--secondary);
+    overflow-y: auto;
 }
 
 .tasks-list {
@@ -154,7 +155,8 @@
 }
 
 .task,
-.edit-task-form {
+.edit-task-form,
+.create-task-form {
     position: relative;
     border: none;
     outline: none;
@@ -165,14 +167,21 @@
     overflow: hidden;
 }
 
-.task > p {
+.task-body {
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     height: 100px;
-    width: 100%;
-    padding: 15px;
+    width: 85%;
+    padding: 25px 15px 15px;
     font-size: 2.3em;
+    color: #000;
+    z-index: 1;
+    transition: all ease-out .4s;
+}
+
+.task-body.edit {
+    left: -100%;
 }
 
 .complete-task-form {
@@ -186,15 +195,23 @@
     width: 100%;
 }
 
-.edit-task-input {
+.edit-task-input,
+.create-task-input{
     position: absolute;
     top: 0;
     right: -85%;
     height: 100px;
-    box-shadow: inset 0 0 3px var(--background);
+    padding-left: 10px;
+    box-shadow: var(--background) inset 0 0 3px 2px;
     border: none;
     outline: none;
-    width: 85%;
+    width: 70%;
+    font-size: 1.5em;
+    transition: all ease-out .4s;
+}
+
+.edit-task-input.edit {
+    right: 30%;
 }
 
 .edit-task-submit-btn {
@@ -204,16 +221,22 @@
 .delete-task-btn {
     position: absolute;
     top: 0;
-    right: -1px;
+    right: -1%;
     height: 100px;
     width: 15%;
     border: none;
     outline: none;
     background: indianred;
     box-shadow: var(--background) inset 0 0 3px 2px;
+    transition: all ease-out .4s;
 }
 
-.open-edit-task-btn {
+.delete-task-btn.edit {
+    right: 15%;
+}
+
+.open-edit-task-btn,
+.create-task-btn{
     position: absolute;
     top: 0;
     right: 0;
@@ -221,15 +244,35 @@
     width: 15%;
     border: none;
     outline: none;
+    cursor: pointer;
     background: var(--secondary);
     box-shadow: var(--background) inset 0 0 3px 2px;
 }
+
+
+.create-task-input {
+    /*right: 0;*/
+    left: 0;
+    width: 86%;
+    font-size: 2.3em;
+    background: var(--secondary);
+}
+
+.create-task-input:hover {
+
+}
+
+.monster {
+    background: var(--slide-out-bg);
+    height: 100vh;
+    width: 70vw;
 
 .monster-container{
     margin-top: 30px;
     background: var(--background);
     height: 80vh;
     width:70vw;
+
     margin-left: 30vw;
 }
 
