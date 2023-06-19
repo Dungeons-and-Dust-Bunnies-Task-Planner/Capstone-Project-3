@@ -3,9 +3,8 @@
         <div class="leftFoot row">
             <p>Join our newsletter</p>
             <div class="newsletter justify-center">
-                <form>
-                    <label for="email">Email: </label>
-                    <input type="text" id="email" name="email">
+                <form th:action="@{/send-email}" th:method="post">
+                    <input type="email" id="email" name="email" placeholder="Email:">
                     <button type="submit">Sign up</button>
                 </form>
             </div>

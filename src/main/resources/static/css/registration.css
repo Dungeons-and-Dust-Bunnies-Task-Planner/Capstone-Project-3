@@ -47,15 +47,21 @@
 
 .login-register-Btn {
     height: 50px;
-    background: var(--cta2);
-    color: white;
-    font-weight: bold;
-    font-size: 23px;
+    background-color: var(--cta2);
+    color:white;
+    font-weight: bolder;
+    font-size: 2rem;
     border-radius: 10px;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
 }
 
 .login-register-Btn:hover {
-    background: var(--fade-dark-purple);
+    background-size: 100% 100%;
+    background-position-x: left;
     cursor: pointer;
 }
 
