@@ -7,7 +7,7 @@
     width: 75vw;
     /*height: 10rem;*/
     flex-direction: row;
-    position: relative;
+    /*position: relative;*/
     animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
     flex: 1 0 0;
