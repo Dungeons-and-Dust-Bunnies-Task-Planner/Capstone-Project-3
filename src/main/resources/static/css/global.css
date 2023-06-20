@@ -11,13 +11,14 @@
     --primary: rgb(155, 58, 227);
     --secondary: rgb(180, 180, 180);
     --background: rgba(56, 56, 56, 0.4);
-    --slide-out-bg: rgba(180, 180, 180, 0.7);
+    --solid-background: rgb(87, 85, 96);
     --blue: rgb(0, 128, 224);
     --fade-blue: linear-gradient(120deg, rgba(63, 94, 251, 1), rgba(106, 208, 217, 1));
     --fade-purple: linear-gradient(120deg, rgba(155, 58, 227, 1), rgba(106, 208, 217, 1));
     --fade-dark-purple: linear-gradient(120deg, rgba(155, 58, 227, 1), rgba(86, 0, 178, 1));
     --fade-green-purple: linear-gradient(120deg, rgba(80, 255, 0, 1), rgba(86, 0, 178, 1));
-
+    --br: .3em;
+    --trans: all ease-out .4s
 }
 
 
@@ -66,7 +67,7 @@ body {
     max-width: 1100px;
     display: flex;
     padding: 0 20px;
-    gap: 20px;
+    column-gap: 5px;
 }
 
 /* Combo classes to extend the row's versatility */

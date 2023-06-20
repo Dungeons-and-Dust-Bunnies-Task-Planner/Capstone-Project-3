@@ -1,78 +1,78 @@
 .battle-icon {
     position: fixed;
-    top: 120px;
-    left: 15px;
+    top: 101px;
+    left: 0;
     z-index: 5;
     height: 100px;
     width: 100px;
-    border-radius: 50%;
     padding: 5px;
     box-shadow: var(--cta2) inset 0 0 2px 2px;
-    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), rgba(155, 58, 255, .5);
+    background: var(--fade-dark-purple);
+    border-radius: .3em;
     backdrop-filter: blur(10px);
+    overflow: hidden;
     cursor: pointer;
-    transition: all ease-out .4s
 }
 
-.battle-icon:hover {
-    transform: rotate(360deg);
-}
-
-.battle-icon > img {
+.battle-icon-img {
     height: 100%;
     aspect-ratio: auto;
     box-shadow: #000 0 0 3px 1px;
     padding: 5px;
-    border-radius: 50%;
+    border-radius: .3em;
+    transition: var(--trans);
 }
 
-.battle-icon-pop-out {
+.battle-icon-img:hover {
+    box-shadow: none;
+    background: var(--cta2);
+    transform: rotate(360deg);
+}
+
+.battle-icon-banner {
     position: fixed;
-    top: 125px;
-    left: 15px;
+    top: 101px;
+    left: 3px;
     z-index: 4;
     display: flex;
-    height: 92px;
-    width: 0;
-    color: #fff;
-    border: none;
-    box-shadow: none;
-    padding: 10px;
-    background: none;
-    border-radius: 2.5em 0 0 2.5em;
-    text-align: center;
     flex-direction: column;
-    font-size: 0;
     justify-content: center;
+    text-align: center;
+    height: 100px;
+    width: 30%;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    font-size: 3em;
+    background: var(--solid-background);
+    box-shadow: var(--cta2) inset 0 0 3px 2px;
+    border-radius: 50px 0 0 50px;
     align-items: center;
     font-family: Barrio, Inter, sans-serif;
-    transition: all ease-out .4s .4s;
+    transition: var(--trans);
 }
 
-.battle-icon-pop-out.show {
-    width: 32vw;
-    font-size: 3em;
-    box-shadow: var(--cta2) inset 0 0 3px 2px;
-    background: var(--background);
+.battle-icon-banner-text {
+    padding-left: 40px;
 }
 
 .battle-slide-out {
     position: fixed;
-    top: 126px;
-    left: 15px;
+    top: 101px;
+    left: 0;
     height: 0;
-    width: 32vw;
+    width: 30%;
     background: none;
     backdrop-filter: none;
     padding-top: 105px;
     z-index: 3;
     border-radius: 2.5em 0 0 0;
     overflow: hidden;
-    transition: all ease-out .4s .4s;
+    transition: var(--trans);
 }
 
 .battle-slide-out.open {
-    background: var(--background);
+    background: var(--solid-background);
     backdrop-filter: blur(10px);
     height: 100vh;
 }
@@ -98,59 +98,174 @@
 .create-battle-input {
     height: 100px;
     width: 100%;
-    background: var(--background);
+    background: var(--solid-background);
     border: none;
     outline: none;
-    box-shadow: #000 inset 0 0 2px 1px;
+    box-shadow: var(--background) inset 0 0 3px 2px;
+    padding-left: 40px;
     color: #fff;
 }
 
 .create-battle-input:focus {
-    background: var(--fade-green-purple)
+    border-radius: var(--cta2) inset 0 0 3px 2px;
 }
 
+.create-battle-btn {
+    height: 100px;
+    width: 100px;
+    padding: 5px;
+    box-shadow: var(--background) inset 0 0 2px 2px;
+    background: var(--cta2);
+}
+
+.battle,
+.edit-battle-form,
+.create-battle-form {
+    position: relative;
+    border: none;
+    outline: none;
+    background: var(--solid-background);
+    box-shadow: var(--background) inset 0 0 3px 2px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--trans);;
+}
+
+.battle.active,
+.battle.inactive:hover {
+    background: var(--fade-dark-purple);
+    box-shadow: var(--cta2) inset 0 0 3px 2px;
+    color: #fff;
+}
+
+.battle-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 85%;
+    padding: 15px;
+    font-size: 1.4em;
+    color: #000;
+    z-index: 1;
+    transition: all ease-out .4s;
+}
+
+.battle-title.edit {
+    left: -100%;
+}
+
+.complete-battle-form {
+    display: none;
+}
+
+.edit-battle-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.edit-battle-input,
+.create-battle-input {
+    position: absolute;
+    top: 0;
+    right: -85%;
+    height: 100px;
+    padding-left: 10px;
+    box-shadow: var(--background) inset 0 0 3px 2px;
+    border: none;
+    outline: none;
+    width: 70%;
+    font-size: 1.3em;
+    transition: all ease-out .4s;
+}
+
+.edit-battle-input.edit {
+    right: 30%;
+}
+
+.edit-battle-btn {
+    display: none;
+}
+
+.delete-battle-btn {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    height: 100px;
+    width: 15%;
+    border: none;
+    outline: none;
+    background: indianred;
+    box-shadow: var(--background) inset 0 0 3px 2px;
+    transition: var(--trans);
+}
+
+.delete-battle-btn.edit {
+    right: 15%;
+}
+
+.open-edit-battle-btn,
 .create-battle-btn {
     position: absolute;
     top: 0;
     right: 0;
+    display:flex;
+    align-items:center;
+    justify-content: center;
     height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    padding: 5px;
-    box-shadow: var(--cta2) inset 0 0 2px 2px;
-    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), rgba(155, 58, 255, .5);
-    background: var(--cta2);
+    width: 15%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: var(--fade-dark-purple);
+    box-shadow: var(--background) inset 0 0 3px 2px;
 }
 
-.ul {
-    height: 200px;
-    width: 400px;
-    background: #fff;
+.open-edit-battle-btn-img {
+    height: 50px;
+    width: 50px;
 }
 
-.li {
-    background: var(--background);
-    color: #fff;
+.create-battle-input {
+    left: 0;
+    width: 86%;
+    font-size: 1.3em;
+background(--secondary);
+    transition: var(--trans);
 }
+
+.create-battle-input:hover {
+    background: var(--fade-dark-purple);
+}
+
+
+/*TASKS*/
 
 .tasks {
-    position: fixed;
-    top: 25vh;
-    left: 15px;
-    height: 75vh;
-    width: 30vw;
-    padding: 15px;
-    background: var(--secondary);
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 110px 15px 15px 15px;
+    margin-top: 101px;
+    background: rgba(255, 255, 255, .4);
+    border-radius: var(--br);
 }
 
 .tasks-list {
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+    border-radius: var(--br);
 }
 
-.battle-name {
+.tasks-battle-title {
     text-align: center;
 }
 
@@ -160,24 +275,36 @@
     position: relative;
     border: none;
     outline: none;
+    background: var(--fade-dark-purple);
     box-shadow: var(--background) inset 0 0 3px 1px;
     height: 100px;
     display: flex;
     align-items: center;
     overflow: hidden;
+    cursor: pointer;
+    transition: var(--trans);;
+}
+
+.task.complete,
+.task:hover {
+    background: var(--fade-dark-purple);
+    color: #fff;
+    text-decoration: line-through;
 }
 
 .task-body {
     position: absolute;
     top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
     height: 100px;
     width: 85%;
-    padding: 25px 15px 15px;
-    font-size: 2.3em;
+    padding: 15px;
+    font-size: 1.4em;
     color: #000;
     z-index: 1;
-    transition: all ease-out .4s;
+    transition: var(--trans);;
 }
 
 .task-body.edit {
@@ -196,7 +323,7 @@
 }
 
 .edit-task-input,
-.create-task-input{
+.create-task-input {
     position: absolute;
     top: 0;
     right: -85%;
@@ -206,8 +333,8 @@
     border: none;
     outline: none;
     width: 70%;
-    font-size: 1.5em;
-    transition: all ease-out .4s;
+    font-size: 1.3em;
+    transition: var(--trans);;
 }
 
 .edit-task-input.edit {
@@ -228,7 +355,7 @@
     outline: none;
     background: indianred;
     box-shadow: var(--background) inset 0 0 3px 2px;
-    transition: all ease-out .4s;
+    transition: var(--trans);
 }
 
 .delete-task-btn.edit {
@@ -236,55 +363,69 @@
 }
 
 .open-edit-task-btn,
-.create-task-btn{
+.create-task-btn {
     position: absolute;
     top: 0;
     right: 0;
+    display:flex;
+    justify-content: center;
+    align-items:center;
     height: 100px;
     width: 15%;
     border: none;
     outline: none;
     cursor: pointer;
-    background: var(--secondary);
+    background: var(--fade-dark-purple);
     box-shadow: var(--background) inset 0 0 3px 2px;
 }
 
+.open-edit-task-btn-img {
+    height: 50px;
+    width: 50px;
+}
 
 .create-task-input {
     /*right: 0;*/
     left: 0;
     width: 86%;
-    font-size: 2.3em;
+    font-size: 1.3em;
     background: var(--secondary);
+    transition: var(--trans);;
 }
 
 .create-task-input:hover {
-
+    background: var(--fade-dark-purple);
 }
 
-.monster {
+.monsters {
+    display: flex;
+    flex-direction: column;
     background: var(--slide-out-bg);
-    height: 100vh;
-    width: 70vw;
+    border-radius: var(--br);
+    margin-top: 101px;
+    width: 70%;
+}
 
-.monster-container{
+.monster-container {
     margin-top: 30px;
     background: var(--background);
     height: 80vh;
-    width:70vw;
+    width: 68%;
+    border-radius: var(--br);
 
-    margin-left: 30vw;
+    margin-left: 30%;
 }
 
-.battle-monster-img{
+.battle-monster-img {
     width: 32rem;
+    border-radius: var(--br);
 }
 
-.battle-chat-box{
+.battle-chat-box {
     width: 100%;
     height: 20vh;
     background: var(--background);
     border: 2px solid gray;
-    border-radius: 5px;
+    border-radius: var(--br);
 }
 
