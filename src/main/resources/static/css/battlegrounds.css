@@ -59,7 +59,7 @@
 .battle-slide-out {
     position: fixed;
     top: 101px;
-    left: 0;
+    left: 3px;
     height: 0;
     width: 30%;
     background: none;
@@ -93,6 +93,25 @@
 .hidden-form-wrap {
     display: flex;
     align-items: center;
+}
+
+.form {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+}
+
+.input {
+
+}
+
+.btn-img {
+
+}
+
+.btn {
+
 }
 
 .create-battle-input {
@@ -141,7 +160,8 @@
     color: #fff;
 }
 
-.battle-title {
+.battle-title,
+.task-body {
     position: absolute;
     top: 0;
     left: 0;
@@ -153,7 +173,7 @@
     font-size: 1.4em;
     color: #000;
     z-index: 1;
-    transition: all ease-out .4s;
+    transition: var(--trans);
 }
 
 .battle-title.edit {
@@ -216,8 +236,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
     justify-content: center;
     height: 100px;
     width: 15%;
@@ -292,21 +312,6 @@ background(--secondary);
     text-decoration: line-through;
 }
 
-.task-body {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    height: 100px;
-    width: 85%;
-    padding: 15px;
-    font-size: 1.4em;
-    color: #000;
-    z-index: 1;
-    transition: var(--trans);;
-}
-
 .task-body.edit {
     left: -100%;
 }
@@ -367,9 +372,9 @@ background(--secondary);
     position: absolute;
     top: 0;
     right: 0;
-    display:flex;
+    display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     height: 100px;
     width: 15%;
     border: none;
@@ -380,8 +385,9 @@ background(--secondary);
 }
 
 .open-edit-task-btn-img {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
+    margin: -5px -5px 0 0;
 }
 
 .create-task-input {
@@ -400,7 +406,7 @@ background(--secondary);
 .monsters {
     display: flex;
     flex-direction: column;
-    background: var(--slide-out-bg);
+    background: var(--solid-background);
     border-radius: var(--br);
     margin-top: 101px;
     width: 70%;
@@ -427,5 +433,9 @@ background(--secondary);
     background: var(--background);
     border: 2px solid gray;
     border-radius: var(--br);
+}
+
+.hidden {
+    display:none;
 }
 
