@@ -23,7 +23,7 @@
     align-items: center;
     justify-content: flex-end;
     column-gap: 15px;
-    width: 19vw;
+    min-width: 20vw;
     padding: 5px 5px -2px 30px;
     height: 106px;
     background: #000;
@@ -61,14 +61,14 @@
 
 .menu-wrap {
     display: flex;
-    padding-right: 30px;
-    font-size: 1.3em;
+    padding-right: 5px;
+    font-size: 1.1em;
+    min-width: 33vw;
 }
 
 .menu-wrap ul {
     display: flex;
     align-items: center;
-    column-gap: 20px;
     list-style: none;
 }
 
@@ -105,6 +105,23 @@
 /*///////*/
 /* Dropdown Button */
 @media screen and (max-width: 1007px) {
+    /*      LOGO FOR MEDIUM SIZE*/
+    .nav-logo-short {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        min-width: 10vw;
+        margin-left: 20px;
+        font-size: xxx-large;
+        font-family: Barrio, Inter, sans-serif;
+    }
+    .logo-text {
+        display: none;
+    }
+
+
+
+    /*      DROP DOWN MENU STARTS HERE      */
     .menu-wrap {
         display: none;
     }
@@ -117,7 +134,8 @@
         display: block;
         position: relative;
         padding: 10px 5px 0px 0px;
-
+        margin-left: auto;
+        margin-right: 10px;
     }
 
     .dropbtn {
@@ -193,15 +211,19 @@
 }
 
 @media screen and (max-width: 640px) {
+    /*      LOGO FOR SMALL SIZE*/
 
     .nav-logo-short {
-        display: block;
-        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        min-width: 10vw;
+        margin-left: 20px;
+        font-size: xxx-large;
+        font-family: Barrio, Inter, sans-serif;
     }
-
-    .nav-logo {
+    .logo-text {
         display: none;
     }
-
 
 }
