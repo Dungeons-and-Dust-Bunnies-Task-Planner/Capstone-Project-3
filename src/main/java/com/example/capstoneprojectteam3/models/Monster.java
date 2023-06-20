@@ -1,5 +1,6 @@
 package com.example.capstoneprojectteam3.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -16,9 +17,11 @@ public class Monster{
 	@Column(unique=true)
 	private String name;
 
+	@JsonBackReference
 	@OneToMany(mappedBy = "monster")
 	private List<Battle> battles;
 
+	@JsonBackReference
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true, mappedBy="monster")
 	private List<MonsterImage> monsterImages;
 

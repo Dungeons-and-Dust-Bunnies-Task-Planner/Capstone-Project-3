@@ -60,10 +60,9 @@
             <!--              <p class="task-body not-complete" th:unless="${task.getTaskComplete() == 0}" th:text="${task.getTaskBody()}"></p>-->
 
             <!--            COMPLETE TASK FORM-->
-            <form class="complete-task-form" th:action="@{/battlegrounds/complete-task}"
-                  th:method="post">
-              <input type="hidden" name="taskId" th:value="${task.getId()}">
-              <button class="complete-task-btn" type="submit">complete task</button>
+            <form th:action="@{/task-complete}" th:method="post">
+              <input type="hidden" name="taskId" id="taskId" th:value="${task.getId()}">
+              <button type="submit" style="z-index: 99; display: block; position: absolute;" >complete task</button>
             </form>
 
             <!--            EDIT TASK FORM-->

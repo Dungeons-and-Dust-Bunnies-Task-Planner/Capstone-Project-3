@@ -316,10 +316,6 @@ background(--secondary);
     left: -100%;
 }
 
-.complete-task-form {
-    display: none;
-}
-
 .edit-task-form {
     position: absolute;
     top: 0;
@@ -439,3 +435,11 @@ background(--secondary);
     display:none;
 }
 
+.complete-task-btn {
+    height: 100px;
+    width: 100px;
+}
+
+.complete-task-form {
+    display: block;
+}
