@@ -86,7 +86,7 @@
 
           <!--            CREATE TASK FORM-->
           <li class="create-task-form-li">
-            <form class="create-task-form" th:action="@{/battlegrounds/create-task}">
+            <form class="create-task-form" th:action="@{/battlegrounds/create-task}" th:method="post">
               <input type="hidden" name="battleId" th:value="${battle.getId()}">
               <input class="create-task-input" type="text" name="taskBody" placeholder="Create new task">
               <button class="create-task-btn" type="submit">Create task</button>
