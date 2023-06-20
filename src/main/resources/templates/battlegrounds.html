@@ -50,7 +50,7 @@
       </section>
       <!--      TASK CONTAINER-->
       <section class="tasks">
-        <ul class="tasks-list" th:each="battle : ${battles}">
+        <ul class="tasks-list hidden" th:each="battle : ${battles}">
           <h2 class="tasks-battle-title" th:text="${battle.getTitle()}"></h2>
 
           <!--          TASK-->

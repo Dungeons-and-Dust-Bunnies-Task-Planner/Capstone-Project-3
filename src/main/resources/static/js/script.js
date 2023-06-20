@@ -17,7 +17,7 @@
 		const tasks = document.querySelector('.tasks')
 		const task = document.querySelectorAll('.task')
 // SHOW TASKSAll
-		const tasksList = document.querySelector('.tasks-list')
+		const tasksList = document.querySelectorAll('.tasks-list')
 		const monster = document.querySelector('.monster')
 
 // FUNCTIONS
@@ -28,9 +28,12 @@
 				})
 		}
 
-		function toggleTasksList(battle, taskList) {
-
+		function removeActiveTasks() {
+				tasksList.forEach(list => {
+						list.classList.add('hidden')
+				})
 		}
+
 
 		document.addEventListener('DOMContentLoaded', function () {
 				console.log('Dynamic elements loaded') //DEBUG
@@ -43,12 +46,10 @@
 								// console.log('e.target click event fired')
 
 								const battles = document.querySelectorAll('.battle')
-								const tasksList = document.querySelectorAll('.tasks-list')
-								if (battles[idx].classList.contains('active')) {
-										tasksList[idx].classList.remove('hidden')
-								}
-								if (battles[idx].classList.contains('inactive')) {
-										tasksList[idx].classList.add('hidden')
+								const battleTasks = document.querySelectorAll('.tasks-list')
+								if(battles[idx].classList.contains('active')) {
+										removeActiveTasks()
+										battleTasks[idx].classList.remove('hidden')
 								}
 						})
 				})

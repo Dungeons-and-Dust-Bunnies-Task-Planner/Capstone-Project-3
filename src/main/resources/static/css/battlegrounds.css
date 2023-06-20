@@ -435,3 +435,7 @@ background(--secondary);
     border-radius: var(--br);
 }
 
+.hidden {
+    display:none;
+}
+
