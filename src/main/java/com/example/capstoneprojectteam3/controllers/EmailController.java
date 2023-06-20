@@ -20,6 +20,6 @@ public class EmailController {
                 "Welcome Letter",
                 "Welcome to Dungeons and Dust Bunnies! We hope you enjoy our interactive task lister! Visit our contact us page to tell us how many monsters you have slain!"
         );
-        return "/home";
+        return "redirect:/home";
     }
 }
