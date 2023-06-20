@@ -1,16 +1,14 @@
 
 .aboutCard {
-    /*z-index: 99;*/
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
     background: var(--fade-dark-purple);
     border-radius: 12px;
     width: 65vw;
-    /*height: 10rem;*/
     flex-direction: row;
-    /*position: relative;*/
     animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
     flex: 1 0 0;
+
 }
 
 .nameRow {
@@ -44,29 +42,40 @@
 }
 .poppaRow {
     justify-content: center;
+
 }
 
 .aboutH1Row {
     justify-content: center;
+
 }
 
 .aboutH1 {
     align-self: center;
     text-align: center;
+
 }
 
 .linkList {
     display: flex;
     flex-direction: row;
     align-content: space-between;
+
 }
 
 .linkRow {
     align-self: end;
+
 }
 
 .bio {
 
     text-align: center;
     align-self: center;
+}
+
+@media only screen and (max-width: 1007px) {
+    .caca {
+        flex-wrap: wrap;
+    }
 }
