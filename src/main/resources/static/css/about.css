@@ -7,8 +7,36 @@
     width: 50vw;
     height: 50vh;
     flex-direction: row;
+    position: relative;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
 }
 
+@keyframes swipeInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes swipeInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.aboutCard:nth-child(even) {
+    animation-name: swipeInRight;
+}
+
+.aboutCard:nth-child(odd) {
+    animation-name: swipeInLeft;
+}
 .poppaRow {
     justify-content: center;
 }
