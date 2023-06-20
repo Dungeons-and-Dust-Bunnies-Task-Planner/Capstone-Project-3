@@ -32,7 +32,7 @@
 .battle-icon-banner {
     position: fixed;
     top: 101px;
-    left: 0;
+    left: 3px;
     z-index: 4;
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@
     padding: 10px;
     color: #fff;
     font-size: 3em;
-    background: var(--background);
+    background: var(--solid-background);
     box-shadow: var(--cta2) inset 0 0 3px 2px;
     border-radius: 50px 0 0 50px;
     align-items: center;
@@ -52,7 +52,7 @@
     transition: var(--trans);
 }
 
-.battle-icon-banner-text{
+.battle-icon-banner-text {
     padding-left: 40px;
 }
 
@@ -72,7 +72,7 @@
 }
 
 .battle-slide-out.open {
-    background: var(--background);
+    background: var(--solid-background);
     backdrop-filter: blur(10px);
     height: 100vh;
 }
@@ -98,7 +98,7 @@
 .create-battle-input {
     height: 100px;
     width: 100%;
-    background: var(--background);
+    background: var(--solid-background);
     border: none;
     outline: none;
     box-shadow: var(--background) inset 0 0 3px 2px;
@@ -120,123 +120,130 @@
 
 .battle,
 .edit-battle-form,
-.create-battle-form{
-    position:relative;
-    border:none;
-    outline:none;
-    background: var(--background);
+.create-battle-form {
+    position: relative;
+    border: none;
+    outline: none;
+    background: var(--solid-background);
     box-shadow: var(--background) inset 0 0 3px 2px;
     height: 100px;
-    display:flex;
+    display: flex;
     align-items: center;
-    overflow:hidden;
+    overflow: hidden;
     cursor: pointer;
     transition: var(--trans);;
 }
 
 .battle.active,
-.battle.inactive:hover{
+.battle.inactive:hover {
     background: var(--fade-dark-purple);
     box-shadow: var(--cta2) inset 0 0 3px 2px;
+    color: #fff;
 }
 
-.battle-title{
-    position:absolute;
-    top:0;
-    left:0;
-    display:flex;
+.battle-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
     align-items: center;
-    height:100px;
-    width:85%;
-    padding:15px;
-    font-size:1.4em;
-    color:#000;
-    z-index:1;
-    transition:all ease-out .4s;
+    height: 100px;
+    width: 85%;
+    padding: 15px;
+    font-size: 1.4em;
+    color: #000;
+    z-index: 1;
+    transition: all ease-out .4s;
 }
 
-.battle-title.edit{
-    left:-100%;
+.battle-title.edit {
+    left: -100%;
 }
 
 .complete-battle-form {
-    display:none;
+    display: none;
 }
 
-.edit-battle-form{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
+.edit-battle-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .edit-battle-input,
-.create-battle-input{
-    position:absolute;
-    top:0;
-    right:-85%;
-    height:100px;
+.create-battle-input {
+    position: absolute;
+    top: 0;
+    right: -85%;
+    height: 100px;
     padding-left: 10px;
     box-shadow: var(--background) inset 0 0 3px 2px;
     border: none;
-    outline:none;
-    width:70%;
-    font-size:1.3em;
-    transition:all ease-out .4s;
+    outline: none;
+    width: 70%;
+    font-size: 1.3em;
+    transition: all ease-out .4s;
 }
 
-.edit-battle-input.edit{
-    right:30%;
+.edit-battle-input.edit {
+    right: 30%;
 }
 
-.edit-battle-btn{
-    display:none;
+.edit-battle-btn {
+    display: none;
 }
 
-.delete-battle-btn{
-    position:absolute;
-    top:0;
-    right:-1px;
-    height:100px;
-    width:15%;
-    border:none;
-    outline:none;
-    background:indianred;
-    box-shadow:var(--background) inset 0 0 3px 2px;
-    transition:var(--trans);
-}
-
-.delete-battle-btn.edit{
-    right:15%;
-}
-
-.open-edit-battle-btn,
-.create-battle-btn{
-    position:absolute;
-    top:0;
-    right:0;
-    height:100px;
-    width:15%;
-    border:none;
-    outline:none;
-    cursor:pointer;
-    background:var(--secondary);
+.delete-battle-btn {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    height: 100px;
+    width: 15%;
+    border: none;
+    outline: none;
+    background: indianred;
     box-shadow: var(--background) inset 0 0 3px 2px;
-}
-
-.create-battle-input{
-    left:0;
-    width:86%;
-    font-size:1.3em;
-    background(--secondary);
     transition: var(--trans);
 }
 
-.create-battle-input:hover{
-    background:var(--fade-dark-purple);
+.delete-battle-btn.edit {
+    right: 15%;
 }
 
+.open-edit-battle-btn,
+.create-battle-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    height: 100px;
+    width: 15%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: var(--fade-dark-purple);
+    box-shadow: var(--background) inset 0 0 3px 2px;
+}
 
+.open-edit-battle-btn-img {
+    height: 50px;
+    width: 50px;
+}
+
+.create-battle-input {
+    left: 0;
+    width: 86%;
+    font-size: 1.3em;
+background(--secondary);
+    transition: var(--trans);
+}
+
+.create-battle-input:hover {
+    background: var(--fade-dark-purple);
+}
 
 
 /*TASKS*/
@@ -244,7 +251,7 @@
 .tasks {
     display: flex;
     flex-direction: column;
-    width:30%;
+    width: 30%;
     padding: 110px 15px 15px 15px;
     margin-top: 101px;
     background: rgba(255, 255, 255, .4);
@@ -274,12 +281,12 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    cursor:pointer;
+    cursor: pointer;
     transition: var(--trans);;
 }
 
 .task.complete,
-.task:hover{
+.task:hover {
     background: var(--fade-dark-purple);
     color: #fff;
     text-decoration: line-through;
@@ -289,8 +296,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
     height: 100px;
     width: 85%;
     padding: 15px;
@@ -360,13 +367,21 @@
     position: absolute;
     top: 0;
     right: 0;
+    display:flex;
+    justify-content: center;
+    align-items:center;
     height: 100px;
     width: 15%;
     border: none;
     outline: none;
     cursor: pointer;
-    background: var(--secondary);
+    background: var(--fade-dark-purple);
     box-shadow: var(--background) inset 0 0 3px 2px;
+}
+
+.open-edit-task-btn-img {
+    height: 50px;
+    width: 50px;
 }
 
 .create-task-input {
@@ -384,7 +399,7 @@
 
 .monsters {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     background: var(--slide-out-bg);
     border-radius: var(--br);
     margin-top: 101px;

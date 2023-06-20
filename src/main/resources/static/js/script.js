@@ -20,6 +20,31 @@
 		const tasksList = document.querySelector('.tasks-list')
 		const monster = document.querySelector('.monster')
 
+		document.addEventListener('DOMContentLoaded', function () {
+				console.log('Battlegrounds page loaded')
+				document.querySelectorAll('.battle').forEach(function (battleElement) {
+						battleElement.addEventListener('click', function () {
+								battleElement.classList.toggle('active')
+								battleElement.classList.toggle('inactive')
+						})
+						battleElement.addEventListener('onchange', function (e) {
+								console.log('onchange event fired')
+								if (battleElement.classList.contains('active')) {
+										battleElement.querySelectorAll('.battle-tasks').forEach(function (battleTaskElement) {
+												battleTaskElement.classList.remove('hidden')
+												console.log('class remove fired')
+										})
+								}
+								if (battleElement.classList.contains('inactive')) {
+										battleElement.querySelectorAll('.tasks-list').forEach(function (tasksList) {
+												tasksList.classList.add('hidden')
+												console.log('class add fired')
+										})
+								}
+						})
+				})
+		})
+
 
 // EVENT LISTENERS
 		battleIcon.addEventListener('click', () => {
@@ -37,12 +62,11 @@
 				battle.addEventListener('click', (e) => {
 						battle.classList.remove('active')
 						e.target.classList.add('active')
-
-						if (battle.classList.contains('active')) {
-								tasksList.classList.remove('hidden')
-						}
 						if (battle.classList.contains('inactive')) {
 								tasksList.classList.add('hidden')
+						}
+						if (battle.classList.contains('active')) {
+								tasksList.classList.remove('hidden')
 						}
 				})
 
@@ -95,6 +119,20 @@
 				})
 		})
 
+
+		//
+		// document.querySelectorAll('.battle-tasks').forEach(function (battleTaskElement) {
+		// 		battleTaskElement.addEventListener('click', function (e) {
+		// 				battleTaskElement.classList.toggle('hidden')
+		// 		})
+		// })
+
+		document.querySelectorAll('.task').forEach(function (taskElement) {
+				taskElement.addEventListener('click', function () {
+						taskElement.classList.toggle('complete')
+						taskElement.classList.toggle('not-complete')
+				})
+		})
 })()
 
 //----------------- monster image JS ----------------

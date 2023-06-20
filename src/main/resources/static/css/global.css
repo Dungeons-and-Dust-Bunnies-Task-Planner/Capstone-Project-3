@@ -11,7 +11,7 @@
     --primary: rgb(155, 58, 227);
     --secondary: rgb(180, 180, 180);
     --background: rgba(56, 56, 56, 0.4);
-    --slide-out-bg: rgba(180, 180, 180, 0.7);
+    --solid-background: rgb(87, 85, 96);
     --blue: rgb(0, 128, 224);
     --fade-blue: linear-gradient(120deg, rgba(63, 94, 251, 1), rgba(106, 208, 217, 1));
     --fade-purple: linear-gradient(120deg, rgba(155, 58, 227, 1), rgba(106, 208, 217, 1));
