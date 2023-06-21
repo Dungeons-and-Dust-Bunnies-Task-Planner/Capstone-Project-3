@@ -13,45 +13,10 @@
       <div class="battle-icon-banner">
         <p class="battle-icon-banner-text"> << Show Battles!</p>
       </div>
-      <section class="battle-slide-out">
-        <ul class="battles-list">
-          <!--          BATTLE-->
-          <li class="battle inactive" th:each="battle : ${battles}" th:data-battle-id="${battle.id}">
-            <h3 class="battle-title" th:text="${battle.title}"></h3>
-
-            <!--              EDIT BATTLE FORM-->
-            <form class="edit-battle-form" th:action="@{/battlegrounds/edit-battle-title}" th:method="post">
-              <input type="hidden" th:value="${battle.id}" name="battleId">
-              <input class="edit-battle-input" th:value="${battle.title}" name="battleTitle">
-              <button class="edit-battle-btn" type="submit">Change Battle Name</button>
-            </form>
-
-            <!--              DELETE BATTLE FORM-->
-            <form class="delete-battle-form" th:action="@{/battlegrounds/delete-battle}" th:method="post">
-              <input type="hidden" th:value="${battle.id}" name="battleId">
-              <button class="delete-battle-btn" type="submit">Delete Battle</button>
-            </form>
-            <button class="open-edit-battle-btn" type="button">
-              <img class="open-edit-battle-btn-img" src="/images/green-edit.png" alt="icon">
-            </button>
-          </li>
-          <li>
-
-            <!--            CREATE BATTLE FORM-->
-            <form class="create-battle-form" th:action="@{/battlegrounds/create-battle}" th:method="post">
-              <div class="hidden-form-wrap">
-                <input class="create-battle-input" type="text" placeholder="Add your battle..."
-                       name="battleTitle"/>
-                <button class="create-battle-btn" type="submit">Submit</button>
-              </div>
-            </form>
-          </li>
-        </ul>
-      </section>
       <!--      TASK CONTAINER-->
       <section class="tasks">
-        <ul class="tasks-list hidden" th:each="battle : ${battles}">
-          <h2 class="tasks-battle-title" th:text="${battle.getTitle()}"></h2>
+        <ul class="tasks-list">
+          <h2 class="tasks-battle-title" th:text="${battle.title}"></h2>
 
           <!--          TASK-->
           <li class="task not-complete" th:each="task : ${battle.getTasks()}">
@@ -95,10 +60,10 @@
       </section>
       <section class="monsters">
         <!--      MONSTER DISPLAY-->
-        <div class="monsters-container" th:each="battle : ${battles}">
+        <div class="monsters-container">
           <div class="row grow justify-center align-center">
             <h1 th:text="${battle.title}"></h1>
-            <h3 th:text="${battle.getMonster().getName()}"></h3>
+            <h3 th:text="${battle.monster.name}"></h3>
             <div class="battle-monster-img" id="battle-monster-img">
               <img th:src="${battle.getMonster().getMonsterImages().get(0).getMonster_img()}">
             </div>
@@ -111,8 +76,6 @@
       <h2>Monster chat box here</h2>
     </div>
   </div>
-</div>
-</div>
 </div>
 <footer th:insert="~{partials/footer :: footer}"></footer>
 <script src="/js/script.js"></script>

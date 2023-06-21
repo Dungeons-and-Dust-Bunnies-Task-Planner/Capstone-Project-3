@@ -28,13 +28,23 @@ public class BattleController{
 		this.monstersDao = monstersDao;
 	}
 
-	@GetMapping("/battlegrounds")
-	public String showBattlegrounds(Model model){
+	@GetMapping("/battleList")
+	public String showBattleList(Model model){
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		user = usersDao.findUserById(user.getId());
 		List<Battle> battles = battlesDao.findAllByUserId(user.getId());
 		model.addAttribute("battles", battles);
+		return "/battleList";
+	}
+
+	@GetMapping("/battlegrounds/{id}")
+	public String showBattlegrounds(
+			@PathVariable(name = "id") Long id, Model model){
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user = usersDao.findUserById(user.getId());
+		Battle battle = battlesDao.findBattleById(id);
 		model.addAttribute("user", user);
+		model.addAttribute("battle",battle);
 		return "/battlegrounds";
 	}
 
