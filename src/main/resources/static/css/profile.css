@@ -193,23 +193,33 @@ input.submit-btn:hover {
 .battleArea {
     width: 75vw;
     display: flex;
-    justify-content: flex-start;
     align-content: flex-start;
     background: var(--fade-dark-purple);
-    border-radius: .5em;
-    overflow: scroll;
+    border-radius: 0.5em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .battleCard {
     width: 75vw;
     min-height: 200px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--primary);
     border-radius: 10px;
     display: flex;
-    flex-direction: row;
-    padding: 0px;
-    align-self: stretch;
-    justify-content: space-evenly;
+    padding: 20px 20px;
+    margin: 10px 0;
+    transition: background-color 400ms;
+}
+
+.battleCard:hover {
+    background-color: hotpink;
+    cursor: pointer;
+}
+
+
+.battleCardImage {
+    width: 25vw;
 }
 
 .activeBattleRow {
@@ -226,8 +236,9 @@ input.submit-btn:hover {
 }
 
 .battleTitle {
-    align-content: center;
     justify-content: center;
+    width: 50vw;
+    text-align: center;
 }
 .non-Btn {
     height: 50px;

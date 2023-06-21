@@ -217,6 +217,7 @@
     #menu {
         position: fixed;
         width: 300px;
+        height: 100vh;
         top: 0;
         right: -300px;
         padding: 45px;
@@ -233,6 +234,9 @@
         padding: 10px 0;
         font-size: 30px;
         color: white;
+    }
+    #menu li strong {
+        color: hotpink;
     }
 
     #menu li:hover {

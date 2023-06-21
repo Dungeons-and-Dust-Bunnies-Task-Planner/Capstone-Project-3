@@ -6,7 +6,6 @@
     width: 65vw;
     flex-direction: row;
     flex: 1 0 0;
-}
 
 .one, .three,.five {
     opacity: 0;
