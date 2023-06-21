@@ -13,6 +13,7 @@
 
 .nameRow {
     justify-content: center;
+    padding-top: 50px;
 }
 
 @keyframes swipeInRight {
@@ -47,6 +48,7 @@
 
 .aboutH1Row {
     justify-content: center;
+    padding: 50px;
 
 }
 
@@ -56,15 +58,10 @@
 
 }
 
-.linkList {
-    display: flex;
-    flex-direction: row;
-    align-content: space-between;
-
-}
 
 .linkRow {
     align-self: end;
+    justify-content: space-between;
 
 }
 
@@ -75,7 +72,7 @@
 }
 
 @media only screen and (max-width: 1007px) {
-    .caca {
+    .cardy {
         flex-wrap: wrap;
     }
 }
