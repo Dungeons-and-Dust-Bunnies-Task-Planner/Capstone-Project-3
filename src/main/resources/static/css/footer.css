@@ -82,3 +82,16 @@ footer {
 .footer-link:hover{
     color: hotpink;
 }
+.rightFootShort{
+    display: none;
+}
+
+@media screen and (max-width: 750px) {
+    .rightFoot{
+        display: none;
+    }
+    .rightFootShort{
+        display: flex;
+        flex-direction: column;
+    }
+}

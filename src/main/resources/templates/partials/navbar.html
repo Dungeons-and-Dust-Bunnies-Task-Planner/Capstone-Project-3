@@ -34,7 +34,7 @@
             <span></span>
             <span></span>
             <ul id="menu">
-                <li class="nav-welcome-username" sec:authorize="isAuthenticated()">Welcome, <strong th:text="${#authentication.name}"></strong></li>
+                <li class="nav-welcome-username" sec:authorize="isAuthenticated()">Welcome, @<strong th:text="${#authentication.name}"></strong></li>
                 <a th:href="@{/}"><li>Home</li></a>
                 <a sec:authorize="!isAuthenticated()" th:href="@{/login}"><li class="nav-drodown-li">Login</li></a>
                 <a sec:authorize="isAuthenticated()" id="logOutButtonDD"><li>Logout</li></a>
