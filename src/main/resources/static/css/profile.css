@@ -54,7 +54,7 @@
     outline: none;
     font-family: Poppin, Inter, sans-serif;
     color: white;
-    z-index: 4;
+    z-index: 99;
 }
 
 
@@ -68,7 +68,7 @@
     height: 54px;
     width: 450px;
     padding: 6px 8px;
-    border: 1px solid cornflowerblue;
+    border: 1px solid hotpink;
     outline: none;
     box-shadow: inset #000 0 0 3px 1px;
     font-size: 2.25em;
@@ -95,7 +95,7 @@ input.submit-btn:hover {
     padding: 6px 8px;
     height: 70px;
     box-shadow: inset #000 0 0 3px 1px;
-    background: cornflowerblue;
+    background: hotpink;
     text-shadow: 0 1px 3px #000;
     color: #fff;
     font-size: 2em;
@@ -121,7 +121,7 @@ input.submit-btn:hover {
 }
 
 .image-add {
-    background: var(--fade-blue);
+    background: var(--cta2);
     border: none;
     width: 48%;
     color: white;
@@ -213,7 +213,6 @@ input.submit-btn:hover {
 }
 
 .battleCard:hover {
-    background-color: hotpink;
     cursor: pointer;
 }
 

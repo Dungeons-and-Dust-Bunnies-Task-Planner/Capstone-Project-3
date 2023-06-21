@@ -84,14 +84,14 @@ footer {
 .footer-link:hover{
     color: hotpink;
 }
-.rightFootShort{
-    display: none;
-}
+
 
 @media only screen and (max-width: 710px) {
     .socialLong {
         display: none;
-
+    }
+    .rightFootShort{
+        display: none;
     }
 
     .Socials-short {
