@@ -1,21 +1,19 @@
 
 .aboutCard {
-    /*z-index: 99;*/
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
     background: var(--fade-dark-purple);
     border-radius: 12px;
-    width: 75vw;
-    /*height: 10rem;*/
+    width: 65vw;
     flex-direction: row;
-    /*position: relative;*/
     animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
     flex: 1 0 0;
+
 }
 
 .nameRow {
-    align-items: center;
-    padding-left: 215px;
+    justify-content: center;
+    padding-top: 50px;
 }
 
 @keyframes swipeInRight {
@@ -45,25 +43,36 @@
 }
 .poppaRow {
     justify-content: center;
+
+}
+
+.aboutH1Row {
+    justify-content: center;
+    padding: 50px;
+
 }
 
 .aboutH1 {
     align-self: center;
     text-align: center;
+
 }
 
-.linkList {
-    display: flex;
-    flex-direction: row;
-    align-content: space-between;
-}
 
 .linkRow {
     align-self: end;
+    justify-content: space-between;
+
 }
 
 .bio {
 
     text-align: center;
     align-self: center;
+}
+
+@media only screen and (max-width: 1007px) {
+    .cardy {
+        flex-wrap: wrap;
+    }
 }

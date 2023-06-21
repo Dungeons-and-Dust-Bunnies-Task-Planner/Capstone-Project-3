@@ -42,12 +42,14 @@
                     <h3 sec:authorize="!isAuthenticated()" class="land-h2 joinOrCreate">Answer Your Calling, Join The
                         Battle</h3>
                     <h3 sec:authorize="isAuthenticated()" class="land-h2 joinOrCreate">Create Your Battle!</h3>
-<!--                </div>-->
-                <div class="row justify-center">
-                    <h3 sec:authorize="!isAuthenticated()" class="land-h2 attentionButton"><a href="/register">-> Register <-</a></h3>
-                    <h3 sec:authorize="isAuthenticated()" class="land-h2 attentionButton"><a href="/battlegrounds">-> Create <-</a></h3>
-                    <!--                        </div>-->
-                </div>
+                    <!--                </div>-->
+                    <div class="row justify-center">
+                        <h3 sec:authorize="!isAuthenticated()" class="land-h2 attentionButton"><a href="/register">->
+                            Register <-</a></h3>
+                        <h3 sec:authorize="isAuthenticated()" class="land-h2 attentionButton"><a href="/battlegrounds">->
+                            Create <-</a></h3>
+                        <!--                        </div>-->
+                    </div>
                 </div>
                 <!--    LEFT SIDE END   -->
 
@@ -70,9 +72,9 @@
             </div>
         </div>
     </div>
-
+    <div th:insert="~{partials/popUpFacts :: popUp}"></div>
 </div>
-    <div th:insert="~{partials/footer :: footer}"></div>
+<div th:insert="~{partials/footer :: footer}"></div>
 
 </body>
 </html>
