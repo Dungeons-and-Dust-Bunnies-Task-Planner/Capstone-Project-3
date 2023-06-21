@@ -21,14 +21,11 @@
             </div>
             <div class="column">
               <div class="row nameRow">
-                <h2>Andrew Mamamaam</h2>
+                <h2>Dev Team D&DB</h2>
               </div>
               <br>
               <div class="row grow">
-                <p class="bio">Andrew is a full stack developer with a background in education. He is a lifelong learner who is always
-                  looking for new ways to challenge himself. He is passionate about creating applications that are
-                  intuitive and user friendly. When he is not coding, he enjoys spending time with his family, playing
-                  video games, and reading.</p>
+                <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolor odio possimus quia suscipit. Culpa dicta, dolorum eligendi quaerat quam sed veniam. Dolor nemo quo rem. Id sed sunt voluptatibus?</p>
               </div>
               <br>
               <br>
@@ -44,7 +41,7 @@
 
         <br>
 
-        <div class="aboutCard One">
+        <div class="aboutCard two">
           <div class="row cardy">
             <div class="column">
               <div class="row">
@@ -76,7 +73,7 @@
 
         <br>
 
-        <div class="aboutCard One">
+        <div class="aboutCard three">
           <div class="row cardy">
             <div class="column">
               <div class="row">
@@ -108,7 +105,7 @@
 
         <br>
 
-        <div class="aboutCard One">
+        <div class="aboutCard four">
           <div class="row cardy">
             <div class="column">
               <div class="row">
@@ -140,7 +137,7 @@
 
         <br>
 
-        <div class="aboutCard One">
+        <div class="aboutCard five">
           <div class="row cardy">
             <div class="column">
               <div class="row">
@@ -172,7 +169,7 @@
 
         <br>
 
-        <div class="aboutCard One">
+        <div class="aboutCard six">
           <div class="row cardy">
             <div class="column">
               <div class="row">
@@ -213,4 +210,30 @@
 </div>
   <div th:insert="~{partials/footer :: footer}"></div>
 </body>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener("scroll", animateCards);
+
+    function animateCards() {
+      let cards = document.getElementsByClassName("aboutCard");
+      let offset = 450; // controls when the card comes into view
+
+      for (let i = 0; i < cards.length; i++) {
+        let card = cards[i];
+        let cardTop = card.getBoundingClientRect().top;
+        let windowHeight = window.innerHeight;
+
+        if (cardTop < windowHeight - offset) {
+          card.classList.add("slideIn");
+        } else {
+          card.classList.remove("slideIn");
+        }
+      }
+    }
+
+    animateCards();
+  });
+
+
+</script>
 </html>

@@ -5,10 +5,24 @@
     border-radius: 12px;
     width: 65vw;
     flex-direction: row;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in-out;
     flex: 1 0 0;
+}
 
+.one, .three,.five {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.two, .four, .six {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.slideIn {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .nameRow {
@@ -16,31 +30,6 @@
     padding-top: 50px;
 }
 
-@keyframes swipeInRight {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-@keyframes swipeInLeft {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-.aboutCard:nth-child(even) {
-    animation-name: swipeInRight;
-}
-
-.aboutCard:nth-child(odd) {
-    animation-name: swipeInLeft;
-}
 .poppaRow {
     justify-content: center;
 
