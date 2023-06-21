@@ -55,7 +55,7 @@
         <!--    BATTLE SECTION       -->
         <div class="container grow">
             <div class="row battleRow grow">
-                <div class="column battleArea">
+                <div class="battleArea">
                     <br><h1>Your Active Battles</h1><br><br>
                     <div class="row cardRow">
                       <!------------  BTN FOR battle Complete increment      ------------>
@@ -71,7 +71,7 @@
                         </div>
                         <div th:each="battle : ${battles}" class="battleCard">
                             <div class="column">
-                                <img src="https://dummyimage.com/100x100/bf2a2a/ffffff" alt="Active Battle Image">
+                                <img class="battleCardImage" th:src="${battle.getMonster().getMonsterImages().get(0).getMonster_img()}" alt="Battle monster image">
                             </div>
                             <div class="column battleTitle">
                                 <h2 class="battleTitle" th:text="${battle.title}"></h2>

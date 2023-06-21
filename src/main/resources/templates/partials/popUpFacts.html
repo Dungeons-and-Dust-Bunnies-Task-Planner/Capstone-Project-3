@@ -1,13 +1,15 @@
 <div th:fragment="popUp" xmlns:sec="http://www.w3.org/1999/xhtml">
-        <div class="container factContainer">
-            <div id="popup">
+    <div class="container factContainer">
+        <div id="popup">
             <div class="row factsRow">
                 <span id="close-btn">&times;</span>
-                <img class="monsterPopup"
-                     src="https://cdn.discordapp.com/attachments/526187085741162498/1120772695571845364/IMG_1855.png">
-                <div class="column factsColumn">
-                    <h3 class="Dyn">Did You Know?</h3>
-                    <h4 class="fact"></h4>
+                <div class="row imageFacts">
+                    <img class="monsterPopup"
+                         src="https://cdn.discordapp.com/attachments/526187085741162498/1120772695571845364/IMG_1855.png">
+                    <div class="column factsColumn">
+                        <h3 class="Dyn">Did You Know?</h3>
+                        <h4 class="fact"></h4>
+                    </div>
                 </div>
             </div>
         </div>
@@ -66,10 +68,11 @@
             let factRow = document.querySelector(".factsRow");
 
             factRow.style.transform = "translateY(100%)";
-            setTimeout(function() {
+            setTimeout(function () {
                 factContainer.style.display = "none";
             }, 500);
         }
+
         //event listener to the close button
         let closeBtn = document.getElementById("close-btn");
         closeBtn.addEventListener("click", closePopup);

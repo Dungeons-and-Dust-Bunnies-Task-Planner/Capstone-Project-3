@@ -48,6 +48,21 @@
 }
 
 @media only screen and (max-width: 640px) {
+    .imageFacts {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .monsterPopup {
+        max-width: 50vw;
+        display: flex;
+        /* justify-content: center; */
+        /* align-content: center; */
+        /* flex-wrap: wrap; */
+        align-self: center;
+        margin-top: 10px;
+    }
+
     .factsRow {
         width: 100vw;
     }
