@@ -25,6 +25,7 @@ footer {
     justify-content: space-evenly;
 }
 
+/*      LEFT    */
 .newsletter {
     display: flex;
     flex-direction: row;
@@ -37,18 +38,19 @@ footer {
     justify-content: start;
 }
 
+/*      MIDDLE      */
 .middleFooter {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
+/*      RIGHT       */
 .rightFoot {
     display: flex;
     justify-content: end;
 }
-
 .email-btn-submit {
     background-color: var(--cta2);
     color:white;
@@ -95,3 +97,4 @@ footer {
         flex-direction: column;
     }
 }
+
