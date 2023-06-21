@@ -25,6 +25,7 @@ footer {
     justify-content: space-evenly;
 }
 
+/*      LEFT    */
 .newsletter {
     display: flex;
     flex-direction: row;
@@ -37,14 +38,29 @@ footer {
     justify-content: start;
 }
 
+/*      MIDDLE      */
 .middleFooter {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
+/*      RIGHT       */
 .rightFoot {
     display: flex;
     justify-content: end;
+}
+
+@media only screen and (max-width: 640px) {
+    .socialLong {
+        display: none;
+
+    }
+
+    .Socials-short {
+        display: flex;
+        width: 30px;
+    }
+
 }
