@@ -3,9 +3,8 @@ package com.example.capstoneprojectteam3.controllers;
 import com.example.capstoneprojectteam3.models.Task;
 import com.example.capstoneprojectteam3.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -28,17 +27,25 @@ public class TaskRestController {
     }
 
 
-    @PostMapping("/task-complete")
-    public ResponseEntity<Task> completeTask(@RequestParam("taskId") Long taskId) {
+    @PostMapping("/complete-task")
+    public ModelAndView completeTask(@RequestParam("taskId") Long taskId) {
         Task task = tasksDao.findTaskById(taskId);
+        Long battleId = task.getBattle().getId();
         if(task == null) {
-            return ResponseEntity.notFound().build();
+            System.out.println("Could not find taskId to Complete Task!");
         }
         if (task.getTaskComplete() == 0){
             task.setTaskComplete(1);
+            System.out.println("taskId: " + taskId + " " + task.getTaskBody() + " task marked as complete!");
+            tasksDao.save(task);
         } else {
             task.setTaskComplete(0);
+            System.out.println("taskId: " + taskId + " " + task.getTaskBody() + " task marked as NOT -Complete!");
+            tasksDao.save(task);
         }
-        return ResponseEntity.ok(task);
+
+        // Create a ModelAndView object and set the view name and model attributes
+        ModelAndView modelAndView = new ModelAndView("redirect:/battlegrounds/"+ battleId); // Replace "viewName" with the actual name of your HTML view
+        return modelAndView;
     }
 }

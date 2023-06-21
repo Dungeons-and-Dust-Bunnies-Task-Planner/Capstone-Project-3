@@ -18,7 +18,7 @@
       <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
       <li sec:authorize="isAuthenticated()"><a id="logOutButton">Logout</a></li>
       <li sec:authorize="isAuthenticated()"><a th:href="@{/profile}">Profile</a></li>
-      <li><a th:href="@{/battlegrounds}">Battlegrounds</a></li>
+      <li><a th:href="@{/battleList}">Battlegrounds</a></li>
       <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}">Register</a></li>
       <li><a th:href="@{/contact}">Contact</a></li>
     </ul>
@@ -37,7 +37,7 @@
       <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
       <a sec:authorize="isAuthenticated()" id="logOutButtonDD">Logout</a>
       <a sec:authorize="isAuthenticated()" th:href="@{/profile}">Profile</a>
-      <a th:href="@{/battlegrounds}">Battlegrounds</a>
+      <a th:href="@{/battleList}">Battlegrounds</a>
       <a sec:authorize="!isAuthenticated()" th:href="@{/register}">Register</a>
       <a th:href="@{/contact}">Contact</a>
     </div>

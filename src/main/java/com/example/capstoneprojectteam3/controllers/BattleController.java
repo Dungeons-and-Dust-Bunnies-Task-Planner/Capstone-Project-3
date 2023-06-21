@@ -59,7 +59,7 @@ public class BattleController{
 
 		Battle newBattle = new Battle(title, 0L, user, newMonster);
 		battlesDao.save(newBattle);
-		return "redirect:/battlegrounds";
+		return "redirect:/battleList";
 	}
 
 	@PostMapping("/battlegrounds/create-task")
@@ -67,7 +67,7 @@ public class BattleController{
 		Battle battle = battlesDao.findByIdWithTasks(battleId);
 		Task task = new Task(taskBody, battle, 0);
 		tasksDao.save(task);
-		return "redirect:/battlegrounds";
+		return "redirect:/battlegrounds/"+ battleId;
 	}
 
 //	@PostMapping("/battlegrounds/complete-task")
@@ -90,14 +90,14 @@ public class BattleController{
 		Battle editBattle = battlesDao.findBattleById(battleId);
 		editBattle.setTitle(newBattleTitle);
 		battlesDao.save(editBattle);
-		return "redirect:/battlegrounds";
+		return "redirect:/battleList";
 	}
 
 	@PostMapping("/battlegrounds/delete-battle")
 	public String deleteBattle(
 			@RequestParam(name="battleId") Long battleId){
 		battlesDao.deleteById(battleId);
-		return "redirect:/battlegrounds";
+		return "redirect:/battleList";
 	}
 
 	@PostMapping("/battlegrounds/edit-task-body")
@@ -105,15 +105,18 @@ public class BattleController{
 							   @RequestParam(name="taskId") Long taskId){
 
 		Task editTask = tasksDao.findTaskById(taskId);
+		Long battleId = editTask.getBattle().getId();
 		editTask.setTaskBody(taskBody);
 		tasksDao.save(editTask);
-		return "redirect:/battlegrounds";
+		return "redirect:/battlegrounds/"+ battleId;
 	}
 
 	@PostMapping("/battlegrounds/delete-task")
 	public String deleteTask(@RequestParam(name="taskId") Long taskId){
+		Task editTask = tasksDao.findTaskById(taskId);
+		Long battleId = editTask.getBattle().getId();
 		tasksDao.deleteById(taskId);
-		return "redirect:/battlegrounds";
+		return "redirect:/battlegrounds/" + battleId;
 	}
 
 	// Update the monster image based on the current HP
@@ -123,7 +126,7 @@ public class BattleController{
 		// Example logic: if HP < 50, set a new image; otherwise, keep the existing image
 	}
 
-	@PostMapping("/complete")
+	@PostMapping("/battlegrounds/complete")
 	public String completedBattle(){
 		System.out.println("Made it in to /complete");
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

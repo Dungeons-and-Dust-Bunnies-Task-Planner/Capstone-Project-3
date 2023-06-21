@@ -1,5 +1,5 @@
 const battlesParent = document.querySelector("#battles-list");
-const tasksParent = document.querySelector("#tasks-list");
+const tasksParent = document.querySelector("#tasks");
 
 
 const getBattleList = async (userId) => {
@@ -109,13 +109,57 @@ const getTaskList = async (battleId) => {
 
 const renderTaskList = (tasks, parent) => {
     parent.innerHTML = '';
+    const element1 = document.createElement('section');
+    element1.classList.add("tasks");
+    const element2 = document.createElement('ul');
+    element2.classList.add("tasks-list");
     tasks.forEach(task => {
-        const element = document.createElement('div');
-        element.classList.add("column");
-        element.innerHTML = `
-            <h3>${task.taskBody}</h3>
+        element2.innerHTML = `
+            <h2 class="tasks-battle-title" th:text="${battle.title}"></h2>
+
+          <!--          TASK-->
+          <li class="task not-complete" th:each="task : ${battle.getTasks()}">
+            <!--              ADD COMPLETE TO THE CLASS FOR PRODUCTION SO THAT ONLY ONE OR THE OTHER SHOWS-->
+            <p class="task-body" th:text="${task.getTaskBody()}"></p>
+            <!--              <p class="task-body not-complete" th:unless="${task.getTaskComplete() == 0}" th:text="${task.getTaskBody()}"></p>-->
+
+            <!--            COMPLETE TASK FORM-->
+            <form action="/task/complete-task" method="post" id="taskForm">
+              <input type="hidden" name="taskId" id="taskId" th:value="${task.getId()}">
+              <button class="hit damage" type="submit" style="z-index: 99; display: block; position: absolute;" >complete task</button>
+            </form>
+
+            <!--            EDIT TASK FORM-->
+            <form class="edit-task-form" th:action="@{/battlegrounds/edit-task-body}" th:method="post">
+              <input type="hidden" name="taskId" th:value="${task.getId()}">
+              <input class="edit-task-input" type="text" name="editTaskBody"
+                     th:value="${task.getTaskBody()}">
+              <button class="edit-task-submit-btn" type="submit">Edit task</button>
+            </form>
+
+            <!--            DELETE TASK FORM-->
+            <form class="delete-task-form" th:action="@{/battlegrounds/delete-task}" th:method="post">
+              <input type="hidden" name="taskId" th:value="${task.getId()}">
+              <button class="delete-task-btn" type="submit">Delete</button>
+            </form>
+            <button class="open-edit-task-btn" type="button">
+              <img src="/images/green-edit.png" alt="icon" class="open-edit-task-btn-img">
+            </button>
+          </li>
+
+          <!--            CREATE TASK FORM-->
+          <li class="create-task-form-li">
+            <form class="create-task-form" th:action="@{/battlegrounds/create-task}" th:method="post">
+              <input type="hidden" name="battleId" th:value="${battle.getId()}" id="battleId">
+              <input class="create-task-input" type="text" name="taskBody" placeholder="Create new task">
+              <button class="create-task-btn" type="submit">Create task</button>
+            </form>
+          </li>
+        </ul>
+      </section>
             `;
-        parent.appendChild(element);
+        parent.appendChild(element1);
+        element1.appendChild(element2);
     })
 };
 
