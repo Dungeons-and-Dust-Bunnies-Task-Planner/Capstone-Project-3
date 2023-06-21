@@ -2,8 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="~{partials/head :: head ('Home Page')}"></head>
 <body>
-<nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>
+<!--<nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>-->
 <div class="page-wrapper index">
+    <nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>
+
     <!--    HEADER      -->
     <div class="container CCBB">
         <div class="row justify-center">

@@ -48,3 +48,37 @@ footer {
     display: flex;
     justify-content: end;
 }
+
+.email-btn-submit {
+    background-color: var(--cta2);
+    color:white;
+    font-weight: bolder;
+    font-size: 1rem;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
+}
+
+.email-btn-submit:hover {
+    background-size: 100% 100%;
+    background-position-x: left;
+    cursor: pointer;
+}
+.email-input{
+    display: flex;
+}
+.w-100 {
+    width: 100%;
+}
+.welcome-text{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.footer-link{
+    color: white;
+}
+.footer-link:hover{
+    color: hotpink;
+}
