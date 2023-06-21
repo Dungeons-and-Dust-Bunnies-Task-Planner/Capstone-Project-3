@@ -1,42 +1,48 @@
 <footer th:fragment="footer" xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="container footerWrap">
         <div class="leftFoot row">
-            <p>Recieve our welcome letter!</p>
+            <p class="welcome-text">Welcome Letter</p>
             <div class="newsletter justify-center">
                 <form th:action="@{/welcome}" th:method="post">
-                    <input type="email" id="email" name="email" placeholder="Email:">
-                    <button type="submit">Sign up</button>
+                    <input class="email-input w-100" type="email" id="email" name="email" placeholder="Email:">
+                    <button class="email-btn-submit w-100" type="submit">Sign up</button>
                 </form>
             </div>
         </div>
 
         <div class="middleFooter row justify-center">
             <div class="column shrink">
-                <a th:href="@{/}">Home</a>
+                <a class="footer-link" th:href="@{/}">Home</a>
             </div>
             <div class="column">
-                <a th:href="@{/profile}">Profile</a>
+                <a class="footer-link" th:href="@{/profile}">Profile</a>
             </div>
             <div>
-                <a th:href="@{/contact}">Contact Us</a>
+                <a class="footer-link" th:href="@{/contact}">Contact Us</a>
             </div>
         </div>
         <div class="rightFoot row">
             <div class="column shrink flex-direction-row">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//dndb.me/" target="_blank" class="Socials-short hidden">
-                    <img src="https://clipartcraft.com/images/facebook-logo-png-format-6.png" alt="Facebook Icon">
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//dndb.me/" target="_blank" class="socialLong">Facebook |</a>
+                <p><a class="footer-link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//dndb.me/" target="_blank">Facebook</a> | </p>
             </div>
             <div class="column">
-                <a href="https://twitter.com/intent/tweet?text=Check%20out%20DNDB!%20Conquer%20Chores,%20Battle%20Beasts!%20Unleash%20the%20hero%20within%20and%20conquer%20your%20chores%20with%20DnDB!%20%20%0A-%20https%3A//dndb.me/"
-                   target="_blank" class="Socials-short hidden"><img src="https://cdn4.iconfinder.com/data/icons/free-large-twitter-icons/512/Round_button.png" alt="Twitter Icon"></a>
-                <a href="https://twitter.com/intent/tweet?text=Check%20out%20DNDB!%20Conquer%20Chores,%20Battle%20Beasts!%20Unleash%20the%20hero%20within%20and%20conquer%20your%20chores%20with%20DnDB!%20%20%0A-%20https%3A//dndb.me/"
-                   target="_blank" class="socialLong"> Twitter |</a>
+                <p><a class="footer-link" href="https://twitter.com/intent/tweet?text=Check%20out%20DNDB!%20Conquer%20Chores,%20Battle%20Beasts!%20Unleash%20the%20hero%20within%20and%20conquer%20your%20chores%20with%20DnDB!%20%20%0A-%20https%3A//dndb.me/"
+                      target="_blank"> Twitter</a> | </p>
             </div>
             <div class="column">
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//dndb.me/" target="_blank" class="Socials-short hidden"><img src="https://icons.iconarchive.com/icons/yootheme/social-bookmark/512/social-linkedin-button-blue-icon.png" alt="Linkedin Icon"></a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//dndb.me/" target="_blank" class="socialLong"> Linkedin</a>
+                <a class="footer-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//dndb.me/" target="_blank">Linkedin</a>
+            </div>
+        </div>
+        <div class="rightFootShort row hidden">
+            <div class="column shrink flex-direction-row">
+                <p><a class="footer-link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//dndb.me/" target="_blank">Facebook</a></p>
+            </div>
+            <div class="column">
+                <p><a class="footer-link" href="https://twitter.com/intent/tweet?text=Check%20out%20DNDB!%20Conquer%20Chores,%20Battle%20Beasts!%20Unleash%20the%20hero%20within%20and%20conquer%20your%20chores%20with%20DnDB!%20%20%0A-%20https%3A//dndb.me/"
+                      target="_blank"> Twitter</a></p>
+            </div>
+            <div class="column">
+                <a class="footer-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//dndb.me/" target="_blank">Linkedin</a>
             </div>
         </div>
     </div>
