@@ -88,13 +88,16 @@ footer {
     display: none;
 }
 
-@media screen and (max-width: 750px) {
-    .rightFoot{
+@media only screen and (max-width: 710px) {
+    .socialLong {
         display: none;
+
     }
-    .rightFootShort{
+
+    .Socials-short {
         display: flex;
-        flex-direction: column;
+        width: 30px;
     }
+
 }
 
