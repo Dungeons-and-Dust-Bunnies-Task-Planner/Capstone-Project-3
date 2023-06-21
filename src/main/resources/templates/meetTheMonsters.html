@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{partials/head :: head ('Meet the Monsters')}"></head>
+<body>
+<nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <div class="container">
+                    <div class="row justify-center">
+                        <h1>
+                            <strong>Meet the Monsters</strong>
+                        </h1>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row justify-center">
+                        <div class="column monsters">
+                            <div class="row monsterCardRow">
+                                <img src="https://cdn.discordapp.com/attachments/526187085741162498/1118243957663600670/Untitled_Artwork.png" alt="Octorizz" class="mTmImage">
+                                <h2>OctoRizz the Slippery</h2>
+                                <h3>BLURB ABOUT OCTORIZZ</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div th:insert="~{partials/popUpFacts :: popUp}"></div>
+</div>
+<div th:insert="~{partials/footer :: footer}"></div>
+</body>
+</html>
