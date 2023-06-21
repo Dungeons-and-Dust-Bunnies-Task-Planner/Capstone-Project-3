@@ -31,8 +31,10 @@ public class BattleController{
 	@GetMapping("/battlegrounds")
 	public String showBattlegrounds(Model model){
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user = usersDao.findUserById(user.getId());
 		List<Battle> battles = battlesDao.findAllByUserId(user.getId());
 		model.addAttribute("battles", battles);
+		model.addAttribute("user", user);
 		return "/battlegrounds";
 	}
 

@@ -5,13 +5,13 @@ import com.example.capstoneprojectteam3.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
+@RequestMapping("/task")
 public class TaskRestController {
 
     @Autowired
@@ -21,7 +21,14 @@ public class TaskRestController {
         this.tasksDao = tasksDao;
     }
 
-    @PostMapping("/complete-task")
+    @GetMapping("/task-list")
+    public List<Task> getTaskListById(@RequestParam(name = "battleId") Long battleId){
+        List<Task> tasks = tasksDao.findAllByBattleId(battleId);
+        return tasks;
+    }
+
+
+    @PostMapping("/task-complete")
     public ResponseEntity<Task> completeTask(@RequestParam("taskId") Long taskId) {
         Task task = tasksDao.findTaskById(taskId);
         if(task == null) {
