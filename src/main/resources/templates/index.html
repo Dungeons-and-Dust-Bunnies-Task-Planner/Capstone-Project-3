@@ -9,9 +9,7 @@
     <!--    HEADER      -->
     <div class="container CCBB">
         <div class="row justify-center">
-            <h1>
-                <strong>Conquer Chores, Battle Beasts!</strong>
-            </h1>
+            <h1 class="slogan">Conquer Chores, Battle Beasts!</h1>
         </div>
     </div>
 
@@ -39,15 +37,14 @@
                     <!--        REGISTRATION CONTAINER      -->
                     <!--                    <div class="container registrationButton">-->
                     <!--                        <div class="row justify-center">-->
-                    <h3 sec:authorize="!isAuthenticated()" class="land-h2 joinOrCreate">Answer Your Calling, Join The
-                        Battle</h3>
-                    <h3 sec:authorize="isAuthenticated()" class="land-h2 joinOrCreate">Create Your Battle!</h3>
+                    <h3 sec:authorize="!isAuthenticated()" class="land-h2 joinOrCreate">Answer Your Calling</h3>
+                    <h3 sec:authorize="isAuthenticated()" class="land-h2 joinOrCreate">Go To War!</h3>
                     <!--                </div>-->
                     <div class="row justify-center">
                         <h3 sec:authorize="!isAuthenticated()" class="land-h2 attentionButton"><a href="/register">->
-                            Register <-</a></h3>
+                            Join The Battle! <-</a></h3>
                         <h3 sec:authorize="isAuthenticated()" class="land-h2 attentionButton"><a href="/battlegrounds">->
-                            Create <-</a></h3>
+                            Battle <-</a></h3>
                         <!--                        </div>-->
                     </div>
                 </div>
@@ -62,7 +59,7 @@
                 <div class="rightSide container">
                     <div class="row">
                         <div class="column battleColumn">
-                            <h3 class="battleItOut">Battle It Out!</h3><br>
+<!--                            <h3 class="battleItOut">Battle It Out!</h3><br>-->
                             <img class="MonsterImages"
                                  src="https://cdn.discordapp.com/attachments/415980182021603329/1119091591173382236/Untitled_Artwork.png"
                                  alt="monsters">

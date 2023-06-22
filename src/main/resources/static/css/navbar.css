@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    height: 75px;
+    height: 11vh;
     width: 100vw;
     padding: 0;
     color: #fff;
@@ -49,6 +49,7 @@
 }
 .nav-logo {
     font-size: 1.7rem;
+    min-width: 11rem;
 }
 
 
@@ -88,9 +89,9 @@
     background: var(--primary);
 }
 
-.nav-logo-short {
-    display: none;
-}
+/*.nav-logo-short {*/
+/*    display: none;*/
+/*}*/
 
 
 /*///////*/
@@ -108,21 +109,8 @@
 /* Dropdown Button */
 @media screen and (max-width: 800px) {
     /*      LOGO FOR MEDIUM SIZE*/
-    .nav-logo {
-        display: none;
-    }
     .menu-wrap {
         display: none;
-    }
-
-    .nav-logo-short {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        min-width: 10vw;
-        margin-left: 20px;
-        font-size: 1.7rem;
-        font-family: Barrio, Inter, sans-serif;
     }
 
     .logo-text {
@@ -249,7 +237,7 @@
     #menuOverlay {
         display: none;
         position: fixed;
-        top: 74px;
+        top: 11vh;
         left: 0;
         width: 100vw;
         height: 100vh;
@@ -273,6 +261,9 @@
             margin-left: 20px;
             font-size: 1.7rem;
             font-family: Barrio, Inter, sans-serif;
+        }
+        .nav-logo {
+            font-size: 1.3rem;
         }
 
         .logo-text {
