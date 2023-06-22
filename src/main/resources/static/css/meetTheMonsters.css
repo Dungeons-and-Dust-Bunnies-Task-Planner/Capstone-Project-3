@@ -1,7 +1,122 @@
-.mTmImage {
-    width: 20vw;
+/*      TOP CONTAINER       */
+.topRow {
+    margin: 75px 0;
+}
+
+.h1MonsterTitle {
+    font-family: Barrio, Inter, sans-serif;
+    font-size: xxx-large;
+}
+
+/* CARD CONTAINER       */
+.mainRow {
+    width: 100vw;
+    display: flex;
+    padding: 0 20px;
+    column-gap: 5px;
+    min-height: max-content;
 }
 
 .monsterCardRow {
+    width: 50vw;
+}
 
+.setupStuff {
+    width: 95vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.mTmImage {
+    max-width: 45vw;
+    width: 600px;
+}
+
+/*      TEXT STUFF      */
+.descriptionmTm {
+    width: 45vw;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.h2monsterName {
+    margin: 20px 0;
+    font-size: xx-large;
+}
+
+.h3Blurb {
+    font-weight: 300;
+}
+
+@media (min-width: 641px) and (max-width: 1007px) {
+    .setupStuff {
+        flex-direction: column;
+    }
+    .mainRow {
+        width: 100vw;
+        display: flex;
+        column-gap: 5px;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .descriptionmTm {
+        width: 90vw;
+    }
+
+
+    .h2monsterName {
+        margin: 20px 0;
+        display: flex;
+        align-self: center;
+    }
+
+    .h3Blurb {
+        width: 90vw;
+        display: flex;
+        align-self: center;
+    }
+
+
+}
+
+@media (max-width: 640px) {
+    .setupStuff {
+        flex-direction: column;
+        min-height: max-content;
+    }
+
+    .mainRow {
+        width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 5px;
+        flex-direction: column;
+        min-height: max-content;
+        text-align: center;
+    }
+
+    .descriptionmTm {
+        width: 90vw;
+    }
+
+    .h2monsterName {
+        margin: 20px 0;
+        display: flex;
+        align-self: center;
+    }
+
+    .h3Blurb {
+        width: 90vw;
+        display: flex;
+        align-self: center;
+
+    }
+
+    .h1MonsterTitle {
+        font-size: xx-large;
+    }
 }
