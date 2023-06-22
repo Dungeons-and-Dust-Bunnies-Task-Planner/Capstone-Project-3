@@ -237,7 +237,7 @@
     #menuOverlay {
         display: none;
         position: fixed;
-        top: 74px;
+        top: 11vh;
         left: 0;
         width: 100vw;
         height: 100vh;

@@ -2,7 +2,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     bottom: 0;
-    height: 20vh;
+    height: 24vh;
     width: 100vw;
     background: rgba(0, 0, 0, 0.4);
     padding: 0;
@@ -15,12 +15,9 @@ footer {
 
 
 .footerWrap {
-    /*margin-top: 50px;*/
     display: flex;
     flex-direction: row;
     width: 100vw;
-    max-height: 170px;
-    justify-content: space-evenly;
 }
 
 /*      LEFT    */
@@ -53,6 +50,7 @@ footer {
     justify-content: end;
     gap: 5px;
     font-size: 1.3rem;
+    padding: 25px;
 }
 .email-btn-submit {
     background-color: var(--cta2);
