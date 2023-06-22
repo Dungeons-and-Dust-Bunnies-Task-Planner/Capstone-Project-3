@@ -1,10 +1,8 @@
 footer {
     display: flex;
     flex-wrap: wrap;
-    /*position: absolute;*/
     bottom: 0;
-    max-height: 170px;
-    height: 125px;
+    height: 20vh;
     width: 100vw;
     background: rgba(0, 0, 0, 0.4);
     padding: 0;
@@ -36,6 +34,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: start;
+    align-items: flex-start;
 }
 
 /*      MIDDLE      */
@@ -44,12 +43,16 @@ footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    font-size: 1.3rem;
+    gap: 10px;
 }
 
 /*      RIGHT       */
 .rightFoot {
     display: flex;
     justify-content: end;
+    gap: 5px;
+    font-size: 1.3rem;
 }
 .email-btn-submit {
     background-color: var(--cta2);
@@ -75,8 +78,8 @@ footer {
     width: 100%;
 }
 .welcome-text{
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1.3rem;
+    font-weight: 400;
 }
 .footer-link{
     color: white;
@@ -96,7 +99,21 @@ footer {
 
     .Socials-short {
         display: flex;
-        width: 30px;
+        width: 35px;
+    }
+    .leftFoot{
+        width: 50vw;
+    }
+    .middleFooter {
+        width: 20vw;
+    }
+    .rightFoot {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:5px;
+        width: 30vw;
     }
 
 }

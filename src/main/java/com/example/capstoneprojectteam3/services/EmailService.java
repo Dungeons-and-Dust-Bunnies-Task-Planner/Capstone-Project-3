@@ -33,15 +33,6 @@ public class EmailService {
             ex.printStackTrace();
         }
     }
-//
-//    public void sendMessage(String to, String subject, String text){
-//        SimpleMailMessage message = new SimpleMailMessage();
-//        message.setFrom(from);
-//        message.setTo(to);
-//        message.setSubject(subject);
-//        message.setText(text);
-//        this.emailSender.send(message);
-//    }
 
 }
 

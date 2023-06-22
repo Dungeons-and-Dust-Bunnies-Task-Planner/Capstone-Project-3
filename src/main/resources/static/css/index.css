@@ -1,15 +1,13 @@
 
-.index h1 {
-    font-size: 4em;
+.slogan {
+    font-size: 4rem;
     text-align: center;
-
+    font-weight: 600;
 }
-
-
-.land-h2 {
+.attentionGetter {
     font-size: 3em;
     text-align: center;
-
+    font-weight: 400;
 }
 
 .land-h2 a {
@@ -19,16 +17,15 @@
     transition: all ease-in .3s;
     color: #fff;
     background: var(--cta2);
-    box-shadow: inset black 0px 0px 2px 1px;
+    box-shadow: inset black 0 0 2px 1px;
     border: none;
-    text-shadow: 0px 0px 3px black;
-
-
+    text-shadow: 0 0 3px black;
+    font-size: 2rem;
 }
 
 .land-h2 a:hover {
     text-decoration: inherit;
-    background: rgb(0, 128, 224);
+    background: hotpink;
     transition: all ease-in .3s;
     padding: 10px 15px;
     max-height: 10px;
@@ -58,9 +55,7 @@
 
 
 /*      LEFT SIDE STUFF     */
-.attentionGetter {
-    font-weight: 400;
-}
+
 
 .leftSide {
     display: flex;
@@ -102,10 +97,11 @@
 .joinOrCreate {
     font-size: x-large;
     font-weight: 300;
+    text-align: center;
 }
 
 .attentionButton {
-    font-size: xxx-large;
+    font-size: 2.5rem;
 }
 
 
@@ -115,7 +111,6 @@
     display: flex;
     width: 40vw;
     margin: 20px;
-    /*background-color: rgba(0, 0, 0, 0.4);*/
     border-radius: 1em;
 }
 
@@ -128,26 +123,70 @@
     padding: 10px 10px;
 }
 
-
-/* Medium (641px to 1007px) */
-@media (min-width: 641px) and (max-width: 1007px) {
-
+/*Med*/
+@media (min-width: 30rem) and (max-width: 65rem) {
+    .slogan {
+        font-size: 3.5rem;
+        text-align: center;
+        font-weight: 500;
+    }
+    .attentionGetter {
+        font-size: 2.5em;
+        text-align: center;
+        font-weight: 300;
+    }
+    .joinOrCreate {
+        font-size: 1.5rem;
+        font-weight: 200;
+        text-align: center;
+    }
+    .attentionButton {
+        font-size: 2.5rem;
+    }
     .tooRight {
         flex-direction: column;
     }
 
     .leftSide {
         width: 90vw;
+        margin-bottom: 70px;
     }
 
     .rightSide {
         width: 90vw;
+    }
+    .land-h2 a {
+        font-size: 2rem;
     }
 }
 
 
 /* Small */
-@media (min-width: 412px) and (max-width: 640px) {
+@media (min-width: 20rem) and (max-width: 30rem) {
+    .slogan {
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 800;
+    }
+    .attentionGetter {
+        font-size: 2rem;
+        text-align: center;
+        font-weight: 400;
+    }
+    .joinOrCreate {
+        font-size:1.5rem;
+        font-weight: 300;
+        text-align: center;
+    }
+    .battleItOut {
+        display: none;
+    }
+    .MonsterImages{
+        width: 100%;
+    }
+    .attentionButton {
+        font-size: 2.5rem;
+    }
     .tooRight {
         flex-direction: column;
     }
@@ -159,12 +198,36 @@
     .rightSide {
         width: 90vw;
     }
+    .land-h2 a {
+        font-size: 1.5rem;
+    }
+    .footerWrap {
+        height: 470px;
+
+    }
+    footer {
+        display: none;
+    }
 }
 
 /*  smallest    */
-@media (max-width: 411px) {
+@media (min-width: 0rem) and (max-width: 19rem) {
+    .slogan {
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 800;
+    }
+    .attentionGetter {
+        font-size: 3em;
+        text-align: center;
+        font-weight: 400;
+    }
+    .joinOrCreate {
+        font-size: x-large;
+        font-weight: 300;
+    }
     .attentionButton {
-        font-size: xx-large;
+        font-size: 1rem;
     }
     .tooRight {
         flex-direction: column;

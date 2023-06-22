@@ -49,6 +49,7 @@
 }
 .nav-logo {
     font-size: 1.7rem;
+    min-width: 11rem;
 }
 
 
@@ -88,9 +89,9 @@
     background: var(--primary);
 }
 
-.nav-logo-short {
-    display: none;
-}
+/*.nav-logo-short {*/
+/*    display: none;*/
+/*}*/
 
 
 /*///////*/
@@ -108,22 +109,22 @@
 /* Dropdown Button */
 @media screen and (max-width: 800px) {
     /*      LOGO FOR MEDIUM SIZE*/
-    .nav-logo {
-        display: none;
-    }
+    /*.nav-logo {*/
+    /*    display: none;*/
+    /*}*/
     .menu-wrap {
         display: none;
     }
 
-    .nav-logo-short {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        min-width: 10vw;
-        margin-left: 20px;
-        font-size: 1.7rem;
-        font-family: Barrio, Inter, sans-serif;
-    }
+    /*.nav-logo-short {*/
+    /*    display: flex;*/
+    /*    align-items: center;*/
+    /*    justify-content: flex-end;*/
+    /*    min-width: 10vw;*/
+    /*    margin-left: 20px;*/
+    /*    font-size: 1.7rem;*/
+    /*    font-family: Barrio, Inter, sans-serif;*/
+    /*}*/
 
     .logo-text {
         display: block;
