@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    height: 75px;
+    height: 11vh;
     width: 100vw;
     padding: 0;
     color: #fff;
@@ -109,22 +109,9 @@
 /* Dropdown Button */
 @media screen and (max-width: 800px) {
     /*      LOGO FOR MEDIUM SIZE*/
-    /*.nav-logo {*/
-    /*    display: none;*/
-    /*}*/
     .menu-wrap {
         display: none;
     }
-
-    /*.nav-logo-short {*/
-    /*    display: flex;*/
-    /*    align-items: center;*/
-    /*    justify-content: flex-end;*/
-    /*    min-width: 10vw;*/
-    /*    margin-left: 20px;*/
-    /*    font-size: 1.7rem;*/
-    /*    font-family: Barrio, Inter, sans-serif;*/
-    /*}*/
 
     .logo-text {
         display: block;
@@ -274,6 +261,9 @@
             margin-left: 20px;
             font-size: 1.7rem;
             font-family: Barrio, Inter, sans-serif;
+        }
+        .nav-logo {
+            font-size: 1.3rem;
         }
 
         .logo-text {
