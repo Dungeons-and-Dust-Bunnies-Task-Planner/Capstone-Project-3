@@ -235,3 +235,31 @@
 .margin-bottom-2rem{
     margin-bottom: 2rem;
 }
+
+/* Small */
+@media (min-width: 20rem) and (max-width: 30rem) {
+    .contact-form {
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+        background: var(--fade-dark-purple);
+        border-radius: 12px;
+        width: 80vw;
+        height: 30rem;
+        display: flex;
+        justify-content: flex-start;
+        padding: 30px;
+    }
+    .feedback-header {
+        display: flex;
+        font-size: 1.5rem;
+    }
+    .msg-area {
+        display: flex;
+        width: 75vw;
+        height: 200px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        background-color: rgb(32,33,36);
+        color: white;
+    }
+}
