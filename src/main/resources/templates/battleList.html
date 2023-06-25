@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{partials/head :: head ('Battle List')}"></head>
+</head>
+<body>
+<nav th:insert="~{partials/navbar :: navbar}"></nav>
+<div class="page-wrapper">
+    <div class="container grow" style="margin-top: 10vh">
+        <div class="row flex-direction-column">
+            <!--          BATTLE-->
+            <div class="column" th:each="battle : ${battles}" th:data-battle-id="${battle.id}">
+                <h3><a th:text="${battle.title}" th:href="@{|/battlegrounds/${battle.id}|}"></a></h3>
+
+                <!--              EDIT BATTLE FORM-->
+                <form th:action="@{/battlegrounds/edit-battle-title}" th:method="post">
+                    <input type="hidden" th:value="${battle.id}" name="battleId">
+                    <input class="edit-battle-input" th:value="${battle.title}" name="battleTitle">
+                    <button class="edit-battle-btn" type="submit">Change Battle Name</button>
+                </form>
+
+                <!--              DELETE BATTLE FORM-->
+                <form th:action="@{/battlegrounds/delete-battle}" th:method="post">
+                    <input type="hidden" th:value="${battle.id}" name="battleId">
+                    <button class="delete-battle-btn" type="submit">Delete Battle</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <!--            CREATE BATTLE FORM-->
+            <form th:action="@{/battlegrounds/create-battle}" th:method="post">
+                <div class="hidden-form-wrap">
+                    <input class="create-battle-input" type="text" placeholder="Add your battle..."
+                           name="battleTitle"/>
+                    <button class="create-battle-btn" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<footer th:insert="~{partials/footer :: footer}"></footer>
+</body>
+</html>
