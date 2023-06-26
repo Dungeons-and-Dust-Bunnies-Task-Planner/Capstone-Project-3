@@ -59,7 +59,7 @@
 .battle-slide-out {
     position: fixed;
     top: 101px;
-    left: 3px;
+    left: 0;
     height: 0;
     width: 30%;
     background: none;
@@ -93,25 +93,6 @@
 .hidden-form-wrap {
     display: flex;
     align-items: center;
-}
-
-.form {
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-}
-
-.input {
-
-}
-
-.btn-img {
-
-}
-
-.btn {
-
 }
 
 .create-battle-input {
@@ -160,8 +141,7 @@
     color: #fff;
 }
 
-.battle-title,
-.task-body {
+.battle-title {
     position: absolute;
     top: 0;
     left: 0;
@@ -173,7 +153,7 @@
     font-size: 1.4em;
     color: #000;
     z-index: 1;
-    transition: var(--trans);
+    transition: all ease-out .4s;
 }
 
 .battle-title.edit {
@@ -236,8 +216,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    display: flex;
-    align-items: center;
+    display:flex;
+    align-items:center;
     justify-content: center;
     height: 100px;
     width: 15%;
@@ -312,8 +292,27 @@ background(--secondary);
     text-decoration: line-through;
 }
 
+.task-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 85%;
+    padding: 15px;
+    font-size: 1.4em;
+    color: #000;
+    z-index: 1;
+    transition: var(--trans);;
+}
+
 .task-body.edit {
     left: -100%;
+}
+
+.complete-task-form {
+    display: none;
 }
 
 .edit-task-form {
@@ -368,9 +367,9 @@ background(--secondary);
     position: absolute;
     top: 0;
     right: 0;
-    display: flex;
+    display:flex;
     justify-content: center;
-    align-items: center;
+    align-items:center;
     height: 100px;
     width: 15%;
     border: none;
@@ -381,9 +380,8 @@ background(--secondary);
 }
 
 .open-edit-task-btn-img {
-    height: 40px;
-    width: 40px;
-    margin: -5px -5px 0 0;
+    height: 50px;
+    width: 50px;
 }
 
 .create-task-input {
@@ -402,7 +400,7 @@ background(--secondary);
 .monsters {
     display: flex;
     flex-direction: column;
-    background: var(--solid-background);
+    background: var(--slide-out-bg);
     border-radius: var(--br);
     margin-top: 101px;
     width: 70%;
@@ -431,51 +429,3 @@ background(--secondary);
     border-radius: var(--br);
 }
 
-.hidden {
-    display:none;
-}
-
-.complete-task-btn {
-    height: 100px;
-    width: 100px;
-}
-
-.complete-task-form {
-    display: block;
-}
-
-/* HEALTH BAR */
-
-.health-bar {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 200px;
-    height: 20px;
-    padding: 5px;
-    background: #ddd;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    position: relative;
-}
-.bar {
-    background: #c54;
-    width: 100%;
-    height: 10px;
-    position: relative;
-
-    transition: width .5s linear;
-}
-
-.hit {
-    background: rgba(255,255,255,0.6);
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100px;
-    z-index: 99;
-
-    transition: width .5s linear;
-}

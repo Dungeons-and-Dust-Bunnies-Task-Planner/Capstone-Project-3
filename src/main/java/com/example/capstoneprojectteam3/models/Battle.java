@@ -1,8 +1,6 @@
 package com.example.capstoneprojectteam3.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -23,16 +21,17 @@ public class Battle{
 	@Column(nullable = false)
 	private Long status;
 
+	@JsonIgnore
 	@ManyToOne
-	@JsonManagedReference
 	@JoinColumn(name="user_id")
 	private User user;
 
+	@JsonIgnore
 	@ManyToOne
-	@JsonManagedReference
 	@JoinColumn(name="monster_id")
 	private Monster monster;
 
+//	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true, mappedBy="battle")
 	private List<Task> tasks;
 
