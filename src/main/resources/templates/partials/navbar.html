@@ -1,68 +1,62 @@
 <div th:fragment="navbar" class="nav" xmlns:sec="http://www.w3.org/1999/xhtml">
 
-
-  <div class="nav-logo">
-    <div class="logo-text">
-      <span class="dungeons">Dungeons</span>
-      <span class="dust-bunnies">& Dust Bunnies </span>
+<div class="nav">
+    <div class="logo-wrap grow">
+        <div class="icon">
+            <img src="/images/dustBunny.png" alt="icon">
+        </div>
+<!--        <div class="nav-logo-short hidden">D&DB</div>-->
+        <div class="logo grow">
+            <h2 class="nav-logo grow">Dungeons & Dust Bunnies</h2>
+        </div>
     </div>
-    <div class="nav-logo-short hidden">D&DB</div>
-    <div class="logo-icon">
-      <img class="icon-img" src="/images/dustBunny.png" alt="icon">
+
+    <div class="menu-wrap">
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/about}">About</a></li>
+            <li><a th:href="@{/battleList}">Battlegrounds</a></li>
+            <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
+            <li sec:authorize="isAuthenticated()"><a id="logOutButton">Logout</a></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/profile}">Profile</a></li>
+            <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}">Register</a></li>
+        </ul>
+        <form class="logout-form hidden" th:action="@{/logout}" th:method="post" id="logOutForm">
+            <button class="logout-btn">#</button>
+        </form>
     </div>
-  </div>
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <div id="menuOverlay"></div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <li class="nav-welcome-username" sec:authorize="isAuthenticated()">Welcome, @<strong th:text="${#authentication.name}"></strong></li>
+                <a th:href="@{/}"><li>Home</li></a>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/login}"><li class="nav-drodown-li">Login</li></a>
+                <a sec:authorize="isAuthenticated()" id="logOutButtonDD"><li>Logout</li></a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/profile}"><li>Profile</li></a>
+                <a th:href="@{/battleList}"><li>Battlegrounds</li></a>
+                <a sec:authorize="!isAuthenticated()" th:href="@{/register}"><li>Register</li></a>
+                <a th:href="@{/contact}"><li>Contact</li></a>
+                <a th:href="@{/about}"><li>About The Devs</li></a>
+            </ul>
+        </div>
 
-  <div class="menu-wrap">
-    <ul>
-      <li><a th:href="@{/}">Home</a></li>
-      <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
-      <li sec:authorize="isAuthenticated()"><a id="logOutButton">Logout</a></li>
-      <li sec:authorize="isAuthenticated()"><a th:href="@{/profile}">Profile</a></li>
-      <li><a th:href="@{/battleList}">Battlegrounds</a></li>
-      <li sec:authorize="!isAuthenticated()"><a th:href="@{/register}">Register</a></li>
-      <li><a th:href="@{/contact}">Contact</a></li>
-    </ul>
-    <form class="logout-form hidden" th:action="@{/logout}" th:method="post" id="logOutForm">
-      <button class="logout-btn">#</button>
-    </form>
-  </div>
-  <div class="dropdown">
-    <button onclick="toggleDropdown()" class="dropbtn" id="drpobtn">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </button>
-    <div id="myDropdown" class="dropdown-content">
-      <a th:href="@{/}">Home</a>
-      <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
-      <a sec:authorize="isAuthenticated()" id="logOutButtonDD">Logout</a>
-      <a sec:authorize="isAuthenticated()" th:href="@{/profile}">Profile</a>
-      <a th:href="@{/battleList}">Battlegrounds</a>
-      <a sec:authorize="!isAuthenticated()" th:href="@{/register}">Register</a>
-      <a th:href="@{/contact}">Contact</a>
-    </div>
-  </div>
 
-  <script>
-			const logOutForm = document.getElementById('logOutForm')
-			const logOutButton = document.getElementById('logOutButton')
-			const logOutButtonDD = document.getElementById('logOutButtonDD')
-			logOutButton.addEventListener('click', () => {
-					logOutForm.submit()
-			})
-			logOutButtonDD.addEventListener('click', () => {
-					logOutForm.submit()
-			})
 
-			/* When the user clicks on the button with the id="drpobtn", it opens the dropdown menu by adding the show class to the button */
-			function toggleDropdown() {
-					let dropdown = document.getElementById('myDropdown')
-					let button = document.getElementById('drpobtn')
+    <script>
+        const logOutForm = document.getElementById('logOutForm')
+        const logOutButton = document.getElementById('logOutButton')
+        const logOutButtonDD = document.getElementById('logOutButtonDD')
+        logOutButton.addEventListener('click', () => {
+            logOutForm.submit()
+        })
+        logOutButtonDD.addEventListener('click', () => {
+            logOutForm.submit()
+        })
 
-					dropdown.classList.toggle('show')
-					button.classList.toggle('active')
-			}
-
-  </script>
+    </script>
 </div>
 </div>

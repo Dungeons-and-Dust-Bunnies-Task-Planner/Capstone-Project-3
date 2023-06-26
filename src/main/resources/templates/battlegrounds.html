@@ -7,8 +7,8 @@
   <div class="container grow">
     <div class="row full-width no-padding">
       <!--      BATTLE SLIDE OUT-->
-      <div class="battle-icon" sec:authorize="!isAuthenticated()">
-        <a th:href="@{/battleList}"><img class="battle-icon-img" src="/images/battle-axes.png" alt="battle icon"></a>
+      <div class="battle-icon">
+        <img class="battle-icon-img" src="/images/battle-axes.png" alt="battle icon">
       </div>
       <div class="battle-icon-banner">
         <p class="battle-icon-banner-text"> Tasks!</p>
@@ -27,9 +27,7 @@
             <!--            COMPLETE TASK FORM-->
             <form th:action="@{/task/complete-task}" th:method="post" id="taskForm">
               <input type="hidden" name="taskId" id="taskId" th:value="${task.id}">
-              <button class="hit damage" type="submit"
-                      style="left: 150px;z-index: 99; display: block; position: absolute;">complete task
-              </button>
+              <button class="hit damage" type="submit" style="left: 150px;z-index: 99; display: block; position: absolute;" >complete task</button>
             </form>
 
             <!--            EDIT TASK FORM-->
@@ -37,9 +35,7 @@
               <input type="hidden" name="taskId" th:value="${task.id}">
               <input class="edit-task-input" type="text" name="editTaskBody"
                      th:value="${task.taskBody}">
-              <button class="edit-task-submit-btn" type="submit">
-                <img src="/images/green-edit.png" alt="button icon">
-              </button>
+              <button class="edit-task-submit-btn" type="submit">Edit task</button>
             </form>
 
             <!--            DELETE TASK FORM-->
@@ -70,26 +66,25 @@
           <h3 th:text="${battle.monster.name}"></h3>
         </div>
         <!--      MONSTER DISPLAY-->
-        <div class="row grow justify-center align-center">
-          <div class="battle-monster-img" id="battle-monster-img">
-            <img th:src="${battle.monster.monsterImages[0].monster_img}">
-          </div>
-        </div>
-        <div class="row justify-center">
-          <div class="health-bar" th:data-total="${battle.tasks.size() * 1000}"
-               th:data-value="${battle.tasks.size() * 1000}">
-            <div class="bar">
+          <div class="row grow justify-center align-center">
+            <div class="battle-monster-img" id="battle-monster-img">
+              <img th:src="${battle.monster.monsterImages[0].monster_img}">
             </div>
           </div>
-          <!------------  BTN FOR battle Complete increment      ------------>
-          <form th:action="@{/battlegrounds/complete}" th:method="post">
-            <button type="submit" id="battleComplete" name="battleComplete">Finish Him!</button>
-          </form>
-        </div>
-        <!--                    MONSTER CHAT BOX-->
-        <div class="battle-chat-box row">
-          <h2>Monster chat box here</h2>
-        </div>
+          <div class="row justify-center">
+            <div class="health-bar" th:data-total="${battle.tasks.size() * 1000}" th:data-value="${battle.tasks.size() * 1000}">
+              <div class="bar">
+              </div>
+            </div>
+            <!------------  BTN FOR battle Complete increment      ------------>
+              <form th:action="@{/battlegrounds/complete}" th:method="post">
+                  <button type="submit"  id="battleComplete" name="battleComplete">Finish Him!</button>
+              </form>
+          </div>
+          <!--                    MONSTER CHAT BOX-->
+          <div class="battle-chat-box row">
+            <h2>Monster chat box here</h2>
+          </div>
       </section>
     </div>
   </div>
