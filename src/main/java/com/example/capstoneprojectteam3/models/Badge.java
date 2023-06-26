@@ -15,6 +15,9 @@ public class Badge {
     private long id;
 
     @Column(nullable = false, unique = true)
+    private String badgeImage;
+
+    @Column(nullable = false, unique = true)
     private String badgeTitle;
 
     @Column(nullable = false)
@@ -33,7 +36,8 @@ public class Badge {
     public Badge() {
     }
 
-    public Badge(String badgeTitle, String badgeBody) {
+    public Badge(String badgeImage, String badgeTitle, String badgeBody) {
+        this.badgeImage = badgeImage;
         this.badgeTitle = badgeTitle;
         this.badgeBody = badgeBody;
     }
@@ -90,6 +94,14 @@ public class Badge {
 
     public void setTasks(List<Task> tasks){
         this.tasks = tasks;
+    }
+
+    public String getBadgeImage() {
+        return badgeImage;
+    }
+
+    public void setBadgeImage(String badgeImage) {
+        this.badgeImage = badgeImage;
     }
 
     //    ----- Getters and Setters END -----
