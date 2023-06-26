@@ -427,7 +427,7 @@
 .monsters{
   display:flex;
   flex-direction:column;
-  background:var(--solid-background);
+  background:var(--background);
   border-radius:var(--br);
   margin-top:101px;
   width:70%;
