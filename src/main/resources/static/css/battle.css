@@ -23,3 +23,48 @@
     font-size: x-large;
     text-decoration-color: var(--primary);
 }
+
+.battle-edit-img {
+    border: none;
+    float: right;
+    margin-left: 30px;
+    height: 55px;
+}
+
+#battle-edit-btn {
+    border: none;
+    height: 55px;
+    float: right;
+}
+
+.edit-modal{
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.modal-close {
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.battleTitleForm{
+    width: 100%;
+}
+
+.edit-battle-title-btn {
+    height: 50px;
+    background-color: var(--cta2);
+    color:white;
+    font-weight: bolder;
+    font-size: 2rem;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
+}

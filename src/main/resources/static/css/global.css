@@ -203,3 +203,6 @@ body {
     margin-bottom: 3rem;
 }
 
+.justify-content-end {
+    justify-content: end;
+}

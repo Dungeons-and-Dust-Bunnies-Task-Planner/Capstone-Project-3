@@ -98,20 +98,20 @@
                 </div>
             </div>
         </div>
-        <form class="cat" th:action="@{/profile/{id}/delete(id=${id})}" method="POST">
-            <h1>Delete Profile</h1>
-            <input class="deleteAccount" type="submit" value="Delete">
-        </form>
-        <div th:insert="~{partials/footer :: footer}"></div>
     </div>
+<!--        <form class="cat" th:action="@{/profile/{id}/delete(id=${id})}" method="POST">-->
+<!--            <h1>Delete Profile</h1>-->
+<!--            <input class="deleteAccount" type="submit" value="Delete">-->
+<!--        </form>-->
+<!--        <div th:insert="~{partials/footer :: footer}"></div>-->
 <!-- This is the JS for Badge Claiming -->
 
 <script>
-    const claimButton = document.getElementById('claimButton');
-    const badgrClaimForm = document.getElementById('badgeClaimForm');
-    claimButton.addEventListener('click', () => {
-        badgrClaimForm.submit();
-    });
+    // const claimButton = document.getElementById('claimButton');
+    // const badgrClaimForm = document.getElementById('badgeClaimForm');
+    // claimButton.addEventListener('click', () => {
+    //     badgrClaimForm.submit();
+    // });
 </script>
 <script src="/js/profile.js"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
