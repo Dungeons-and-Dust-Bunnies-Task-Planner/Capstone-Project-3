@@ -47,7 +47,7 @@
 
 .login-register-Btn {
     height: 50px;
-    background-color: var(--cta2);
+    background-color: var(--cta);
     color:white;
     font-weight: bolder;
     font-size: 2rem;
@@ -183,7 +183,7 @@
     height: 50px;
     justify-content: center;
     align-items: center;
-    background-color: var(--cta2);
+    background-color: var(--cta);
     color:white;
     font-weight: bolder;
     font-size: 2rem;
