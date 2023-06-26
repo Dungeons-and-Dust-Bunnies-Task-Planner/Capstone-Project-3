@@ -33,7 +33,6 @@
                 <img class="btn-img complete-task-btn-img" src="/images/green-check.png" alt="button icon">
               </button>
             </form>
-
             <!--            EDIT TASK FORM-->
             <form class="edit-task-form" th:action="@{/battlegrounds/edit-task-body}" th:method="post">
               <input type="hidden" name="taskId" th:value="${task.id}">
@@ -43,7 +42,6 @@
                 <img class="btn-img hidden" src="/images/green-edit.png" alt="button icon">
               </button>
             </form>
-
             <!--            DELETE TASK FORM-->
             <form class="delete-task-form" th:action="@{/battlegrounds/delete-task}" th:method="post">
               <input type="hidden" name="taskId" th:value="${task.id}">
@@ -55,7 +53,6 @@
               <img class="btn-img open-edit-task-btn-img" src="/images/green-edit.png" alt="icon">
             </button>
           </li>
-
           <!--            CREATE TASK FORM-->
           <li class="create-task-form-li">
             <form class="create-task-form" th:action="@{/battlegrounds/create-task}" th:method="post">
