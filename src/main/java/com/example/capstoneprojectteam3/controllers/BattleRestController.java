@@ -2,7 +2,6 @@ package com.example.capstoneprojectteam3.controllers;
 
 import com.example.capstoneprojectteam3.models.Battle;
 import com.example.capstoneprojectteam3.repositories.BattleRepository;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -16,9 +15,8 @@ public class BattleRestController {
     }
 
     @GetMapping("/battle-list")
-    public List<Battle> getBattleList (@RequestParam(name = "userId")Long userId, Model model){
+    public List<Battle> getBattleList (@RequestParam(name = "userId")Long userId){
        List<Battle> battles = battlesDao.findAllByUserId(userId);
-       model.addAttribute("battles", battles);
        return battles;
     }
 }
