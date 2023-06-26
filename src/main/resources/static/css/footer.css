@@ -1,10 +1,8 @@
 footer {
     display: flex;
     flex-wrap: wrap;
-    /*position: absolute;*/
     bottom: 0;
-    max-height: 170px;
-    height: 125px;
+    height: 24vh;
     width: 100vw;
     background: rgba(0, 0, 0, 0.4);
     padding: 0;
@@ -17,14 +15,12 @@ footer {
 
 
 .footerWrap {
-    /*margin-top: 50px;*/
     display: flex;
     flex-direction: row;
     width: 100vw;
-    max-height: 170px;
-    justify-content: space-evenly;
 }
 
+/*      LEFT    */
 .newsletter {
     display: flex;
     flex-direction: row;
@@ -35,16 +31,88 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: start;
+    align-items: flex-start;
 }
 
+/*      MIDDLE      */
 .middleFooter {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    text-align: center;
+    font-size: 1.3rem;
+    gap: 10px;
 }
 
+/*      RIGHT       */
 .rightFoot {
     display: flex;
     justify-content: end;
+    gap: 5px;
+    font-size: 1.3rem;
+    padding: 25px;
 }
+.email-btn-submit {
+    background-color: var(--cta2);
+    color:white;
+    font-weight: bolder;
+    font-size: 1rem;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
+}
+
+.email-btn-submit:hover {
+    background-size: 100% 100%;
+    background-position-x: left;
+    cursor: pointer;
+}
+.email-input{
+    display: flex;
+}
+.w-100 {
+    width: 100%;
+}
+.welcome-text{
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+.footer-link{
+    color: white;
+}
+.footer-link:hover{
+    color: hotpink;
+}
+
+
+@media only screen and (max-width: 710px) {
+    .socialLong {
+        display: none;
+    }
+    .rightFootShort{
+        display: none;
+    }
+
+    .Socials-short {
+        display: flex;
+        width: 35px;
+    }
+    .leftFoot{
+        width: 50vw;
+    }
+    .middleFooter {
+        width: 20vw;
+    }
+    .rightFoot {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:5px;
+        width: 30vw;
+    }
+
+}
+

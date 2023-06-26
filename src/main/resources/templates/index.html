@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:insert="~{partials/head :: head ('Home Page')}"></head>
 <body>
-<nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>
+<!--<nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>-->
 <div class="page-wrapper index">
+    <nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>
+
     <!--    HEADER      -->
     <div class="container CCBB">
         <div class="row justify-center">
-            <h1>
-                <strong>Conquer Chores, Battle Beasts!</strong>
-            </h1>
+            <h1 class="slogan">Conquer Chores, Battle Beasts!</h1>
         </div>
     </div>
 
@@ -37,15 +37,16 @@
                     <!--        REGISTRATION CONTAINER      -->
                     <!--                    <div class="container registrationButton">-->
                     <!--                        <div class="row justify-center">-->
-                    <h3 sec:authorize="!isAuthenticated()" class="land-h2 joinOrCreate">Answer Your Calling, Join The
-                        Battle</h3>
-                    <h3 sec:authorize="isAuthenticated()" class="land-h2 joinOrCreate">Create Your Battle!</h3>
-<!--                </div>-->
-                <div class="row justify-center">
-                    <h3 sec:authorize="!isAuthenticated()" class="land-h2 attentionButton"><a href="/register">-> Register <-</a></h3>
-                    <h3 sec:authorize="isAuthenticated()" class="land-h2 attentionButton"><a href="/battleList">-> Create <-</a></h3>
-                    <!--                        </div>-->
-                </div>
+                    <h3 sec:authorize="!isAuthenticated()" class="land-h2 joinOrCreate">Answer Your Calling</h3>
+                    <h3 sec:authorize="isAuthenticated()" class="land-h2 joinOrCreate">Go To War!</h3>
+                    <!--                </div>-->
+                    <div class="row justify-center">
+                        <h3 sec:authorize="!isAuthenticated()" class="land-h2 attentionButton"><a href="/register">->
+                            Join The Battle! <-</a></h3>
+                        <h3 sec:authorize="isAuthenticated()" class="land-h2 attentionButton"><a href="/battlegrounds">->
+                            Battle <-</a></h3>
+                        <!--                        </div>-->
+                    </div>
                 </div>
                 <!--    LEFT SIDE END   -->
 
@@ -58,7 +59,7 @@
                 <div class="rightSide container">
                     <div class="row">
                         <div class="column battleColumn">
-                            <h3 class="battleItOut">Battle It Out!</h3><br>
+<!--                            <h3 class="battleItOut">Battle It Out!</h3><br>-->
                             <img class="MonsterImages"
                                  src="https://cdn.discordapp.com/attachments/415980182021603329/1119091591173382236/Untitled_Artwork.png"
                                  alt="monsters">
@@ -68,9 +69,9 @@
             </div>
         </div>
     </div>
-
-
-    <div th:insert="~{partials/footer :: footer}"></div>
+    <div th:insert="~{partials/popUpFacts :: popUp}"></div>
 </div>
+<div th:insert="~{partials/footer :: footer}"></div>
+
 </body>
 </html>

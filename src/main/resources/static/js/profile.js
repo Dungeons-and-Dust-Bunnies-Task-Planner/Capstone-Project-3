@@ -1,7 +1,7 @@
-const openEditModal = document.querySelector('.editButton')
-const editModal = document.querySelector('.edit-modal')
+const openEditModal = document.querySelector('.editButton');
+const editModal = document.querySelector('.edit-modal');
 const editModalOverlay = document.querySelector('.edit-modal-overlay');
-const deleteAccountButton = document.querySelector('.deleteAccount')
+const deleteAccountButton = document.querySelector('.deleteAccount');
 
 editModalOverlay.addEventListener('click', e => {
     editModalOverlay.classList.toggle('hidden');

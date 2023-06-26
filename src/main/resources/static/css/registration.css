@@ -66,7 +66,7 @@
 }
 
 .loginForm {
-    z-index: 99;
+    z-index: 1;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
     background: var(--fade-dark-purple);
     border-radius: 12px;
@@ -75,7 +75,6 @@
 }
 
 .register-form {
-    z-index: 99;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
     background: var(--fade-dark-purple);
     border-radius: 12px;
@@ -105,7 +104,7 @@
     height: 200px;
     width: 200px;
     position: relative;
-    z-index: 2;
+    z-index: 0;
 }
 
 .monster-sneak3 {
@@ -114,7 +113,7 @@
     height: 200px;
     width: 258px;
     position: relative;
-    z-index: 1;
+    z-index: -1;
 }
 
 .monster-sneak4 {
@@ -124,7 +123,7 @@
     height: 200px;
     width: 200px;
     position: relative;
-    z-index: 2;
+    z-index: -1;
 }
 
 
@@ -235,4 +234,32 @@
 }
 .margin-bottom-2rem{
     margin-bottom: 2rem;
+}
+
+/* Small */
+@media (min-width: 20rem) and (max-width: 30rem) {
+    .contact-form {
+        box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+        background: var(--fade-dark-purple);
+        border-radius: 12px;
+        width: 80vw;
+        height: 30rem;
+        display: flex;
+        justify-content: flex-start;
+        padding: 30px;
+    }
+    .feedback-header {
+        display: flex;
+        font-size: 1.5rem;
+    }
+    .msg-area {
+        display: flex;
+        width: 75vw;
+        height: 200px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        background-color: rgb(32,33,36);
+        color: white;
+    }
 }

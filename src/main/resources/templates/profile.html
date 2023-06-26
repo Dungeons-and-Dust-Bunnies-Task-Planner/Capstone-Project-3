@@ -5,7 +5,7 @@
 
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
     <div class="page-wrapper">
-        <div class="container picParent margin-bottom-3rem">
+        <div class="container picParent">
             <!--        COVER PHOTO     -->
             <img class="coverPhoto" th:src="${user.backgroundImage}" alt="Background Image">
 
@@ -21,20 +21,15 @@
                 </div>
                 <!--                EDIT PROFILE BUTTON         -->
 
-                <div class="column profileColumn editProfile">
-                    <button class="editButton profileColumn">Edit</button>
-                </div>
                 <div class="edit-modal-overlay hidden"></div>
                 <div class="edit-modal hidden">
                     <form th:action="@{/edit/profile}" th:method="post">
-
-                        <div class="image-add" id="profile-image-add">Add Profile Image</div>
-                        <input th:value="${user.avatarImage}" type="hidden" id="profile-image-url" name="profile-image-url"/>
-
-                        <div class="image-add" id="background-image-add">Add Background</div>
-                        <input th:value="${user.backgroundImage}" type="hidden" id="background-image-url" name="background-image-url"/>
-
-                        <br>
+                        <div class="column filestack-btns">
+                            <div class="image-add" id="profile-image-add">Profile Img</div>
+                            <input th:value="${user.avatarImage}" type="hidden" id="profile-image-url" name="profile-image-url"/>
+                            <div class="image-add" id="background-image-add">Banner</div>
+                            <input th:value="${user.backgroundImage}" type="hidden" id="background-image-url" name="background-image-url"/>
+                        </div>
 
                         <label for="username">Edit Username</label><br>
                         <input th:value="${user.username}" class="row usernameRow" type="text" id="username" name="username"><br>
@@ -49,15 +44,27 @@
                     </form>
                 </div>
             </div>
+            <div class="row edit-delete-btns">
+                <div class="column profileColumn editProfile">
+                    <button class="editButton profileColumn">Edit</button>
+                </div>
+                <form class="cat" th:action="@{/profile/{id}/delete(id=${id})}" method="POST">
+                    <input class="deleteAccount" type="submit" value="Delete Account">
+                </form>
+            </div>
         </div>
 
 
         <!--    BATTLE SECTION       -->
         <div class="container grow">
             <div class="row battleRow grow">
-                <div class="column battleArea">
-                    <br><h1>Your Active Battles</h1><br><br>
+                <div class="battleArea">
+                    <br><h1>Active Battles</h1><br><br>
                     <div class="row cardRow">
+                      <!------------  BTN FOR battle Complete increment      ------------>
+    <!--                    <form th:action="@{/battlegrounds/complete}" th:method="post">-->
+    <!--                        <button type="submit"  id="battleComplete" name="battleComplete">Finish Him!</button>-->
+        <!--                    </form>-->
 
                         <div th:if="${battles.size() == 0}" class="battleCard">
                             <div class="column battleTitle">
@@ -66,8 +73,8 @@
                             </div>
                         </div>
                         <div th:each="battle : ${battles}" class="battleCard">
-                            <div class="column">
-                                <img src="https://dummyimage.com/100x100/bf2a2a/ffffff" alt="Active Battle Image">
+                            <div class="column battleImageMonster">
+                                <img class="battleCardImage" th:src="${battle.getMonster().getMonsterImages().get(0).getMonster_img()}" alt="Battle monster image">
                             </div>
                             <div class="column battleTitle">
                                 <h2 class="battleTitle" th:text="${battle.title}"></h2>
@@ -98,20 +105,16 @@
                 </div>
             </div>
         </div>
+        <div th:insert="~{partials/footer :: footer}"></div>
     </div>
-<!--        <form class="cat" th:action="@{/profile/{id}/delete(id=${id})}" method="POST">-->
-<!--            <h1>Delete Profile</h1>-->
-<!--            <input class="deleteAccount" type="submit" value="Delete">-->
-<!--        </form>-->
-<!--        <div th:insert="~{partials/footer :: footer}"></div>-->
 <!-- This is the JS for Badge Claiming -->
 
 <script>
-    // const claimButton = document.getElementById('claimButton');
-    // const badgrClaimForm = document.getElementById('badgeClaimForm');
-    // claimButton.addEventListener('click', () => {
-    //     badgrClaimForm.submit();
-    // });
+    const claimButton = document.getElementById('claimButton');
+    const badgrClaimForm = document.getElementById('badgeClaimForm');
+    claimButton.addEventListener('click', () => {
+        badgrClaimForm.submit();
+    });
 </script>
 <script src="/js/profile.js"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
