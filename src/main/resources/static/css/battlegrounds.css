@@ -223,7 +223,7 @@
 .open-edit-battle-btn,
 .create-battle-btn{
   position:absolute;
-  top:0;
+  top:11vh;
   right:0;
   display:flex;
   align-items:center;
@@ -244,6 +244,7 @@
 
 .create-battle-input{
   left:0;
+  top: 11vh;
   width:86%;
   font-size:1.3em;
   background:var(--secondary);
