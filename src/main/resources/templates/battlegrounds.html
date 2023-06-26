@@ -7,8 +7,10 @@
   <div class="container grow">
     <div class="row full-width no-padding">
       <!--      BATTLE SLIDE OUT-->
-      <div class="battle-icon" sec:authorize="!isAuthenticated()">
-        <a th:href="@{/battleList}"><img class="battle-icon-img" src="/images/battle-axes.png" alt="battle icon"></a>
+      <div class="battle-icon">
+        <a th:href="@{/battleList}">
+          <img class="battle-icon-img" src="/images/battle-axes.png" alt="battle icon">
+        </a>
       </div>
       <div class="battle-icon-banner">
         <p class="battle-icon-banner-text"> Tasks!</p>
