@@ -106,14 +106,16 @@
         const taskBody = task.querySelector('.task-body')
         const completeTaskBtn = task.querySelector('.complete-task-btn')
         const openEditBtn = task.querySelector('.open-edit-task-btn')
+        const openEditBtnImg = document.querySelector('.open-edit-task-btn-img')
         const editTaskForm = task.querySelector('.edit-task-form')
         const editTaskInput = task.querySelector('.edit-task-input')
-        const editTaskBtn = task.querySelector('.edit-task-submit-btn')
         const deleteTaskBtn = task.querySelector('.delete-task-btn')
+        const deleteTaskBtnImg = document.querySelector('.delete-task-btn-img')
         const deleteTaskForm = task.querySelector('.delete-task-form')
         const createTaskForm = task.querySelector('.create-task-form')
         const createTaskInput = task.querySelector('.create-task-input')
         const createTaskBtn = task.querySelector('.create-task-btn')
+        const createTaskBtnImg = document.querySelector('.create-task-btn-img')
 
         task.addEventListener('click', () => {
             task.classList.toggle('complete')
@@ -121,27 +123,34 @@
 
         openEditBtn.addEventListener('click', function () {
             task.classList.toggle('edit')
-            task.classList.contains('edit') ? this.textContent = 'Cancel' : this.textContent = 'Edit'
             taskBody.classList.toggle('edit')
             editTaskInput.classList.toggle('edit')
-            editTaskBtn.classList.toggle('edit')
             deleteTaskBtn.classList.toggle('edit')
+            openEditBtn.classList.toggle('edit')
+            if (openEditBtn.classList.contains('edit')) {
+            openEditBtnImg.src = "/images/green-x.png"
+            } else {
+                openEditBtnImg.src = "/images/green-edit.png"
+            }
+            completeTaskBtn.classList.toggle('edit')
         })
 
         editTaskForm.addEventListener('submit', () => {
-            openEditBtn.textContent = 'Edit'
             taskBody.classList.toggle('edit')
             editTaskInput.classList.toggle('edit')
-            editTaskBtn.classList.toggle('edit')
             deleteTaskBtn.classList.toggle('edit')
+            openEditBtn.classList.toggle('edit')
+            openEditBtnImg.src = "/images/green-edit.png"
+            completeTaskBtn.classList.toggle('edit')
         })
 
         deleteTaskForm.addEventListener('submit', () => {
-            openEditBtn.textContent = 'Edit'
             taskBody.classList.toggle('edit')
             editTaskInput.classList.toggle('edit')
-            editTaskBtn.classList.toggle('edit')
             deleteTaskBtn.classList.toggle('edit')
+            openEditBtn.classList.toggle('edit')
+            openEditBtnImg.src = "/images/green-edit.png"
+            completeTaskBtn.classList.toggle('edit')
         })
 
         deleteTaskBtn.addEventListener('click', () => {

@@ -16,7 +16,7 @@
     border-radius: .5em;
     transition: all ease-in .3s;
     color: #fff;
-    background: var(--cta2);
+    background: var(--cta);
     box-shadow: inset black 0 0 2px 1px;
     border: none;
     text-shadow: 0 0 3px black;

@@ -29,8 +29,8 @@
             <!--            COMPLETE TASK FORM-->
             <form th:action="@{/task/complete-task}" th:method="post" id="taskForm">
               <input type="hidden" name="taskId" id="taskId" th:value="${task.id}">
-              <button class="hit damage" type="submit"
-                      style="left: 150px;z-index: 99; display: block; position: absolute;">complete task
+              <button class="complete-task-btn" type="submit">
+                <img class="btn-img complete-task-btn-img" src="/images/green-check.png" alt="button icon">
               </button>
             </form>
 
@@ -40,17 +40,19 @@
               <input class="edit-task-input" type="text" name="editTaskBody"
                      th:value="${task.taskBody}">
               <button class="edit-task-submit-btn" type="submit">
-                <img src="/images/green-edit.png" alt="button icon">
+                <img class="btn-img hidden" src="/images/green-edit.png" alt="button icon">
               </button>
             </form>
 
             <!--            DELETE TASK FORM-->
             <form class="delete-task-form" th:action="@{/battlegrounds/delete-task}" th:method="post">
               <input type="hidden" name="taskId" th:value="${task.id}">
-              <button class="delete-task-btn" type="submit">Delete</button>
+              <button class="delete-task-btn" type="submit">
+                <img class="btn-img delete-task-btn-img" src="/images/green-trash.png" alt="button icon">
+              </button>
             </form>
             <button class="open-edit-task-btn" type="button">
-              <img src="/images/green-edit.png" alt="icon" class="open-edit-task-btn-img">
+              <img class="btn-img open-edit-task-btn-img" src="/images/green-edit.png" alt="icon">
             </button>
           </li>
 
@@ -59,7 +61,9 @@
             <form class="create-task-form" th:action="@{/battlegrounds/create-task}" th:method="post">
               <input type="hidden" name="battleId" th:value="${battle.id}" id="battleId">
               <input class="create-task-input" type="text" name="taskBody" placeholder="Create new task">
-              <button class="create-task-btn" type="submit">Create task</button>
+              <button class="create-task-btn" type="submit">
+                <img class="btn-img create-task-btn-img" src="/images/green-plus.png" alt="button icon">
+              </button>
             </form>
           </li>
         </ul>

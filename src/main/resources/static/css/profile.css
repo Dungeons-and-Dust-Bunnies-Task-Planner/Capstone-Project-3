@@ -264,7 +264,7 @@ input.submit-btn:hover {
 }
 .non-Btn {
     height: 50px;
-    background: var(--cta2);
+    background: var(--cta);
     color: white;
     font-weight: bold;
     font-size: 23px;
