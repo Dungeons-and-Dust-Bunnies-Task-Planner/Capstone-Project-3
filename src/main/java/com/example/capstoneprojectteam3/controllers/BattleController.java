@@ -1,10 +1,7 @@
 package com.example.capstoneprojectteam3.controllers;
 
 import com.example.capstoneprojectteam3.models.*;
-import com.example.capstoneprojectteam3.repositories.BattleRepository;
-import com.example.capstoneprojectteam3.repositories.MonsterRepository;
-import com.example.capstoneprojectteam3.repositories.TaskRepository;
-import com.example.capstoneprojectteam3.repositories.UserRepository;
+import com.example.capstoneprojectteam3.repositories.*;
 import com.example.capstoneprojectteam3.utils.RandomNumGen;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -20,12 +17,14 @@ public class BattleController{
 	private final BattleRepository battlesDao;
 	private final TaskRepository tasksDao;
 	private final MonsterRepository monstersDao;
+	private final BadgeRepository badgesDao;
 
-	public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao, MonsterRepository monstersDao){
+	public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao, MonsterRepository monstersDao, BadgeRepository badgesDao){
 		this.usersDao = usersDao;
 		this.battlesDao = battlesDao;
 		this.tasksDao = tasksDao;
 		this.monstersDao = monstersDao;
+		this.badgesDao = badgesDao;
 	}
 
 	@GetMapping("/battleList")
@@ -121,11 +120,29 @@ public class BattleController{
 
 	// Update the monster image based on the current HP
 	private void updateMonsterImageBasedOnHP(MonsterImage monsterImage, int currentHP){
-		// Logic to determine and set the image based on the HP
 		// You can use if-else statements, switch-case, or any other logic here
 		// Example logic: if HP < 50, set a new image; otherwise, keep the existing image
 	}
 
+
+	public void updateBadge(User user){
+		int battleCounter = user.getBattlesComplete();
+		List<Badge> badges = user.getBadges();
+		if (battleCounter == 1){
+			Badge badge = badgesDao.findBadgeById(1L);
+			badges.add(badge);
+			usersDao.save(user);
+		} else if (battleCounter == 3){
+			Badge badge = badgesDao.findBadgeById(2L);
+			badges.add(badge);
+			usersDao.save(user);
+		} else if (battleCounter == 5){
+			Badge badge = badgesDao.findBadgeById(3L);
+			badges.add(badge);
+			usersDao.save(user);
+
+		}
+	}
 	@PostMapping("/battlegrounds/complete")
 	public String completedBattle(){
 		System.out.println("Made it in to /complete");
@@ -135,8 +152,13 @@ public class BattleController{
 		int battleCounter = user.getBattlesComplete();
 		System.out.println(battleCounter);
 		user.setBattlesComplete(battleCounter + 1);
+
+		// Update the user's badge
+		updateBadge(user);
+
 		usersDao.save(user);
 		return "redirect:/profile";
 	}
+
 
 }
