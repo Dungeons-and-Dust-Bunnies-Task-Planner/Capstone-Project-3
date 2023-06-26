@@ -77,7 +77,9 @@
                                 <img class="battleCardImage" th:src="${battle.getMonster().getMonsterImages().get(0).getMonster_img()}" alt="Battle monster image">
                             </div>
                             <div class="column battleTitle">
-                                <h2 class="battleTitle" th:text="${battle.title}"></h2>
+<!--                                the battle title should be a ble to be clicked and taken to the corresponding battle page -->
+<!--                                <h2 class="battleTitle" th:text="${battle.title}"></h2>-->
+                                <h2><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>
                                 <p class="battleTasks" th:text="${battle.status}"></p>
                             </div>
                         </div>
@@ -107,15 +109,15 @@
         </div>
         <div th:insert="~{partials/footer :: footer}"></div>
     </div>
-<!-- This is the JS for Badge Claiming -->
+<!--&lt;!&ndash; This is the JS for Badge Claiming &ndash;&gt;-->
 
-<script>
-    const claimButton = document.getElementById('claimButton');
-    const badgrClaimForm = document.getElementById('badgeClaimForm');
-    claimButton.addEventListener('click', () => {
-        badgrClaimForm.submit();
-    });
-</script>
+<!--<script>-->
+<!--    const claimButton = document.getElementById('claimButton');-->
+<!--    const badgrClaimForm = document.getElementById('badgeClaimForm');-->
+<!--    claimButton.addEventListener('click', () => {-->
+<!--        badgrClaimForm.submit();-->
+<!--    });-->
+<!--</script>-->
 <script src="/js/profile.js"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="module" src="/js/filepicker.js"></script>
