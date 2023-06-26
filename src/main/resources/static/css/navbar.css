@@ -35,7 +35,7 @@
     min-width: 70px;
     max-width: 70px;
     aspect-ratio: auto;
-    background-color: var(--cta2);
+    background-color: var(--cta);
 }
 .logo {
     display: flex;
@@ -88,11 +88,6 @@
     color: #fff;
     background: var(--primary);
 }
-
-/*.nav-logo-short {*/
-/*    display: none;*/
-/*}*/
-
 
 /*///////*/
 /* Dropdown */
@@ -208,11 +203,10 @@
         height: 100vh;
         top: 0;
         right: -300px;
-        padding: 45px;
-        padding-top: 68px;
+        padding: 68px 45px 45px;
         list-style-type: none;
         -webkit-font-smoothing: antialiased;
-        transform-origin: 100% 0%;
+        transform-origin: 100% 0;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
         background-color: rgb(32, 33, 36);
     }
