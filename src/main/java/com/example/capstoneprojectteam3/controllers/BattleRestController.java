@@ -15,7 +15,7 @@ public class BattleRestController {
         this.battlesDao = battlesDao;
     }
 
-    @GetMapping("/battle-list")
+    @GetMapping("/battleList")
     public List<Battle> getBattleList (@RequestParam(name = "userId")Long userId, Model model){
        List<Battle> battles = battlesDao.findAllByUserId(userId);
        model.addAttribute("battles", battles);
