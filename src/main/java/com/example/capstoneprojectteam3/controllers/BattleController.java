@@ -28,11 +28,23 @@ public class BattleController{
 		this.monstersDao = monstersDao;
 	}
 
-	@GetMapping("/battlegrounds")
-	public String showBattlegrounds(Model model){
+	@GetMapping("/battleList")
+	public String showBattleList(Model model){
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user = usersDao.findUserById(user.getId());
 		List<Battle> battles = battlesDao.findAllByUserId(user.getId());
 		model.addAttribute("battles", battles);
+		return "/battleList";
+	}
+
+	@GetMapping("/battlegrounds/{id}")
+	public String showBattlegrounds(
+			@PathVariable(name = "id") Long id, Model model){
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		user = usersDao.findUserById(user.getId());
+		Battle battle = battlesDao.findBattleById(id);
+		model.addAttribute("user", user);
+		model.addAttribute("battle",battle);
 		return "/battlegrounds";
 	}
 
@@ -47,7 +59,7 @@ public class BattleController{
 
 		Battle newBattle = new Battle(title, 0L, user, newMonster);
 		battlesDao.save(newBattle);
-		return "redirect:/battlegrounds";
+		return "redirect:/battleList";
 	}
 
 	@PostMapping("/battlegrounds/create-task")
@@ -55,16 +67,21 @@ public class BattleController{
 		Battle battle = battlesDao.findByIdWithTasks(battleId);
 		Task task = new Task(taskBody, battle, 0);
 		tasksDao.save(task);
-		return "redirect:/battlegrounds";
+		return "redirect:/battlegrounds/"+ battleId;
 	}
 
-	@PostMapping("/battlegrounds/complete-task")
-	public String editTask(@RequestParam(name="taskId") Long taskId){
-		Task editTask = tasksDao.findTaskById(taskId);
-		editTask.setTaskComplete(1);
-		tasksDao.save(editTask);
-		return "redirect:/battlegrounds";
-	}
+//	@PostMapping("/battlegrounds/complete-task")
+//	public void editTask(@RequestParam(name="taskId") Long taskId){
+//		System.out.println("made it to the complete-task controller");
+//		Task editTask = tasksDao.findTaskById(taskId);
+//		if (editTask.getTaskComplete() == 0){
+//			editTask.setTaskComplete(1);
+//			tasksDao.save(editTask);
+//		} else if (editTask.getTaskComplete() == 1){
+//			editTask.setTaskComplete(1);
+//			tasksDao.save(editTask);
+//		}
+//	}
 
 	@PostMapping("/battlegrounds/edit-battle-title")
 	public String editBattleTitle(
@@ -73,14 +90,14 @@ public class BattleController{
 		Battle editBattle = battlesDao.findBattleById(battleId);
 		editBattle.setTitle(newBattleTitle);
 		battlesDao.save(editBattle);
-		return "redirect:/battlegrounds";
+		return "redirect:/battleList";
 	}
 
 	@PostMapping("/battlegrounds/delete-battle")
 	public String deleteBattle(
 			@RequestParam(name="battleId") Long battleId){
 		battlesDao.deleteById(battleId);
-		return "redirect:/battlegrounds";
+		return "redirect:/battleList";
 	}
 
 	@PostMapping("/battlegrounds/edit-task-body")
@@ -88,15 +105,18 @@ public class BattleController{
 							   @RequestParam(name="taskId") Long taskId){
 
 		Task editTask = tasksDao.findTaskById(taskId);
+		Long battleId = editTask.getBattle().getId();
 		editTask.setTaskBody(taskBody);
 		tasksDao.save(editTask);
-		return "redirect:/battlegrounds";
+		return "redirect:/battlegrounds/"+ battleId;
 	}
 
 	@PostMapping("/battlegrounds/delete-task")
 	public String deleteTask(@RequestParam(name="taskId") Long taskId){
+		Task editTask = tasksDao.findTaskById(taskId);
+		Long battleId = editTask.getBattle().getId();
 		tasksDao.deleteById(taskId);
-		return "redirect:/battlegrounds";
+		return "redirect:/battlegrounds/" + battleId;
 	}
 
 	// Update the monster image based on the current HP
@@ -106,7 +126,7 @@ public class BattleController{
 		// Example logic: if HP < 50, set a new image; otherwise, keep the existing image
 	}
 
-	@PostMapping("/complete")
+	@PostMapping("/battlegrounds/complete")
 	public String completedBattle(){
 		System.out.println("Made it in to /complete");
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
