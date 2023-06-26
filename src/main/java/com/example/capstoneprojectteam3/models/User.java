@@ -1,6 +1,5 @@
 package com.example.capstoneprojectteam3.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -39,7 +38,7 @@ public class User{
 			inverseJoinColumns=@JoinColumn(name="badge_id"))
 	private List<Badge> badges;
 
-	@JsonBackReference
+
 	@OneToMany(cascade=CascadeType.PERSIST, mappedBy="user")
 	private List<Battle> battles;
 
