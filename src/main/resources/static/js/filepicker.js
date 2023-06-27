@@ -1,6 +1,3 @@
-
-import * as keys from './keys.js';
-
 console.log("inside filepicker.js");
 
 window.addEventListener('DOMContentLoaded', function(){
