@@ -75,13 +75,12 @@
                             </div>
                         </div>
                         <div th:each="battle : ${battles}" class="battleCard">
-                            <div class="column battleImageMonster">
-                                <img class="battleCardImage" th:src="${battle.getMonster().getMonsterImages().get(0).getMonster_img()}" alt="Battle monster image">
+                            <div th:if="${battle.status == 0}" class="column battleImageMonster">
+                                <img th:if="${battle.status == 0}" class="battleCardImage" th:src="${battle.getMonster().getMonsterImages().get(0).getMonster_img()}" alt="Battle monster image">
                             </div>
-                            <div class="column battleTitle">
-<!--                                <h2 class="battleTitle" th:text="${battle.title}"></h2>-->
-                                <h2><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>
-                                <p class="battleTasks" th:text="${battle.status}"></p>
+                            <div th:if="${battle.status == 0}" class="column battleTitle">
+                                <h2 th:if="${battle.status == 0}"><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>
+                                <p th:if="${battle.status == 0}" class="battleTasks">In Progress</p>
                             </div>
                         </div>
                     </div>
