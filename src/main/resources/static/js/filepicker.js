@@ -5,7 +5,7 @@ console.log("inside filepicker.js");
 
 window.addEventListener('DOMContentLoaded', function(){
     console.log("dom content loaded");
-    const client = filestack.init(keys.filePickerApi);
+    const client = filestack.init(filePickerKey);
     const profilePicker = client.picker(profileOptions);
     const backgroundPicker = client.picker(backgroundOptions);
 
@@ -21,8 +21,8 @@ window.addEventListener('DOMContentLoaded', function(){
         e.preventDefault();
         backgroundPicker.open();
     });
+});
 
-})
 
 const profileOptions = {
     accept: ['image/*'],
