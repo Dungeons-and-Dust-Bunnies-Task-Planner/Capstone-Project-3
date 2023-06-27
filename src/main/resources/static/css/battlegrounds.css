@@ -220,40 +220,10 @@
   right:15%;
 }
 
-.open-edit-battle-btn,
-.create-battle-btn{
-  position:absolute;
-  top:0;
-  right:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100px;
-  width:15%;
-  border:none;
-  outline:none;
-  cursor:pointer;
-  background:var(--fade-dark-purple);
-  box-shadow:var(--cta-inset-shadow);
-}
-
 .open-edit-battle-btn-img{
   height:50px;
   width:50px;
 }
-
-.create-battle-input{
-  left:0;
-  width:86%;
-  font-size:1.3em;
-  background:var(--secondary);
-  transition:var(--trans);
-}
-
-.create-battle-input:hover{
-  background:var(--fade-dark-purple);
-}
-
 
 /*TASKS*/
 
@@ -426,7 +396,7 @@
 .monsters{
   display:flex;
   flex-direction:column;
-  background:var(--solid-background);
+  background:var(--background);
   border-radius:var(--br);
   margin-top:101px;
   width:70%;

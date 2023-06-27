@@ -21,6 +21,10 @@
     backdrop-filter: blur(20px);
 }
 
+.fact {
+    font-weight: 300;
+}
+
 .monsterPopup {
     max-width: 30vw;
 }
