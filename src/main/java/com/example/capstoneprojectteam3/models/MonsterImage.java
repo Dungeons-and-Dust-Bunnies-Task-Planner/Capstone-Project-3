@@ -1,6 +1,7 @@
 package com.example.capstoneprojectteam3.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,8 +21,8 @@ public class MonsterImage {
 //    @Column(name = "hp")
 //    private int hp;  // New property for representing HP
 
-    @JsonIgnore
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "monster_img_id")
     private Monster monster;
 
@@ -43,6 +44,7 @@ public class MonsterImage {
     }
 
     // Getters and Setters
+
 
     public Monster getMonster() {
         return monster;

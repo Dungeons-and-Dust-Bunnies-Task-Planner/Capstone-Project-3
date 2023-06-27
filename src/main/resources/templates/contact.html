@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/head :: head ('Register for Dungeons and Dust Bunnies')"></head>
+<body>
+<div class="page-wrapper">
+<header th:replace="partials/navbar :: navbar"></header>
+    <div class="container grow align-center justify-center" style="margin-top: 100px">
+        <div class="row justify-center align-center">
+            <div class="column contact-form align-center">
+                <h1 class="feedback-header">Leave Feedback</h1><br><br>
+                <div class="column"></div>
+                <form action="/submit" method="POST">
+                    <div class="container shrink kyle">
+                        <input class="row ne-form " type="text" id="name" name="name" placeholder="Name" required>
+                        <input class="row ne-form " type="email" id="email" name="email" placeholder="Email" required>
+                    </div>
+                        <textarea class="row msg-area" id="message" name="message" placeholder="Leave the devs a message..." required></textarea>
+
+                    <button type="submit" class="sbmt-btn-ct"><strong>Submit</strong></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>

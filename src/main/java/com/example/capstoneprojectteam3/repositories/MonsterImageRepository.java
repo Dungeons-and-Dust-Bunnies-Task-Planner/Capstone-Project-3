@@ -11,4 +11,8 @@ public interface MonsterImageRepository extends JpaRepository<MonsterImage, Long
 
     @Query("from MonsterImage m where m.monster_stage = :stage")
     List<MonsterImage> findAllByMonster_stage(@Param("stage") Long stage);
+
+    @Query("from MonsterImage m where m.id = :monsterId and m.monster_stage = :stage")
+    List<MonsterImage> findAllByIdAndStage(@Param("monsterId") Long monsterId,@Param("stage") Long stage);
 }
+

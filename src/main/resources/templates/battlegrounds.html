@@ -5,74 +5,99 @@
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
 <div class="page-wrapper">
   <div class="container grow">
-    <div class="row grow full-width no-padding">
+    <div class="row full-width no-padding">
       <!--      BATTLE SLIDE OUT-->
       <div class="battle-icon">
-        <img src="/images/battle-axes.png" alt="battle icon">
+        <a href="/battleList">
+          <img class="battle-icon-img" src="/images/battle-axes.png" alt="battle icon">
+        </a>
       </div>
-      <div class="battle-icon-pop-out">
-        <p class="battle-icon-pop-out-text">Battles!</p>
+      <div class="battle-icon-banner">
+        <p class="battle-icon-banner-text"> Tasks!</p>
       </div>
-      <section class="battle-slide-out open">
-        <div class="battles-list">
-          <div th:each="battle : ${battles}">
-            <div class="battle inactive" th:data-battle-id="${battle.id}">
-              <h3 class="battle-title" th:text="${battle.title}"></h3>
+      <!--      TASK CONTAINER-->
+      <section class="tasks" id="tasks">
+        <ul class="tasks-list">
+          <h2 class="tasks-battle-title" th:text="${battle.title}"></h2>
+
+          <!--          TASK-->
+          <li class="task not-complete" th:each="task : ${battle.tasks}" th:data-task-id="${task.getId()}">
+            <!--              ADD COMPLETE TO THE CLASS FOR PRODUCTION SO THAT ONLY ONE OR THE OTHER SHOWS-->
+            <p class="task-body" th:text="${task.taskBody}"></p>
+            <!--              <p class="task-body not-complete" th:unless="${task.getTaskComplete() == 0}" th:text="${task.getTaskBody()}"></p>-->
+
+            <!--            COMPLETE TASK FORM-->
+            <form th:action="@{/task/complete-task}" th:method="post" id="taskForm">
+              <input type="hidden" name="taskId" id="taskId" th:value="${task.id}">
+              <button class="complete-task-btn" type="submit">
+                <img class="btn-img complete-task-btn-img" src="/images/green-check.png" alt="button icon">
+              </button>
+            </form>
+            <!--            EDIT TASK FORM-->
+            <form class="edit-task-form" th:action="@{/battlegrounds/edit-task-body}" th:method="post">
+              <input type="hidden" name="taskId" th:value="${task.id}">
+              <input class="edit-task-input" type="text" name="editTaskBody"
+                     th:value="${task.taskBody}">
+              <button class="edit-task-submit-btn" type="submit">
+                <img class="btn-img hidden" src="/images/green-edit.png" alt="button icon">
+              </button>
+            </form>
+            <!--            DELETE TASK FORM-->
+            <form class="delete-task-form" th:action="@{/battlegrounds/delete-task}" th:method="post">
+              <input type="hidden" name="taskId" th:value="${task.id}">
+              <button class="delete-task-btn" type="submit">
+                <img class="btn-img delete-task-btn-img" src="/images/green-trash.png" alt="button icon">
+              </button>
+            </form>
+            <button class="open-edit-task-btn" type="button">
+              <img class="btn-img open-edit-task-btn-img" src="/images/green-edit.png" alt="icon">
+            </button>
+          </li>
+          <!--            CREATE TASK FORM-->
+          <li class="create-task-form-li">
+            <form class="create-task-form" th:action="@{/battlegrounds/create-task}" th:method="post">
+              <input type="hidden" name="battleId" th:value="${battle.id}" id="battleId">
+              <input class="create-task-input" type="text" name="taskBody" placeholder="Create new task">
+              <button class="create-task-btn" type="submit">
+                <img class="btn-img create-task-btn-img" src="/images/green-plus.png" alt="button icon">
+              </button>
+            </form>
+          </li>
+        </ul>
+      </section>
+      <section class="monsters container grow monsters-container">
+        <div class="row justify-center">
+          <h1 th:text="${battle.title}"></h1>
+        </div>
+        <div class="row justify-center monster-battle-name">
+          <h3 th:text="${battle.monster.name}"></h3>
+        </div>
+        <!--      MONSTER DISPLAY-->
+        <div class="row grow justify-center align-center">
+          <div class="battle-monster-img" id="battle-monster-img">
+            <img th:src="${battle.monster.monsterImages[0].monster_img}">
+          </div>
+        </div>
+        <div class="row justify-center health-bar-container">
+          <div class="health-bar" th:data-total="${battle.tasks.size() * 1000}"
+               th:data-value="${battle.tasks.size() * 1000}">
+            <div class="bar">
             </div>
           </div>
+          <!------------  BTN FOR battle Complete increment      ------------>
+          <form th:action="@{/battlegrounds/complete}" th:method="post">
+            <input type="hidden" th:value="${battle.getId()}" th:name="battleId">
+            <button type="submit" id="battleComplete" name="battleComplete">Finish Him!</button>
+          </form>
         </div>
-
-        <form class="create-battle-form" th:action="@{/battlegrounds/create-battle}" th:method="post">
-          <div class="hidden-form-wrap">
-            <input class="create-battle-input" type="text" placeholder="Add your battle..." name="battleTitle"/>
-            <button class="create-battle-btn" type="submit">Submit</button>
-          </div>
-        </form>
-
-      </section>
-      <!--      TASK CONTAINER-->
-      <section class="tasks">
-        <div class="tasks-list">
-
-          <ul class="battle-tasks" th:each="battle : ${battles}">
-            <h2 class="battle-name" th:text="${battle.getTitle()}"></h2>
-            <li class="task not-complete" th:each="task : ${battle.getTasks()}">
-
-              <p th:text="${task.getTaskBody()}"></p>
-<!--              <p class="not-complete" th:unless="${task.getTaskComplete() == 0}" th:text="${task.getTaskBody()}"></p>-->
-
-              <form th:action="@{/battlegrounds/complete-task}" th:method="post">
-                <input type="hidden" name="taskId" th:value="${task.getId()}">
-                <button type="submit">complete task</button>
-              </form>
-              <form th:action="@{/battlegrounds/edit-task-body}" th:method="post">
-                <input type="hidden" name="taskId" th:value="${task.getId()}">
-                <input type="text" name="editTaskBody" th:value="${task.getTaskBody()}">
-                <button type="submit">Edit task</button>
-              </form>
-              <form th:action="@{/battlegrounds/delete-task}" th:method="post">
-                <input type="hidden" name="taskId" th:value="${task.getId()}">
-                <button type="submit">Delete task</button>
-              </form>
-
-              <button class="open-edit-task-btn" type="button">
-<!--                <img src="/images/plus-6.png" alt="button icon" class="open-edit-task-btn-img">-->
-              </button>
-            </li>
-          </ul>
-
-        </div>
-      </section>
-      <!--      MONSTER DISPLAY-->
-      <section class="monster">
-        <div class="monster-image">
-          <div class="monster-response"></div>
+        <!--            MONSTER CHAT BOX-->
+        <div class="battle-chat-box row monsterTalkParent">
         </div>
       </section>
     </div>
   </div>
 </div>
-<footer th:insert="~{partials/footer :: footer}"></footer>
+<div th:insert="~{partials/footer :: footer}"></div>
 <script src="/js/script.js"></script>
 </body>
 </html>

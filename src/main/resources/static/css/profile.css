@@ -15,6 +15,9 @@
 .h4Profile {
     font-family: 'Nunito', sans-serif;
 }
+.profile-no-badges {
+    font-size: 1.5rem;
+}
 
 .profileColumn {
     display: flex;
@@ -33,20 +36,20 @@
 }
 
 .picParent {
-    margin-top: 80px;
+    margin-top: 11vh;
     width: 100vw;
 }
 
 /*  EDIT PROFILE MODAL  */
 .edit-modal {
     position: fixed;
-    top: 50%;
+    flex-direction: column;
+    top: 55%;
     left: 50%;
     translate: -50% -50%;
-    max-height: 570px;
-    height: 100%;
-    max-width: 500px;
-    width: 100%;
+    max-height: 80vh;
+    height: 80vh;
+    max-width: 55vw;
     border-radius: .5em;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
     background: var(--fade-dark-purple);
@@ -54,37 +57,51 @@
     outline: none;
     font-family: Poppin, Inter, sans-serif;
     color: white;
-    z-index: 4;
+    z-index: 3;
 }
 
 
 .edit-modal > form {
-    height: 100%;
+    height: 95%;
     width: 100%;
     padding: 1px;
 }
 
 .edit-modal > form > input {
-    height: 54px;
-    width: 450px;
+    height: 7vh;
     padding: 6px 8px;
-    border: 1px solid cornflowerblue;
     outline: none;
     box-shadow: inset #000 0 0 3px 1px;
-    font-size: 2.25em;
+    font-size: 2rem;
     border-radius: 0.2em;
     justify-content: center;
     font-weight: 400;
     flex-wrap: wrap;
     align-content: center;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
+}
+.deleteAccount{
+    display: flex;
+    background: transparent;
+    color: white;
+    align-items: flex-end;
+    border: none;
+}
+.deleteAccount:hover {
+   color: var(--cta);
 }
 input.submit-btn{
     color: white;
-    background: var(--cta2);
+    background: var(--cta);
 }
 
 input.submit-btn:hover {
-    background: var(--fade-purple);
+    background-size: 100% 100%;
+    background-position-x: left;
     cursor: pointer;
 }
 
@@ -95,7 +112,7 @@ input.submit-btn:hover {
     padding: 6px 8px;
     height: 70px;
     box-shadow: inset #000 0 0 3px 1px;
-    background: cornflowerblue;
+    background: hotpink;
     text-shadow: 0 1px 3px #000;
     color: #fff;
     font-size: 2em;
@@ -121,18 +138,34 @@ input.submit-btn:hover {
 }
 
 .image-add {
-    background: var(--fade-blue);
-    border: none;
-    width: 48%;
+    width: 47%;
+    height: 7vh;
     color: white;
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 20px;
+    font-size: 1.5rem;
     margin: 20px 2px;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 6px;
+    box-shadow: inset #000 0 0 3px 1px;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
+    background-color: var(--cta);
+}
+.image-add:hover {
+    background-size: 100% 100%;
+    background-position-x: left;
+    cursor: pointer;
+}
+.filestack-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 /* AVATAR */
@@ -165,7 +198,6 @@ input.submit-btn:hover {
     padding: 0 15px;
     margin-top: 56px;
     align-items: start;
-    overflow: hidden;
 }
 
 /* EDIT BUTTON */
@@ -179,8 +211,29 @@ input.submit-btn:hover {
 
 .editButton {
     display: flex;
-    max-width: 33vw;
-    justify-content: end;
+    justify-content: center;
+    border: none;
+    width: 5vw;
+    height: 3vw;
+    align-items: center;
+    font-size: 1.2rem;
+    border-radius: 7px;
+    background: var(--cta);
+    color: white;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
+}
+.editButton:hover{
+    background-size: 100% 100%;
+    background-position-x: left;
+    cursor: pointer;
+}
+.edit-delete-btns {
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* BATTLE AREA */
@@ -188,28 +241,41 @@ input.submit-btn:hover {
     margin: 50px 50px;
     width: 75vw;
     display: flex;
+    justify-content: center;
 }
 
 .battleArea {
     width: 75vw;
+    height: 70vh;
     display: flex;
-    justify-content: flex-start;
     align-content: flex-start;
     background: var(--fade-dark-purple);
-    border-radius: .5em;
+    border-radius: 0.5em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     overflow: scroll;
 }
 
 .battleCard {
     width: 75vw;
     min-height: 200px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--primary);
     border-radius: 10px;
     display: flex;
-    flex-direction: row;
-    padding: 0px;
-    align-self: stretch;
-    justify-content: space-evenly;
+    padding: 20px 20px;
+    margin: 10px 0;
+    transition: background-color 400ms;
+    justify-content: center;
+}
+
+.battleCard:hover {
+    cursor: pointer;
+}
+
+
+.battleCardImage {
+    width: 25vw;
 }
 
 .activeBattleRow {
@@ -223,11 +289,32 @@ input.submit-btn:hover {
 .cardRow {
     flex-wrap: wrap;
     padding-bottom: 25px;
+    height: 100%;
 }
 
 .battleTitle {
-    align-content: center;
     justify-content: center;
+    width: 40vw;
+    text-align: center;
+}
+.non-Btn {
+    height: 50px;
+    background: var(--cta);
+    color: white;
+    font-weight: bold;
+    font-size: 23px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
+}
+
+.non-Btn:hover {
+    background-size: 100% 100%;
+    background-position-x: left;
+    cursor: pointer;
 }
 
 /* BADGES */
@@ -235,6 +322,8 @@ input.submit-btn:hover {
     margin: 50px 50px;
     width: 75vw;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .badgeArea {
@@ -246,7 +335,8 @@ input.submit-btn:hover {
     background: var(--fade-dark-purple);
     border-radius: .5em;
     width: 75vw;
-    padding-bottom: 25px;
+    overflow-x: scroll;
+    padding: 10px;
 }
 
 .activeBadgeRow {
@@ -259,7 +349,7 @@ input.submit-btn:hover {
 }
 
 .badgeCard {
-    height: 200px;
+    /*height: 500px;*/
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
     display: flex;
@@ -278,8 +368,39 @@ input.submit-btn:hover {
 
 /*  MEDIA QUERY         */
 
-/* Small (less than 640px) */
-@media (max-width: 639px) {
+/* Small */
+@media (min-width: 20rem) and (max-width: 30rem) {
+    .battleTitle{
+        font-size: 1.5rem;
+    }
+    .non-Btn{
+        font-size: 1rem;
+    }
+    .editButton {
+        width: 20vw;
+        height: 4vh
+    }
+    .edit-modal > form {
+        height: 90%;
+    }
+    .edit-modal > form > input {
+        height: 5vh;
+        font-size: 1.2rem;
+        border-radius: 6px;
+    }
+    .image-add{
+        height: 30px;
+        padding: 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        font-size: 1.2rem;
+    }
+    .edit-modal{
+        max-width: 80vw;
+        height: 70vh;
+    }
     .avatarPlacement {
         margin-top: -100px;
     }
@@ -301,10 +422,38 @@ input.submit-btn:hover {
         font-size: 35px;
         margin-top: -35px;
     }
+    .battleCard {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-/* Medium (641px to 1007px) */
-@media (min-width: 641px) and (max-width: 1007px) {
+/*Med*/
+@media (min-width: 30rem) and (max-width: 65rem) {
+    .editButton {
+        width: 50px;
+        height: 4vh
+    }
+    .edit-modal > form {
+        height: 90%;
+    }
+    .edit-modal > form > input {
+        height: 6vh;
+        font-size: 1.5rem;
+        border-radius: 6px;
+    }
+    .image-add{
+        height: 6vh;
+        padding: 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+    }
+    .edit-modal{
+        max-width: 80vw;
+        height: 80vh;
+    }
     .avatarPlacement {
         margin-top: -150px;
     }
@@ -319,9 +468,11 @@ input.submit-btn:hover {
     }
 
     .h1Profile {
-        font-size: 60px;
+        font-size: 4rem;
         margin-top: 0;
     }
-
-    .editProfile {}
+    .battleCard {
+        flex-direction: column;
+        align-items: center;
+    }
 }

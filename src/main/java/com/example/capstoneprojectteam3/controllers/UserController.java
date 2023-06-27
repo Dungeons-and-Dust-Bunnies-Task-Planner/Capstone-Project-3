@@ -1,22 +1,24 @@
 package com.example.capstoneprojectteam3.controllers;
 
-import com.example.capstoneprojectteam3.models.Badge;
-import com.example.capstoneprojectteam3.models.Battle;
-import com.example.capstoneprojectteam3.models.MonsterImage;
-import com.example.capstoneprojectteam3.models.User;
+import com.example.capstoneprojectteam3.models.*;
+import com.example.capstoneprojectteam3.models.OpenAI.OpenAIResponse;
 import com.example.capstoneprojectteam3.repositories.BattleRepository;
 import com.example.capstoneprojectteam3.repositories.MonsterImageRepository;
 import com.example.capstoneprojectteam3.repositories.MonsterRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
+import com.example.capstoneprojectteam3.utils.OpenAIRequest;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -81,22 +83,17 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String showProfile(Model model) throws IOException {
+    public String showProfile(Model model) throws Exception {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long userId = user.getId();
         user = usersDao.findUserById(userId);
         List<Badge> badges = user.getBadges();
         List<Battle> battles = battlesDao.findAllByUserId(userId);
 
-        // CHAT-GPT API REQUEST AND RESPONSE CODE BELOW, COMMENTED OUT TO MINIMIZE API REQUESTS
-//        OpenAIResponse aiResponse = OpenAIRequest.sendOpenAIRequest("You are a monster who hates people cleaning! A cleaner attacks you! Respond with only two sentences!");
-//        String text = aiResponse.getChoices().get(0).getText();
-//        System.out.println(text);
-
         model.addAttribute("user", user);
         model.addAttribute("badges", badges);
         model.addAttribute("battles", battles);
-
+        model.addAttribute("id", userId);
         return "profile";
     }
 
@@ -149,5 +146,25 @@ public class UserController {
         }
         return "redirect:/profile";
     }
+
+
+    @PostMapping("/profile/{id}/delete")
+    public String deleteAccount(@PathVariable("id") long userId, HttpServletRequest request) {
+        User user = usersDao.findUserById(userId);
+        List<Battle> battles = user.getBattles();
+        for (Battle battle : battles) {
+            battle.setUser(null);
+            battlesDao.save(battle);
+        }
+        usersDao.deleteById(userId);
+        SecurityContextHolder.clearContext();
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                session.invalidate();
+            }
+        return "redirect:/home";
+    }
+
+
 
 }

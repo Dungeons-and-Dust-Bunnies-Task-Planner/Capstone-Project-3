@@ -1,15 +1,13 @@
 
-.index h1 {
-    font-size: 4em;
+.slogan {
+    font-size: 4rem;
     text-align: center;
-
+    font-weight: 600;
 }
-
-
-.land-h2 {
+.attentionGetter {
     font-size: 3em;
     text-align: center;
-
+    font-weight: 400;
 }
 
 .land-h2 a {
@@ -18,17 +16,16 @@
     border-radius: .5em;
     transition: all ease-in .3s;
     color: #fff;
-    background: var(--cta2);
-    box-shadow: inset black 0px 0px 2px 1px;
+    background: var(--cta);
+    box-shadow: inset black 0 0 2px 1px;
     border: none;
-    text-shadow: 0px 0px 3px black;
-
-
+    text-shadow: 0 0 3px black;
+    font-size: 2rem;
 }
 
 .land-h2 a:hover {
     text-decoration: inherit;
-    background: rgb(0, 128, 224);
+    background: hotpink;
     transition: all ease-in .3s;
     padding: 10px 15px;
     max-height: 10px;
@@ -41,14 +38,24 @@
     color: inherit;
 }
 
+/*  TOP CONTAINER       */
 .CCBB {
     display: flex;
     justify-content: center;
 }
 
-.attentionGetter {
-    font-weight: 400;
+
+/*  CONTAINER FOR THE MAIN INPUT    */
+.tooRight {
+    display: flex;
+    max-width: none;
+    justify-content: space-between;
 }
+
+
+
+/*      LEFT SIDE STUFF     */
+
 
 .leftSide {
     display: flex;
@@ -62,43 +69,49 @@
 .description {
     display: flex;
     justify-content: start;
-    background-color: rgba(0, 0, 0, 0.4);
+    /*background-color: rgba(0, 0, 0, 0.4);*/
     padding-bottom: 20px;
     font-weight: 400;
     border-radius: 1em;
 }
 
 
-.registrationButton {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 30vw;
-    margin: 20px;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-bottom: 20px;
-    font-weight: 400;
-    border-radius: 1em;
-}
+/*.registrationButton {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    flex-direction: column;*/
+/*    width: 30vw;*/
+/*    margin: 20px;*/
+/*    !*background-color: rgba(0, 0, 0, 0.4);*!*/
+/*    padding-bottom: 20px;*/
+/*    font-weight: 400;*/
+/*    border-radius: 1em;*/
+/*}*/
 
-.blurb {
-    margin-top: 10px;
+/*.blurb {*/
+/*    margin-top: 10px;*/
+/*    font-weight: 300;*/
+/*    font-size: large;*/
+/*}*/
+
+.joinOrCreate {
+    font-size: x-large;
     font-weight: 300;
-    font-size: large;
+    text-align: center;
 }
 
+.attentionButton {
+    font-size: 2.5rem;
+}
+
+
+
+/*      RIGHT SIDE STUFF        */
 .rightSide {
     display: flex;
     width: 40vw;
     margin: 20px;
-    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 1em;
-}
-
-.tooRight {
-    display: flex;
-    max-width: none;
-    justify-content: space-between;
 }
 
 .battleItOut {
@@ -108,4 +121,123 @@
 
 .battleColumn {
     padding: 10px 10px;
+}
+
+/*Med*/
+@media (min-width: 30rem) and (max-width: 65rem) {
+    .slogan {
+        font-size: 3.5rem;
+        text-align: center;
+        font-weight: 500;
+    }
+    .attentionGetter {
+        font-size: 2.5em;
+        text-align: center;
+        font-weight: 300;
+    }
+    .joinOrCreate {
+        font-size: 1.5rem;
+        font-weight: 200;
+        text-align: center;
+    }
+    .attentionButton {
+        font-size: 2.5rem;
+    }
+    .tooRight {
+        flex-direction: column;
+    }
+
+    .leftSide {
+        width: 90vw;
+        margin-bottom: 70px;
+    }
+
+    .rightSide {
+        width: 90vw;
+    }
+    .land-h2 a {
+        font-size: 2rem;
+    }
+}
+
+
+/* Small */
+@media (min-width: 20rem) and (max-width: 30rem) {
+    .slogan {
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 800;
+    }
+    .attentionGetter {
+        font-size: 2rem;
+        text-align: center;
+        font-weight: 400;
+    }
+    .joinOrCreate {
+        font-size:1.5rem;
+        font-weight: 300;
+        text-align: center;
+    }
+    .battleItOut {
+        display: none;
+    }
+    .MonsterImages{
+        width: 100%;
+    }
+    .attentionButton {
+        font-size: 2.5rem;
+    }
+    .tooRight {
+        flex-direction: column;
+    }
+
+    .leftSide {
+        width: 90vw;
+    }
+
+    .rightSide {
+        width: 90vw;
+    }
+    .land-h2 a {
+        font-size: 1.5rem;
+    }
+    .footerWrap {
+        height: 176px;
+
+    }
+    footer {
+        display: none;
+    }
+}
+
+/*  smallest    */
+@media (min-width: 0rem) and (max-width: 19rem) {
+    .slogan {
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 800;
+    }
+    .attentionGetter {
+        font-size: 3em;
+        text-align: center;
+        font-weight: 400;
+    }
+    .joinOrCreate {
+        font-size: x-large;
+        font-weight: 300;
+    }
+    .attentionButton {
+        font-size: 1rem;
+    }
+    .tooRight {
+        flex-direction: column;
+    }
+
+    .leftSide {
+        width: 90vw;
+    }
+
+    .rightSide {
+        width: 90vw;
+    }
 }

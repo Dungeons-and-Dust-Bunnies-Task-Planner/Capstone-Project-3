@@ -1,0 +1,80 @@
+<div th:fragment="popUp" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="container factContainer" style="pointer-events: none;">
+        <div id="popup">
+            <div class="row factsRow" style="pointer-events: auto;">
+                <span id="close-btn">&times;</span>
+                <div class="row imageFacts">
+                    <img class="monsterPopup"
+                         src="https://cdn.discordapp.com/attachments/526187085741162498/1120772695571845364/IMG_1855.png">
+                    <div class="column factsColumn">
+                        <h3 class="Dyn">Did You Know?</h3>
+                        <h4 class="fact"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Array of random facts
+        let facts = [
+            "Listening to upbeat music while cleaning can boost your productivity and make the task more enjoyable?",
+            "Cleaning can actually be a form of exercise! You can burn calories and get your heart rate up while tidying your home.",
+            " Incorporate a timer into your cleaning routine. Challenge yourself to see how much you can accomplish in 15 minutes and watch your motivation soar.",
+            "Cleaning your living space can help reduce stress and promote a sense of calmness. A clean environment often leads to a clearer mind.",
+            " Cleaning can be a great opportunity to discover lost treasures. You might stumble upon long-lost items or forgotten mementos while organizing your belongings.",
+            "Cleaning windows can give you a new perspective on the world. Sparkling clean windows allow more natural light to enter your home and brighten your mood.",
+            "Vacuuming can help improve indoor air quality by removing dust, allergens, and pet dander from your carpets?",
+            "Cleaning is an opportunity to practice mindfulness. Pay attention to each task, focusing on the present moment and enjoying the process.",
+            "Sprucing up your living space can inspire creativity and boost your productivity in other areas of your life.",
+            "Tackling clutter and organizing your space can give you a sense of accomplishment and satisfaction. A tidy home equals a happy you!",
+            "Taking before and after photos while cleaning can be rewarding. You'll have a visual reminder of the progress you've made and the transformation you've achieved.",
+            "Using colorful cleaning tools or accessories can make the task more enjoyable and add a touch of fun to your cleaning routine.",
+            "Cleaning can be an opportunity to rediscover old memories. You might come across photo albums or sentimental items that bring back fond moments.",
+            "Cleaning your kitchen thoroughly can inspire you to try new recipes and experiment with different cuisines.",
+            "Spraying a pleasant scent or lighting scented candles after cleaning can create a fresh and inviting atmosphere in your home.",
+            "When cleaning, remember that every little step counts. Small efforts can add up to a big impact on the cleanliness and organization of your space.",
+            "Reward yourself after completing a cleaning task. Treat yourself to something you enjoy, like a favorite snack or a few minutes of relaxation.",
+            "Cleaning can be a form of self-care. Taking care of your environment reflects self-respect and can enhance your overall well-being.",
+            "Don't forget to celebrate your achievements! Take a moment to admire your sparkling clean home and revel in the satisfaction of a job well done.",
+            "Cleaning can be a great way to bond with family or roommates. Turn it into a fun activity by playing upbeat music and assigning tasks together.",
+            // Add more facts as needed
+        ];
+
+        // Function to display the random fact
+        function showRandomFact() {
+            let randomFact = facts[Math.floor(Math.random() * facts.length)];
+            let factContainer = document.querySelector(".factContainer");
+            let factRow = document.querySelector(".factsRow");
+
+            // Set the fact content
+            document.querySelector(".fact").textContent = randomFact;
+
+            //transition effect and reveal the fact container
+            factRow.style.transform = "translateY(0)";
+            factRow.style.opacity = "1";
+            factContainer.style.display = "flex";
+        }
+
+        // Function to start the timer
+        function startTimer() {
+            setTimeout(showRandomFact, 15000); // 5 seconds in milliseconds
+        }
+
+        window.addEventListener("load", startTimer);
+
+        // Function to close the pop-up
+        function closePopup() {
+            let factContainer = document.querySelector(".factContainer");
+            let factRow = document.querySelector(".factsRow");
+
+            factRow.style.transform = "translateY(100%)";
+            setTimeout(function () {
+                factContainer.style.display = "none";
+            }, 500);
+        }
+
+        //event listener to the close button
+        let closeBtn = document.getElementById("close-btn");
+        closeBtn.addEventListener("click", closePopup);
+    </script>
+</div>

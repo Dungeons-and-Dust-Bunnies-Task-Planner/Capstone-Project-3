@@ -1,0 +1,67 @@
+
+.aboutCard {
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+    background: var(--fade-dark-purple);
+    border-radius: 12px;
+    width: 65vw;
+    flex-direction: row;
+    flex: 1 0 0;
+}
+
+.one, .three,.five {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.two, .four, .six {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.slideIn {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.nameRow {
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.poppaRow {
+    justify-content: center;
+
+}
+
+.aboutH1Row {
+    justify-content: center;
+    padding: 0;
+
+}
+
+.aboutH1 {
+    align-self: center;
+    text-align: center;
+
+}
+
+
+.linkRow {
+    align-self: end;
+    justify-content: space-between;
+
+}
+
+.bio {
+
+    text-align: center;
+    align-self: center;
+}
+
+@media only screen and (max-width: 1007px) {
+    .cardy {
+        flex-wrap: wrap;
+    }
+}

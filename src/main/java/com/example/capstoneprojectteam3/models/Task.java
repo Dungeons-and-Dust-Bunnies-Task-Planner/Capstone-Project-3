@@ -33,8 +33,9 @@ public class Task {
 
     public Task() {}
 
-    public Task(String taskBody) {
+    public Task(String taskBody, Battle battle) {
         this.taskBody = taskBody;
+        this.battle = battle;
     }
 
     public Task(String taskBody, Battle battle, int taskComplete) {

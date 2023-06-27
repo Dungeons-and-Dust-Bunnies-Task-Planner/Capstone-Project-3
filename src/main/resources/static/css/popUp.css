@@ -1,0 +1,82 @@
+.factContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+}
+
+
+.factsRow {
+    background: rgba(0,0,0,.75);
+    border-radius: 1em;
+    width: 75vw;
+    transition: transform 0.5s ease;
+    transform: translateY(100%);
+    opacity: 0;
+    backdrop-filter: blur(20px);
+}
+
+.fact {
+    font-weight: 300;
+}
+
+.monsterPopup {
+    max-width: 30vw;
+}
+
+
+#close-btn {
+    position: relative;
+    right: 10px;
+    cursor: pointer;
+    color: #50FF00FF;
+    font-size: xx-large;
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1007px) {
+    .factsRow {
+        width: 90vw;
+    }
+
+    .fact {
+        font-size: larger;
+    }
+
+    #close-btn {
+        font-size: x-large;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .imageFacts {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .monsterPopup {
+        max-width: 50vw;
+        display: flex;
+        /* justify-content: center; */
+        /* align-content: center; */
+        /* flex-wrap: wrap; */
+        align-self: center;
+        margin-top: 10px;
+    }
+
+    .factsRow {
+        width: 100vw;
+    }
+
+    .fact {
+        font-size: larger;
+    }
+
+    #close-btn {
+        font-size: xx-large;
+    }
+}
