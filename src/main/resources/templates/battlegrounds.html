@@ -78,11 +78,8 @@
             <img th:src="${battle.monster.monsterImages[0].monster_img}">
           </div>
         </div>
-        <div class="row justify-center">
-          <div class="health-bar" th:data-total="${battle.tasks.size() * 1000}"
-               th:data-value="${battle.tasks.size() * 1000}">
-            <div class="bar">
-            </div>
+        <div class="row justify-center health-bar-container">
+          <div class="health-bar">
           </div>
           <!------------  BTN FOR battle Complete increment      ------------>
           <form th:action="@{/battlegrounds/complete}" th:method="post">

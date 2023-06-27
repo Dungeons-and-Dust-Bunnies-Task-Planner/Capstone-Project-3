@@ -266,11 +266,11 @@
   transition:var(--trans);;
 }
 
-.task.complete,
-.task:hover{
-  background:var(--fade-dark-purple);
-  color:#fff;
-  text-decoration:line-through;
+.task.complete .task-body{
+    background:var(--fade-dark-purple);
+    box-shadow:var(--cta-inset-shadow);
+    color:#000;
+    text-decoration:line-through;
 }
 
 .task-body.edit{
@@ -434,38 +434,69 @@
 }
 
 /* HEALTH BAR */
+.health-bar-container{
+  display:flex;
+  justify-content:space-between;
+  position:relative;
+  width:75%;
+}
+
+.health-bar-container::before{
+  content:'';
+  background-color:var(--solid-background);
+  border:2px solid indianred;
+  border-radius:var(--br);
+  position:absolute;
+  top:50%;
+  left:0;
+  transform:translateY(-50%);
+  height:40px;
+  width:100%;
+}
 
 .health-bar{
-  -webkit-box-sizing:border-box;
-  -moz-box-sizing:border-box;
-  box-sizing:border-box;
-  width:200px;
-  height:20px;
-  padding:5px;
-  background:#ddd;
-  -webkit-border-radius:5px;
-  -moz-border-radius:5px;
-  border-radius:5px;
-  position:relative;
-}
-
-.bar{
-  background:#c54;
-  width:100%;
-  height:10px;
-  position:relative;
-
-  transition:width .5s linear;
-}
-
-.hit{
-  background:rgba(255, 255, 255, 0.6);
+  background-color:indianred;
   position:absolute;
-  top:0;
-  right:0;
-  bottom:0;
-  width:100px;
-  z-index:99;
-
-  transition:width .5s linear;
+  border-radius:var(--br);
+  top:50%;
+  left:0;
+  transform:translateY(-50%);
+  height:40px;
+  width:100%;
+  transition:0.4s ease;
 }
+
+/*.health-bar{*/
+/*  -webkit-box-sizing:border-box;*/
+/*  -moz-box-sizing:border-box;*/
+/*  box-sizing:border-box;*/
+/*  width:200px;*/
+/*  height:20px;*/
+/*  padding:5px;*/
+/*  background:#ddd;*/
+/*  -webkit-border-radius:5px;*/
+/*  -moz-border-radius:5px;*/
+/*  border-radius:5px;*/
+/*  position:relative;*/
+/*}*/
+
+/*.bar{*/
+/*  background:#c54;*/
+/*  width:100%;*/
+/*  height:10px;*/
+/*  position:relative;*/
+
+/*  transition:width .5s linear;*/
+/*}*/
+
+/*.hit{*/
+/*  background:rgba(255, 255, 255, 0.6);*/
+/*  position:absolute;*/
+/*  top:0;*/
+/*  right:0;*/
+/*  bottom:0;*/
+/*  width:100px;*/
+/*  z-index:99;*/
+
+/*  transition:width .5s linear;*/
+/*}*/
