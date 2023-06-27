@@ -246,6 +246,7 @@ input.submit-btn:hover {
 
 .battleArea {
     width: 75vw;
+    height: 70vh;
     display: flex;
     align-content: flex-start;
     background: var(--fade-dark-purple);
@@ -253,6 +254,7 @@ input.submit-btn:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: scroll;
 }
 
 .battleCard {
@@ -287,6 +289,7 @@ input.submit-btn:hover {
 .cardRow {
     flex-wrap: wrap;
     padding-bottom: 25px;
+    height: 100%;
 }
 
 .battleTitle {
@@ -332,6 +335,7 @@ input.submit-btn:hover {
     background: var(--fade-dark-purple);
     border-radius: .5em;
     width: 75vw;
+    overflow-x: scroll;
     padding: 10px;
 }
 
