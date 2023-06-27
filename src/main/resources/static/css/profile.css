@@ -40,12 +40,13 @@
 /*  EDIT PROFILE MODAL  */
 .edit-modal {
     position: fixed;
+    flex-direction: column;
     top: 55%;
     left: 50%;
     translate: -50% -50%;
-    max-height: 570px;
+    max-height: 80vh;
     height: 80vh;
-    max-width: 80vw;
+    max-width: 55vw;
     border-radius: .5em;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
     background: var(--fade-dark-purple);
@@ -58,7 +59,7 @@
 
 
 .edit-modal > form {
-    height: 100%;
+    height: 95%;
     width: 100%;
     padding: 1px;
 }
@@ -66,7 +67,6 @@
 .edit-modal > form > input {
     height: 7vh;
     padding: 6px 8px;
-    border: 2px solid hotpink;
     outline: none;
     box-shadow: inset #000 0 0 3px 1px;
     font-size: 2rem;
@@ -75,16 +75,25 @@
     font-weight: 400;
     flex-wrap: wrap;
     align-content: center;
-    color: black;
     background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
     background-repeat: no-repeat;
     background-size: 0% 100%;
     background-position-x: right;
     transition: background-size 400ms;
 }
+.deleteAccount{
+    display: flex;
+    background: transparent;
+    color: white;
+    align-items: flex-end;
+    border: none;
+}
+.deleteAccount:hover {
+   color: var(--cta);
+}
 input.submit-btn{
     color: white;
-    background: transparent;
+    background: var(--cta);
 }
 
 input.submit-btn:hover {
@@ -128,21 +137,22 @@ input.submit-btn:hover {
 .image-add {
     width: 47%;
     height: 7vh;
-    color: black;
+    color: white;
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 20px 2px;
     cursor: pointer;
-    border-radius: 12px;
-    border: 3px solid hotpink;
+    border-radius: 6px;
+    box-shadow: inset #000 0 0 3px 1px;
     background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
     background-repeat: no-repeat;
     background-size: 0% 100%;
     background-position-x: right;
     transition: background-size 400ms;
+    background-color: var(--cta);
 }
 .image-add:hover {
     background-size: 100% 100%;
@@ -326,6 +336,27 @@ input.submit-btn:hover {
 
 /* Small */
 @media (min-width: 20rem) and (max-width: 30rem) {
+    .edit-modal > form {
+        height: 90%;
+    }
+    .edit-modal > form > input {
+        height: 5vh;
+        font-size: 1.2rem;
+        border-radius: 6px;
+    }
+    .image-add{
+        height: 30px;
+        padding: 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        font-size: 1.2rem;
+    }
+    .edit-modal{
+        max-width: 80vw;
+        height: 70vh;
+    }
     .avatarPlacement {
         margin-top: -100px;
     }
@@ -355,6 +386,26 @@ input.submit-btn:hover {
 
 /*Med*/
 @media (min-width: 30rem) and (max-width: 65rem) {
+    .edit-modal > form {
+        height: 90%;
+    }
+    .edit-modal > form > input {
+        height: 6vh;
+        font-size: 1.5rem;
+        border-radius: 6px;
+    }
+    .image-add{
+        height: 6vh;
+        padding: 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+    }
+    .edit-modal{
+        max-width: 80vw;
+        height: 80vh;
+    }
     .avatarPlacement {
         margin-top: -150px;
     }
