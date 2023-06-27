@@ -76,9 +76,7 @@
                         </div>
                         <div th:if="${battles != 0}" th:each="battle : ${battles}" class="battleCard">
                             <div th:if="${battle.status == 0}" class="column battleImageMonster">
-                                <div th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}">
-                                    <img th:src="${battle.monster.monsterImages[0].monster_img}" alt="Battle monster image">
-                                </div>
+                                    <img th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}" th:src="${battle.monster.monsterImages[0].monster_img}" alt="Battle monster image">
                             </div>
                             <div th:if="${battle.status == 0}" class="column battleTitle">
                                 <h2 th:if="${battle.status == 0}"><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>
