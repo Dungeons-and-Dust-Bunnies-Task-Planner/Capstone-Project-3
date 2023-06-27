@@ -74,7 +74,7 @@
                                 <button class="non-Btn"><a th:href="@{/battleList}" >Create Battle</a></button>
                             </div>
                         </div>
-                        <div th:each="battle : ${battles}" class="battleCard">
+                        <div th:if="${battles != 0}" th:each="battle : ${battles}" class="battleCard">
                             <div th:if="${battle.status == 0}" class="column battleImageMonster">
                                 <img th:if="${battle.status == 0}" class="battleCardImage" th:src="${battle.getMonster().getMonsterImages().get(0).getMonster_img()}" alt="Battle monster image">
                             </div>
