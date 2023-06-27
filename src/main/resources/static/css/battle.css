@@ -36,10 +36,10 @@
     height: 55px;
     float: right;
 }
-
-.edit-modal{
-    display: none;
-}
+/*if this screws up stuff being commented tell dawson*/
+/*.edit-modal{*/
+/*    display: none;*/
+/*}*/
 
 .show {
     display: block;
@@ -57,7 +57,7 @@
 
 .edit-battle-title-btn {
     height: 50px;
-    background-color: var(--cta2);
+    background-color: var(--cta);
     color:white;
     font-weight: bolder;
     font-size: 2rem;

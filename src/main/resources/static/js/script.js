@@ -1,3 +1,4 @@
+import * as keys from './keys.js';
 (() => {
 // DOM ELEMENTS
     const battleIcon = document.querySelector('.battle-icon')
@@ -35,7 +36,7 @@
     }
 
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', async function () {
         console.log('Dynamic elements loaded') //DEBUG
         document.querySelectorAll('.battle').forEach((battle, idx) => {
             battle.addEventListener('click', () => {
@@ -62,31 +63,35 @@
             })
         })
 
-        let hitBtn = document.querySelector('.damage'),
-            hBar = document.querySelector('.health-bar'),
-            bar = hBar.querySelector('.bar'),
-            hit = hBar.querySelector('.hit');
+        // async function sendOpenAIRequest(prompt) {
+        //     const apiUrl = "https://api.openai.com/v1/completions";
+        //     const apiKey = keys.openApiKey;  // replace this with your actual OpenAI key
+        //     const requestBody = {
+        //         prompt: prompt,
+        //         max_tokens: 100,
+        //         model: "text-davinci-003"
+        //     };
+        //
+        //     const response = await fetch(apiUrl, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Authorization': `Bearer ${apiKey}`,
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(requestBody)
+        //     });
+        //
+        //     if (!response.ok) {
+        //         throw new Error(`HTTP error! status: ${response.status}`);
+        //     }
+        //     let data = await response.json();
+        //     console.log(data);
+        //     return data;
+        // }
 
-        hitBtn.addEventListener("click", function(){
-            let total = Number(hBar.getAttribute('data-total')),
-                value = Number(hBar.getAttribute('data-value'));
-
-            let fractional = value / 1000;
-            let damage = fractional * 1000 - total;
-            let newValue = value - damage;
-            let barWidth = (newValue / total) * 100;
-            let hitWidth = (damage / value) * 100 + "%";
-
-            hit.style.width = hitWidth;
-            hBar.setAttribute('data-value', newValue);
-
-            setTimeout(function(){
-                hit.style.width = '0';
-                bar.style.width = barWidth + "%";
-            }, 500);
-
-        });
-
+        // const monsterTalkParent = document.querySelector('.monsterTalkParent');
+        // let monsterResponse = await sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!")
+        // monsterTalkParent.innerHTML = `<h2>${monsterResponse.choices[0].text}</h2>`;
     })
 
 
@@ -106,14 +111,16 @@
         const taskBody = task.querySelector('.task-body')
         const completeTaskBtn = task.querySelector('.complete-task-btn')
         const openEditBtn = task.querySelector('.open-edit-task-btn')
+        const openEditBtnImg = document.querySelector('.open-edit-task-btn-img')
         const editTaskForm = task.querySelector('.edit-task-form')
         const editTaskInput = task.querySelector('.edit-task-input')
-        const editTaskBtn = task.querySelector('.edit-task-submit-btn')
         const deleteTaskBtn = task.querySelector('.delete-task-btn')
+        const deleteTaskBtnImg = document.querySelector('.delete-task-btn-img')
         const deleteTaskForm = task.querySelector('.delete-task-form')
         const createTaskForm = task.querySelector('.create-task-form')
         const createTaskInput = task.querySelector('.create-task-input')
         const createTaskBtn = task.querySelector('.create-task-btn')
+        const createTaskBtnImg = document.querySelector('.create-task-btn-img')
 
         task.addEventListener('click', () => {
             task.classList.toggle('complete')
@@ -121,147 +128,40 @@
 
         openEditBtn.addEventListener('click', function () {
             task.classList.toggle('edit')
-            task.classList.contains('edit') ? this.textContent = 'Cancel' : this.textContent = 'Edit'
             taskBody.classList.toggle('edit')
             editTaskInput.classList.toggle('edit')
-            editTaskBtn.classList.toggle('edit')
             deleteTaskBtn.classList.toggle('edit')
+            openEditBtn.classList.toggle('edit')
+            if (openEditBtn.classList.contains('edit')) {
+            openEditBtnImg.src = "/images/green-x.png"
+            } else {
+                openEditBtnImg.src = "/images/green-edit.png"
+            }
+            completeTaskBtn.classList.toggle('edit')
         })
 
         editTaskForm.addEventListener('submit', () => {
-            openEditBtn.textContent = 'Edit'
             taskBody.classList.toggle('edit')
             editTaskInput.classList.toggle('edit')
-            editTaskBtn.classList.toggle('edit')
             deleteTaskBtn.classList.toggle('edit')
+            openEditBtn.classList.toggle('edit')
+            openEditBtnImg.src = "/images/green-edit.png"
+            completeTaskBtn.classList.toggle('edit')
         })
 
         deleteTaskForm.addEventListener('submit', () => {
-            openEditBtn.textContent = 'Edit'
             taskBody.classList.toggle('edit')
             editTaskInput.classList.toggle('edit')
-            editTaskBtn.classList.toggle('edit')
             deleteTaskBtn.classList.toggle('edit')
+            openEditBtn.classList.toggle('edit')
+            openEditBtnImg.src = "/images/green-edit.png"
+            completeTaskBtn.classList.toggle('edit')
         })
 
         deleteTaskBtn.addEventListener('click', () => {
             deleteTaskForm.submit()
         })
     })
-
-    // ----------------------------------------------------------------------------------------------------
-    // Rest Controller db interaction ---------------------------------------------------------------------
-    // ----------------------------------------------------------------------------------------------------
-    // This function will be executed when the form is submitted.
-    // document.getElementById('taskForm').addEventListener('submit', async function (event) {
-    //     // Prevent the form from being submitted to the server.
-    //     event.preventDefault();
-    //
-    //     // Get the value of the taskId input.
-    //     let taskId = document.querySelector('#taskId').value;
-    //     let battleId = document.querySelector('#battleId').value;
-    //     const tasksParent = document.querySelector("#tasks");
-    //     console.log("task id:")
-    //     console.log(taskId)
-    //
-    //     await completeTask(taskId);
-    //     let tasks = await getTaskList(battleId);
-    //     renderTaskList(tasks, tasksParent);
-    // });
-
-// Here is your completeTask function which sends the request to the server.
-    const completeTask = async (taskId) => {
-        try {
-            let url = `/task/complete-task?taskId=${taskId}`;
-            let options = {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-            let response = await fetch(url, options);
-            let data = await response.json();
-            console.log(data)
-            return data;
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    // const getTaskList = async (battleId) => {
-    //     try {
-    //         let url = `/task/task-list?battleId=${battleId}`;
-    //         let options = {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         }
-    //         let response = await fetch(url, options);
-    //         let data = await response.json();
-    //         console.log(data)
-    //         return data;
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
-    //
-    // const renderTaskList = (tasks, parent) => {
-    //     parent.innerHTML = '';
-    //     const element1 = document.createElement('section');
-    //     element1.classList.add("tasks");
-    //     const element2 = document.createElement('ul');
-    //     element2.classList.add("tasks-list");
-    //     tasks.forEach(task => {
-    //         element2.innerHTML = `
-    //         <h2 class="tasks-battle-title">${task.battleId.title}</h2>
-    //
-    //       <!--          TASK-->
-    //       <li class="task not-complete">
-    //         <!--              ADD COMPLETE TO THE CLASS FOR PRODUCTION SO THAT ONLY ONE OR THE OTHER SHOWS-->
-    //         <p class="task-body">${task.taskBody}</p>
-    //         <!--              <p class="task-body not-complete" th:unless="${task.taskComplete == 0}" th:text="${task.taskBody}"></p>-->
-    //
-    //         <!--            COMPLETE TASK FORM-->
-    //         <form action="/task/complete-task" method="post" id="taskForm">
-    //           <input type="hidden" name="taskId" id="taskId" value="${task.id}">
-    //           <button class="hit damage" type="submit" style="z-index: 99; display: block; position: absolute;" >complete task</button>
-    //         </form>
-    //
-    //         <!--            EDIT TASK FORM-->
-    //         <form class="edit-task-form" action="/battlegrounds/edit-task-body" method="post">
-    //           <input type="hidden" name="taskId" value="${task.id}">
-    //           <input class="edit-task-input" type="text" name="editTaskBody"
-    //                  value="${task.taskBody}">
-    //           <button class="edit-task-submit-btn" type="submit">Edit task</button>
-    //         </form>
-    //
-    //         <!--            DELETE TASK FORM-->
-    //         <form class="delete-task-form" action="/battlegrounds/delete-task" method="post">
-    //           <input type="hidden" name="taskId" value="${task.id}">
-    //           <button class="delete-task-btn" type="submit">Delete</button>
-    //         </form>
-    //         <button class="open-edit-task-btn" type="button">
-    //           <img src="/images/green-edit.png" alt="icon" class="open-edit-task-btn-img">
-    //         </button>
-    //       </li>
-    //
-    //       <!--            CREATE TASK FORM-->
-    //       <li class="create-task-form-li">
-    //         <form class="create-task-form" th:action="@{/battlegrounds/create-task}" th:method="post">
-    //           <input type="hidden" name="battleId" th:value="${battle.id}" id="battleId">
-    //           <input class="create-task-input" type="text" name="taskBody" placeholder="Create new task">
-    //           <button class="create-task-btn" type="submit">Create task</button>
-    //         </form>
-    //       </li>
-    //     </ul>
-    //   </section>
-    //         `;
-    //         parent.appendChild(element1);
-    //         element1.appendChild(element2);
-    //     })
-    // };
-    // ------------------------------------------health bar---------------------------------------------
 
 })()
 

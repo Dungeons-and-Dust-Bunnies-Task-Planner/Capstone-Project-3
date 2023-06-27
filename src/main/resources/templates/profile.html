@@ -77,7 +77,8 @@
                                 <img class="battleCardImage" th:src="${battle.getMonster().getMonsterImages().get(0).getMonster_img()}" alt="Battle monster image">
                             </div>
                             <div class="column battleTitle">
-                                <h2 class="battleTitle" th:text="${battle.title}"></h2>
+<!--                                <h2 class="battleTitle" th:text="${battle.title}"></h2>-->
+                                <h2><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>
                                 <p class="battleTasks" th:text="${battle.status}"></p>
                             </div>
                         </div>
@@ -93,7 +94,7 @@
                     <div class="activeBadgeRow">
                         <div th:each="badge : ${badges}" class="badgeCard">
                             <div>
-    <!--                        <img class="activeBadgeImage" th:src="${badge.badgeImage}" alt="Active Badge Image">-->
+                            <img class="activeBadgeImage" th:src="${badge.badgeImage}" alt="Active Badge Image">
                             </div>
                             <div>
                             <h2 class="badgeTitle" th:text="${badge.badgeTitle}"></h2>
@@ -110,11 +111,11 @@
 <!-- This is the JS for Badge Claiming -->
 
 <script>
-    const claimButton = document.getElementById('claimButton');
-    const badgrClaimForm = document.getElementById('badgeClaimForm');
-    claimButton.addEventListener('click', () => {
-        badgrClaimForm.submit();
-    });
+    // const claimButton = document.getElementById('claimButton');
+    // const badgrClaimForm = document.getElementById('badgeClaimForm');
+    // claimButton.addEventListener('click', () => {
+    //     badgrClaimForm.submit();
+    // });
 </script>
 <script src="/js/profile.js"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
