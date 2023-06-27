@@ -20,8 +20,8 @@ import java.util.List;
 @Controller
 public class BattleController{
 
-	@Autowired
-	private OpenAIRequest openAIRequest;
+//	@Autowired
+//	private OpenAIRequest openAIRequest;
 
 	private final UserRepository usersDao;
 	private final BattleRepository battlesDao;

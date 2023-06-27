@@ -10,7 +10,7 @@ import java.util.List;
 
 @Controller
 public class MonsterPageController {
-    @GetMapping("/monsterlist")
+    @GetMapping("/monsterList")
     public String showMonsters(){
         return "meetTheMonsters";
     }
