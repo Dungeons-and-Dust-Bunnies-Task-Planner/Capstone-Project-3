@@ -11,9 +11,7 @@
   overflow: scroll;
   margin-top: 31vh;
 }
-.battleColumnSize {
-  width: 75vw;
-}
+
 
 /*   CREATE BATTLE ROW    */
 
@@ -21,7 +19,7 @@
   position: relative;
   width: 100vw;
   height: 10vh;
-  top: 15vh;
+  top: 18vh;
 }
 
 .open-edit-battle-btn,
@@ -40,43 +38,50 @@
   cursor: pointer;
   background: var(--fade-dark-purple);
   box-shadow: var(--background) inset 0 0 3px 2px;
+  border-radius: 0 0.7em 0.7em 0;
 }
 
 .create-battle-input {
-  margin-left: 201px;
+  margin-left: 15vw;
   left: 0;
   width: 70vw;
   font-size: 1.3em;
-/*background(: ;*/
-/*  --secondary): ;*/
   transition: var(--trans);
+  border-radius: 0.7em;
 }
 
 .create-battle-input:hover {
   background: var(--fade-dark-purple);
 }
 
+.battleColumnSize {
+  width: 75vw;
+  position: relative;
+}
 
 .battles-list-battles{
-  position:relative;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 60vw;
+  min-height: 150px;
+  /* height: 201px; */
   background: var(--solid-background);
   padding: 10px;
   border-radius: var(--br);
-  box-shadow: var(--cta2) inset 0 0 2px 1px;
+  box-shadow: var(--cta) inset 0 0 2px 2px;
   overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .battles-list-title{
-  position:absolute;
-  top:50%;
-  left:10px;
-  font-family:Barrio, Inter, sans-serif;
-  font-size:3em;
-  translate:0 -50%;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  font-family: Barrio, Inter, sans-serif;
+  font-size: 3em;
+  translate: 0 -50%;
+  max-width: 25vw;
 }
 
 .battles-list-edit-battle-input{
@@ -142,4 +147,22 @@
 .battles-list-monster-thumb > img{
   height:100%;
   aspect-ratio:auto;
+}
+
+@media (min-width: 20rem) and (max-width: 30rem) {
+
+  .battles-list-title {
+    font-size: 2.5em;
+  }
+}
+
+
+@media (min-width: 30rem) and (max-width: 65rem) {
+  .battles-list-title {
+    font-size: 1em;
+  }
+  .battles-list-monster-thumb {
+    height: 100px;
+    aspect-ratio: auto;
+  }
 }
