@@ -132,16 +132,18 @@
         const createTaskBtn = task.querySelector('.create-task-btn')
         const createTaskBtnImg = document.querySelector('.create-task-btn-img')
 
-         function completeTask(taskId, isComplete) {
-            const csrfToken = document.cookie.match(/XSRF-TOKEN=([^;]+)/)[1];
-            console.log(csrfToken)
+        function completeTask(taskId, isComplete) {
+            // const csrfToken = document.cookie.match(/XSRF-TOKEN=([^;]+)/)[1];
+            // console.log(csrfToken)
+            console.log(document.querySelector('meta[name="_csrf"]').getAttribute('content'))
 
             fetch('/battlegrounds/complete-task', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Origin': 'http://localhost:8080',
-                    'X-CSRF-TOKEN': csrfToken
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="_csrf"]').getAttribute('content')
+                    // 'X-CSRF-TOKEN': csrfToken
                 },
                 credentials: 'include',
                 body: JSON.stringify({taskID: taskId, isComplete: isComplete})
@@ -188,7 +190,6 @@
         taskBody.addEventListener('click', e => {
             e.preventDefault()
             const isComplete = task.classList.toggle('complete');
-            completeTask(taskId, isComplete)
             console.log(`${taskComplete}`)
             console.log(typeof taskComplete)
             if (taskComplete === 1) {
@@ -198,20 +199,15 @@
                 taskBody.classList.remove('complete')
                 taskBody.classList.add('not-complete')
             }
+            const numOfTasks = document.querySelectorAll('.task').length;
+            monsterDamage(numOfTasks);
+            completeTask(taskId, isComplete)
         })
 
         editTaskSubmitBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log('complete task even started')
-            const isComplete = task.classList.toggle('complete');
-            console.log('classList toggled');
-            completeTask(taskId, isComplete);
-            console.log('complete task function fired')
+            editTaskForm.submit()
         })
     })
-
-    const numOfTasks = document.querySelectorAll('.task').length;
-    monsterDamage(numOfTasks);
 
 
     // const completeTask = async (taskId) => {

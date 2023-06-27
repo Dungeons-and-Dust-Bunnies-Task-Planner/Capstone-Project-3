@@ -323,8 +323,7 @@
   right:15%;
 }
 
-.open-edit-task-btn,
-.edit-task-submit-btn{
+.open-edit-task-btn{
   position:absolute;
   top:0;
   right:0;

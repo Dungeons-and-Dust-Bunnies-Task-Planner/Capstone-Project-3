@@ -87,6 +87,7 @@ public class BattleController{
 	}
 
 	@PostMapping("/battlegrounds/complete-task")
+	@ResponseBody
 	public void editTask(@RequestParam(name="taskId") Long taskId){
 		System.out.println("made it to the complete-task controller");
 		Task editTask = tasksDao.findTaskById(taskId);
