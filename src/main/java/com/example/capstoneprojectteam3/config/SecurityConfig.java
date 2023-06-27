@@ -17,7 +17,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests((requests) -> requests
 
 //    -------------------UNCOMMENT THIS CODE FOR SECURED ACCESS ---------------------------
-                        .requestMatchers("/profile", "/battlegrounds", "/battlegrounds/*", "/battleList").authenticated()
+                        .requestMatchers("/profile", "/battlegrounds", "/battlegrounds/**", "/battleList").authenticated()
 
                         .requestMatchers( "/register", "/registration", "/login", "/home", "/", "/about","/contact", "/send-email", "/welcome", "/monsterList","/css/**", "/js/**", "/images/**", "/keys.js").permitAll()
                 )
