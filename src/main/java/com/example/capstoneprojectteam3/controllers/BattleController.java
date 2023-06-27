@@ -159,9 +159,41 @@ public class BattleController{
 
 		}
 	}
-  
+
+	// updates the user's badge based on the monster they defeated
+	public void updateMonsterBadge(User user, Battle battle){
+		List<Badge> badges = user.getBadges();
+		Monster monster = battle.getMonster();
+		System.out.println("monster id");
+		System.out.println(monster.getId());
+		// if the user has defeated the first monster, add the badge to their profile
+		if ( monster.getId() == 2 && !badges.contains(badgesDao.findBadgeById(5L))){
+			Badge badge = badgesDao.findBadgeById(5L);
+			badges.add(badge);
+			usersDao.save(user);
+		} else if (monster.getId() == 1 && !badges.contains(badgesDao.findBadgeById(8L))){
+			Badge badge = badgesDao.findBadgeById(8L);
+			badges.add(badge);
+			usersDao.save(user);
+		} else if (monster.getId() == 3 && !badges.contains(badgesDao.findBadgeById(4L))) {
+			Badge badge = badgesDao.findBadgeById(4L);
+			badges.add(badge);
+			usersDao.save(user);
+		} else if (monster.getId() == 4 && !badges.contains(badgesDao.findBadgeById(7L))){
+			Badge badge = badgesDao.findBadgeById(7L);
+			badges.add(badge);
+			usersDao.save(user);
+		} else if (monster.getId() == 5 && !badges.contains(badgesDao.findBadgeById(8L))) {
+			Badge badge = badgesDao.findBadgeById(8L);
+			badges.add(badge);
+			usersDao.save(user);
+		}
+
+
+	}
+
 	@PostMapping("/battlegrounds/complete")
-	public String completedBattle(){
+	public String completedBattle(@RequestParam(name="battleId") Long battleId){
 		System.out.println("Made it in to /complete");
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		long userId = user.getId();
@@ -170,8 +202,9 @@ public class BattleController{
 		System.out.println(battleCounter);
 		user.setBattlesComplete(battleCounter + 1);
 
-		// Update the user's badge
+		// Update the user's badges
 		updateBadge(user);
+		updateMonsterBadge(user, battlesDao.findBattleById(battleId));
 
 		usersDao.save(user);
 		return "redirect:/profile";

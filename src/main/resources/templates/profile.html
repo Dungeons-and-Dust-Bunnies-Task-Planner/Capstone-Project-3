@@ -42,15 +42,17 @@
                         <input class="row submit-btn" type="submit" value="Confirm"><br>
 
                     </form>
+                    <div class="column deleteAccount">
+                        <form th:action="@{/profile/{id}/delete(id=${id})}" method="POST">
+                            <input class="deleteAccount" type="submit" value="Delete Account">
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="row edit-delete-btns">
                 <div class="column profileColumn editProfile">
                     <button class="editButton profileColumn">Edit</button>
                 </div>
-                <form class="cat" th:action="@{/profile/{id}/delete(id=${id})}" method="POST">
-                    <input class="deleteAccount" type="submit" value="Delete Account">
-                </form>
             </div>
         </div>
 
