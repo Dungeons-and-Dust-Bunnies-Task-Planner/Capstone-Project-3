@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class KeyService {
 
-    @Value("${OPENAI.API.key}")
+    @Value("${OPENAI.API.KEY}")
     private String openAiKey;
 
-    @Value("${filePickerApi.key}")
+    @Value("${FILEPICKERAPI.KEY}")
     private String filePickerKey;
 
     public String getFilePickerKey() {

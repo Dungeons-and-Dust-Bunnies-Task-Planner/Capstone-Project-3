@@ -18,8 +18,8 @@ public class SecurityConfig {
 
 //    -------------------UNCOMMENT THIS CODE FOR SECURED ACCESS ---------------------------
                         .requestMatchers("/profile", "/battlegrounds", "/battlegrounds/*", "/battleList").authenticated()
-                        .requestMatchers( "/register", "/login", "/home", "/", "/about","/contact", "/send-email", "/welcome", "/monsterList").permitAll()
-                        .requestMatchers("/css/**", "/js/**", "/images/**", "/keys.js").permitAll()
+
+                        .requestMatchers( "/register", "/registration", "/login", "/home", "/", "/about","/contact", "/send-email", "/welcome", "/monsterList","/css/**", "/js/**", "/images/**", "/keys.js").permitAll()
                 )
 //                --------------------------------------------------------------
 //
