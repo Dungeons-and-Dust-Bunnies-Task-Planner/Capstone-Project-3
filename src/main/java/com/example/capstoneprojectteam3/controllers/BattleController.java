@@ -86,18 +86,18 @@ public class BattleController{
 		return "redirect:/battlegrounds/"+ battleId;
 	}
 
-//	@PostMapping("/battlegrounds/complete-task")
-//	public void editTask(@RequestParam(name="taskId") Long taskId){
-//		System.out.println("made it to the complete-task controller");
-//		Task editTask = tasksDao.findTaskById(taskId);
-//		if (editTask.getTaskComplete() == 0){
-//			editTask.setTaskComplete(1);
-//			tasksDao.save(editTask);
-//		} else if (editTask.getTaskComplete() == 1){
-//			editTask.setTaskComplete(1);
-//			tasksDao.save(editTask);
-//		}
-//	}
+	@PostMapping("/battlegrounds/complete-task")
+	public void editTask(@RequestParam(name="taskId") Long taskId){
+		System.out.println("made it to the complete-task controller");
+		Task editTask = tasksDao.findTaskById(taskId);
+		if (editTask.getTaskComplete() == 0){
+			editTask.setTaskComplete(1);
+			tasksDao.save(editTask);
+		} else if (editTask.getTaskComplete() == 1){
+			editTask.setTaskComplete(1);
+			tasksDao.save(editTask);
+		}
+	}
 
 	@PostMapping("/battlegrounds/edit-battle-title")
 	public String editBattleTitle(
@@ -140,7 +140,6 @@ public class BattleController{
 		// You can use if-else statements, switch-case, or any other logic here
 		// Example logic: if HP < 50, set a new image; otherwise, keep the existing image
 	}
-
 
 	public void updateBadge(User user){
 		int battleCounter = user.getBattlesComplete();
@@ -193,7 +192,6 @@ public class BattleController{
 
 	}
 
-
 	@PostMapping("/battlegrounds/complete")
 	public String completedBattle(@RequestParam(name="battleId") Long battleId){
 		System.out.println("Made it in to /complete");
@@ -211,6 +209,5 @@ public class BattleController{
 		usersDao.save(user);
 		return "redirect:/profile";
 	}
-
 
 }

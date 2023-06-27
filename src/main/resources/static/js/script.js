@@ -20,6 +20,9 @@ import * as keys from './keys.js';
 // SHOW TASKSAll
     const tasksList = document.querySelectorAll('.tasks-list')
     const monster = document.querySelector('.monster')
+// HEALTH-BAR
+    const healthBar = document.querySelector('.health-bar')
+    const healthBarContainer = document.querySelector('.health-bar-container')
 
 // FUNCTIONS
     function removeActiveBattles() {
@@ -33,6 +36,11 @@ import * as keys from './keys.js';
         tasksList.forEach(list => {
             list.classList.add('hidden')
         })
+    }
+
+    const monsterDamage = (numOfTask) => {
+        const damageOutput = (100 / numOfTask).toFixed(2);
+        healthBar.style.width = `100 - ${damageOutput} * numOfTasks%`
     }
 
 
@@ -105,8 +113,8 @@ import * as keys from './keys.js';
         }
     })
 
-
     task.forEach(task => {
+        const taskId = task.dataset.taskId
         const tasksBattleTitle = task.querySelector('.tasks-battle-title')
         const taskBody = task.querySelector('.task-body')
         const completeTaskBtn = task.querySelector('.complete-task-btn')
@@ -122,9 +130,16 @@ import * as keys from './keys.js';
         const createTaskBtn = task.querySelector('.create-task-btn')
         const createTaskBtnImg = document.querySelector('.create-task-btn-img')
 
-        task.addEventListener('click', () => {
-            task.classList.toggle('complete')
-        })
+        function completeTask(taskId, isComplete) {
+            fetch('/battlegrounds/complete-task', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({taskID: taskId, isComplete: isComplete})
+            })
+                .catch(error => console.log('Error:', error));
+        }
 
         openEditBtn.addEventListener('click', function () {
             task.classList.toggle('edit')
@@ -133,7 +148,7 @@ import * as keys from './keys.js';
             deleteTaskBtn.classList.toggle('edit')
             openEditBtn.classList.toggle('edit')
             if (openEditBtn.classList.contains('edit')) {
-            openEditBtnImg.src = "/images/green-x.png"
+                openEditBtnImg.src = "/images/green-x.png"
             } else {
                 openEditBtnImg.src = "/images/green-edit.png"
             }
@@ -161,11 +176,38 @@ import * as keys from './keys.js';
         deleteTaskBtn.addEventListener('click', () => {
             deleteTaskForm.submit()
         })
+
+        completeTaskBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('complete task even started')
+            const isComplete = task.classList.toggle('complete');
+            console.log('classList toggled');
+            completeTask(taskId, isComplete);
+            console.log('complete task function fired')
+        })
     })
 
 })()
 
-//----------------- monster image JS ----------------
 
+// ----------------------------------------------------------------------------------------------------
+// Rest Controller db interaction ---------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------
+// This function will be executed when the form is submitted.
+// document.getElementById('taskForm').addEventListener('submit', async function (event) {
+//     // Prevent the form from being submitted to the server.
+//     event.preventDefault();
+//
+//     // Get the value of the taskId input.
+//     let taskId = document.querySelector('#taskId').value;
+//     let battleId = document.querySelector('#battleId').value;
+//     const tasksParent = document.querySelector("#tasks");
+//     console.log("task id:")
+//     console.log(taskId)
+//
+//     await completeTask(taskId);
+//     let tasks = await getTaskList(battleId);
+//     renderTaskList(tasks, tasksParent);
+// });
 
-
+// Here is your completeTask function which sends the request to the server.

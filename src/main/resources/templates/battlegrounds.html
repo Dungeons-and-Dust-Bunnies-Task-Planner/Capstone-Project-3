@@ -21,7 +21,7 @@
           <h2 class="tasks-battle-title" th:text="${battle.title}"></h2>
 
           <!--          TASK-->
-          <li class="task not-complete" th:each="task : ${battle.tasks}">
+          <li class="task not-complete" th:each="task : ${battle.tasks}" th:data-task-id="${task.getId()}">
             <!--              ADD COMPLETE TO THE CLASS FOR PRODUCTION SO THAT ONLY ONE OR THE OTHER SHOWS-->
             <p class="task-body" th:text="${task.taskBody}"></p>
             <!--              <p class="task-body not-complete" th:unless="${task.getTaskComplete() == 0}" th:text="${task.getTaskBody()}"></p>-->
@@ -69,7 +69,7 @@
         <div class="row justify-center">
           <h1 th:text="${battle.title}"></h1>
         </div>
-        <div class="row justify-center">
+        <div class="row justify-center monster-battle-name">
           <h3 th:text="${battle.monster.name}"></h3>
         </div>
         <!--      MONSTER DISPLAY-->
@@ -78,7 +78,7 @@
             <img th:src="${battle.monster.monsterImages[0].monster_img}">
           </div>
         </div>
-        <div class="row justify-center">
+        <div class="row justify-center health-bar-container">
           <div class="health-bar" th:data-total="${battle.tasks.size() * 1000}"
                th:data-value="${battle.tasks.size() * 1000}">
             <div class="bar">
