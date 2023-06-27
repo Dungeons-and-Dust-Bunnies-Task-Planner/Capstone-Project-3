@@ -24,7 +24,7 @@
             <!--          BATTLE-->
             <div class="battles-list-container">
                 <div class="row">
-                    <div class="column battleColumnSize">
+                    <div class="battleColumnSize">
                             <div class="battles-list-battles" th:each="battle : ${battles}"
                                  th:data-battle-id="${battle.id}">
                                 <h3 class="battles-list-title"><a th:text="${battle.title}"
@@ -34,7 +34,7 @@
                                 <!--              EDIT BATTLE FORM-->
                                 <form th:action="@{/battlegrounds/edit-battle-title}" th:method="post">
                                     <input type="hidden" th:value="${battle.id}" name="battleId">
-                                    <input class="battles-list-edit-battle-input" th:value="${battle.title}"
+                                    <input class="battles-list-edit-battle-input hidden" th:value="${battle.title}"
                                            name="battleTitle">
                                     <button class="battles-list-edit-battle-btn hidden" type="submit"></button>
                                 </form>
@@ -60,18 +60,6 @@
                 </div>
             </div>
         </div>
-
-
-<!--        <div class="row">-->
-<!--            &lt;!&ndash;            CREATE BATTLE FORM&ndash;&gt;-->
-<!--            <form th:action="@{/battlegrounds/create-battle}" th:method="post">-->
-<!--                <div class="hidden-form-wrap">-->
-<!--                    <input class="create-battle-input" type="text" placeholder="Add your battle..."-->
-<!--                           name="battleTitle"/>-->
-<!--                    <button class="create-battle-btn" type="submit">Submit</button>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
     </div>
 
 
