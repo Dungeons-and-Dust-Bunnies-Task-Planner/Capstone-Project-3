@@ -19,7 +19,7 @@ public class SecurityConfig {
 //    -------------------UNCOMMENT THIS CODE FOR SECURED ACCESS ---------------------------
 //                        .requestMatchers("/tasks/create", "/tasks/*/edit", "/profile", "/battlegrounds").authenticated()
 //                        .requestMatchers("/tasks", "/templates/**", "/register", "/login", "/home", "/", "/contact", "/send-email").permitAll()
-//                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+//                        .requestMatchers("/css/**", "/js/**", "/images/**", "/keys.js").permitAll()
 //                )
 //                --------------------------------------------------------------
 //

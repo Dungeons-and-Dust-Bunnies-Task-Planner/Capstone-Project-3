@@ -61,7 +61,7 @@
         <div class="container grow">
             <div class="row battleRow grow">
                 <div class="battleArea">
-                    <br><h1>Active Battles</h1><br><br>
+                    <br><h1>Battlegrounds</h1><br><br>
                     <div class="row cardRow">
                       <!------------  BTN FOR battle Complete increment      ------------>
     <!--                    <form th:action="@{/battlegrounds/complete}" th:method="post">-->
@@ -71,7 +71,7 @@
                         <div th:if="${battles.size() == 0}" class="battleCard">
                             <div class="column battleTitle">
                                 <h2 class="battleTitle">No Active Battles</h2>
-                                <button class="non-Btn"><a th:href="@{/battlegrounds}" >Create Battle</a></button>
+                                <button class="non-Btn"><a th:href="@{/battleList}" >Create Battle</a></button>
                             </div>
                         </div>
                         <div th:each="battle : ${battles}" class="battleCard">
@@ -92,8 +92,10 @@
         <div class="container grow">
             <div class="row badgeRow grow">
                 <div class="column badgeArea">
-                    <br><h2 class="h2Profile">Battle Badge Unlocks</h2><br><br>
                     <div class="activeBadgeRow">
+                        <div th:if="${ user.getBattlesComplete() == 0 }">
+                            <h1 class="profile-no-badges">Fight Monsters to Earn Rewards!</h1>
+                        </div>
                         <div th:each="badge : ${badges}" class="badgeCard">
                             <div>
                             <img class="activeBadgeImage" th:src="${badge.badgeImage}" alt="Active Badge Image">
@@ -102,7 +104,6 @@
                             <h2 class="badgeTitle" th:text="${badge.badgeTitle}"></h2>
                             <p class="badgeBody" th:text="${badge.badgeBody}"></p>
                             </div>
-
                         </div>
                     </div>
                 </div>
