@@ -19,8 +19,9 @@ public class KeyController {
     public String getKey(){
         return String.format(
                 """
-                        const openAiKey = "%s";
+                        const openAiKey = "%s",
+                        const filePickerKey = "%s";
                 """
-                , keyService.getOpenAiKey());
+                , keyService.getOpenAiKey(), keyService.getFilePickerKey());
     }
 }
