@@ -8,18 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class KeyController {
 
-    private final KeyService keyService;
-
     @Autowired
-    public KeyController(KeyService keyService) {
-        this.keyService = keyService;
-    }
+    private KeyService keyService;
+
 
     @GetMapping(value = "/keys.js", produces = "application/javascript")
-    public String getKey(){
+    public String getKeys(){
         return String.format(
                 """
-                        const openAiKey = "%s",
+                        const openAiKey = "%s";
                         const filePickerKey = "%s";
                 """
                 , keyService.getOpenAiKey(), keyService.getFilePickerKey());
