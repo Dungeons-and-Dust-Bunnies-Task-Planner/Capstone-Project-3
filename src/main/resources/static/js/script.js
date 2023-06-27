@@ -1,4 +1,4 @@
-import * as keys from './keys.js';
+// import * as keys from './keys.js';
 (() => {
 // DOM ELEMENTS
     const battleIcon = document.querySelector('.battle-icon')
@@ -115,13 +115,15 @@ import * as keys from './keys.js';
 
     task.forEach(task => {
         const taskId = task.dataset.taskId
+        const taskComplete = parseFloat(task.dataset.taskComplete)
         const tasksBattleTitle = task.querySelector('.tasks-battle-title')
         const taskBody = task.querySelector('.task-body')
-        const completeTaskBtn = task.querySelector('.complete-task-btn')
+        // const completeTaskBtn = task.querySelector('.complete-task-btn')
         const openEditBtn = task.querySelector('.open-edit-task-btn')
         const openEditBtnImg = document.querySelector('.open-edit-task-btn-img')
         const editTaskForm = task.querySelector('.edit-task-form')
         const editTaskInput = task.querySelector('.edit-task-input')
+        const editTaskSubmitBtn = task.querySelector('.edit-task-submit-btn')
         const deleteTaskBtn = task.querySelector('.delete-task-btn')
         const deleteTaskBtnImg = document.querySelector('.delete-task-btn-img')
         const deleteTaskForm = task.querySelector('.delete-task-form')
@@ -130,12 +132,18 @@ import * as keys from './keys.js';
         const createTaskBtn = task.querySelector('.create-task-btn')
         const createTaskBtnImg = document.querySelector('.create-task-btn-img')
 
-        function completeTask(taskId, isComplete) {
+         function completeTask(taskId, isComplete) {
+            const csrfToken = document.cookie.match(/XSRF-TOKEN=([^;]+)/)[1];
+            console.log(csrfToken)
+
             fetch('/battlegrounds/complete-task', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Origin': 'http://localhost:8080',
+                    'X-CSRF-TOKEN': csrfToken
                 },
+                credentials: 'include',
                 body: JSON.stringify({taskID: taskId, isComplete: isComplete})
             })
                 .catch(error => console.log('Error:', error));
@@ -148,11 +156,11 @@ import * as keys from './keys.js';
             deleteTaskBtn.classList.toggle('edit')
             openEditBtn.classList.toggle('edit')
             if (openEditBtn.classList.contains('edit')) {
-            openEditBtnImg.src = "/images/green-x.png"
+                openEditBtnImg.src = "/images/green-x.png"
             } else {
                 openEditBtnImg.src = "/images/green-edit.png"
             }
-            completeTaskBtn.classList.toggle('edit')
+            editTaskSubmitBtn.classList.toggle('edit')
         })
 
         editTaskForm.addEventListener('submit', () => {
@@ -161,7 +169,7 @@ import * as keys from './keys.js';
             deleteTaskBtn.classList.toggle('edit')
             openEditBtn.classList.toggle('edit')
             openEditBtnImg.src = "/images/green-edit.png"
-            completeTaskBtn.classList.toggle('edit')
+            editTaskSubmitBtn.classList.toggle('edit')
         })
 
         deleteTaskForm.addEventListener('submit', () => {
@@ -170,14 +178,29 @@ import * as keys from './keys.js';
             deleteTaskBtn.classList.toggle('edit')
             openEditBtn.classList.toggle('edit')
             openEditBtnImg.src = "/images/green-edit.png"
-            completeTaskBtn.classList.toggle('edit')
+            editTaskSubmitBtn.classList.toggle('edit')
         })
 
         deleteTaskBtn.addEventListener('click', () => {
             deleteTaskForm.submit()
         })
 
-        completeTaskBtn.addEventListener('click', (e) => {
+        taskBody.addEventListener('click', e => {
+            e.preventDefault()
+            const isComplete = task.classList.toggle('complete');
+            completeTask(taskId, isComplete)
+            console.log(`${taskComplete}`)
+            console.log(typeof taskComplete)
+            if (taskComplete === 1) {
+                taskBody.classList.remove('not-complete')
+                taskBody.classList.add('complete')
+            } else {
+                taskBody.classList.remove('complete')
+                taskBody.classList.add('not-complete')
+            }
+        })
+
+        editTaskSubmitBtn.addEventListener('click', (e) => {
             e.preventDefault();
             console.log('complete task even started')
             const isComplete = task.classList.toggle('complete');

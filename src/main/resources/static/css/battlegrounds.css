@@ -1,6 +1,6 @@
 .battle-icon{
   position:fixed;
-  top:101px;
+  top:105px;
   left:0;
   z-index:5;
   height:100px;
@@ -31,7 +31,7 @@
 
 .battle-icon-banner{
   position:fixed;
-  top:101px;
+  top:105px;
   left:3px;
   z-index:4;
   display:flex;
@@ -266,7 +266,7 @@
   transition:var(--trans);;
 }
 
-.task.complete .task-body{
+.task-body.complete{
     background:var(--fade-dark-purple);
     box-shadow:var(--cta-inset-shadow);
     color:#000;
@@ -303,10 +303,6 @@
   right:30%;
 }
 
-.edit-task-submit-btn{
-  display:none;
-}
-
 .delete-task-btn{
   position:absolute;
   display:flex;
@@ -328,7 +324,7 @@
 }
 
 .open-edit-task-btn,
-.create-task-btn{
+.edit-task-submit-btn{
   position:absolute;
   top:0;
   right:0;
@@ -345,7 +341,7 @@
   transition:var(--trans);
 }
 
-.complete-task-btn{
+.edit-task-submit-btn{
   position:absolute;
   bottom:0;
   right:-16%;
@@ -366,7 +362,7 @@
   height:50px;
 }
 
-.complete-task-btn.edit{
+.edit-task-submit-btn.edit{
   z-index:1;
   right:0;
 }
