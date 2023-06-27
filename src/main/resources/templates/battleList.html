@@ -50,7 +50,7 @@
                                 <img src="/images/green-edit.png" alt="button icon" class="battles-list-btn-img">
                             </button>
                             <div class="battles-list-monster-thumb">
-                                <img th:if="${battle.monster.monsterImages[0].monster_img != null}"
+                                <img th:if="${battle?.monster?.monsterImages[0]?.monster_img != null}"
                                      th:src="${battle.monster.monsterImages[0].monster_img}" alt="monster thumbnail">
                             </div>
                         </div>
