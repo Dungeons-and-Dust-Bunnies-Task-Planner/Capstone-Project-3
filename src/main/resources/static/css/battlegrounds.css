@@ -1,7 +1,7 @@
 .battle-icon{
   position:fixed;
-  top:101px;
-  left:0;
+  top:105px;
+  left:2px;
   z-index:5;
   height:100px;
   width:100px;
@@ -31,8 +31,8 @@
 
 .battle-icon-banner{
   position:fixed;
-  top:101px;
-  left:3px;
+  top:105px;
+  left:2px;
   z-index:4;
   display:flex;
   flex-direction:column;
@@ -296,10 +296,10 @@
   transition:var(--trans);;
 }
 
-.task.complete,
-.task:hover{
+.task.complete .task-body{
   background:var(--fade-dark-purple);
-  color:#fff;
+  box-shadow:var(--cta-inset-shadow);
+  color:#000;
   text-decoration:line-through;
 }
 
@@ -464,29 +464,51 @@
 }
 
 /* HEALTH BAR */
+.health-bar-container{
+  display:flex;
+  justify-content:space-between;
+  position:relative;
+  width:75%;
+}
+
+.health-bar-container::before{
+  content:'';
+  background-color:var(--solid-background);
+  border: 2px solid indianred;
+  border-radius:var(--br);
+  position:absolute;
+  top:50%;
+  left:0;
+  transform:translateY(-50%);
+  height:40px;
+  width:100%;
+}
 
 .health-bar{
-  -webkit-box-sizing:border-box;
-  -moz-box-sizing:border-box;
-  box-sizing:border-box;
-  width:200px;
-  height:20px;
-  padding:5px;
-  background:#ddd;
-  -webkit-border-radius:5px;
-  -moz-border-radius:5px;
-  border-radius:5px;
-  position:relative;
-}
-
-.bar{
-  background:#c54;
+  background-color:indianred;
+  position:absolute;
+  border-radius: var(--br);
+  top:50%;
+  left:0;
+  transform:translateY(-50%);
+  height:40px;
   width:100%;
-  height:10px;
-  position:relative;
-
-  transition:width .5s linear;
+  transition:0.4s ease;
 }
+
+/*.health-bar{*/
+/*  -webkit-box-sizing:border-box;*/
+/*  -moz-box-sizing:border-box;*/
+/*  box-sizing:border-box;*/
+/*  width:200px;*/
+/*  height:20px;*/
+/*  padding:5px;*/
+/*  background:#ddd;*/
+/*  -webkit-border-radius:5px;*/
+/*  -moz-border-radius:5px;*/
+/*  border-radius:5px;*/
+/*  position:relative;*/
+/*}*/
 
 .hit{
   background:rgba(255, 255, 255, 0.6);
