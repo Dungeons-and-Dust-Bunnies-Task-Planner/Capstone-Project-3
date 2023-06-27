@@ -3,27 +3,71 @@
 }
 
 .battles-list-container{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  height:100vh;
-  width:100vw;
-  row-gap:20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  height: 75vh;
+  overflow: scroll;
+  margin-top: 31vh;
 }
+.battleColumnSize {
+  width: 75vw;
+}
+
+/*   CREATE BATTLE ROW    */
+
+.createBattleContainer {
+  position: relative;
+  width: 100vw;
+  height: 10vh;
+  top: 15vh;
+}
+
+.open-edit-battle-btn,
+.create-battle-btn {
+  position: absolute;
+  margin-right: 11vw;
+  margin-top: 100px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 15%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: var(--fade-dark-purple);
+  box-shadow: var(--background) inset 0 0 3px 2px;
+}
+
+.create-battle-input {
+  margin-left: 201px;
+  left: 0;
+  width: 70vw;
+  font-size: 1.3em;
+/*background(: ;*/
+/*  --secondary): ;*/
+  transition: var(--trans);
+}
+
+.create-battle-input:hover {
+  background: var(--fade-dark-purple);
+}
+
 
 .battles-list-battles{
   position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:150px;
-  width:75%;
-  background:var(--solid-background);
-  padding:10px;
-  border-radius:var(--br);
-  box-shadow:var(--cta2) inset 0 0 2px 1px;
-  overflow:hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60vw;
+  background: var(--solid-background);
+  padding: 10px;
+  border-radius: var(--br);
+  box-shadow: var(--cta2) inset 0 0 2px 1px;
+  overflow: hidden;
 }
 
 .battles-list-title{

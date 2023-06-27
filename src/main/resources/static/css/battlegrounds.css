@@ -231,39 +231,13 @@
     right: 15%;
 }
 
-.open-edit-battle-btn,
-.create-battle-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    width: 15%;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background: var(--fade-dark-purple);
-    box-shadow: var(--background) inset 0 0 3px 2px;
-}
+
 
 .open-edit-battle-btn-img {
     height: 50px;
     width: 50px;
 }
 
-.create-battle-input {
-    left: 0;
-    width: 86%;
-    font-size: 1.3em;
-background(--secondary);
-    transition: var(--trans);
-}
-
-.create-battle-input:hover {
-    background: var(--fade-dark-purple);
-}
 
 
 /*TASKS*/
