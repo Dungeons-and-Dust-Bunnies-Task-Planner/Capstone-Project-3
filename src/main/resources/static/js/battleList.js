@@ -8,6 +8,5 @@ editButtons.forEach((editButton, index) => {
     editButton.addEventListener('click', () => {
         editModals[index].classList.remove('hidden');
         editModalOverlays[index].classList.remove('hidden');
-        // blur.classList.add('blur-wrapper');
     });
 });

@@ -55,10 +55,6 @@
 
 /* EDIT BATTLE BUTTONS */
 
-/*.blur-wrapper {*/
-/*  filter: blur(4px);*/
-/*}*/
-
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -232,9 +228,6 @@
     position: relative;
   }
 
-  /*.editBattleTitle {*/
-  /*  padding-left: 0;*/
-  /*}*/
 }
 
 @media (min-width: 30rem) and (max-width: 65rem) {
