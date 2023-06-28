@@ -9,33 +9,35 @@ import com.example.capstoneprojectteam3.repositories.TaskRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
 import com.example.capstoneprojectteam3.utils.OpenAIRequest;
 import com.example.capstoneprojectteam3.utils.RandomNumGen;
+import org.apache.http.client.RedirectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
-public class BattleController{
+public class BattleController {
 
 //	@Autowired
 //	private OpenAIRequest openAIRequest;
 
-	private final UserRepository usersDao;
-	private final BattleRepository battlesDao;
-	private final TaskRepository tasksDao;
-	private final MonsterRepository monstersDao;
-	private final BadgeRepository badgesDao;
+    private final UserRepository usersDao;
+    private final BattleRepository battlesDao;
+    private final TaskRepository tasksDao;
+    private final MonsterRepository monstersDao;
+    private final BadgeRepository badgesDao;
 
-	public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao, MonsterRepository monstersDao, BadgeRepository badgesDao){
-		this.usersDao = usersDao;
-		this.battlesDao = battlesDao;
-		this.tasksDao = tasksDao;
-		this.monstersDao = monstersDao;
-		this.badgesDao = badgesDao;
-	}
+    public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao, MonsterRepository monstersDao, BadgeRepository badgesDao) {
+        this.usersDao = usersDao;
+        this.battlesDao = battlesDao;
+        this.tasksDao = tasksDao;
+        this.monstersDao = monstersDao;
+        this.badgesDao = badgesDao;
+    }
 
 	@GetMapping("/battleList")
 	public String showBattleList(Model model){
@@ -86,18 +88,18 @@ public class BattleController{
 		return "redirect:/battlegrounds/"+ battleId;
 	}
 
-	@PostMapping("/battlegrounds/complete-task")
-	public void editTask(@RequestParam(name="taskId") Long taskId){
-		System.out.println("made it to the complete-task controller");
-		Task editTask = tasksDao.findTaskById(taskId);
-		if (editTask.getTaskComplete() == 0){
-			editTask.setTaskComplete(1);
-			tasksDao.save(editTask);
-		} else if (editTask.getTaskComplete() == 1){
-			editTask.setTaskComplete(1);
-			tasksDao.save(editTask);
-		}
-	}
+//	@PostMapping("/battlegrounds/complete-task")
+//	public void editTask(@RequestParam(name="taskId") Long taskId){
+//		System.out.println("made it to the complete-task controller");
+//		Task editTask = tasksDao.findTaskById(taskId);
+//		if (editTask.getTaskComplete() == 0){
+//			editTask.setTaskComplete(1);
+//			tasksDao.save(editTask);
+//		} else if (editTask.getTaskComplete() == 1){
+//			editTask.setTaskComplete(1);
+//			tasksDao.save(editTask);
+//		}
+//	}
 
 	@PostMapping("/battlegrounds/edit-battle-title")
 	public String editBattleTitle(
@@ -206,8 +208,30 @@ public class BattleController{
 		updateBadge(user);
 		updateMonsterBadge(user, battlesDao.findBattleById(battleId));
 
-		usersDao.save(user);
-		return "redirect:/profile";
-	}
+        usersDao.save(user);
+        return "redirect:/profile";
+    }
+
+      @PostMapping("/battlegrounds/complete-task")
+    @ResponseBody
+    public void editTask(@RequestParam(name = "battleId") Long battleId, @RequestParam(name = "taskId") String taskIdString, RedirectAttributes redirectAttributes) throws RedirectException {
+        Battle battle = battlesDao.findByIdWithTasks(battleId);
+        Long taskId = Long.parseLong(taskIdString);
+        System.out.println(taskId);
+        System.out.println("made it to the complete-task controller");
+        Task editTask = tasksDao.findTaskById(taskId);
+        if (editTask.getTaskComplete() == 0) {
+            editTask.setTaskComplete(1);
+            tasksDao.save(editTask);
+        } else if (editTask.getTaskComplete() == 1) {
+            editTask.setTaskComplete(1);
+            tasksDao.save(editTask);
+        }
+
+        redirectAttributes.addAttribute("battleId", battleId);
+
+        throw new RedirectException("/battlegrounds/{battleId}");
+    }
+
 
 }
