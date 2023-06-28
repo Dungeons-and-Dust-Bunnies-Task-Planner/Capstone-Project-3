@@ -15,6 +15,9 @@
 .h4Profile {
     font-family: 'Nunito', sans-serif;
 }
+.profile-no-badges {
+    font-size: 1.5rem;
+}
 
 .profileColumn {
     display: flex;
@@ -208,12 +211,29 @@ input.submit-btn:hover {
 
 .editButton {
     display: flex;
-    max-width: 33vw;
-    justify-content: end;
+    justify-content: center;
+    border: none;
+    width: 5vw;
+    height: 3vw;
+    align-items: center;
+    font-size: 1.2rem;
+    border-radius: 7px;
+    background: var(--cta);
+    color: white;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
+}
+.editButton:hover{
+    background-size: 100% 100%;
+    background-position-x: left;
+    cursor: pointer;
 }
 .edit-delete-btns {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 /* BATTLE AREA */
@@ -221,10 +241,12 @@ input.submit-btn:hover {
     margin: 50px 50px;
     width: 75vw;
     display: flex;
+    justify-content: center;
 }
 
 .battleArea {
     width: 75vw;
+    height: 70vh;
     display: flex;
     align-content: flex-start;
     background: var(--fade-dark-purple);
@@ -232,17 +254,20 @@ input.submit-btn:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: scroll;
 }
 
 .battleCard {
     width: 75vw;
     min-height: 200px;
+    max-height: 200px;
     background-color: var(--primary);
     border-radius: 10px;
     display: flex;
     padding: 20px 20px;
     margin: 10px 0;
     transition: background-color 400ms;
+    justify-content: center;
 }
 
 .battleCard:hover {
@@ -251,7 +276,7 @@ input.submit-btn:hover {
 
 
 .battleCardImage {
-    width: 25vw;
+height: 15vh;
 }
 
 .activeBattleRow {
@@ -265,6 +290,7 @@ input.submit-btn:hover {
 .cardRow {
     flex-wrap: wrap;
     padding-bottom: 25px;
+    height: 100%;
 }
 
 .battleTitle {
@@ -279,10 +305,16 @@ input.submit-btn:hover {
     font-weight: bold;
     font-size: 23px;
     border-radius: 10px;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
 }
 
 .non-Btn:hover {
-    background: var(--fade-green-purple);
+    background-size: 100% 100%;
+    background-position-x: left;
     cursor: pointer;
 }
 
@@ -291,6 +323,8 @@ input.submit-btn:hover {
     margin: 50px 50px;
     width: 75vw;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .badgeArea {
@@ -302,7 +336,8 @@ input.submit-btn:hover {
     background: var(--fade-dark-purple);
     border-radius: .5em;
     width: 75vw;
-    padding-bottom: 25px;
+    overflow-x: scroll;
+    padding: 10px;
 }
 
 .activeBadgeRow {
@@ -336,6 +371,16 @@ input.submit-btn:hover {
 
 /* Small */
 @media (min-width: 20rem) and (max-width: 30rem) {
+    .battleTitle{
+        font-size: 1.5rem;
+    }
+    .non-Btn{
+        font-size: 1rem;
+    }
+    .editButton {
+        width: 20vw;
+        height: 4vh
+    }
     .edit-modal > form {
         height: 90%;
     }
@@ -386,6 +431,10 @@ input.submit-btn:hover {
 
 /*Med*/
 @media (min-width: 30rem) and (max-width: 65rem) {
+    .editButton {
+        width: 50px;
+        height: 4vh
+    }
     .edit-modal > form {
         height: 90%;
     }
@@ -423,9 +472,6 @@ input.submit-btn:hover {
         font-size: 4rem;
         margin-top: 0;
     }
-
-    .editProfile {}
-
     .battleCard {
         flex-direction: column;
         align-items: center;
