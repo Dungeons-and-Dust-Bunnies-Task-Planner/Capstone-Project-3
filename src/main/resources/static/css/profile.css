@@ -260,6 +260,7 @@ input.submit-btn:hover {
 .battleCard {
     width: 75vw;
     min-height: 200px;
+    max-height: 200px;
     background-color: var(--primary);
     border-radius: 10px;
     display: flex;
@@ -275,7 +276,7 @@ input.submit-btn:hover {
 
 
 .battleCardImage {
-    width: 25vw;
+height: 15vh;
 }
 
 .activeBattleRow {
