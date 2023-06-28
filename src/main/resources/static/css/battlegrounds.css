@@ -149,6 +149,7 @@
 }
 
 .battle-title,
+
 .task-body{
   position:absolute;
   top:0;
@@ -266,7 +267,7 @@
   transition:var(--trans);;
 }
 
-.task-body.complete{
+.complete{
     background:var(--fade-dark-purple);
     box-shadow:var(--cta-inset-shadow);
     color:#000;
@@ -435,6 +436,17 @@
   display:block;
 }
 
+.complete-task-btn{
+  left: 268px;
+  z-index: 99;
+  background: transparent;
+  width: 77px;
+  height: 31px;
+  position: relative;
+  box-shadow: none;
+  border: none;
+}
+
 /* HEALTH BAR */
 .health-bar-container{
   display:flex;
@@ -456,6 +468,10 @@
   width:100%;
 }
 
+.monster-health-text{
+  z-index: 89;
+}
+
 .health-bar{
   background-color:indianred;
   position:absolute;
@@ -468,37 +484,17 @@
   transition:0.4s ease;
 }
 
-/*.health-bar{*/
-/*  -webkit-box-sizing:border-box;*/
-/*  -moz-box-sizing:border-box;*/
-/*  box-sizing:border-box;*/
-/*  width:200px;*/
-/*  height:20px;*/
-/*  padding:5px;*/
-/*  background:#ddd;*/
-/*  -webkit-border-radius:5px;*/
-/*  -moz-border-radius:5px;*/
-/*  border-radius:5px;*/
-/*  position:relative;*/
-/*}*/
-
-/*.bar{*/
-/*  background:#c54;*/
-/*  width:100%;*/
-/*  height:10px;*/
-/*  position:relative;*/
-
-/*  transition:width .5s linear;*/
-/*}*/
-
-/*.hit{*/
-/*  background:rgba(255, 255, 255, 0.6);*/
-/*  position:absolute;*/
-/*  top:0;*/
-/*  right:0;*/
-/*  bottom:0;*/
-/*  width:100px;*/
-/*  z-index:99;*/
-
-/*  transition:width .5s linear;*/
-/*}*/
+#battleComplete {
+  z-index: 99;
+  text-decoration: none;
+  padding: 10px 10px;
+  border-radius: 0.5em;
+  transition: all ease-in .3s;
+  color: #fff;
+  background: var(--cta);
+  box-shadow: inset black 0 0 2px 1px;
+  border: none;
+  font-size: 2rem;
+  text-shadow: 0 0 10px black;
+  font-weight: 700;
+}
