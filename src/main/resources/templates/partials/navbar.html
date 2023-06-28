@@ -14,8 +14,15 @@
     <div class="menu-wrap">
         <ul>
             <li><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/about}">About</a></li>
-            <li><a th:href="@{/battleList}">Battlegrounds</a></li>
+            <li class="nav-dropdown"><a th:href="@{/about}">Devs</a></li>
+            <li class="nav-dropdown">
+                <a th:href="@{/battleList}">Battlegrounds</a>
+                <ul class="dropdown-content">
+                    <li>
+                        <a th:href="@{/how-to}">Tutorial</a>
+                    </li>
+                </ul>
+            </li>
             <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Login</a></li>
             <li sec:authorize="isAuthenticated()"><a id="logOutButton">Logout</a></li>
             <li sec:authorize="isAuthenticated()"><a th:href="@{/profile}">Profile</a></li>
@@ -38,6 +45,7 @@
                 <a sec:authorize="isAuthenticated()" id="logOutButtonDD"><li>Logout</li></a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/profile}"><li>Profile</li></a>
                 <a th:href="@{/battleList}"><li>Battlegrounds</li></a>
+                <a th:href="@{/how-to}"><li>Tutorial</li></a>
                 <a sec:authorize="!isAuthenticated()" th:href="@{/register}"><li>Register</li></a>
                 <a th:href="@{/contact}"><li>Contact</li></a>
                 <a th:href="@{/about}"><li>About The Devs</li></a>
