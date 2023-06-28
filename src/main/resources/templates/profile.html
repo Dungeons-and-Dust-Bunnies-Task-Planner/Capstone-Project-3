@@ -61,9 +61,9 @@
         <div class="container grow">
             <div class="row battleRow grow">
                 <div class="battleArea">
-                    <br><h1>Active Battles</h1><br><br>
                     <div class="row cardRow">
-                      <!------------  BTN FOR battle Complete increment      ------------>
+                        <h1>Battlegrounds</h1><br>
+                        <!------------  BTN FOR battle Complete increment      ------------>
     <!--                    <form th:action="@{/battlegrounds/complete}" th:method="post">-->
     <!--                        <button type="submit"  id="battleComplete" name="battleComplete">Finish Him!</button>-->
         <!--                    </form>-->
@@ -71,17 +71,16 @@
                         <div th:if="${battles.size() == 0}" class="battleCard">
                             <div class="column battleTitle">
                                 <h2 class="battleTitle">No Active Battles</h2>
-                                <button class="non-Btn"><a th:href="@{/battlegrounds}" >Create Battle</a></button>
+                                <button class="non-Btn"><a th:href="@{/battleList}" >Create Battle</a></button>
                             </div>
                         </div>
-                        <div th:each="battle : ${battles}" class="battleCard">
-                            <div class="column battleImageMonster">
-                                <img class="battleCardImage" th:src="${battle.getMonster().getMonsterImages().get(0).getMonster_img()}" alt="Battle monster image">
+                        <div th:if="${battles != 0}" th:each="battle : ${battles}" class="battleCard">
+                            <div th:if="${battle.status == 0}" class="column battleImageMonster">
+                                    <img th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}" th:src="${battle.monster.monsterImages[0].monster_img}" alt="Battle monster image">
                             </div>
-                            <div class="column battleTitle">
-<!--                                <h2 class="battleTitle" th:text="${battle.title}"></h2>-->
-                                <h2><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>
-                                <p class="battleTasks" th:text="${battle.status}"></p>
+                            <div th:if="${battle.status == 0}" class="column battleTitle">
+                                <h2 th:if="${battle.status == 0}"><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>
+                                <p th:if="${battle.status == 0}" class="battleTasks">In Progress</p>
                             </div>
                         </div>
                     </div>
@@ -92,8 +91,10 @@
         <div class="container grow">
             <div class="row badgeRow grow">
                 <div class="column badgeArea">
-                    <br><h2 class="h2Profile">Battle Badge Unlocks</h2><br><br>
                     <div class="activeBadgeRow">
+                        <div th:if="${ user.getBattlesComplete() == 0 }">
+                            <h1 class="profile-no-badges">Fight Monsters to Earn Rewards!</h1>
+                        </div>
                         <div th:each="badge : ${badges}" class="badgeCard">
                             <div>
                             <img class="activeBadgeImage" th:src="${badge.badgeImage}" alt="Active Badge Image">
@@ -102,7 +103,6 @@
                             <h2 class="badgeTitle" th:text="${badge.badgeTitle}"></h2>
                             <p class="badgeBody" th:text="${badge.badgeBody}"></p>
                             </div>
-
                         </div>
                     </div>
                 </div>

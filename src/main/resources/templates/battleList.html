@@ -8,7 +8,9 @@
 
     <div class="container createBattleContainer">
         <div class="row">
+
             <!-- CREATE BATTLE FORM -->
+
             <form th:action="@{/battlegrounds/create-battle}" th:method="post">
                 <div class="hidden-form-wrap">
                     <input class="create-battle-input" type="text" placeholder="Add your battle..."
@@ -25,6 +27,7 @@
             <div class="battles-list-container">
                 <div class="row">
                     <div class="battleColumnSize">
+
                             <div id="battleDiv" class="battles-list-battles" th:each="battle : ${battles}"
                                  th:data-battle-id="${battle.id}">
 
@@ -64,6 +67,7 @@
                                         </button>
                                     </form>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -71,6 +75,7 @@
         </div>
     </div>
 </div>
+
 
 <div th:insert="~{partials/footer :: footer}"></div>
 <script src="/js/battleList.js"></script>

@@ -20,8 +20,8 @@ import java.util.List;
 @Controller
 public class BattleController{
 
-	@Autowired
-	private OpenAIRequest openAIRequest;
+//	@Autowired
+//	private OpenAIRequest openAIRequest;
 
 	private final UserRepository usersDao;
 	private final BattleRepository battlesDao;
@@ -43,7 +43,7 @@ public class BattleController{
 		user = usersDao.findUserById(user.getId());
 		List<Battle> battles = battlesDao.findAllByUserId(user.getId());
 		model.addAttribute("battles", battles);
-		return "/battleList";
+		return "battleList";
 	}
 
 	@GetMapping("/battlegrounds/{id}")
@@ -61,7 +61,7 @@ public class BattleController{
 //		model.addAttribute("monsterTalk", monsterResponse);
 		model.addAttribute("user", user);
 		model.addAttribute("battle",battle);
-		return "/battlegrounds";
+		return "battlegrounds";
 	}
 
 	@PostMapping("/battlegrounds/create-battle")

@@ -17,15 +17,16 @@ public class SecurityConfig {
         http.authorizeHttpRequests((requests) -> requests
 
 //    -------------------UNCOMMENT THIS CODE FOR SECURED ACCESS ---------------------------
-//                        .requestMatchers("/tasks/create", "/tasks/*/edit", "/profile", "/battlegrounds").authenticated()
-//                        .requestMatchers("/tasks", "/templates/**", "/register", "/login", "/home", "/", "/contact", "/send-email").permitAll()
-//                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-//                )
+                        .requestMatchers("/profile","/profile/**", "/battlegrounds", "/battlegrounds/**", "/battleList","/claim/badge","/edit/profile").authenticated()
+
+                        .requestMatchers( "/register", "/registration", "/login", "/home", "/", "/about","/contact", "/send-email", "/welcome", "/monsterList").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/keys.js").permitAll()
+                )
 //                --------------------------------------------------------------
 //
 //    -------------------UNCOMMENT THIS CODE FOR ALL ACCESS -  NO SECURITY----------------
-                                .anyRequest().permitAll()
-                        )
+//                                .anyRequest().permitAll()
+//                        )
 //                --------------------------------------------------------------
 
                 .formLogin((login) -> login.loginPage("/login").defaultSuccessUrl("/home"))
