@@ -39,13 +39,9 @@
         })
     }
 
-    const monsterDamage = (numOfTask) => {
-        const damageOutput = (100 / numOfTask).toFixed(2);
-        healthBar.style.width = `100 - ${damageOutput} * numOfTasks%`
-    }
-
-
-    document.addEventListener('DOMContentLoaded', async function () {
+    document.addEventListener('DOMContentLoaded', function () {
+        const healthBarStyles = window.getComputedStyle(healthBar)
+        console.log(healthBarStyles)
         console.log('Dynamic elements loaded') //DEBUG
         document.querySelectorAll('.battle').forEach((battle, idx) => {
             battle.addEventListener('click', () => {
@@ -64,13 +60,13 @@
             })
         })
 
-        document.querySelectorAll('.task').forEach(task => {
-            task.addEventListener('click', (e) => {
-                console.log('task click event fired') //DEBUG
-                task.classList.toggle('complete')
-                task.classList.toggle('not-complete')
-            })
-        })
+        // document.querySelectorAll('.task').forEach(task => {
+        //     task.addEventListener('click', (e) => {
+        //         console.log('task click event fired') //DEBUG
+        //         task.classList.toggle('complete')
+        //         task.classList.toggle('not-complete')
+        //     })
+        // })
 
         async function sendOpenAIRequest(prompt) {
             const apiUrl = "https://api.openai.com/v1/completions";
@@ -113,15 +109,18 @@
         }
     })
 
+    let monsterHealth = `${100}%`;
     task.forEach(task => {
         const taskId = task.dataset.taskId
+        const taskComplete = task.dataset.taskComplete
         const tasksBattleTitle = task.querySelector('.tasks-battle-title')
         const taskBody = task.querySelector('.task-body')
-        const completeTaskBtn = task.querySelector('.complete-task-btn')
+        // const completeTaskBtn = task.querySelector('.complete-task-btn')
         const openEditBtn = task.querySelector('.open-edit-task-btn')
         const openEditBtnImg = document.querySelector('.open-edit-task-btn-img')
         const editTaskForm = task.querySelector('.edit-task-form')
         const editTaskInput = task.querySelector('.edit-task-input')
+        const editTaskSubmitBtn = task.querySelector('.edit-task-submit-btn')
         const deleteTaskBtn = task.querySelector('.delete-task-btn')
         const deleteTaskBtnImg = document.querySelector('.delete-task-btn-img')
         const deleteTaskForm = task.querySelector('.delete-task-form')
@@ -129,17 +128,7 @@
         const createTaskInput = task.querySelector('.create-task-input')
         const createTaskBtn = task.querySelector('.create-task-btn')
         const createTaskBtnImg = document.querySelector('.create-task-btn-img')
-
-        function completeTask(taskId, isComplete) {
-            fetch('/battlegrounds/complete-task', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({taskID: taskId, isComplete: isComplete})
-            })
-                .catch(error => console.log('Error:', error));
-        }
+        //COMPUTED STYLES
 
         openEditBtn.addEventListener('click', function () {
             task.classList.toggle('edit')
@@ -152,7 +141,7 @@
             } else {
                 openEditBtnImg.src = "/images/green-edit.png"
             }
-            completeTaskBtn.classList.toggle('edit')
+            editTaskSubmitBtn.classList.toggle('edit')
         })
 
         editTaskForm.addEventListener('submit', () => {
@@ -161,7 +150,7 @@
             deleteTaskBtn.classList.toggle('edit')
             openEditBtn.classList.toggle('edit')
             openEditBtnImg.src = "/images/green-edit.png"
-            completeTaskBtn.classList.toggle('edit')
+            editTaskSubmitBtn.classList.toggle('edit')
         })
 
         deleteTaskForm.addEventListener('submit', () => {
@@ -170,11 +159,44 @@
             deleteTaskBtn.classList.toggle('edit')
             openEditBtn.classList.toggle('edit')
             openEditBtnImg.src = "/images/green-edit.png"
-            completeTaskBtn.classList.toggle('edit')
+            editTaskSubmitBtn.classList.toggle('edit')
         })
 
         deleteTaskBtn.addEventListener('click', () => {
             deleteTaskForm.submit()
+        })
+
+        taskBody.addEventListener('click', () => {
+            console.log(`taskBody clicked`)
+            const isComplete = task.classList.contains('complete');
+            const isNotComplete = task.classList.contains('not-complete')
+            if (isComplete) {
+                taskBody.classList.remove('not-complete')
+                taskBody.classList.add('complete')
+                // console.log(`${taskBody.classList}: taskBody is complete`)
+            }
+            if (isNotComplete) {
+                taskBody.classList.remove('complete');
+                taskBody.classList.add('not-complete')
+                // console.log(`${taskBody.classList}: taskBody is not-complete`)
+            }
+            const numOfTasks = document.querySelectorAll('.task').length;
+
+
+            const monsterDamage = (numOfTasks) => {
+                console.log(`There are - ${numOfTasks} - tasks`)
+                console.log(monsterHealth)
+                healthBar.style.width = monsterHealth
+                console.log(`This is the healthBar width: ` + healthBar.style.width)
+                const damageOutput = (100 / numOfTasks).toFixed(2);
+                console.log(`This is the damageOutput: ${damageOutput}`)
+                const newHealth = parseFloat(monsterHealth) - parseFloat(damageOutput);
+                console.log(`This is the value of newHealth: ${newHealth}`)
+                healthBar.style.width = `${newHealth}%`;
+                console.log(`This is the remaining healthBar width: ${healthBar.style.width}`)
+                return monsterHealth = newHealth
+            }
+            monsterDamage(numOfTasks);
         })
 
         completeTaskBtn.addEventListener('click', (e) => {
@@ -187,7 +209,37 @@
         })
     })
 
+        editTaskSubmitBtn.addEventListener('click', (e) => {
+            editTaskForm.submit()
+        })
 })()
+// const numOfTasks = document.querySelectorAll('.task').length;
+// const monsterDamage = (numOfTasks) => {
+//     const healthBar = document.querySelector('.health-bar');
+//     console.log(numOfTasks)
+//     const damageOutput = (100 / numOfTasks).toFixed(2);
+//     console.log(damageOutput)
+//     healthBar.style.width = `100 - ${damageOutput} * numOfTasks%`
+//     console.log(healthBar.style.width)
+// }
+// const completeTask = async (taskId) => {
+//     try {
+//         let url = `/task/complete-task?taskId=${taskId}`;
+//         let options = {
+//             method: 'PUT',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             }
+//         }
+//         let response = await fetch(url, options);
+//         let data = await response.json();
+//         console.log(data)
+//         return data;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+
 
 
 // ----------------------------------------------------------------------------------------------------
@@ -210,4 +262,165 @@
 //     renderTaskList(tasks, tasksParent);
 // });
 
-// Here is your completeTask function which sends the request to the server.
+
+// console.log(`damageOutput: ${damageOutput}`)
+// const newHealth = currentHealth - parseFloat(damageOutput);
+// console.log(`newHealth: ${newHealth}`)
+// healthBar.style.width = `${newHealth}%`;
+// let healthBarWidth = healthBar.style.width
+// console.log(`healthBarWidth: ${healthBarWidth}`)
+// console.log(`healthBar.style.width: ${healthBar.style.width}`);
+// }
+// monsterDamage(numOfTasks);
+// // await completeTask(taskId, isComplete)
+// })
+//
+// editTaskSubmitBtn.addEventListener('click', (e) => {
+//     editTaskForm.submit()
+// })
+// })
+
+// const numOfTasks = document.querySelectorAll('.task').length;
+// const monsterDamage = (numOfTasks) => {
+//     const healthBar = document.querySelector('.health-bar');
+//     console.log(numOfTasks)
+//     const damageOutput = (100 / numOfTasks).toFixed(2);
+//     console.log(damageOutput)
+//     healthBar.style.width = `100 - ${damageOutput} * numOfTasks%`
+//     console.log(healthBar.style.width)
+// }
+// const completeTask = async (taskId) => {
+//     try {
+//         let url = `/task/complete-task?taskId=${taskId}`;
+//         let options = {
+//             method: 'PUT',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             }
+//         }
+//         let response = await fetch(url, options);
+//         let data = await response.json();
+//         console.log(data)
+//         return data;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+// })
+// ()
+
+//----------------- monster image JS ----------------
+
+
+// ----------------------------------------------------------------------------------------------------
+// Rest Controller db interaction ---------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------
+// This function will be executed when the form is submitted.
+// document.getElementById('taskForm').addEventListener('submit', async function (event) {
+//     // Prevent the form from being submitted to the server.
+//     event.preventDefault();
+//
+//     // Get the value of the taskId input.
+//     let taskId = document.querySelector('#taskId').value;
+//     let battleId = document.querySelector('#battleId').value;
+//     const tasksParent = document.querySelector("#tasks");
+//     console.log("task id:")
+//     console.log(taskId)
+//
+//     await completeTask(taskId);
+//     let tasks = await getTaskList(battleId);
+//     renderTaskList(tasks, tasksParent);
+// });
+
+// function completeTask(taskId, isComplete) {
+//     // const csrfToken = document.cookie.match(/XSRF-TOKEN=([^;]+)/)[1];
+//     // const csrfToken = document.getElementById('csrfToken').value;
+//     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content')
+//     console.log(csrfToken)
+//     fetch('/battlegrounds/complete-task', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Origin': 'http://localhost:8080',
+//             'X-CSRF-TOKEN': csrfToken
+//         },
+//         credentials: 'include',
+//         body: JSON.stringify({taskID: taskId, isComplete: isComplete})
+//     })
+//         .catch(error => console.log('Error:', error));
+// }
+
+// const completeTask = async (taskId, isComplete) => {
+//     try{
+//         const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content')
+//         console.log(csrfToken)
+//
+//         const res = await fetch('/battlegrounds/complete-task', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'X-CSRF-TOKEN': csrfToken
+//             },
+//             credentials: 'include',
+//             body: JSON.stringify({taskId: taskId, isComplete: isComplete})
+//         })
+//
+//         if(!res.ok) {
+//             throw new Error(`HTTP error status: ${res.status}`)
+//         }
+//
+//         const data = await res.json()
+//         console.log(data)
+//
+//     } catch (e) {
+//         console.log("Error:", e.message)
+//     }
+// }
+
+
+// function completeTask(taskId, isComplete) {
+//     // const csrfToken = document.cookie.match(/XSRF-TOKEN=([^;]+)/)[1];
+//     // const csrfToken = document.getElementById('csrfToken').value;
+//     const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content')
+//     console.log(csrfToken)
+//     fetch('/battlegrounds/complete-task', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Origin': 'http://localhost:8080',
+//             'X-CSRF-TOKEN': csrfToken
+//         },
+//         credentials: 'include',
+//         body: JSON.stringify({taskID: taskId, isComplete: isComplete})
+//     })
+//         .catch(error => console.log('Error:', error));
+// }
+
+// const completeTask = async (taskId, isComplete) => {
+//     try{
+//         const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content')
+//         console.log(csrfToken)
+//
+//         const res = await fetch('/battlegrounds/complete-task', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'X-CSRF-TOKEN': csrfToken
+//             },
+//             credentials: 'include',
+//             body: JSON.stringify({taskId: taskId, isComplete: isComplete})
+//         })
+//
+//         if(!res.ok) {
+//             throw new Error(`HTTP error status: ${res.status}`)
+//         }
+//
+//         const data = await res.json()
+//         console.log(data)
+//
+//     } catch (e) {
+//         console.log("Error:", e.message)
+//     }
+// }
+
+// await completeTask(taskId, isComplete)
