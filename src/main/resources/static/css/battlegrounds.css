@@ -266,9 +266,15 @@
   transition:var(--trans);;
 }
 
+.task-body.incomplete{
+  background:var(--fade-dark-purple);
+  box-shadow:var(--cta-inset-shadow);
+  color:#fff;
+}
+
 .task-body.complete{
-    background:var(--fade-dark-purple);
-    box-shadow:var(--cta-inset-shadow);
+    background:var(--solid-background);
+    box-shadow:var(--dark-inset-shadow);
     color:#000;
     text-decoration:line-through;
 }
