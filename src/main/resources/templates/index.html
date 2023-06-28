@@ -7,7 +7,7 @@
     <nav th:insert="~{partials/navbar :: navbar}" style="min-height: 100px"></nav>
 
     <!--    HEADER      -->
-    <div class="container CCBB mt-11">
+    <div class="container CCBB">
         <div class="row justify-center">
             <h1 class="slogan">Conquer Chores, Battle Beasts!</h1>
         </div>
@@ -47,10 +47,6 @@
                             Battle <-</a></h3>
                         <!--                        </div>-->
                     </div>
-                    <div class="row justify-center">
-                        <h3 class="land-h2 attentionButton"><a href="/monsterList">->
-                            Meet the Monsters! <-</a></h3>
-                    </div>
                 </div>
                 <!--    LEFT SIDE END   -->
             </div>
@@ -60,9 +56,10 @@
                     <div class="row">
                         <div class="column battleColumn">
                             <!--                            <h3 class="battleItOut">Battle It Out!</h3><br>-->
-                            <img class="MonsterImages"
+                            <a th:href="@{/monsterList}"><img class="MonsterImages"
                                  src="https://cdn.discordapp.com/attachments/415980182021603329/1119091591173382236/Untitled_Artwork.png"
-                                 alt="monsters">
+                                 alt="monsters"></a>
+                                <p class="hover"><a th:href="@{/monsterList}">Meet the Monsters!</a></p>
                         </div>
                     </div>
                 </div>

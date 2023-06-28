@@ -99,6 +99,46 @@
     display: none;
 }
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown .dropdown-content {
+    position: absolute;
+    top: 120%;
+    width: 100%;
+    height: 10vh;
+    background: rgba(0, 0, 0, .4);
+    backdrop-filter: blur(10px);    display: flex;
+    flex-direction: column;
+    transition: all ease .2s;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-dropdown:hover .dropdown-content {
+    pointer-events: all;
+    opacity:1;
+    transform: translateY(0px);
+}
+
+.nav-dropdown:hover .dropdown-content li:hover {
+    background-color: #ccc;
+    color: #333;
+}
+
 
 /*///////*/
 /* Dropdown Button */
