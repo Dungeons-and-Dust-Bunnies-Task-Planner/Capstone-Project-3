@@ -272,6 +272,12 @@
     color:#000;
     text-decoration:line-through;
 }
+/*.task.complete .task-body{*/
+/*  background:var(--fade-dark-purple);*/
+/*  box-shadow:var(--cta-inset-shadow);*/
+/*  color:#000;*/
+/*  text-decoration:line-through;*/
+/*}*/
 
 .task-body.edit{
   left:-100%;

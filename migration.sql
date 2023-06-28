@@ -21,7 +21,7 @@ VALUES ('Blobbus McSlimey'),
        ('Dust Bunny Prime'),
        ('OctoRizz the Slippery'),
        ('Sir OwlBear the Unclean'),
-       ('The Cosmic Hat Octopuss of Filth');
+       ('Grimalkin, the Malevolent Dish Heap');
 
 INSERT INTO monster_images (monster_img, stage, monster_img_id)
 VALUES

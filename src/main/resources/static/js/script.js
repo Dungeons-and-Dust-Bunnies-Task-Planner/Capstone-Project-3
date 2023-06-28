@@ -1,5 +1,6 @@
-// import * as keys from './keys.js';
 (() => {
+// CHAT GPT API KEY
+    const apiKey = openAiKey;
 // DOM ELEMENTS
     const battleIcon = document.querySelector('.battle-icon')
     const battleIconBanner = document.querySelector('.battle-icon-banner')
@@ -67,35 +68,34 @@
         //     })
         // })
 
-        // async function sendOpenAIRequest(prompt) {
-        //     const apiUrl = "https://api.openai.com/v1/completions";
-        //     const apiKey = keys.openApiKey;  // replace this with your actual OpenAI key
-        //     const requestBody = {
-        //         prompt: prompt,
-        //         max_tokens: 100,
-        //         model: "text-davinci-003"
-        //     };
-        //
-        //     const response = await fetch(apiUrl, {
-        //         method: 'POST',
-        //         headers: {
-        //             'Authorization': `Bearer ${apiKey}`,
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(requestBody)
-        //     });
-        //
-        //     if (!response.ok) {
-        //         throw new Error(`HTTP error! status: ${response.status}`);
-        //     }
-        //     let data = await response.json();
-        //     console.log(data);
-        //     return data;
-        // }
+        async function sendOpenAIRequest(prompt) {
+            const apiUrl = "https://api.openai.com/v1/completions";
+            const requestBody = {
+                prompt: prompt,
+                max_tokens: 100,
+                model: "text-davinci-003"
+            };
 
-        // const monsterTalkParent = document.querySelector('.monsterTalkParent');
-        // let monsterResponse = await sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!")
-        // monsterTalkParent.innerHTML = `<h2>${monsterResponse.choices[0].text}</h2>`;
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            let data = await response.json();
+            console.log(data);
+            return data;
+        }
+
+        const monsterTalkParent = document.querySelector('.monsterTalkParent');
+        let monsterResponse = await sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!")
+        monsterTalkParent.innerHTML = `<h2>${monsterResponse.choices[0].text}</h2>`;
     })
 
 
@@ -199,10 +199,19 @@
             monsterDamage(numOfTasks);
         })
 
+        completeTaskBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('complete task even started')
+            const isComplete = task.classList.toggle('complete');
+            console.log('classList toggled');
+            completeTask(taskId, isComplete);
+            console.log('complete task function fired')
+        })
+    })
+
         editTaskSubmitBtn.addEventListener('click', (e) => {
             editTaskForm.submit()
         })
-    })
 })()
 // const numOfTasks = document.querySelectorAll('.task').length;
 // const monsterDamage = (numOfTasks) => {
@@ -231,8 +240,6 @@
 //     }
 // };
 
-
-//----------------- monster image JS ----------------
 
 
 // ----------------------------------------------------------------------------------------------------

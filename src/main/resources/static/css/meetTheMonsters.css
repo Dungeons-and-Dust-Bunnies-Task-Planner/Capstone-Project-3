@@ -40,6 +40,9 @@
     align-items: start;
     flex-direction: column;
     justify-content: center;
+    border-radius: 10px;
+    background: var(--background);
+    padding: 10px;
 }
 
 .h2monsterName {

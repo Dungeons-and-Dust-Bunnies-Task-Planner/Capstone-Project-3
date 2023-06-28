@@ -71,7 +71,7 @@
         <div class="row justify-center">
           <h1 th:text="${battle.title}"></h1>
         </div>
-        <div class="row justify-center">
+        <div class="row justify-center monster-battle-name">
           <h3 th:text="${battle.monster.name}"></h3>
         </div>
         <!--      MONSTER DISPLAY-->
@@ -85,6 +85,7 @@
           </div>
           <!------------  BTN FOR battle Complete increment      ------------>
           <form th:action="@{/battlegrounds/complete}" th:method="post">
+            <input type="hidden" th:value="${battle.getId()}" th:name="battleId">
             <button type="submit" id="battleComplete" name="battleComplete">Finish Him!</button>
           </form>
         </div>
@@ -96,6 +97,6 @@
   </div>
 </div>
 <div th:insert="~{partials/footer :: footer}"></div>
-<script type="module" src="/js/script.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>

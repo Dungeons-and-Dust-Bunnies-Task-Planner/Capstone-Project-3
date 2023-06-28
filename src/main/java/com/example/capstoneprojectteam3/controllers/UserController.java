@@ -56,14 +56,14 @@ public class UserController {
     public String showLoginForm(Model model){
         List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
         model.addAttribute("monsterImages", monsterImages);
-        return "/login";
+        return "login";
     }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
         model.addAttribute("monsterImages", monsterImages);
-        return "/registration";
+        return "registration";
     }
 
     @PostMapping("/register")
@@ -72,7 +72,7 @@ public class UserController {
                                @RequestParam(name = "password") String password,
                                @RequestParam(name = "passwordConfirmation") String passwordConfirm){
         String defaultAvatar = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
-        String defaultBackground = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
+        String defaultBackground = "https://cdn.filestackcontent.com/yhkFzlgzQtejKwLdOo51";
         if(password.equals(passwordConfirm)){
             password = passwordEncoder.encode(password);
             usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground, 0));
