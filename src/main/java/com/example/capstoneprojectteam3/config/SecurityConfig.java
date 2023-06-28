@@ -17,9 +17,10 @@ public class SecurityConfig {
         http.authorizeHttpRequests((requests) -> requests
 
 //    -------------------UNCOMMENT THIS CODE FOR SECURED ACCESS ---------------------------
-                        .requestMatchers("/profile", "/battlegrounds", "/battlegrounds/**", "/battleList").authenticated()
+                        .requestMatchers("/profile","/profile/**", "/battlegrounds", "/battlegrounds/**", "/battleList","/claim/badge","/edit/profile").authenticated()
 
-                        .requestMatchers( "/register", "/registration", "/login", "/home", "/", "/about","/contact", "/send-email", "/welcome", "/monsterList","/css/**", "/js/**", "/images/**", "/keys.js").permitAll()
+                        .requestMatchers( "/register", "/registration", "/login", "/home", "/", "/about","/contact", "/send-email", "/welcome", "/monsterList").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/keys.js").permitAll()
                 )
 //                --------------------------------------------------------------
 //
