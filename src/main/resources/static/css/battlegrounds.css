@@ -1,7 +1,7 @@
 .battle-icon{
   position:fixed;
   top:105px;
-  left:2px;
+  left:0;
   z-index:5;
   height:100px;
   width:100px;
@@ -32,7 +32,7 @@
 .battle-icon-banner{
   position:fixed;
   top:105px;
-  left:2px;
+  left:3px;
   z-index:4;
   display:flex;
   flex-direction:column;
@@ -266,12 +266,18 @@
   transition:var(--trans);;
 }
 
-.task.complete .task-body{
-  background:var(--fade-dark-purple);
-  box-shadow:var(--cta-inset-shadow);
-  color:#000;
-  text-decoration:line-through;
+.task-body.complete{
+    background:var(--fade-dark-purple);
+    box-shadow:var(--cta-inset-shadow);
+    color:#000;
+    text-decoration:line-through;
 }
+/*.task.complete .task-body{*/
+/*  background:var(--fade-dark-purple);*/
+/*  box-shadow:var(--cta-inset-shadow);*/
+/*  color:#000;*/
+/*  text-decoration:line-through;*/
+/*}*/
 
 .task-body.edit{
   left:-100%;
@@ -301,10 +307,6 @@
 
 .edit-task-input.edit{
   right:30%;
-}
-
-.edit-task-submit-btn{
-  display:none;
 }
 
 .delete-task-btn{
@@ -345,7 +347,7 @@
   transition:var(--trans);
 }
 
-.complete-task-btn{
+.edit-task-submit-btn{
   position:absolute;
   bottom:0;
   right:-16%;
@@ -366,7 +368,7 @@
   height:50px;
 }
 
-.complete-task-btn.edit{
+.edit-task-submit-btn.edit{
   z-index:1;
   right:0;
 }
@@ -444,7 +446,7 @@
 .health-bar-container::before{
   content:'';
   background-color:var(--solid-background);
-  border: 2px solid indianred;
+  border:2px solid indianred;
   border-radius:var(--br);
   position:absolute;
   top:50%;
@@ -457,7 +459,7 @@
 .health-bar{
   background-color:indianred;
   position:absolute;
-  border-radius: var(--br);
+  border-radius:var(--br);
   top:50%;
   left:0;
   transform:translateY(-50%);
@@ -480,14 +482,23 @@
 /*  position:relative;*/
 /*}*/
 
-.hit{
-  background:rgba(255, 255, 255, 0.6);
-  position:absolute;
-  top:0;
-  right:0;
-  bottom:0;
-  width:100px;
-  z-index:99;
+/*.bar{*/
+/*  background:#c54;*/
+/*  width:100%;*/
+/*  height:10px;*/
+/*  position:relative;*/
 
-  transition:width .5s linear;
-}
+/*  transition:width .5s linear;*/
+/*}*/
+
+/*.hit{*/
+/*  background:rgba(255, 255, 255, 0.6);*/
+/*  position:absolute;*/
+/*  top:0;*/
+/*  right:0;*/
+/*  bottom:0;*/
+/*  width:100px;*/
+/*  z-index:99;*/
+
+/*  transition:width .5s linear;*/
+/*}*/

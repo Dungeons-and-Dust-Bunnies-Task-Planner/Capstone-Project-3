@@ -1,8 +1,8 @@
-.hidden{
-  display:none;
+.hidden {
+  display: none;
 }
 
-.battles-list-container{
+.battles-list-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,8 +12,7 @@
   margin-top: 31vh;
 }
 
-
-/*   CREATE BATTLE ROW    */
+/* CREATE BATTLE ROW */
 
 .createBattleContainer {
   position: relative;
@@ -54,27 +53,91 @@
   background: var(--fade-dark-purple);
 }
 
+/* EDIT BATTLE BUTTONS */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+
+.editModal {
+  position: absolute;
+  height: 150px;
+  justify-content: space-between;
+  top: 50%;
+  left: 50%;
+  /*background-color: rgba(87, 85, 96, 0.8);*/
+  box-shadow: 2px 2px rgba(87, 85, 96, 0.8);
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  border-radius: 10px;
+}
+
+
+.editImage {
+  height: 50px;
+  width: 50px;
+}
+
+.battles-list-edit-battle-modal {
+  background: transparent;
+  display: flex;
+  align-self: start;
+  border-style: none;
+  padding: 4px 4px;
+}
+
+
+
+.editBattleTitle {
+  display: flex;
+  align-items: center;
+  height: 150px;
+  justify-content: space-between;
+}
+
+/* delete button */
+.deleteBattleForm {
+  align-items: end;
+  display: flex;
+}
+
+.battles-list-delete-battle-btn {
+  display: flex;
+  justify-content: end;
+}
+
+/* BATTLES */
+.battles-list-edit-battle-btn {
+  display: contents;
+}
+
 .battleColumnSize {
   width: 75vw;
   position: relative;
 }
 
-.battles-list-battles{
+.battles-list-battles {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   min-height: 150px;
-  /* height: 201px; */
   background: var(--solid-background);
-  padding: 10px;
   border-radius: var(--br);
   box-shadow: var(--cta) inset 0 0 2px 2px;
   overflow: hidden;
   margin-bottom: 10px;
 }
 
-.battles-list-title{
+.battles-list-title {
   position: absolute;
   top: 50%;
   left: 10px;
@@ -84,85 +147,103 @@
   max-width: 25vw;
 }
 
-.battles-list-edit-battle-input{
-  position:absolute;
-  top:-101%;
-  left:0;
-  height:150px;
-  width:85%;
-  background:var(--secondary);
-  border:none;
-  outline:none;
-  box-shadow:#000 inset 0 0 2px 1px;
-  transition:var(--trans);
+.battles-list-edit-battle-input {
+  background: var(--secondary);
+  border: none;
+  outline: none;
+  box-shadow: #000 inset 0 0 2px 1px;
+  transition: var(--trans);
 }
 
-.battles-list-edit-battle-input.edit{
-  top:0;
+.editBattle {
+  background: transparent;
+  display: flex;
+  align-self: start;
+  border-style: none;
+  padding: 4px 4px;
 }
 
-.open-battles-list-edit-btn{
-  position:absolute;
-  top:0;
-  right:-16%;
-  height:150px;
-  width:15%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:var(--solid-background);
-  border:none;
-  outline:none;
-  box-shadow:var(--cta) inset 0 0 2px 1px;
+.open-battles-list-edit-btn {
+  position: absolute;
+  top: 0;
+  right: -16%;
+  height: 150px;
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--solid-background);
+  border: none;
+  outline: none;
+  box-shadow: var(--cta) inset 0 0 2px 1px;
 }
 
-.open-battles-list-edit-btn.edit{
-  right:0;
+.open-battles-list-edit-btn.edit {
+  right: 0;
 }
 
-.battles-list-delete-battle-btn{
-  position:absolute;
-  top:0;
-  right:-16%;
-  height:150px;
-  width:15%;
-  background:indianred;
-  box-shadow:#000 inset 0 0 2px 1px;
+.deleteBattleBtn {
+  background: transparent;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-style: none;
+  padding: 4px 4px;
 }
 
-.battles-list-delete-battle-btn.edit{
-  right:0;
+.battles-list-delete-battle-btn.edit {
+  right: 0;
 }
 
-.battles-list-monster-thumb{
-  height:150px;
-  aspect-ratio:auto;
+.battles-list-monster-thumb {
+  height: 150px;
+  aspect-ratio: auto;
 }
 
-.battles-list-btn-img{
-  height:50px;
-  width:50px;
+.battles-list-btn-img {
+  height: 50px;
+  width: 50px;
 }
 
-.battles-list-monster-thumb > img{
-  height:100%;
-  aspect-ratio:auto;
+.battles-list-monster-thumb > img {
+  height: 100%;
+  aspect-ratio: auto;
 }
+
 
 @media (min-width: 20rem) and (max-width: 30rem) {
 
-  .battles-list-title {
-    font-size: 2.5em;
+  .battles-list-edit-battle-input {
+    width: 125px;
   }
-}
-
-
-@media (min-width: 30rem) and (max-width: 65rem) {
   .battles-list-title {
-    font-size: 1em;
+    font-size: 1.5em;
   }
   .battles-list-monster-thumb {
     height: 100px;
     aspect-ratio: auto;
+  }
+  .battleColumnSize {
+    width: 100vw;
+    position: relative;
+  }
+
+}
+
+@media (min-width: 30rem) and (max-width: 65rem) {
+  .battles-list-title {
+    font-size: 1.5em;
+  }
+  .battles-list-monster-thumb {
+    height: 100px;
+    aspect-ratio: auto;
+  }
+  .battleColumnSize {
+    width: 100vw;
+    position: relative;
+  }
+
+  .battles-list-edit-battle-input {
+    width: 125px;
   }
 }
