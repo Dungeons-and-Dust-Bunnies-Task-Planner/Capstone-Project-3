@@ -62,6 +62,7 @@ footer {
     background-size: 0% 100%;
     background-position-x: right;
     transition: background-size 400ms;
+    text-shadow: 0 0 10px black;
 }
 
 .email-btn-submit:hover {
