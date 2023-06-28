@@ -23,7 +23,7 @@ public class SecurityConfig {
 //    -------------------UNCOMMENT THIS CODE FOR SECURED ACCESS ---------------------------
                         .requestMatchers("/profile","/profile/**", "/battlegrounds", "/battlegrounds/**", "/battleList","/claim/badge","/edit/profile").authenticated()
 
-                        .requestMatchers( "/register", "/registration", "/login", "/home", "/", "/about","/contact", "/send-email", "/welcome", "/monsterList").permitAll()
+                        .requestMatchers( "/register", "/registration", "/login", "/home", "/", "/about","/contact", "/send-email", "/welcome", "/monsterList", "/how-to").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/keys.js").permitAll()
                 )
 //                --------------------------------------------------------------

@@ -17,4 +17,9 @@ public class AboutAndContactController {
         return "about";
     }
 
+    @GetMapping("/how-to")
+    public String howTo(){
+        return "how-to";
+    }
+
 }
