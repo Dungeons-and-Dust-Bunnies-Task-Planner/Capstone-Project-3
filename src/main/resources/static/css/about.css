@@ -60,8 +60,23 @@
     align-self: center;
 }
 
-@media only screen and (max-width: 1007px) {
+@media (min-width: 30rem) and (max-width: 65rem) {
     .cardy {
         flex-wrap: wrap;
+        justify-content: center;
+    }
+    .avatar {
+        height: 30vh;
+    }
+}
+
+@media (min-width: 20rem) and (max-width: 30rem) {
+    .cardy {
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+    }
+    .dev-name{
+        font-size: 1.3rem;
     }
 }
