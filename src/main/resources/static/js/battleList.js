@@ -1,19 +1,13 @@
-const editModals = document.querySelectorAll('.edit-modal');
-const editModalBtns = document.querySelectorAll('#battle-edit-btn');
-const closeModals = document.querySelectorAll('.modal-close');
+const editButtons = document.querySelectorAll('.editBattle');
+const editModals = document.querySelectorAll('.editModal');
+const editModalOverlays = document.querySelectorAll('.modalOverlay');
+const blur = document.getElementById('battleDiv');
 
 
-editModalBtns.forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-        editModals[index].classList.add('show');
-    });
-});
-
-
-closeModals.forEach((closeModal) => {
-    closeModal.addEventListener('click', () => {
-        editModals.forEach((modal) => {
-            modal.classList.remove('show');
-        });
+editButtons.forEach((editButton, index) => {
+    editButton.addEventListener('click', () => {
+        editModals[index].classList.remove('hidden');
+        editModalOverlays[index].classList.remove('hidden');
+        // blur.classList.add('blur-wrapper');
     });
 });
