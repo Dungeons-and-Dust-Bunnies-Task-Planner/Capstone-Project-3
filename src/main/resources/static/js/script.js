@@ -42,6 +42,7 @@
         const healthBarStyles = window.getComputedStyle(healthBar)
         console.log(healthBarStyles)
         console.log('Dynamic elements loaded') //DEBUG
+
         document.querySelectorAll('.battle').forEach((battle, idx) => {
             battle.addEventListener('click', () => {
                 // console.log('battle click event fired')
@@ -109,10 +110,22 @@
         }
     })
 
+    let completeArr = []
+    let completedTasks = completeArr.length
     let monsterHealth = `${100}%`;
+    let newMonsterHealth = monsterHealth;
+    let numOfTasks = document.querySelectorAll('.task').length;
+
+
     task.forEach(task => {
         const taskId = task.dataset.taskId
         const taskComplete = task.dataset.taskComplete
+        console.log(typeof taskComplete)
+        console.log(taskComplete)
+
+        taskComplete === "0" ? completeArr.push(taskId) : ""
+
+
         const tasksBattleTitle = task.querySelector('.tasks-battle-title')
         const taskBody = task.querySelector('.task-body')
         // const completeTaskBtn = task.querySelector('.complete-task-btn')
@@ -128,6 +141,7 @@
         const createTaskInput = task.querySelector('.create-task-input')
         const createTaskBtn = task.querySelector('.create-task-btn')
         const createTaskBtnImg = document.querySelector('.create-task-btn-img')
+
         //COMPUTED STYLES
 
         openEditBtn.addEventListener('click', function () {
@@ -180,20 +194,12 @@
                 taskBody.classList.add('not-complete')
                 // console.log(`${taskBody.classList}: taskBody is not-complete`)
             }
-            const numOfTasks = document.querySelectorAll('.task').length;
-
 
             const monsterDamage = (numOfTasks) => {
-                console.log(`There are - ${numOfTasks} - tasks`)
-                console.log(monsterHealth)
                 healthBar.style.width = monsterHealth
-                console.log(`This is the healthBar width: ` + healthBar.style.width)
                 const damageOutput = (100 / numOfTasks).toFixed(2);
-                console.log(`This is the damageOutput: ${damageOutput}`)
                 const newHealth = parseFloat(monsterHealth) - parseFloat(damageOutput);
-                console.log(`This is the value of newHealth: ${newHealth}`)
                 healthBar.style.width = `${newHealth}%`;
-                console.log(`This is the remaining healthBar width: ${healthBar.style.width}`)
                 return monsterHealth = newHealth
             }
             monsterDamage(numOfTasks);
@@ -202,7 +208,12 @@
         editTaskSubmitBtn.addEventListener('click', (e) => {
             editTaskForm.submit()
         })
+        return { monsterHealth, numOfTasks, completeArr, completedTasks }
     })
+    console.log(monsterHealth)
+    console.log(numOfTasks)
+    console.log(completeArr)
+    console.log(completedTasks)
 })()
 // const numOfTasks = document.querySelectorAll('.task').length;
 // const monsterDamage = (numOfTasks) => {
