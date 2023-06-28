@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head th:insert="~{partials/head :: head ('How-to')}"></head>
+</head>
+<body>
+<div class="page-wrapper">
+  <nav th:insert="~{partials/navbar :: navbar}" id="page-1"></nav>
+  <div class="container mt-11">
+    <div class="row how-phase scroll-page">
+      <div class="column how-col">
+        <h1>Step 1: </h1>
+        <p class="how-p">Create a Battle</p>
+        <div class="how-nav">
+          <p class="mr-5">Skip To: </p>
+          <a class="hover" href="#page-1">1  </a>
+          <a class="hover" href="#page-2">2  </a>
+          <a class="hover" href="#page-3">3</a>
+        </div>
+      </div>
+      <div class="column how-img-container">
+        <div class="how-img"></div>
+      </div>
+      <div class="column how-details">
+        <p class="how-p" id="page-2">Navigate to the battlegrounds tab and click create battle!</p>
+      </div>
+    </div>
+
+    <div class="row how-phase scroll-page">
+      <div class="column how-col">
+        <h1>Step 2:</h1>
+        <p class="how-p">Assign Tasks to Battle</p>
+        <div class="how-nav">
+          <p class="mr-5">Skip To: </p>
+          <a class="hover" href="#page-1">1</a>
+          <a class="hover" href="#page-2">2</a>
+          <a class="hover" href="#page-3">3</a>
+        </div>
+      </div>
+      <div class="column how-img-container">
+        <div class="how-img"></div>
+      </div>
+      <div class="column how-details">
+        <p class="how-p" id="page-3">Navigate to the battlegrounds tab and click create battle!</p>
+      </div>
+    </div>
+
+    <div class="row how-phase scroll-page">
+      <div class="column how-col">
+        <h1>Step 3:</h1>
+        <p class="how-p">Complete Tasks To Kill Monster</p>
+        <div class="how-nav">
+          <p class="mr-5">Skip To: </p>
+          <a class="hover" href="#page-1">1</a>
+          <a class="hover" href="#page-2">2</a>
+          <a class="hover" href="#page-3">3</a>
+        </div>
+      </div>
+      <div class="column how-img-container">
+        <div class="how-img"></div>
+      </div>
+      <div class="column how-details">
+        <p class="how-p">Navigate to the battlegrounds tab and click create battle!</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div th:insert="~{partials/footer :: footer}"></div>
+</body>
+</html>
