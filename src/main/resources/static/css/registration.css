@@ -54,9 +54,10 @@
     border-radius: 10px;
     background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
     background-repeat: no-repeat;
-    background-size: 0% 100%;
+    background-size: 0 100%;
     background-position-x: right;
     transition: background-size 400ms;
+    text-shadow: 0 0 10px black;
 }
 
 .login-register-Btn:hover {
