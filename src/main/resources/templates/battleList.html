@@ -35,8 +35,7 @@
                                     <a th:text="${battle.title}" th:href="@{|/battlegrounds/${battle.id}|}"></a>
                                 </h3>
                                 <div class="battles-list-monster-thumb">
-                                    <img th:src="${battle.monster.monsterImages[0].monster_img}"
-                                         alt="monster thumbnail">
+                                    <img th:src="${battle.monster.monsterImages[0].monster_img}" alt="monster thumbnail">
                                 </div>
                                 <button class="editBattle" type="button" th:id="'battle-edit-btn' + ${battle.id}"
                                         th:data-battle-id="${battle.id}"><img class="editImage"
