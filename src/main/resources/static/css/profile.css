@@ -100,6 +100,7 @@
 input.submit-btn{
     color: white;
     background: var(--cta);
+    text-shadow: 0 0 10px black;
 }
 
 input.submit-btn:hover {
@@ -159,6 +160,7 @@ input.submit-btn:hover {
     background-position-x: right;
     transition: background-size 400ms;
     background-color: var(--cta);
+    text-shadow: 0 0 10px black;
 }
 .image-add:hover {
     background-size: 100% 100%;
@@ -225,9 +227,10 @@ input.submit-btn:hover {
     color: white;
     background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
     background-repeat: no-repeat;
-    background-size: 0% 100%;
+    background-size: 0 100%;
     background-position-x: right;
     transition: background-size 400ms;
+    text-shadow: 0 0 10px black;
 }
 .editButton:hover{
     background-size: 100% 100%;
