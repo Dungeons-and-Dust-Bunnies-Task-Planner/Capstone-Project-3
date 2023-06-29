@@ -8,6 +8,7 @@
     flex: 1 0 0;
 }
 
+
 .one, .three,.five {
     opacity: 0;
     transform: translateX(-100px);
