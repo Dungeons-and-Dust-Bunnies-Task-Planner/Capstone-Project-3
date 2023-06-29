@@ -5,7 +5,7 @@
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
 <div class="page-wrapper">
     <div class="container grow">
-        <div class="row full-width no-padding">
+        <div class="row full-width no-padding" id="battlegrounds-row">
             <!--      BATTLE SLIDE OUT-->
             <div class="battle-icon">
                 <a href="/battleList">
@@ -89,7 +89,7 @@
                         <img th:if="${monsterHealth > 80}" th:src="${battle.monster.monsterImages[0].monster_img}" alt="monster image healthy">
                         <img th:if="${monsterHealth <= 80 and monsterHealth > 60}" th:src="${battle.monster.monsterImages[1].monster_img}" alt="monster image hurt">
                         <img th:if="${monsterHealth <= 60 and monsterHealth > 40}" th:src="${battle.monster.monsterImages[2].monster_img}" alt="monster image damaged">
-                        <img th:if="${monsterHealth <= 39 and monsterHealth > 0}" th:src="${battle.monster.monsterImages[3].monster_img}" alt="monster image on death's door">
+                        <img th:if="${monsterHealth <= 40 and monsterHealth > 0}" th:src="${battle.monster.monsterImages[3].monster_img}" alt="monster image on death's door">
                         <img th:if="${monsterHealth == 0}" th:src="${battle.monster.monsterImages[4].monster_img}" alt="monster image dead">
                     </div>
                 </div>

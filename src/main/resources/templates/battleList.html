@@ -8,19 +8,15 @@
 
     <div class="container createBattleContainer">
         <div class="row">
-
             <!-- CREATE BATTLE FORM -->
-
             <form th:action="@{/battlegrounds/create-battle}" th:method="post">
                 <div class="hidden-form-wrap">
-                    <input class="create-battle-input" type="text" placeholder="Add your battle..."
-                           name="battleTitle"/>
+                    <input class="create-battle-input" type="text" placeholder="Add your battle..." name="battleTitle" required/>
                     <button class="create-battle-btn" type="submit">Submit</button>
                 </div>
             </form>
         </div>
     </div>
-
     <div class="container grow">
         <div class="row grow full-width no-padding align-center justify-center">
             <!-- BATTLE -->
@@ -38,7 +34,6 @@
                             <button class="editBattle" type="button" th:id="'battle-edit-btn' + ${battle.id}" th:data-battle-id="${battle.id}">
                                 <img class="editImage" src="/images/green-edit.png" alt="icon">
                             </button>
-
                             <!-- EDIT BATTLE FORM -->
                             <div class="edit-modal-overlay hidden"></div>
                             <div class="editModal hidden justify-space-between grow d-flex" th:data-battle-id="${battle.id}">
@@ -51,12 +46,12 @@
                                     <div class="row grow justify-center">
                                         <input class="largeInput" th:value="${battle.title}" name="battleTitle" id="battleTitle">
                                     </div>
-
                                     <div class="row grow justify-center">
                                         <h1>Change your monster</h1>
                                     </div>
                                     <div class="row grow justify-center">
                                         <select id="largeSelect" name="monsterSelectId">
+                                            <option th:value="${battle.monster.id}" hidden selected>Select one...</option>
                                             <option th:value="${2}">Dust Bunny Prime</option>
                                             <option th:value="${3}">OctoRizz</option>
                                             <option th:value="${4}">Sir Owlbear</option>
@@ -68,15 +63,26 @@
                                         <button class="large-cta-btn" type="submit">Confirm Changes</button>
                                     </div>
                                 </form>
-
-                                <!-- DELETE BATTLE -->
-                                <form th:action="@{/battlegrounds/delete-battle}" th:method="post"
-                                      class="deleteBattleForm">
-                                    <input class="submit-btn" type="hidden" th:value="${battle.id}" name="battleId">
-                                    <div class="row grow justify-center align-bottom">
-                                        <button class="large-cta-btn indianred" type="submit">Delete Battle</button>
+                                <button class="large-cta-btn indianred" id="delete-confirm-open-btn" type="submit" style="align-self: center; padding-bottom: 10px">Delete Battle</button>
+                                <div class="delete-confirm-modal container hidden">
+                                    <!-- DELETE BATTLE -->
+                                    <h2>Are you sure?</h2>
+                                    <div class="row flex-direction-column">
+                                        <form th:action="@{/battlegrounds/delete-battle}" th:method="post" class="deleteBattleForm">
+                                            <input class="submit-btn" type="hidden" th:value="${battle.id}" name="battleId">
+                                            <div class="row">
+                                                <div class="column" style="width: 100%">
+                                                    <button class="large-cta-btn" type="submit">Yes</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="column" style="width: 100%">
+                                                    <button class="large-cta-btn indianred" id="cancel-delete" type="button">No</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,7 +91,6 @@
         </div>
     </div>
 </div>
-
 
 <div th:insert="~{partials/footer :: footer}"></div>
 <script src="/js/battleList.js"></script>
