@@ -3,11 +3,18 @@
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
     background: var(--fade-dark-purple);
     border-radius: 12px;
-    width: 65vw;
+    width: 80vw;
     flex-direction: row;
     flex: 1 0 0;
 }
+.links {
+    font-weight: 600;
+    color: hotpink;
+}
 
+.avatar {
+    border-radius: 1rem;
+}
 
 .one, .three,.five {
     opacity: 0;
@@ -50,8 +57,7 @@
 
 
 .linkRow {
-    align-self: end;
-    justify-content: space-between;
+    justify-content: flex-end;
 
 }
 
@@ -72,6 +78,7 @@
     }
     .avatar {
         height: 30vh;
+        border-radius: 1rem;
     }
 }
 
