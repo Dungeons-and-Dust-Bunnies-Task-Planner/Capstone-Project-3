@@ -98,6 +98,7 @@ public class UserController {
             }
         }
 
+
         model.addAttribute("user", user);
         model.addAttribute("badges", badges);
         model.addAttribute("battles", battles);
