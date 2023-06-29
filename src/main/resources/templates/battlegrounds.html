@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <!------------  BTN FOR battle Complete increment      ------------>
-                <form th:action="@{/battlegrounds/complete}" th:method="post">
+                <form th:action="@{/battlegrounds/complete}" th:method="post" th:if="${battle.status == 0}">
                     <input type="hidden" th:value="${battle.getId()}" th:name="battleId">
                     <button th:if="${numOfCompleteTasks == numOfTasks}" type="submit" id="battleComplete"
                             name="battleComplete">Finish Him!

@@ -89,11 +89,20 @@ public class UserController {
         user = usersDao.findUserById(userId);
         List<Badge> badges = user.getBadges();
         List<Battle> battles = battlesDao.findAllByUserId(userId);
+        boolean hasActiveBattles = false;
+
+        //Loop through battles, and if any battles are active, set hasActiveBattles to true
+        for (Battle battle : battles) {
+            if (battle.getStatus() == 0) {
+                hasActiveBattles = true;
+            }
+        }
 
         model.addAttribute("user", user);
         model.addAttribute("badges", badges);
         model.addAttribute("battles", battles);
         model.addAttribute("id", userId);
+        model.addAttribute("hasActiveBattles", hasActiveBattles);
         return "profile";
     }
 
