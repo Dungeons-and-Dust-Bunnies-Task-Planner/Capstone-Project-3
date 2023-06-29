@@ -66,13 +66,22 @@
     font-weight: 400;
     flex-wrap: wrap;
     align-content: center;
+    background-color: var(--cta);
+    color: white;
     background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
     background-repeat: no-repeat;
     background-size: 0% 100%;
     background-position-x: right;
     transition: background-size 400ms;
 }
-
+.large-cta-btn:hover {
+    background-size: 100% 100%;
+    background-position-x: left;
+    cursor: pointer;
+}
+.indianred {
+    background-color: indianred;
+}
 .editModal {
     position: fixed;
     flex-direction: column;
