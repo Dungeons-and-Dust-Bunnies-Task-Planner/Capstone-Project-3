@@ -6,6 +6,8 @@
 .h1Profile {
     font-family: 'Nunito', sans-serif;
     font-size: 75px;
+    position: relative;
+    top: 15vh;
 }
 
 .h2Profile {
@@ -187,6 +189,8 @@ input.submit-btn:hover, .submit-btn:hover {
     display: flex;
     border-radius: 50%;
     border: 5px solid #fff;
+    position: relative;
+    top: 10vh;
 }
 
 .avatarPlacement {
@@ -420,6 +424,7 @@ height: 15vh;
     .avatar-wrapper {
         height: 100px;
         width: 100px;
+        top: 4vh;
     }
 
     .editProfile {
@@ -429,6 +434,7 @@ height: 15vh;
     .h1Profile {
         font-size: 35px;
         margin-top: -35px;
+        top: 8vh;
     }
     .battleCard {
         flex-direction: column;
@@ -473,11 +479,13 @@ height: 15vh;
     .avatar-wrapper {
         height: 150px;
         width: 150px;
+        top: 7vh;
     }
 
     .h1Profile {
         font-size: 4rem;
         margin-top: 0;
+        top: 11vh;
     }
     .battleCard {
         flex-direction: column;
