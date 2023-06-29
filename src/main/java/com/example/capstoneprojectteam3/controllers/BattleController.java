@@ -277,26 +277,5 @@ public class BattleController {
         return "redirect:/profile";
     }
 
-//	@PostMapping("/battlegrounds/complete-task")
-//    @ResponseBody
-//    public void editTask(@RequestParam(name = "battleId") Long battleId, @RequestParam(name = "taskId") String taskIdString, RedirectAttributes redirectAttributes) throws RedirectException {
-//        Battle battle = battlesDao.findByIdWithTasks(battleId);
-//        Long taskId = Long.parseLong(taskIdString);
-//        System.out.println(taskId);
-//        System.out.println("made it to the complete-task controller");
-//        Task editTask = tasksDao.findTaskById(taskId);
-//        if (editTask.getTaskComplete() == 0) {
-//            editTask.setTaskComplete(1);
-//            tasksDao.save(editTask);
-//        } else if (editTask.getTaskComplete() == 1) {
-//            editTask.setTaskComplete(1);
-//            tasksDao.save(editTask);
-//        }
-//
-//        redirectAttributes.addAttribute("battleId", battleId);
-//
-//        throw new RedirectException("/battlegrounds/{battleId}");
-//    }
-
 
 }
