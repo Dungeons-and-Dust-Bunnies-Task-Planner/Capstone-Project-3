@@ -45,27 +45,37 @@
 
                                 <!-- EDIT BATTLE FORM -->
 
+                                <!-- EDIT BATTLE FORM -->
                                 <div class="modalOverlay hidden"></div>
                                 <div class="editModal hidden" th:data-battle-id="${battle.id}">
-                                    <form th:action="@{/battlegrounds/edit-battle-title}" th:method="post"
-                                          class="editBattleTitle">
+                                    <form th:action="@{/battlegrounds/edit-battle-title}" th:method="post" class="editBattleTitle">
                                         <input type="hidden" th:value="${battle.id}" name="battleId">
-                                        <input class="battles-list-edit-battle-input" th:value="${battle.title}"
-                                               name="battleTitle">
-                                        <button class="battles-list-edit-battle-modal" type="submit"><img
-                                                class="editImage" src="/images/green-edit.png" alt="icon">
+                                        <label class="battleLabel" for="battleTitle">Battle Name</label>
+                                        <input class="battles-list-edit-battle-input" th:value="${battle.title}" name="battleTitle" id="battleTitle">
+
+                                        <label class="selectMonsterLabel" for="selectMonster">Select Monster</label>
+                                            <select name="monsterSelectId" id="selectMonster">
+                                            <option th:value="${2}">Dust Bunny Prime</option>
+                                            <option th:value="${3}">OctoRizz</option>
+                                            <option th:value="${4}">Sir Owlbear</option>
+                                            <option th:value="${1}">Blobbus McSlimey</option>
+                                            <option th:value="${5}">Grimalkin</option>
+                                        </select>
+
+                                        <button class="battles-list-edit-battle-modal" type="submit">
+                                            <img class="editImage" src="/images/green-edit.png" alt="icon">
                                         </button>
                                     </form>
 
-                                    <form th:action="@{/battlegrounds/delete-battle}" th:method="post"
-                                          class="deleteBattleForm">
+                                    <!-- DELETE BATTLE -->
+                                    <form th:action="@{/battlegrounds/delete-battle}" th:method="post" class="deleteBattleForm">
                                         <input type="hidden" th:value="${battle.id}" name="battleId">
                                         <button class="deleteBattleBtn" type="submit">
-                                            <img src="/images/green-trash.png" alt="button icon"
-                                                 class="battles-list-btn-img">
+                                            <img src="/images/green-trash.png" alt="button icon" class="battles-list-btn-img">
                                         </button>
                                     </form>
                                 </div>
+
 
                             </div>
                         </div>
