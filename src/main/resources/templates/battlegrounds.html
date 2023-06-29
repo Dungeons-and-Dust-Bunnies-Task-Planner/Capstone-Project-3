@@ -101,16 +101,13 @@
         </div>
         <!--      MONSTER DISPLAY-->
         <div class="row grow justify-center align-center">
-          <div class="battle-monster-img" id="battle-monster-img">
-            <img th:if="${monsterHealth > 80}" th:src="${battle.monster.monsterImages[0].monster_img}">
-            <img th:if="${monsterHealth <= 80 and monsterHealth > 60}"
-                 th:src="${battle.monster.monsterImages[1].monster_img}">
-            <img th:if="${monsterHealth <= 60 and monsterHealth > 40}"
-                 th:src="${battle.monster.monsterImages[2].monster_img}">
-            <img th:if="${monsterHealth <= 40 and monsterHealth > 20}"
-                 th:src="${battle.monster.monsterImages[3].monster_img}">
-            <img th:if="${monsterHealth <= 20}" th:src="${battle.monster.monsterImages[4].monster_img}">
-          </div>
+            <div class="battle-monster-img" id="battle-monster-img">
+                <img th:if="${monsterHealth > 80}" th:src="${battle.monster.monsterImages[0].monster_img}" alt="monster image healthy">
+                <img th:if="${monsterHealth <= 80 and monsterHealth > 60}" th:src="${battle.monster.monsterImages[1].monster_img}" alt="monster image hurt">
+                <img th:if="${monsterHealth <= 60 and monsterHealth > 40}" th:src="${battle.monster.monsterImages[2].monster_img}" alt="monster image damaged">
+                <img th:if="${monsterHealth <= 40 and monsterHealth > 0}" th:src="${battle.monster.monsterImages[3].monster_img}" alt="monster image on death's door">
+                <img th:if="${monsterHealth == 0}" th:src="${battle.monster.monsterImages[4].monster_img}" alt="monster image dead">
+            </div>
         </div>
         <div th:if="${numOfCompleteTasks != numOfTasks}" class="row justify-center health-bar-container">
           <div class=" text-center justify-center align-center d-flex shrink">

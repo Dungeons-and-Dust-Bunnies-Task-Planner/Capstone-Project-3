@@ -64,3 +64,19 @@
 .hover:hover{
     color: hotpink;
 }
+
+@media (min-width: 20rem) and (max-width: 30rem) {
+    .skip-to {
+        display: none;
+    }
+    .how-p {
+        padding: 0;
+    }
+    .how-p-title{
+        width: 60%;
+        font-size: 1.2rem;
+    }
+    .steps {
+        font-size: 1.7rem;
+    }
+}
