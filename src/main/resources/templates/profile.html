@@ -88,7 +88,7 @@
             <div class="row badgeRow grow">
                 <div class="column badgeArea">
                     <div class="activeBadgeRow">
-                        <div th:if="${ user.getBattlesComplete() == 0 }">
+                        <div th:if="${user.getBattlesComplete() == 0}">
                             <h1 class="profile-no-badges">Fight Monsters to Earn Rewards!</h1>
                         </div>
                         <div th:each="badge : ${badges}" class="badgeCard">

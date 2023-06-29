@@ -71,6 +71,7 @@
 }
 
 .edit-modal > form > input {
+    width: 100%;
     height: 7vh;
     padding: 6px 8px;
     outline: none;
@@ -97,13 +98,13 @@
 .deleteAccount:hover {
    color: var(--cta);
 }
-input.submit-btn{
+input.submit-btn, .submit-btn{
     color: white;
     background: var(--cta);
     text-shadow: 0 0 10px black;
 }
 
-input.submit-btn:hover {
+input.submit-btn:hover, .submit-btn:hover {
     background-size: 100% 100%;
     background-position-x: left;
     cursor: pointer;

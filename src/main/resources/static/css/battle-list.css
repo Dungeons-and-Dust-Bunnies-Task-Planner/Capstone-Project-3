@@ -54,32 +54,73 @@
 }
 
 /* EDIT BATTLE BUTTONS */
+.large-cta-btn {
+    width: 75%;
+    height: 7vh;
+    padding: 6px 8px;
+    outline: none;
+    box-shadow: inset #000 0 0 3px 1px;
+    font-size: 2rem;
+    border-radius: 0.2em;
+    justify-content: center;
+    font-weight: 400;
+    flex-wrap: wrap;
+    align-content: center;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
+}
 
-.modalOverlay {
+.editModal {
+    position: fixed;
+    flex-direction: column;
+    top: 55%;
+    left: 50%;
+    translate: -50% -50%;
+    max-height: 80vh;
+    height: 50vh;
+    width: 50vw;
+    max-width: 55vw;
+    border-radius: 0.5em;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
+    background: var(--fade-dark-purple);
+    border: none;
+    outline: none;
+    font-family: Poppin, Inter, sans-serif;
+    color: white;
+    z-index: 5;
+}
+
+.largeInput, #largeSelect {
+    width: 100%;
+    height: 7vh;
+    padding: 6px 8px;
+    outline: none;
+    box-shadow: inset #000 0 0 3px 1px;
+    font-size: 2rem;
+    border-radius: 0.2em;
+    justify-content: center;
+    font-weight: 400;
+    flex-wrap: wrap;
+    align-content: center;
+    background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: right;
+    transition: background-size 400ms;
+}
+
+.edit-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     height: 100%;
-    z-index: 9998;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
+    width: 100vw;
+    z-index: 4;
+    backdrop-filter: blur(5px);
 }
-
-
-.editModal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: var(--fade-dark-purple);
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    border-radius: 10px;
-    width: 50vw;
-    box-shadow: var(--cta) inset 0 0 2px 1px;
-    height:35vh;
-}
-
 
 .editImage {
     height: 50px;
@@ -92,53 +133,6 @@
     margin-top: 15px;
     font-size: larger;
     font-weight: 500;
-}
-
-.selectMonsterLabel {
-    margin-top: 15px;
-    font-size: larger;
-    font-weight: 500;
-    align-self: center;
-}
-
-#selectMonster {
-    margin-left: 15px;
-    display: flex;
-    width: 25vw;
-    font-size: x-large;
-    align-self: center;
-}
-
-.battles-list-edit-battle-input {
-    border: none;
-    outline: none;
-    box-shadow: #000 inset 0 0 2px 1px;
-    transition: var(--trans);
-    margin-left: 15px;
-    display: flex;
-    height: 4vh;
-    width: 25vw;
-    font-size: larger;
-    align-self: center;
-}
-
-.battles-list-edit-battle-modal {
-    background: transparent;
-    display: flex;
-    align-self: end;
-    border-style: none;
-    margin: 5px;
-    bottom: 0;
-    position: absolute;
-}
-
-.deleteBattleBtn {
-    background: transparent;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    border-style: none;
-    margin: 5px;
 }
 
 .editBattleTitle {
