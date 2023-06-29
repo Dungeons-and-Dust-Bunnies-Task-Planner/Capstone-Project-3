@@ -1,202 +1,166 @@
 (async () => {
 // CHAT GPT API KEY
-    const apiKey = openAiKey;
+	const apiKey = openAiKey;
 // DOM ELEMENTS
-    const battleIcon = document.querySelector('.battle-icon')
-    const battleIconBanner = document.querySelector('.battle-icon-banner')
-    const battleIconBannerText = document.querySelector('.battle-icon-banner-text')
+	const battleIcon = document.querySelector('.battle-icon');
+	const battleIconBanner = document.querySelector('.battle-icon-banner');
+	const battleIconBannerText = document.querySelector('.battle-icon-banner-text');
 // BATTLES
-    const battleSlideOut = document.querySelector('.battle-slide-out')
+	const battleSlideOut = document.querySelector('.battle-slide-out');
 // CREATE BATTLE
-    const createBattleForm = document.querySelector('.create-battle-form')
-    const createBattleInput = document.querySelector('.create-battle-input')
-    const createBattleBtn = document.querySelector('.create-battle-btn')
+	const createBattleForm = document.querySelector('.create-battle-form');
+	const createBattleInput = document.querySelector('.create-battle-input');
+	const createBattleBtn = document.querySelector('.create-battle-btn');
 // SHOW BATTLE
-    const battlesList = document.querySelector('.battles-list')
-    const battle = document.querySelectorAll('.battle')
-    const battleTitle = document.querySelectorAll('.battle-title')
+	const battlesList = document.querySelector('.battles-list');
+	const battle = document.querySelectorAll('.battle');
+	const battleTitle = document.querySelectorAll('.battle-title');
 // TASKS
-    const tasks = document.querySelector('.tasks')
-    const task = document.querySelectorAll('.task')
+	const tasks = document.querySelector('.tasks');
+	const task = document.querySelectorAll('.task');
 // SHOW TASKSAll
-    const tasksList = document.querySelectorAll('.tasks-list')
-    const monster = document.querySelector('.monster')
+	const tasksList = document.querySelectorAll('.tasks-list');
+	const monster = document.querySelector('.monster');
 // HEALTH-BAR
-    const healthBar = document.querySelector('.health-bar')
-    const healthBarContainer = document.querySelector('.health-bar-container')
+	const healthBar = document.querySelector('.health-bar');
+	const healthBarContainer = document.querySelector('.health-bar-container');
 
 // FUNCTIONS
-    function removeActiveBattles() {
-        battle.forEach(battle => {
-            battle.classList.add('inactive')
-            battle.classList.remove('active')
-        })
-    }
+	function removeActiveBattles() {
+		battle.forEach(battle => {
+			battle.classList.add('inactive');
+			battle.classList.remove('active');
+		});
+	}
 
-    function removeActiveTasks() {
-        tasksList.forEach(list => {
-            list.classList.add('hidden')
-        })
-    }
+	function removeActiveTasks() {
+		tasksList.forEach(list => {
+			list.classList.add('hidden');
+		});
+	}
 
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log('Dynamic elements loaded') //DEBUG
-        document.querySelectorAll('.battle').forEach((battle, idx) => {
-            battle.addEventListener('click', () => {
-                // console.log('battle click event fired')
-                removeActiveBattles()
-                battle.classList.remove('inactive')
-                battle.classList.add('active')
-                // console.log('e.target click event fired')
+	document.addEventListener('DOMContentLoaded', function () {
+		console.log('Dynamic elements loaded'); //DEBUG
+		document.querySelectorAll('.battle').forEach((battle, idx) => {
+			battle.addEventListener('click', () => {
+				// console.log('battle click event fired')
+				removeActiveBattles();
+				battle.classList.remove('inactive');
+				battle.classList.add('active');
+				// console.log('e.target click event fired')
 
-                const battles = document.querySelectorAll('.battle')
-                const battleTasks = document.querySelectorAll('.tasks-list')
-                if (battles[idx].classList.contains('active')) {
-                    removeActiveTasks()
-                    battleTasks[idx].classList.remove('hidden')
-                }
-            })
-        })
+				const battles = document.querySelectorAll('.battle');
+				const battleTasks = document.querySelectorAll('.tasks-list');
+				if (battles[idx].classList.contains('active')) {
+					removeActiveTasks();
+					battleTasks[idx].classList.remove('hidden');
+				}
+			});
+		});
 
-        const monster = document.querySelector("#monster");
-        const numOfTasks = monster.dataset.tasks;
-        const numOfCompleteTasks = monster.dataset.complete;
+		const monster = document.querySelector('#monster');
+		const numOfTasks = monster.dataset.tasks;
+		const numOfCompleteTasks = monster.dataset.complete;
 
-        console.log(numOfTasks);
-        console.log(numOfCompleteTasks)
+		console.log(numOfTasks);
+		console.log(numOfCompleteTasks);
 
-        const calculateMonsterHealth = (numOfTasks, numOfCompleteTasks) => {
-            let monsterHealth = 100; // 100% health initially
-            if (numOfTasks > 0) { // To avoid division by zero
-                let taskValue = 100 / numOfTasks; // Each task's value percentage
-                monsterHealth -= taskValue * numOfCompleteTasks; // Calculate health based on completed tasks
-            }
-            return monsterHealth;
-        }
+		const calculateMonsterHealth = (numOfTasks, numOfCompleteTasks) => {
+			let monsterHealth = 100; // 100% health initially
+			if (numOfTasks > 0) { // To avoid division by zero
+				let taskValue = 100 / numOfTasks; // Each task's value percentage
+				monsterHealth -= taskValue * numOfCompleteTasks; // Calculate health based on completed tasks
+			}
+			return monsterHealth;
+		};
 
-        let monsterHealth = calculateMonsterHealth(numOfTasks, numOfCompleteTasks);
-        const healthBar = document.querySelector(".health-bar");
-        healthBar.style.width = `${monsterHealth}%`;
+		let monsterHealth = calculateMonsterHealth(numOfTasks, numOfCompleteTasks);
+		const healthBar = document.querySelector('.health-bar');
+		healthBar.style.width = `${monsterHealth}%`;
 
-    })
-
-    // async function sendOpenAIRequest(prompt) {
-    //     const apiUrl = "https://api.openai.com/v1/completions";
-    //     const requestBody = {
-    //         prompt: prompt,
-    //         max_tokens: 100,
-    //         model: "text-davinci-003"
-    //     };
-    //
-    //     const response = await fetch(apiUrl, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Authorization': `Bearer ${apiKey}`,
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(requestBody)
-    //     });
-    //
-    //     if (!response.ok) {
-    //         throw new Error(`HTTP error! status: ${response.status}`);
-    //     }
-    //     let data = await response.json();
-    //     console.log(data);
-    //     return data;
-    // }
-    //
-    // const monsterTalkParent = document.querySelector('.monsterTalkParent');
-    // let monsterResponse = await sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!")
-    // monsterTalkParent.innerHTML = `<h2>${monsterResponse.choices[0].text}</h2>`;
+	});
 
 // EVENT LISTENERS
-    battleIcon.addEventListener('click', () => {
-        battleSlideOut.classList.toggle('open')
-        if (battleSlideOut.classList.contains('open')) {
-            battleIconBannerText.textContent = ' << Show Tasks!'
-        } else {
-            battleIconBannerText.textContent = ' << Show Battles!'
-        }
-    })
+	battleIcon.addEventListener('click', () => {
+		battleSlideOut.classList.toggle('open');
+		if (battleSlideOut.classList.contains('open')) {
+			battleIconBannerText.textContent = ' << Show Tasks!';
+		} else {
+			battleIconBannerText.textContent = ' << Show Battles!';
+		}
+	});
 
-    task.forEach(task => {
-        const taskId = task.dataset.taskId
-        const taskComplete = task.dataset.taskComplete
-        const tasksBattleTitle = task.querySelector('.tasks-battle-title')
-        const taskBody = task.querySelector('.task-body')
-        // const completeTaskBtn = task.querySelector('.complete-task-btn')
-        const openEditBtn = task.querySelector('.open-edit-task-btn')
-        const openEditBtnImg = document.querySelector('.open-edit-task-btn-img')
-        const editTaskForm = task.querySelector('.edit-task-form')
-        const editTaskInput = task.querySelector('.edit-task-input')
-        const editTaskSubmitBtn = task.querySelector('.edit-task-submit-btn')
-        const deleteTaskBtn = task.querySelector('.delete-task-btn')
-        const deleteTaskBtnImg = document.querySelector('.delete-task-btn-img')
-        const deleteTaskForm = task.querySelector('.delete-task-form')
-        const createTaskForm = task.querySelector('.create-task-form')
-        const createTaskInput = task.querySelector('.create-task-input')
-        const createTaskBtn = task.querySelector('.create-task-btn')
-        const createTaskBtnImg = document.querySelector('.create-task-btn-img')
-        //COMPUTED STYLES
+	task.forEach(task => {
+		const taskId = task.dataset.taskId;
+		const taskComplete = task.dataset.taskComplete;
+		const tasksBattleTitle = task.querySelector('.tasks-battle-title');
+		const taskBody = task.querySelector('.task-body');
+		const completeTaskBtn = task.querySelector('.complete-task-btn');
+		const openEditBtn = task.querySelector('.open-edit-task-btn');
+		const openEditBtnImg = document.querySelector('.open-edit-task-btn-img');
+		const editTaskForm = task.querySelector('.edit-task-form');
+		const editTaskInput = task.querySelector('.edit-task-input');
+		const editTaskSubmitBtn = task.querySelector('.edit-task-submit-btn');
+		const deleteTaskBtn = task.querySelector('.delete-task-btn');
+		const deleteTaskBtnImg = document.querySelector('.delete-task-btn-img');
+		const deleteTaskForm = task.querySelector('.delete-task-form');
+		const createTaskForm = task.querySelector('.create-task-form');
+		const createTaskInput = task.querySelector('.create-task-input');
+		const createTaskBtn = task.querySelector('.create-task-btn');
+		const createTaskBtnImg = document.querySelector('.create-task-btn-img');
+		//COMPUTED STYLES
 
-        openEditBtn.addEventListener('click', function () {
-            task.classList.toggle('edit')
-            taskBody.classList.toggle('edit')
-            editTaskInput.classList.toggle('edit')
-            deleteTaskBtn.classList.toggle('edit')
-            openEditBtn.classList.toggle('edit')
-            if (openEditBtn.classList.contains('edit')) {
-                openEditBtnImg.src = "/images/green-x.png"
-            } else {
-                openEditBtnImg.src = "/images/green-edit.png"
-            }
-            editTaskSubmitBtn.classList.toggle('edit')
-        })
+		openEditBtn.addEventListener('click', function () {
+			task.classList.toggle('edit');
+			taskBody.classList.toggle('edit');
+			editTaskInput.classList.toggle('edit');
+			deleteTaskBtn.classList.toggle('edit');
+			openEditBtn.classList.toggle('edit');
+			if (openEditBtn.classList.contains('edit')) {
+				openEditBtnImg.src = '/images/green-x.png';
+			} else {
+				openEditBtnImg.src = '/images/green-edit.png';
+			}
+			editTaskSubmitBtn.classList.toggle('edit');
+		});
 
-        editTaskForm.addEventListener('submit', () => {
-            taskBody.classList.toggle('edit')
-            editTaskInput.classList.toggle('edit')
-            deleteTaskBtn.classList.toggle('edit')
-            openEditBtn.classList.toggle('edit')
-            openEditBtnImg.src = "/images/green-edit.png"
-            editTaskSubmitBtn.classList.toggle('edit')
-        })
+		editTaskForm.addEventListener('submit', () => {
+			taskBody.classList.toggle('edit');
+			editTaskInput.classList.toggle('edit');
+			deleteTaskBtn.classList.toggle('edit');
+			openEditBtn.classList.toggle('edit');
+			openEditBtnImg.src = '/images/green-edit.png';
+			editTaskSubmitBtn.classList.toggle('edit');
+		});
 
-        deleteTaskForm.addEventListener('submit', () => {
-            taskBody.classList.toggle('edit')
-            editTaskInput.classList.toggle('edit')
-            deleteTaskBtn.classList.toggle('edit')
-            openEditBtn.classList.toggle('edit')
-            openEditBtnImg.src = "/images/green-edit.png"
-            editTaskSubmitBtn.classList.toggle('edit')
-        })
+		taskBody.addEventListener('click', () => {
+			if (taskBody.classList.contains('not-complete') && confirm(`Are you sure you want to mark this task as 'Completed'?`)) {
+				completeTaskBtn.click();
+			}
+			if (taskBody.classList.contains('complete') && confirm(`Are you sure you want to mark this task as 'Not complete'?`)) {
+				completeTaskBtn.click();
+			}
+		});
 
-        deleteTaskBtn.addEventListener('click', () => {
-            deleteTaskForm.submit()
-        })
+		deleteTaskForm.addEventListener('submit', () => {
+			taskBody.classList.toggle('edit');
+			editTaskInput.classList.toggle('edit');
+			deleteTaskBtn.classList.toggle('edit');
+			openEditBtn.classList.toggle('edit');
+			openEditBtnImg.src = '/images/green-edit.png';
+			editTaskSubmitBtn.classList.toggle('edit');
 
-        // const numOfTasks = document.querySelectorAll('.task').length;
+		});
 
-        // const monsterDamage = (numOfTasks) => {
-        //     console.log(`There are - ${numOfTasks} - tasks`)
-        //     console.log(monsterHealth)
-        //     healthBar.style.width = monsterHealth
-        //     console.log(`This is the healthBar width: ` + healthBar.style.width)
-        //     const damageOutput = (100 / numOfTasks).toFixed(2);
-        //     console.log(`This is the damageOutput: ${damageOutput}`)
-        //     const newHealth = parseFloat(monsterHealth) - parseFloat(damageOutput);
-        //     console.log(`This is the value of newHealth: ${newHealth}`)
-        //     healthBar.style.width = `${newHealth}%`;
-        //     console.log(`This is the remaining healthBar width: ${healthBar.style.width}`)
-        //     return monsterHealth = newHealth
-        // }
-        // monsterDamage(numOfTasks);
-    })
+		deleteTaskBtn.addEventListener('click', () => {
+			deleteTaskForm.submit();
+		});
+	});
+})();
 
-    // editTaskSubmitBtn.addEventListener('click', (e) => {
-    //     editTaskForm.submit()
-    // })
-})()
+// editTaskSubmitBtn.addEventListener('click', (e) => {
+//     editTaskForm.submit()
+// })
 // const numOfTasks = document.querySelectorAll('.task').length;
 // const monsterDamage = (numOfTasks) => {
 //     const healthBar = document.querySelector('.health-bar');
@@ -224,8 +188,6 @@
 //     }
 // };
 
-
-
 // ----------------------------------------------------------------------------------------------------
 // Rest Controller db interaction ---------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------
@@ -245,7 +207,6 @@
 //     let tasks = await getTaskList(battleId);
 //     renderTaskList(tasks, tasksParent);
 // });
-
 
 // console.log(`damageOutput: ${damageOutput}`)
 // const newHealth = currentHealth - parseFloat(damageOutput);
@@ -295,7 +256,6 @@
 
 //----------------- monster image JS ----------------
 
-
 // ----------------------------------------------------------------------------------------------------
 // Rest Controller db interaction ---------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------
@@ -361,7 +321,6 @@
 //     }
 // }
 
-
 // function completeTask(taskId, isComplete) {
 //     // const csrfToken = document.cookie.match(/XSRF-TOKEN=([^;]+)/)[1];
 //     // const csrfToken = document.getElementById('csrfToken').value;
@@ -408,3 +367,49 @@
 // }
 
 // await completeTask(taskId, isComplete)
+
+// async function sendOpenAIRequest(prompt) {
+//     const apiUrl = "https://api.openai.com/v1/completions";
+//     const requestBody = {
+//         prompt: prompt,
+//         max_tokens: 100,
+//         model: "text-davinci-003"
+//     };
+//
+//     const response = await fetch(apiUrl, {
+//         method: 'POST',
+//         headers: {
+//             'Authorization': `Bearer ${apiKey}`,
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(requestBody)
+//     });
+//
+//     if (!response.ok) {
+//         throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+//     let data = await response.json();
+//     console.log(data);
+//     return data;
+// }
+//
+// const monsterTalkParent = document.querySelector('.monsterTalkParent');
+// let monsterResponse = await sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!")
+// monsterTalkParent.innerHTML = `<h2>${monsterResponse.choices[0].text}</h2>`;
+
+// const numOfTasks = document.querySelectorAll('.task').length;
+
+// const monsterDamage = (numOfTasks) => {
+//     console.log(`There are - ${numOfTasks} - tasks`)
+//     console.log(monsterHealth)
+//     healthBar.style.width = monsterHealth
+//     console.log(`This is the healthBar width: ` + healthBar.style.width)
+//     const damageOutput = (100 / numOfTasks).toFixed(2);
+//     console.log(`This is the damageOutput: ${damageOutput}`)
+//     const newHealth = parseFloat(monsterHealth) - parseFloat(damageOutput);
+//     console.log(`This is the value of newHealth: ${newHealth}`)
+//     healthBar.style.width = `${newHealth}%`;
+//     console.log(`This is the remaining healthBar width: ${healthBar.style.width}`)
+//     return monsterHealth = newHealth
+// }
+// monsterDamage(numOfTasks);

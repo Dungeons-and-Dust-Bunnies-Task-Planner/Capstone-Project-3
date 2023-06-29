@@ -149,7 +149,6 @@
 }
 
 .battle-title,
-
 .task-body{
   position:absolute;
   top:0;
@@ -268,11 +267,12 @@
 }
 
 .complete{
-    background:var(--fade-dark-purple);
-    box-shadow:var(--cta-inset-shadow);
-    color:#000;
-    text-decoration:line-through;
+  background:var(--fade-dark-purple);
+  box-shadow:var(--cta-inset-shadow);
+  color:#000;
+  text-decoration:line-through;
 }
+
 /*.task.complete .task-body{*/
 /*  background:var(--fade-dark-purple);*/
 /*  box-shadow:var(--cta-inset-shadow);*/
@@ -437,14 +437,14 @@
 }
 
 .complete-task-btn{
-  left: 268px;
-  z-index: 99;
-  background: transparent;
-  width: 77px;
-  height: 31px;
-  position: relative;
-  box-shadow: none;
-  border: none;
+  left:268px;
+  z-index:99;
+  background:transparent;
+  width:77px;
+  height:31px;
+  position:relative;
+  box-shadow:none;
+  border:none;
 }
 
 /* HEALTH BAR */
@@ -469,7 +469,7 @@
 }
 
 .monster-health-text{
-  z-index: 89;
+  z-index:89;
 }
 
 .health-bar{
@@ -484,17 +484,17 @@
   transition:0.4s ease;
 }
 
-#battleComplete {
-  z-index: 99;
-  text-decoration: none;
-  padding: 10px 10px;
-  border-radius: 0.5em;
-  transition: all ease-in .3s;
-  color: #fff;
-  background: var(--cta);
-  box-shadow: inset black 0 0 2px 1px;
-  border: none;
-  font-size: 2rem;
-  text-shadow: 0 0 10px black;
-  font-weight: 700;
+#battleComplete{
+  z-index:99;
+  text-decoration:none;
+  padding:10px 10px;
+  border-radius:0.5em;
+  transition:all ease-in .3s;
+  color:#fff;
+  background:var(--cta);
+  box-shadow:inset black 0 0 2px 1px;
+  border:none;
+  font-size:2rem;
+  text-shadow:0 0 10px black;
+  font-weight:700;
 }
