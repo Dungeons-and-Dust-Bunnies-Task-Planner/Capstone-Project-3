@@ -7,6 +7,10 @@
     flex-direction: row;
     flex: 1 0 0;
 }
+.links {
+    font-weight: 600;
+    color: hotpink;
+}
 
 
 .one, .three,.five {
@@ -50,8 +54,7 @@
 
 
 .linkRow {
-    align-self: end;
-    justify-content: space-between;
+    justify-content: flex-end;
 
 }
 
