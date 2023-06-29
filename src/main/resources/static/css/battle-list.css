@@ -1,249 +1,281 @@
 .hidden {
-  display: none;
+    display: none;
 }
 
 .battles-list-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 20px;
-  height: 75vh;
-  overflow: scroll;
-  margin-top: 31vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    /*height: 75vh;*/
+    /*overflow: scroll;*/
+    margin-top: 31vh;
 }
 
 /* CREATE BATTLE ROW */
 
 .createBattleContainer {
-  position: relative;
-  width: 100vw;
-  height: 10vh;
-  top: 18vh;
+    position: relative;
+    width: 100vw;
+    height: 10vh;
+    top: 18vh;
 }
 
 .open-edit-battle-btn,
 .create-battle-btn {
-  position: absolute;
-  margin-right: 11vw;
-  margin-top: 100px;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  width: 15%;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background: var(--fade-dark-purple);
-  box-shadow: var(--background) inset 0 0 3px 2px;
-  border-radius: 0 0.7em 0.7em 0;
+    position: absolute;
+    margin-right: 11vw;
+    margin-top: 100px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 15%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: var(--fade-dark-purple);
+    box-shadow: var(--background) inset 0 0 3px 2px;
+    border-radius: 0 0.7em 0.7em 0;
 }
 
 .create-battle-input {
-  margin-left: 15vw;
-  left: 0;
-  width: 70vw;
-  font-size: 1.3em;
-  transition: var(--trans);
-  border-radius: 0.7em;
+    margin-left: 15vw;
+    left: 0;
+    width: 70vw;
+    font-size: 1.3em;
+    transition: var(--trans);
+    border-radius: 0.7em;
 }
 
 .create-battle-input:hover {
-  background: var(--fade-dark-purple);
+    background: var(--fade-dark-purple);
 }
 
 /* EDIT BATTLE BUTTONS */
 
 .modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9998;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 
 .editModal {
-  position: absolute;
-  height: 150px;
-  justify-content: space-between;
-  top: 50%;
-  left: 50%;
-  /*background-color: rgba(87, 85, 96, 0.8);*/
-  box-shadow: 2px 2px rgba(87, 85, 96, 0.8);
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: var(--fade-dark-purple);
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    border-radius: 10px;
+    width: 50vw;
+    box-shadow: var(--cta) inset 0 0 2px 1px;
+    height:35vh;
 }
 
 
 .editImage {
-  height: 50px;
-  width: 50px;
+    height: 50px;
+    width: 50px;
+}
+
+.battleLabel {
+    display: flex;
+    align-self: center;
+    margin-top: 15px;
+    font-size: larger;
+    font-weight: 500;
+}
+
+.selectMonsterLabel {
+    margin-top: 15px;
+    font-size: larger;
+    font-weight: 500;
+    align-self: center;
+}
+
+#selectMonster {
+    margin-left: 15px;
+    display: flex;
+    width: 25vw;
+    font-size: x-large;
+    align-self: center;
+}
+
+.battles-list-edit-battle-input {
+    border: none;
+    outline: none;
+    box-shadow: #000 inset 0 0 2px 1px;
+    transition: var(--trans);
+    margin-left: 15px;
+    display: flex;
+    height: 4vh;
+    width: 25vw;
+    font-size: larger;
+    align-self: center;
 }
 
 .battles-list-edit-battle-modal {
-  background: transparent;
-  display: flex;
-  align-self: start;
-  border-style: none;
-  padding: 4px 4px;
+    background: transparent;
+    display: flex;
+    align-self: end;
+    border-style: none;
+    margin: 5px;
+    bottom: 0;
+    position: absolute;
 }
 
-
+.deleteBattleBtn {
+    background: transparent;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-style: none;
+    margin: 5px;
+}
 
 .editBattleTitle {
-  display: flex;
-  align-items: center;
-  height: 150px;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
 
 /* delete button */
 .deleteBattleForm {
-  align-items: end;
-  display: flex;
+    align-items: end;
+    display: flex;
 }
 
 .battles-list-delete-battle-btn {
-  display: flex;
-  justify-content: end;
+    display: flex;
+    justify-content: end;
 }
 
 /* BATTLES */
 .battles-list-edit-battle-btn {
-  display: contents;
+    display: contents;
 }
 
 .battleColumnSize {
-  width: 75vw;
-  position: relative;
+    width: 75vw;
+    position: relative;
 }
 
 .battles-list-battles {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  min-height: 150px;
-  background: var(--solid-background);
-  border-radius: var(--br);
-  box-shadow: var(--cta) inset 0 0 2px 2px;
-  overflow: hidden;
-  margin-bottom: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    min-height: 150px;
+    background: var(--solid-background);
+    border-radius: var(--br);
+    box-shadow: var(--cta) inset 0 0 2px 2px;
+    /*overflow: hidden;*/
+    margin-bottom: 10px;
 }
 
 .battles-list-title {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  font-family: Barrio, Inter, sans-serif;
-  font-size: 3em;
-  translate: 0 -50%;
-  max-width: 25vw;
-}
-
-.battles-list-edit-battle-input {
-  background: var(--secondary);
-  border: none;
-  outline: none;
-  box-shadow: #000 inset 0 0 2px 1px;
-  transition: var(--trans);
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    font-family: Barrio, Inter, sans-serif;
+    font-size: 3em;
+    translate: 0 -50%;
+    max-width: 25vw;
 }
 
 .editBattle {
-  background: transparent;
-  display: flex;
-  align-self: start;
-  border-style: none;
-  padding: 4px 4px;
+    background: transparent;
+    display: flex;
+    align-self: start;
+    border-style: none;
+    padding: 4px 4px;
 }
 
 .open-battles-list-edit-btn {
-  position: absolute;
-  top: 0;
-  right: -16%;
-  height: 150px;
-  width: 15%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--solid-background);
-  border: none;
-  outline: none;
-  box-shadow: var(--cta) inset 0 0 2px 1px;
+    position: absolute;
+    top: 0;
+    right: -16%;
+    height: 150px;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--solid-background);
+    border: none;
+    outline: none;
+    box-shadow: var(--cta) inset 0 0 2px 1px;
 }
 
 .open-battles-list-edit-btn.edit {
-  right: 0;
-}
-
-.deleteBattleBtn {
-  background: transparent;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  border-style: none;
-  padding: 4px 4px;
+    right: 0;
 }
 
 .battles-list-delete-battle-btn.edit {
-  right: 0;
+    right: 0;
 }
 
 .battles-list-monster-thumb {
-  height: 150px;
-  aspect-ratio: auto;
+    height: 150px;
+    aspect-ratio: auto;
 }
 
 .battles-list-btn-img {
-  height: 50px;
-  width: 50px;
+    height: 50px;
+    width: 50px;
 }
 
 .battles-list-monster-thumb > img {
-  height: 100%;
-  aspect-ratio: auto;
+    height: 100%;
+    aspect-ratio: auto;
 }
 
 
 @media (min-width: 20rem) and (max-width: 30rem) {
 
-  .battles-list-edit-battle-input {
-    width: 125px;
-  }
-  .battles-list-title {
-    font-size: 1.5em;
-  }
-  .battles-list-monster-thumb {
-    height: 100px;
-    aspect-ratio: auto;
-  }
-  .battleColumnSize {
-    width: 100vw;
-    position: relative;
-  }
+    .battles-list-edit-battle-input {
+        width: 125px;
+    }
+
+    .battles-list-title {
+        font-size: 1.5em;
+    }
+
+    .battles-list-monster-thumb {
+        height: 100px;
+        aspect-ratio: auto;
+    }
+
+    .battleColumnSize {
+        width: 100vw;
+        position: relative;
+    }
 
 }
 
 @media (min-width: 30rem) and (max-width: 65rem) {
-  .battles-list-title {
-    font-size: 1.5em;
-  }
-  .battles-list-monster-thumb {
-    height: 100px;
-    aspect-ratio: auto;
-  }
-  .battleColumnSize {
-    width: 100vw;
-    position: relative;
-  }
+    .battles-list-title {
+        font-size: 1.5em;
+    }
 
-  .battles-list-edit-battle-input {
-    width: 125px;
-  }
+    .battles-list-monster-thumb {
+        height: 100px;
+        aspect-ratio: auto;
+    }
+
+    .battleColumnSize {
+        width: 100vw;
+        position: relative;
+    }
+
+    .battles-list-edit-battle-input {
+        width: 125px;
+    }
 }

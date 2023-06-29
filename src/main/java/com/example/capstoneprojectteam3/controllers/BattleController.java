@@ -102,9 +102,11 @@ public class BattleController{
 	@PostMapping("/battlegrounds/edit-battle-title")
 	public String editBattleTitle(
 			@RequestParam(name="battleId") Long battleId
-			,@RequestParam(name="battleTitle") String newBattleTitle){
+			,@RequestParam(name="battleTitle") String newBattleTitle,
+			@RequestParam(name="monsterSelectId") Long monsterId){
 		Battle editBattle = battlesDao.findBattleById(battleId);
 		editBattle.setTitle(newBattleTitle);
+		editBattle.setMonster(monstersDao.findMonsterById(monsterId));
 		battlesDao.save(editBattle);
 		return "redirect:/battleList";
 	}
