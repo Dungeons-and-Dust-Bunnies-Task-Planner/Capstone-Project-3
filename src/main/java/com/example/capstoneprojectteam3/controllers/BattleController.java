@@ -55,12 +55,30 @@ public class BattleController {
 		user = usersDao.findUserById(user.getId());
 		Battle battle = battlesDao.findBattleById(id);
 
-		// CHAT-GPT API REQUEST AND RESPONSE CODE BELOW, COMMENTED OUT TO MINIMIZE API REQUESTS
-//		OpenAIResponse aiResponse = openAIRequest.sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!");
-//		String monsterResponse = aiResponse.getChoices().get(0).getText();
-//		System.out.println(monsterResponse);
+		long numOfTasks = 0;
+		long numOfCompleteTasks = 0;
 
-//		model.addAttribute("monsterTalk", monsterResponse);
+		for (Task task: battle.getTasks()){
+			numOfTasks++;
+			if (task.getTaskComplete() == 1){
+				numOfCompleteTasks++;
+			}
+		}
+
+		double monsterHealth = 100.0;
+		if (numOfTasks > 0) {
+			double taskValue = 100.0 / numOfTasks;
+			monsterHealth -= taskValue * numOfCompleteTasks;
+		}
+		monsterHealth = Math.floor(monsterHealth);
+
+		System.out.println("num of tasks: " + numOfTasks);
+		System.out.println("num of completed tasks: " + numOfCompleteTasks);
+		System.out.println("monster health percentage: " + monsterHealth);
+
+		model.addAttribute("monsterHealth",monsterHealth);
+		model.addAttribute("numOfTasks", numOfTasks);
+		model.addAttribute("numOfCompleteTasks", numOfCompleteTasks);
 		model.addAttribute("user", user);
 		model.addAttribute("battle",battle);
 		return "battlegrounds";
@@ -88,18 +106,22 @@ public class BattleController {
 		return "redirect:/battlegrounds/"+ battleId;
 	}
 
-//	@PostMapping("/battlegrounds/complete-task")
-//	public void editTask(@RequestParam(name="taskId") Long taskId){
-//		System.out.println("made it to the complete-task controller");
-//		Task editTask = tasksDao.findTaskById(taskId);
-//		if (editTask.getTaskComplete() == 0){
-//			editTask.setTaskComplete(1);
-//			tasksDao.save(editTask);
-//		} else if (editTask.getTaskComplete() == 1){
-//			editTask.setTaskComplete(1);
-//			tasksDao.save(editTask);
-//		}
-//	}
+	@PostMapping("/battlegrounds/complete-task")
+	public String completeTask(@RequestParam(name="taskId") Long taskId,
+							 @RequestParam(name = "battleId") Long battleId){
+		System.out.println("made it to the complete-task controller");
+		Task editTask = tasksDao.findTaskById(taskId);
+		if (editTask.getTaskComplete() == 0){
+			editTask.setTaskComplete(1);
+			tasksDao.save(editTask);
+			System.out.printf("task id:%s '%s' marked complete!\n", editTask.getId(), editTask.getTaskBody());
+		} else if (editTask.getTaskComplete() == 1){
+			editTask.setTaskComplete(0);
+			tasksDao.save(editTask);
+			System.out.printf("task id:%s '%s' marked NOT completed!\n", editTask.getId(), editTask.getTaskBody());
+		}
+		return "redirect:/battlegrounds/" + battleId;
+	}
 
 	@PostMapping("/battlegrounds/edit-battle-title")
 	public String editBattleTitle(
@@ -253,26 +275,26 @@ public class BattleController {
         return "redirect:/profile";
     }
 
-      @PostMapping("/battlegrounds/complete-task")
-    @ResponseBody
-    public void editTask(@RequestParam(name = "battleId") Long battleId, @RequestParam(name = "taskId") String taskIdString, RedirectAttributes redirectAttributes) throws RedirectException {
-        Battle battle = battlesDao.findByIdWithTasks(battleId);
-        Long taskId = Long.parseLong(taskIdString);
-        System.out.println(taskId);
-        System.out.println("made it to the complete-task controller");
-        Task editTask = tasksDao.findTaskById(taskId);
-        if (editTask.getTaskComplete() == 0) {
-            editTask.setTaskComplete(1);
-            tasksDao.save(editTask);
-        } else if (editTask.getTaskComplete() == 1) {
-            editTask.setTaskComplete(1);
-            tasksDao.save(editTask);
-        }
-
-        redirectAttributes.addAttribute("battleId", battleId);
-
-        throw new RedirectException("/battlegrounds/{battleId}");
-    }
+//	@PostMapping("/battlegrounds/complete-task")
+//    @ResponseBody
+//    public void editTask(@RequestParam(name = "battleId") Long battleId, @RequestParam(name = "taskId") String taskIdString, RedirectAttributes redirectAttributes) throws RedirectException {
+//        Battle battle = battlesDao.findByIdWithTasks(battleId);
+//        Long taskId = Long.parseLong(taskIdString);
+//        System.out.println(taskId);
+//        System.out.println("made it to the complete-task controller");
+//        Task editTask = tasksDao.findTaskById(taskId);
+//        if (editTask.getTaskComplete() == 0) {
+//            editTask.setTaskComplete(1);
+//            tasksDao.save(editTask);
+//        } else if (editTask.getTaskComplete() == 1) {
+//            editTask.setTaskComplete(1);
+//            tasksDao.save(editTask);
+//        }
+//
+//        redirectAttributes.addAttribute("battleId", battleId);
+//
+//        throw new RedirectException("/battlegrounds/{battleId}");
+//    }
 
 
 }

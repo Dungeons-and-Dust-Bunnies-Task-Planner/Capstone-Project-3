@@ -1,4 +1,4 @@
-(() => {
+(async () => {
 // CHAT GPT API KEY
     const apiKey = openAiKey;
 // DOM ELEMENTS
@@ -40,8 +40,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        const healthBarStyles = window.getComputedStyle(healthBar)
-        console.log(healthBarStyles)
         console.log('Dynamic elements loaded') //DEBUG
         document.querySelectorAll('.battle').forEach((battle, idx) => {
             battle.addEventListener('click', () => {
@@ -60,44 +58,56 @@
             })
         })
 
-        // document.querySelectorAll('.task').forEach(task => {
-        //     task.addEventListener('click', (e) => {
-        //         console.log('task click event fired') //DEBUG
-        //         task.classList.toggle('complete')
-        //         task.classList.toggle('not-complete')
-        //     })
-        // })
+        const monster = document.querySelector("#monster");
+        const numOfTasks = monster.dataset.tasks;
+        const numOfCompleteTasks = monster.dataset.complete;
 
-        async function sendOpenAIRequest(prompt) {
-            const apiUrl = "https://api.openai.com/v1/completions";
-            const requestBody = {
-                prompt: prompt,
-                max_tokens: 100,
-                model: "text-davinci-003"
-            };
+        console.log(numOfTasks);
+        console.log(numOfCompleteTasks)
 
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${apiKey}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+        const calculateMonsterHealth = (numOfTasks, numOfCompleteTasks) => {
+            let monsterHealth = 100; // 100% health initially
+            if (numOfTasks > 0) { // To avoid division by zero
+                let taskValue = 100 / numOfTasks; // Each task's value percentage
+                monsterHealth -= taskValue * numOfCompleteTasks; // Calculate health based on completed tasks
             }
-            let data = await response.json();
-            console.log(data);
-            return data;
+            return monsterHealth;
         }
 
-        const monsterTalkParent = document.querySelector('.monsterTalkParent');
-        let monsterResponse = await sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!")
-        monsterTalkParent.innerHTML = `<h2>${monsterResponse.choices[0].text}</h2>`;
+        let monsterHealth = calculateMonsterHealth(numOfTasks, numOfCompleteTasks);
+        const healthBar = document.querySelector(".health-bar");
+        healthBar.style.width = `${monsterHealth}%`;
+
     })
 
+    // async function sendOpenAIRequest(prompt) {
+    //     const apiUrl = "https://api.openai.com/v1/completions";
+    //     const requestBody = {
+    //         prompt: prompt,
+    //         max_tokens: 100,
+    //         model: "text-davinci-003"
+    //     };
+    //
+    //     const response = await fetch(apiUrl, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Authorization': `Bearer ${apiKey}`,
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(requestBody)
+    //     });
+    //
+    //     if (!response.ok) {
+    //         throw new Error(`HTTP error! status: ${response.status}`);
+    //     }
+    //     let data = await response.json();
+    //     console.log(data);
+    //     return data;
+    // }
+    //
+    // const monsterTalkParent = document.querySelector('.monsterTalkParent');
+    // let monsterResponse = await sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!")
+    // monsterTalkParent.innerHTML = `<h2>${monsterResponse.choices[0].text}</h2>`;
 
 // EVENT LISTENERS
     battleIcon.addEventListener('click', () => {
@@ -109,7 +119,6 @@
         }
     })
 
-    let monsterHealth = `${100}%`;
     task.forEach(task => {
         const taskId = task.dataset.taskId
         const taskComplete = task.dataset.taskComplete
@@ -166,52 +175,27 @@
             deleteTaskForm.submit()
         })
 
-        taskBody.addEventListener('click', () => {
-            console.log(`taskBody clicked`)
-            const isComplete = task.classList.contains('complete');
-            const isNotComplete = task.classList.contains('not-complete')
-            if (isComplete) {
-                taskBody.classList.remove('not-complete')
-                taskBody.classList.add('complete')
-                // console.log(`${taskBody.classList}: taskBody is complete`)
-            }
-            if (isNotComplete) {
-                taskBody.classList.remove('complete');
-                taskBody.classList.add('not-complete')
-                // console.log(`${taskBody.classList}: taskBody is not-complete`)
-            }
-            const numOfTasks = document.querySelectorAll('.task').length;
+        // const numOfTasks = document.querySelectorAll('.task').length;
 
-
-            const monsterDamage = (numOfTasks) => {
-                console.log(`There are - ${numOfTasks} - tasks`)
-                console.log(monsterHealth)
-                healthBar.style.width = monsterHealth
-                console.log(`This is the healthBar width: ` + healthBar.style.width)
-                const damageOutput = (100 / numOfTasks).toFixed(2);
-                console.log(`This is the damageOutput: ${damageOutput}`)
-                const newHealth = parseFloat(monsterHealth) - parseFloat(damageOutput);
-                console.log(`This is the value of newHealth: ${newHealth}`)
-                healthBar.style.width = `${newHealth}%`;
-                console.log(`This is the remaining healthBar width: ${healthBar.style.width}`)
-                return monsterHealth = newHealth
-            }
-            monsterDamage(numOfTasks);
-        })
-
-        completeTaskBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log('complete task even started')
-            const isComplete = task.classList.toggle('complete');
-            console.log('classList toggled');
-            completeTask(taskId, isComplete);
-            console.log('complete task function fired')
-        })
+        // const monsterDamage = (numOfTasks) => {
+        //     console.log(`There are - ${numOfTasks} - tasks`)
+        //     console.log(monsterHealth)
+        //     healthBar.style.width = monsterHealth
+        //     console.log(`This is the healthBar width: ` + healthBar.style.width)
+        //     const damageOutput = (100 / numOfTasks).toFixed(2);
+        //     console.log(`This is the damageOutput: ${damageOutput}`)
+        //     const newHealth = parseFloat(monsterHealth) - parseFloat(damageOutput);
+        //     console.log(`This is the value of newHealth: ${newHealth}`)
+        //     healthBar.style.width = `${newHealth}%`;
+        //     console.log(`This is the remaining healthBar width: ${healthBar.style.width}`)
+        //     return monsterHealth = newHealth
+        // }
+        // monsterDamage(numOfTasks);
     })
 
-        editTaskSubmitBtn.addEventListener('click', (e) => {
-            editTaskForm.submit()
-        })
+    // editTaskSubmitBtn.addEventListener('click', (e) => {
+    //     editTaskForm.submit()
+    // })
 })()
 // const numOfTasks = document.querySelectorAll('.task').length;
 // const monsterDamage = (numOfTasks) => {

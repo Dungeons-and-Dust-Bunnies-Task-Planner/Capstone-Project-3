@@ -48,4 +48,10 @@ public class OpenAIRequest {
             return openAIResponse;
         }
     }
+    // copy this into any controller to use it. we are using javascript version of api instead of java.
+    // CHAT-GPT API REQUEST AND RESPONSE CODE BELOW, COMMENTED OUT TO MINIMIZE API REQUESTS
+//		OpenAIResponse aiResponse = openAIRequest.sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!");
+//		String monsterResponse = aiResponse.getChoices().get(0).getText();
+//		System.out.println(monsterResponse);
+    //		model.addAttribute("monsterTalk", monsterResponse);
 }
