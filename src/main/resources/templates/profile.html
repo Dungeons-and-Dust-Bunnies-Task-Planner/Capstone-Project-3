@@ -63,14 +63,14 @@
                 <div class="battleArea">
                     <div class="row cardRow">
                         <h1>Battlegrounds</h1><br>
-
-                        <div th:if="${battles.size() == 0}" class="battleCard">
+                        <!-- The bottom code checks for battles in progress and displays them -->
+                        <div th:if="${!hasActiveBattles}" class="battleCard">
                             <div class="column battleTitle">
                                 <h2 class="battleTitle">No Active Battles</h2>
                                 <button class="non-Btn"><a th:href="@{/battleList}" >Create Battle</a></button>
                             </div>
                         </div>
-                        <div th:if="${battles != 0}" th:each="battle : ${battles}" class="battleCard">
+                        <div th:if="${hasActiveBattles and battle.status == 0}" th:each="battle : ${battles}" class="battleCard">
                             <div th:if="${battle.status == 0}" class="column battleImageMonster">
                                     <img class="battleImageMonster" th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}" th:src="${battle.monster.monsterImages[0].monster_img}" alt="Battle monster image">
                             </div>
@@ -104,8 +104,92 @@
                 </div>
             </div>
         </div>
-        <div th:insert="~{partials/footer :: footer}"></div>
+        <!--    BATTLE HISTORY SECTION       -->
+<!--        <div class="container grow">-->
+<!--            <div class="row badgeRow grow">-->
+<!--                <div class="column badgeArea">-->
+<!--                    <div class="activeBadgeRow">-->
+<!--                        <div th:each="battle : ${battles}" class="battleCard">-->
+<!--                        <h1>Battle History</h1>-->
+<!--                            <div th:if="${battle.status == 0}">-->
+<!--                                <h1 class="profile-no-badges">No Completed Battles</h1>-->
+<!--                            </div>-->
+<!--                            <div th:if="${battle.status == 1}">-->
+<!--                                <div>-->
+<!--                                    <img th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}" th:src="${battle.monster.monsterImages[0].monster_img}" alt="Battle monster image">-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <h2 th:if="${battle.status == 1}"><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>-->
+<!--                                    <p th:if="${battle.status == 1}" class="battleTasks">Completed</p>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--
+-->
+<!--        <div class="container grow">-->
+<!--            <div class="row battleRow grow">-->
+<!--                <div class="battleArea">-->
+<!--                    <div class="row cardRow">-->
+<!--                        <h1>Battle History</h1><br>-->
+<!--                        &lt;!&ndash; The bottom code checks for battles in progress and displays them &ndash;&gt;-->
+<!--                        <div th:if="${battle.status == 0}" th:each="battle : ${battles}"class="battleCard">-->
+<!--                            <div class="column battleTitle">-->
+<!--                                <h2 class="battleTitle">No Battle History</h2>-->
+<!--                                <button class="non-Btn"><a th:href="@{/battleList}" >Create Battle</a></button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div th:if="${battle.status == 1}" th:each="battle : ${battles}" class="battleCard">-->
+<!--                            <div th:if="${battle.status == 1}" class="column battleImageMonster">-->
+<!--                                <img class="battleImageMonster" th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}" th:src="${battle.monster.monsterImages[0].monster_img}" alt="Battle monster image">-->
+<!--                            </div>-->
+<!--                            <div th:if="${battle.status == 1}" class="column battleTitle">-->
+<!--                                <h2 th:if="${battle.status == 1}"><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>-->
+<!--                                <p th:if="${battle.status == 1}" class="battleTasks">Monster Slain</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <div class="container grow">
+            <div class="row battleRow grow">
+                <div class="battleArea">
+                    <div class="row cardRow">
+                        <h1>Battlegrounds</h1><br>
+                        <!-- The bottom code checks for battles in progress and displays them -->
+                        <div th:if="${battles.size() == 0 }" class="battleCard">
+                            <div class="column battleTitle">
+                                <h2 class="battleTitle">No Active Battles</h2>
+                                <button class="non-Btn"><a th:href="@{/battleList}" >Create Battle</a></button>
+                            </div>
+                        </div>
+                        <div th:if="${battles.size() >= 1 and battle.status == 1}" th:each="battle : ${battles}" class="battleCard">
+                            <div th:if="${battle.status == 1}" class="column battleImageMonster">
+                                <img class="battleImageMonster" th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}" th:src="${battle.monster.monsterImages[0].monster_img}" alt="Battle monster image">
+                            </div>
+                            <div th:if="${battle.status == 1}" class="column battleTitle">
+                                <h2 th:if="${battle.status == 1}"><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>
+                                <p th:if="${battle.status == 1}" class="battleTasks">In Progress</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
+        <div th:insert="~{partials/footer :: footer}"></div>
 <!-- This is the JS for Badge Claiming -->
 
 <script>
