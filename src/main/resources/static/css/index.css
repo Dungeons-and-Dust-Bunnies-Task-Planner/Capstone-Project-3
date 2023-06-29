@@ -10,6 +10,12 @@
     font-weight: 400;
 }
 
+
+.MTMpage {
+    color: var(--cta);
+    font-weight: 400;
+}
+
 .land-h2 a {
     text-decoration: none;
     padding: 10px 10px;
