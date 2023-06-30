@@ -28,6 +28,8 @@
 	// HEALTH-BAR
 	const healthBar = document.querySelector('.health-bar');
 	const healthBarContainer = document.querySelector('.health-bar-container');
+	// CUSTOM ALERT
+	const customAlert = document.querySelector('.complete-task-alert');
 
 	// FUNCTIONS
 	function removeActiveBattles() {
@@ -100,10 +102,7 @@
 
 	alertOverlay.addEventListener('click', () => {
 		alertOverlay.classList.add('hidden');
-		const alert = document.querySelectorAll('.complete-task-alert');
-		if (checkForClass(alert, 'hidden')) {
-			alert.classList.add('hidden');
-		}
+		customAlert.classList.add('hidden');
 	});
 
 	task.forEach(task => {
@@ -112,7 +111,6 @@
 		const tasksBattleTitle = task.querySelector('.tasks-battle-title');
 		const taskBody = task.querySelector('.task-body');
 		const completeTaskForm = task.querySelector('.complete-task-form');
-		const taskAlert = task.querySelector('.complete-task-alert');
 		const openEditBtn = task.querySelector('.open-edit-task-btn');
 		const openEditBtnImg = task.querySelector('.open-edit-task-btn-img');
 		const editTaskForm = task.querySelector('.edit-task-form');
@@ -163,6 +161,8 @@
 		cancelBtn.addEventListener('click', e => {
 			e.preventDefault();
 			alertOverlay.click();
+			customAlert.classList.add('hidden');
+
 		});
 
 		confirmBtn.addEventListener('click', e => {
