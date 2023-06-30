@@ -49,6 +49,35 @@
 		return element.classList.contains(className);
 	};
 
+	async function sendOpenAIRequest(prompt) {
+		const apiUrl = "https://api.openai.com/v1/completions";
+		const requestBody = {
+			prompt: prompt,
+			max_tokens: 100,
+			model: "text-davinci-003"
+		};
+
+		const response = await fetch(apiUrl, {
+			method: 'POST',
+			headers: {
+				'Authorization': `Bearer ${apiKey}`,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(requestBody)
+		});
+
+		if (!response.ok) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+		}
+		let data = await response.json();
+		console.log(data);
+		return data;
+	}
+
+	const monsterTalkParent = document.querySelector('.monsterTalkParent');
+	let monsterResponse = await sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!")
+	monsterTalkParent.innerHTML = `<h2>${monsterResponse.choices[0].text}</h2>`;
+
 	document.addEventListener('DOMContentLoaded', function () {
 		console.log('Dynamic elements loaded'); //DEBUG
 		document.querySelectorAll('.battle').forEach((battle, idx) => {
@@ -395,35 +424,6 @@
 // }
 
 // await completeTask(taskId, isComplete)
-
-// async function sendOpenAIRequest(prompt) {
-//     const apiUrl = "https://api.openai.com/v1/completions";
-//     const requestBody = {
-//         prompt: prompt,
-//         max_tokens: 100,
-//         model: "text-davinci-003"
-//     };
-//
-//     const response = await fetch(apiUrl, {
-//         method: 'POST',
-//         headers: {
-//             'Authorization': `Bearer ${apiKey}`,
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(requestBody)
-//     });
-//
-//     if (!response.ok) {
-//         throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-//     let data = await response.json();
-//     console.log(data);
-//     return data;
-// }
-//
-// const monsterTalkParent = document.querySelector('.monsterTalkParent');
-// let monsterResponse = await sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!")
-// monsterTalkParent.innerHTML = `<h2>${monsterResponse.choices[0].text}</h2>`;
 
 // const numOfTasks = document.querySelectorAll('.task').length;
 
