@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/head :: head ('Error Page')"></head>
+<body>
+<div class="page-wrapper">
+  <div class="container grow">
+    <div class="row justify-center" style="margin-top: 10rem">
+      <div class="column">
+        <h1> Oh no! Something went wrong!</h1>
+        <a th:href="@{/home}"><h2 style="color: Blue; text-decoration: underline">Take me back home!</h2></a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
