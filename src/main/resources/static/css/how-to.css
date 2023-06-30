@@ -41,8 +41,16 @@
 .how-img {
     height: 80%;
     width: 70%;
-    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.how-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 
 .how-p {
     font-size: 1.3rem;
@@ -71,6 +79,7 @@
     }
     .how-p {
         padding: 0;
+        font-size: 1.3rem;
     }
     .how-p-title{
         width: 60%;
@@ -78,5 +87,8 @@
     }
     .steps {
         font-size: 1.7rem;
+    }
+    .how-img img {
+        width:90vw;
     }
 }
