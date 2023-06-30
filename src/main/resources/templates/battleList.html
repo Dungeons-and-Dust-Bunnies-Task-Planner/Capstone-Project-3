@@ -11,7 +11,8 @@
             <!-- CREATE BATTLE FORM -->
             <form th:action="@{/battlegrounds/create-battle}" th:method="post">
                 <div class="hidden-form-wrap">
-                    <input class="create-battle-input" type="text" placeholder="Add your battle..." name="battleTitle" required/>
+                    <input class="create-battle-input" type="text" placeholder="Add your battle..." name="battleTitle"
+                           required/>
                     <button class="create-battle-btn" type="submit">Submit</button>
                 </div>
             </form>
@@ -23,20 +24,25 @@
             <div class="battles-list-container">
                 <div class="row">
                     <div class="battleColumnSize">
-                        <div id="battleDiv" class="battles-list-battles" th:each="battle : ${battles}" th:data-battle-id="${battle.id}">
+                        <div id="battleDiv" th:if="${battle.status == 0}" class="battles-list-battles"
+                             th:each="battle : ${battles}"
+                             th:data-battle-id="${battle.id}">
 
                             <h3 class="battles-list-title">
                                 <a th:text="${battle.title}" th:href="@{|/battlegrounds/${battle.id}|}"></a>
                             </h3>
                             <div class="battles-list-monster-thumb">
-                                <img th:src="${battle.monster.monsterImages[0].monster_img}" alt="monster thumbnail">
+                                <img th:src="${battle.monster.monsterImages[0].monster_img}"
+                                     alt="monster thumbnail">
                             </div>
-                            <button class="editBattle" type="button" th:id="'battle-edit-btn' + ${battle.id}" th:data-battle-id="${battle.id}">
+                            <button class="editBattle" type="button" th:id="'battle-edit-btn' + ${battle.id}"
+                                    th:data-battle-id="${battle.id}">
                                 <img class="editImage" src="/images/green-edit.png" alt="icon">
                             </button>
                             <!-- EDIT BATTLE FORM -->
                             <div class="edit-modal-overlay hidden"></div>
-                            <div class="editModal hidden justify-space-between grow d-flex" th:data-battle-id="${battle.id}">
+                            <div class="editModal hidden justify-space-between grow d-flex"
+                                 th:data-battle-id="${battle.id}">
                                 <form th:action="@{/battlegrounds/edit-battle-title}" th:method="post"
                                       class="editBattleTitle">
                                     <input class="submit-btn" type="hidden" th:value="${battle.id}" name="battleId">
@@ -44,7 +50,8 @@
                                         <h1>Change battle name</h1>
                                     </div>
                                     <div class="row grow justify-center">
-                                        <input class="largeInput" th:value="${battle.title}" name="battleTitle" id="battleTitle">
+                                        <input class="largeInput" th:value="${battle.title}" name="battleTitle"
+                                               id="battleTitle">
                                     </div>
                                     <div class="row grow justify-center">
                                         <h1>Change your monster</h1>
@@ -63,13 +70,17 @@
                                         <button class="large-cta-btn" type="submit">Confirm Changes</button>
                                     </div>
                                 </form>
-                                <button class="large-cta-btn indianred" id="delete-confirm-open-btn" type="submit" style="align-self: center; padding-bottom: 10px">Delete Battle</button>
+                                <button class="large-cta-btn indianred" id="delete-confirm-open-btn" type="submit"
+                                        style="align-self: center; padding-bottom: 10px">Delete Battle
+                                </button>
                                 <div class="delete-confirm-modal container hidden">
                                     <!-- DELETE BATTLE -->
                                     <h2>Are you sure?</h2>
                                     <div class="row flex-direction-column">
-                                        <form th:action="@{/battlegrounds/delete-battle}" th:method="post" class="deleteBattleForm">
-                                            <input class="submit-btn" type="hidden" th:value="${battle.id}" name="battleId">
+                                        <form th:action="@{/battlegrounds/delete-battle}" th:method="post"
+                                              class="deleteBattleForm">
+                                            <input class="submit-btn" type="hidden" th:value="${battle.id}"
+                                                   name="battleId">
                                             <div class="row">
                                                 <div class="column" style="width: 100%">
                                                     <button class="large-cta-btn" type="submit">Yes</button>
@@ -77,7 +88,9 @@
                                             </div>
                                             <div class="row">
                                                 <div class="column" style="width: 100%">
-                                                    <button class="large-cta-btn indianred" id="cancel-delete" type="button">No</button>
+                                                    <button class="large-cta-btn indianred" id="cancel-delete"
+                                                            type="button">No
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>

@@ -60,7 +60,7 @@
             <form class="edit-task-form" th:action="@{/battlegrounds/edit-task-body}" th:method="post">
               <input type="hidden" name="taskId" th:value="${task.id}">
               <input class="edit-task-input" type="text" name="editTaskBody"
-                     th:value="${task.taskBody}">
+                     th:value="${task.taskBody}" required>
               <button class="edit-task-submit-btn" type="submit">
                 <img class="btn-img edit-task-submit-btn-img" src="/images/green-check.png"
                      alt="button icon">
@@ -82,7 +82,7 @@
           <li class="create-task-form-li">
             <form class="create-task-form" th:action="@{/battlegrounds/create-task}" th:method="post">
               <input type="hidden" name="battleId" th:value="${battle.id}" id="battleId">
-              <input class="create-task-input" type="text" name="taskBody" placeholder="Create new task">
+              <input class="create-task-input" type="text" name="taskBody" placeholder="Create new task" required>
               <button class="create-task-btn" type="submit">
                 <img class="btn-img create-task-btn-img" src="/images/green-plus.png" alt="button icon">
               </button>
@@ -122,9 +122,8 @@
         <!------------  BTN FOR battle Complete increment      ------------>
         <form th:action="@{/battlegrounds/complete}" th:method="post">
           <input type="hidden" th:value="${battle.getId()}" th:name="battleId">
-          <button th:if="${numOfCompleteTasks == numOfTasks}" type="submit" id="battleComplete"
-                  name="battleComplete">Finish Him!
-          </button>
+<!--          FINISH HIM BUTTON-->
+          <button th:if="${numOfCompleteTasks == numOfTasks && battle.tasks.size() > 0}" type="submit" id="battleComplete" name="battleComplete">Finish Him!</button>
         </form>
         <!--            MONSTER CHAT BOX-->
         <div class="battle-chat-box row monsterTalkParent">
