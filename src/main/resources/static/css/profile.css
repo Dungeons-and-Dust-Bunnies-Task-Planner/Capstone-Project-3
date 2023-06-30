@@ -251,7 +251,7 @@ input.submit-btn:hover, .submit-btn:hover {
 
 /* BATTLE AREA */
 .battleRow {
-    margin: 50px 50px;
+    margin: 0px 50px 50px 50px;
     width: 75vw;
     display: flex;
     justify-content: center;
@@ -333,7 +333,7 @@ height: 15vh;
 
 /* BADGES */
 .badgeRow {
-    margin: 50px 50px;
+    margin: 0px 50px 50px 50px;
     width: 75vw;
     display: flex;
     flex-direction: column;
@@ -349,18 +349,18 @@ height: 15vh;
     background: var(--fade-dark-purple);
     border-radius: .5em;
     width: 75vw;
-    overflow-x: scroll;
+    overflow-x: auto;
     padding: 10px;
+    align-items: center;
+    flex: 0 0 auto;
+    max-width: 100%;
 }
 
 .activeBadgeRow {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: flex-start;
     gap: 15px;
-    padding: 0 20px;
 }
+
 
 .badgeCard {
     /*height: 500px;*/
@@ -439,6 +439,7 @@ height: 15vh;
         top: 8vh;
     }
     .battleCard {
+        max-height: fit-content;
         flex-direction: column;
         align-items: center;
     }
@@ -490,6 +491,7 @@ height: 15vh;
         top: 11vh;
     }
     .battleCard {
+        max-height: fit-content;
         flex-direction: column;
         align-items: center;
     }
