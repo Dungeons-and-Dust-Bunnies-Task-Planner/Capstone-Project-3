@@ -24,6 +24,12 @@
   --trans:all ease-out .4s
 }
 
+html {
+  scroll-behavior: smooth;
+}
+.mt-11{
+  margin-top:11vh;
+}
 
 body{
   background-image:url("https://cdn.discordapp.com/attachments/526187085741162498/1116809491128782958/Untitled_Artwork.png");

@@ -54,9 +54,10 @@
     border-radius: 10px;
     background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
     background-repeat: no-repeat;
-    background-size: 0% 100%;
+    background-size: 0 100%;
     background-position-x: right;
     transition: background-size 400ms;
+    text-shadow: 0 0 10px black;
 }
 
 .login-register-Btn:hover {
@@ -164,12 +165,21 @@
 
 /*--------------------- CONTACT US PAGE ---------------------*/
 
+.formCSS {
+    width: 60vw;
+}
+
+.contacth3 {
+    font-weight: 300;
+    font-size: medium;
+}
+
 .contact-form {
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
     background: var(--fade-dark-purple);
     border-radius: 12px;
     width: 80vw;
-    height: 30rem;
+    height: auto;
     display: flex;
     justify-content: flex-start;
     padding: 30px;
@@ -217,11 +227,11 @@
 .kyle {
     flex-direction: row;
     padding-bottom: 20px;
-    width: 75vw;
+    /*width: 75vw;*/
 }
 .msg-area {
     display: flex;
-    width: 75vw;
+    /*width: 75vw;*/
     height: 200px;
     justify-content: center;
     align-items: center;
@@ -243,7 +253,7 @@
         background: var(--fade-dark-purple);
         border-radius: 12px;
         width: 80vw;
-        height: 30rem;
+        height: auto;
         display: flex;
         justify-content: flex-start;
         padding: 30px;
@@ -254,7 +264,7 @@
     }
     .msg-area {
         display: flex;
-        width: 75vw;
+        width: 60vw;
         height: 200px;
         justify-content: center;
         align-items: center;

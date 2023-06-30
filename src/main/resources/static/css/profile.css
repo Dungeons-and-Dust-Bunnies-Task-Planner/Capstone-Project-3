@@ -6,6 +6,8 @@
 .h1Profile {
     font-family: 'Nunito', sans-serif;
     font-size: 75px;
+    position: relative;
+    top: 15vh;
 }
 
 .h2Profile {
@@ -71,6 +73,7 @@
 }
 
 .edit-modal > form > input {
+    width: 100%;
     height: 7vh;
     padding: 6px 8px;
     outline: none;
@@ -97,12 +100,13 @@
 .deleteAccount:hover {
    color: var(--cta);
 }
-input.submit-btn{
+input.submit-btn, .submit-btn{
     color: white;
     background: var(--cta);
+    text-shadow: 0 0 10px black;
 }
 
-input.submit-btn:hover {
+input.submit-btn:hover, .submit-btn:hover {
     background-size: 100% 100%;
     background-position-x: left;
     cursor: pointer;
@@ -147,7 +151,9 @@ input.submit-btn:hover {
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: flex;
+    justify-content:center;
+    align-items:center;
     font-size: 1.5rem;
     margin: 20px 2px;
     cursor: pointer;
@@ -159,6 +165,7 @@ input.submit-btn:hover {
     background-position-x: right;
     transition: background-size 400ms;
     background-color: var(--cta);
+    text-shadow: 0 0 10px black;
 }
 .image-add:hover {
     background-size: 100% 100%;
@@ -184,6 +191,8 @@ input.submit-btn:hover {
     display: flex;
     border-radius: 50%;
     border: 5px solid #fff;
+    position: relative;
+    top: 10vh;
 }
 
 .avatarPlacement {
@@ -225,9 +234,10 @@ input.submit-btn:hover {
     color: white;
     background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
     background-repeat: no-repeat;
-    background-size: 0% 100%;
+    background-size: 0 100%;
     background-position-x: right;
     transition: background-size 400ms;
+    text-shadow: 0 0 10px black;
 }
 .editButton:hover{
     background-size: 100% 100%;
@@ -241,7 +251,7 @@ input.submit-btn:hover {
 
 /* BATTLE AREA */
 .battleRow {
-    margin: 50px 50px;
+    margin: 0px 50px 50px 50px;
     width: 75vw;
     display: flex;
     justify-content: center;
@@ -323,7 +333,7 @@ height: 15vh;
 
 /* BADGES */
 .badgeRow {
-    margin: 50px 50px;
+    margin: 0px 50px 50px 50px;
     width: 75vw;
     display: flex;
     flex-direction: column;
@@ -339,18 +349,18 @@ height: 15vh;
     background: var(--fade-dark-purple);
     border-radius: .5em;
     width: 75vw;
-    overflow-x: scroll;
+    overflow-x: auto;
     padding: 10px;
+    align-items: center;
+    flex: 0 0 auto;
+    max-width: 100%;
 }
 
 .activeBadgeRow {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: flex-start;
     gap: 15px;
-    padding: 0 20px;
 }
+
 
 .badgeCard {
     /*height: 500px;*/
@@ -416,6 +426,7 @@ height: 15vh;
     .avatar-wrapper {
         height: 100px;
         width: 100px;
+        top: 4vh;
     }
 
     .editProfile {
@@ -425,8 +436,10 @@ height: 15vh;
     .h1Profile {
         font-size: 35px;
         margin-top: -35px;
+        top: 8vh;
     }
     .battleCard {
+        max-height: fit-content;
         flex-direction: column;
         align-items: center;
     }
@@ -469,13 +482,16 @@ height: 15vh;
     .avatar-wrapper {
         height: 150px;
         width: 150px;
+        top: 7vh;
     }
 
     .h1Profile {
         font-size: 4rem;
         margin-top: 0;
+        top: 11vh;
     }
     .battleCard {
+        max-height: fit-content;
         flex-direction: column;
         align-items: center;
     }

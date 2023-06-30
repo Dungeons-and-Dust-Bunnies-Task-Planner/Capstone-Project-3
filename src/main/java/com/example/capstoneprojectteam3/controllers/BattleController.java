@@ -9,33 +9,35 @@ import com.example.capstoneprojectteam3.repositories.TaskRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
 import com.example.capstoneprojectteam3.utils.OpenAIRequest;
 import com.example.capstoneprojectteam3.utils.RandomNumGen;
+import org.apache.http.client.RedirectException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
-public class BattleController{
+public class BattleController {
 
 //	@Autowired
 //	private OpenAIRequest openAIRequest;
 
-	private final UserRepository usersDao;
-	private final BattleRepository battlesDao;
-	private final TaskRepository tasksDao;
-	private final MonsterRepository monstersDao;
-	private final BadgeRepository badgesDao;
+    private final UserRepository usersDao;
+    private final BattleRepository battlesDao;
+    private final TaskRepository tasksDao;
+    private final MonsterRepository monstersDao;
+    private final BadgeRepository badgesDao;
 
-	public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao, MonsterRepository monstersDao, BadgeRepository badgesDao){
-		this.usersDao = usersDao;
-		this.battlesDao = battlesDao;
-		this.tasksDao = tasksDao;
-		this.monstersDao = monstersDao;
-		this.badgesDao = badgesDao;
-	}
+    public BattleController(UserRepository usersDao, BattleRepository battlesDao, TaskRepository tasksDao, MonsterRepository monstersDao, BadgeRepository badgesDao) {
+        this.usersDao = usersDao;
+        this.battlesDao = battlesDao;
+        this.tasksDao = tasksDao;
+        this.monstersDao = monstersDao;
+        this.badgesDao = badgesDao;
+    }
 
 	@GetMapping("/battleList")
 	public String showBattleList(Model model){
@@ -53,12 +55,30 @@ public class BattleController{
 		user = usersDao.findUserById(user.getId());
 		Battle battle = battlesDao.findBattleById(id);
 
-		// CHAT-GPT API REQUEST AND RESPONSE CODE BELOW, COMMENTED OUT TO MINIMIZE API REQUESTS
-//		OpenAIResponse aiResponse = openAIRequest.sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!");
-//		String monsterResponse = aiResponse.getChoices().get(0).getText();
-//		System.out.println(monsterResponse);
+		long numOfTasks = 0;
+		long numOfCompleteTasks = 0;
 
-//		model.addAttribute("monsterTalk", monsterResponse);
+		for (Task task: battle.getTasks()){
+			numOfTasks++;
+			if (task.getTaskComplete() == 1){
+				numOfCompleteTasks++;
+			}
+		}
+
+		double monsterHealth = 100.0;
+		if (numOfTasks > 0) {
+			double taskValue = 100.0 / numOfTasks;
+			monsterHealth -= taskValue * numOfCompleteTasks;
+		}
+		monsterHealth = Math.floor(monsterHealth);
+
+		System.out.println("num of tasks: " + numOfTasks);
+		System.out.println("num of completed tasks: " + numOfCompleteTasks);
+		System.out.println("monster health percentage: " + monsterHealth);
+
+		model.addAttribute("monsterHealth",monsterHealth);
+		model.addAttribute("numOfTasks", numOfTasks);
+		model.addAttribute("numOfCompleteTasks", numOfCompleteTasks);
 		model.addAttribute("user", user);
 		model.addAttribute("battle",battle);
 		return "battlegrounds";
@@ -87,24 +107,30 @@ public class BattleController{
 	}
 
 	@PostMapping("/battlegrounds/complete-task")
-	public void editTask(@RequestParam(name="taskId") Long taskId){
+	public String completeTask(@RequestParam(name="taskId") Long taskId,
+							 @RequestParam(name = "battleId") Long battleId){
 		System.out.println("made it to the complete-task controller");
 		Task editTask = tasksDao.findTaskById(taskId);
 		if (editTask.getTaskComplete() == 0){
 			editTask.setTaskComplete(1);
 			tasksDao.save(editTask);
+			System.out.printf("task id:%s '%s' marked complete!\n", editTask.getId(), editTask.getTaskBody());
 		} else if (editTask.getTaskComplete() == 1){
-			editTask.setTaskComplete(1);
+			editTask.setTaskComplete(0);
 			tasksDao.save(editTask);
+			System.out.printf("task id:%s '%s' marked NOT completed!\n", editTask.getId(), editTask.getTaskBody());
 		}
+		return "redirect:/battlegrounds/" + battleId;
 	}
 
 	@PostMapping("/battlegrounds/edit-battle-title")
 	public String editBattleTitle(
 			@RequestParam(name="battleId") Long battleId
-			,@RequestParam(name="battleTitle") String newBattleTitle){
+			,@RequestParam(name="battleTitle") String newBattleTitle,
+			@RequestParam(name="monsterSelectId") Long monsterId){
 		Battle editBattle = battlesDao.findBattleById(battleId);
 		editBattle.setTitle(newBattleTitle);
+		editBattle.setMonster(monstersDao.findMonsterById(monsterId));
 		battlesDao.save(editBattle);
 		return "redirect:/battleList";
 	}
@@ -141,58 +167,58 @@ public class BattleController{
 		// Example logic: if HP < 50, set a new image; otherwise, keep the existing image
 	}
 
+
 	public void updateBadge(User user){
-		int battleCounter = user.getBattlesComplete();
-		List<Badge> badges = user.getBadges();
-		if (battleCounter == 1){
-			Badge badge = badgesDao.findBadgeById(1L);
-			badges.add(badge);
-			usersDao.save(user);
-		} else if (battleCounter == 3){
-			Badge badge = badgesDao.findBadgeById(2L);
-			badges.add(badge);
-			usersDao.save(user);
-		} else if (battleCounter == 5){
-			Badge badge = badgesDao.findBadgeById(3L);
-			badges.add(badge);
-			usersDao.save(user);
+     int battleCounter = user.getBattlesComplete();
+     List<Badge> badges = user.getBadges();
+     if (battleCounter == 1 && !badges.contains(badgesDao.findBadgeById(1L))){
+        Badge badge = badgesDao.findBadgeById(1L);
+        badges.add(badge);
+        usersDao.save(user);
+     } else if (battleCounter == 3 && !badges.contains(badgesDao.findBadgeById(2L))){
+        Badge badge = badgesDao.findBadgeById(2L);
+        badges.add(badge);
+        usersDao.save(user);
+     } else if (battleCounter == 5 && !badges.contains(badgesDao.findBadgeById(3L))){
+        Badge badge = badgesDao.findBadgeById(3L);
+        badges.add(badge);
+        usersDao.save(user);
 
-		}
-	}
+     }
+  }
 
-	// updates the user's badge based on the monster they defeated
-	public void updateMonsterBadge(User user, Battle battle){
-		List<Badge> badges = user.getBadges();
-		Monster monster = battle.getMonster();
-		System.out.println("monster id");
-		System.out.println(monster.getId());
-		// if the user has defeated the first monster, add the badge to their profile
-		if ( monster.getId() == 2 && !badges.contains(badgesDao.findBadgeById(5L))){
-			Badge badge = badgesDao.findBadgeById(5L);
-			badges.add(badge);
-			usersDao.save(user);
-		} else if (monster.getId() == 1 && !badges.contains(badgesDao.findBadgeById(8L))){
-			Badge badge = badgesDao.findBadgeById(8L);
-			badges.add(badge);
-			usersDao.save(user);
-		} else if (monster.getId() == 3 && !badges.contains(badgesDao.findBadgeById(4L))) {
-			Badge badge = badgesDao.findBadgeById(4L);
-			badges.add(badge);
-			usersDao.save(user);
-		} else if (monster.getId() == 4 && !badges.contains(badgesDao.findBadgeById(7L))){
-			Badge badge = badgesDao.findBadgeById(7L);
-			badges.add(badge);
-			usersDao.save(user);
-		} else if (monster.getId() == 5 && !badges.contains(badgesDao.findBadgeById(8L))) {
-			Badge badge = badgesDao.findBadgeById(8L);
-			badges.add(badge);
-			usersDao.save(user);
-		}
+  public void updateMonsterBadge(User user, Battle battle){
+     List<Badge> badges = user.getBadges();
+     Monster monster = battle.getMonster();
+     System.out.println("monster id");
+     System.out.println(monster.getId());
+     // if the user has defeated the first monster, add the badge to their profile
+     if ( monster.getId() == 2 && !badges.contains(badgesDao.findBadgeById(5L))){
+        Badge badge = badgesDao.findBadgeById(5L);
+        badges.add(badge);
+        usersDao.save(user);
+     } else if (monster.getId() == 1 && !badges.contains(badgesDao.findBadgeById(8L))){
+        Badge badge = badgesDao.findBadgeById(8L);
+        badges.add(badge);
+        usersDao.save(user);
+     } else if (monster.getId() == 3 && !badges.contains(badgesDao.findBadgeById(4L))) {
+        Badge badge = badgesDao.findBadgeById(4L);
+        badges.add(badge);
+        usersDao.save(user);
+     } else if (monster.getId() == 4 && !badges.contains(badgesDao.findBadgeById(7L))){
+        Badge badge = badgesDao.findBadgeById(7L);
+        badges.add(badge);
+        usersDao.save(user);
+     } else if (monster.getId() == 5 && !badges.contains(badgesDao.findBadgeById(6L))) {
+        Badge badge = badgesDao.findBadgeById(6L);
+        badges.add(badge);
+        usersDao.save(user);
+     }
 
 
-	}
+  }
 
-	@PostMapping("/battlegrounds/complete")
+		@PostMapping("/battlegrounds/complete")
 	public String completedBattle(@RequestParam(name="battleId") Long battleId){
 		System.out.println("Made it in to /complete");
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -201,13 +227,15 @@ public class BattleController{
 		int battleCounter = user.getBattlesComplete();
 		System.out.println(battleCounter);
 		user.setBattlesComplete(battleCounter + 1);
-
-		// Update the user's badges
 		updateBadge(user);
 		updateMonsterBadge(user, battlesDao.findBattleById(battleId));
+//		updateBadges(user, battlesDao.findBattleById(battleId));
+		// Logic to change the status of the battle to completed (from 0 - 1 in the database)
+		Battle battle = battlesDao.findBattleById(battleId);
+		battle.setStatus(1L);
+        usersDao.save(user);
+        return "redirect:/profile";
+    }
 
-		usersDao.save(user);
-		return "redirect:/profile";
-	}
 
 }

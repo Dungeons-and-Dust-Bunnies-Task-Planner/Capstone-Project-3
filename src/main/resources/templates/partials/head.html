@@ -1,6 +1,9 @@
 <head th:fragment="head (title)">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image" href="https://cdn.discordapp.com/attachments/526187085741162498/1123627702264549407/IMG_1888.png"/>
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+<!--<meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
   <title th:text="${title}"></title>
   <link rel="stylesheet" th:href="@{/css/reset.css}">
   <link rel="stylesheet" th:href="@{/css/global.css}">
@@ -16,5 +19,6 @@
   <link rel="stylesheet" th:href="@{/css/about.css}">
   <link rel="stylesheet" th:href="@{/css/popUp.css}">
   <link rel="stylesheet" th:href="@{/css/meetTheMonsters.css}">
+  <link rel="stylesheet" th:href="@{/css/how-to.css}">
   <script type="text/javascript" th:src="@{/keys.js}"></script>
 </head>

@@ -10,6 +10,7 @@
     font-weight: 400;
 }
 
+
 .land-h2 a {
     text-decoration: none;
     padding: 10px 10px;
@@ -19,8 +20,8 @@
     background: var(--cta);
     box-shadow: inset black 0 0 2px 1px;
     border: none;
-    text-shadow: 0 0 3px black;
     font-size: 2rem;
+    text-shadow: 0 0 10px black;
 }
 
 .land-h2 a:hover {
@@ -36,12 +37,6 @@
 .land-h2 a:visited {
     text-decoration: none;
     color: inherit;
-}
-
-/*  TOP CONTAINER       */
-.CCBB {
-    display: flex;
-    justify-content: center;
 }
 
 
@@ -69,33 +64,13 @@
 .description {
     display: flex;
     justify-content: start;
-    /*background-color: rgba(0, 0, 0, 0.4);*/
     padding-bottom: 20px;
     font-weight: 400;
     border-radius: 1em;
 }
 
-
-/*.registrationButton {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    flex-direction: column;*/
-/*    width: 30vw;*/
-/*    margin: 20px;*/
-/*    !*background-color: rgba(0, 0, 0, 0.4);*!*/
-/*    padding-bottom: 20px;*/
-/*    font-weight: 400;*/
-/*    border-radius: 1em;*/
-/*}*/
-
-/*.blurb {*/
-/*    margin-top: 10px;*/
-/*    font-weight: 300;*/
-/*    font-size: large;*/
-/*}*/
-
 .joinOrCreate {
-    font-size: x-large;
+    font-size: 1.7rem;
     font-weight: 300;
     text-align: center;
 }
