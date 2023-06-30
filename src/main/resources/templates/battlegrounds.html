@@ -22,7 +22,6 @@
       <!--TASK CONTAINER-->
       <section class="tasks" id="tasks">
         <ul class="tasks-list">
-          <h2 class="tasks-battle-title" th:text="${battle.title}"></h2>
 
           <!--TASK-->
           <li class="task" th:each="task : ${battle.tasks}" th:data-task-id="${task.getId()}">

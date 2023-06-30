@@ -29,7 +29,7 @@ VALUES
         ('https://cdn.filestackcontent.com/ytGYW57OTaOssPKoUfxi',2,1),
         ('https://cdn.filestackcontent.com/OZNx5tqOQfijYoeuSND6',3,1),
         ('https://cdn.filestackcontent.com/K6HxhqrATpOjR90fRrc8',4,1),
-        ('https://cdn.filestackcontent.com/K6HxhqrATpOjR90fRrc8',5,1),
+        ('https://cdn.discordapp.com/attachments/526187085741162498/1118245217821278298/Untitled_Artwork.png',5,1),
         ('https://cdn.filestackcontent.com/wUCToPVQj23DzVmpWUh5',1,2),
         ('https://cdn.filestackcontent.com/zx6CeDmkQVK8g0bzRj0d',2,2),
         ('https://cdn.filestackcontent.com/UHhTgpdASf6864t9XFV4',3,2),
