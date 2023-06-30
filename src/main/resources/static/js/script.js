@@ -24,9 +24,7 @@
 	const task = document.querySelectorAll('.task');
 	// SHOW TASKSAll
 	const tasksList = document.querySelectorAll('.tasks-list');
-	const monster = document.querySelector('.monster');
 	// HEALTH-BAR
-	const healthBar = document.querySelector('.health-bar');
 	const healthBarContainer = document.querySelector('.health-bar-container');
 	// CUSTOM ALERT
 	const customAlert = document.querySelector('.complete-task-alert');
@@ -48,6 +46,26 @@
 	const checkForClass = (element, className) => {
 		return element.classList.contains(className);
 	};
+
+	const monster = document.querySelector('#monster');
+	const numOfTasks = monster.dataset.tasks;
+	const numOfCompleteTasks = monster.dataset.complete;
+
+	console.log(numOfTasks);
+	console.log(numOfCompleteTasks);
+
+	const calculateMonsterHealth = (numOfTasks, numOfCompleteTasks) => {
+		let monsterHealth = 100; // 100% health initially
+		if (numOfTasks > 0) {
+			// To avoid division by zero
+			let taskValue = 100 / numOfTasks; // Each task's value percentage
+			monsterHealth -= taskValue * numOfCompleteTasks; // Calculate health based on completed tasks
+		}
+		return monsterHealth;
+	};
+	const healthBar = document.querySelector('.health-bar');
+	let monsterHealth = calculateMonsterHealth(numOfTasks, numOfCompleteTasks);
+	healthBar.style.width = `${monsterHealth}%`;
 
 	async function sendOpenAIRequest(prompt) {
 		const apiUrl = "https://api.openai.com/v1/completions";
@@ -97,26 +115,6 @@
 			});
 		});
 
-		const monster = document.querySelector('#monster');
-		const numOfTasks = monster.dataset.tasks;
-		const numOfCompleteTasks = monster.dataset.complete;
-
-		console.log(numOfTasks);
-		console.log(numOfCompleteTasks);
-
-		const calculateMonsterHealth = (numOfTasks, numOfCompleteTasks) => {
-			let monsterHealth = 100; // 100% health initially
-			if (numOfTasks > 0) {
-				// To avoid division by zero
-				let taskValue = 100 / numOfTasks; // Each task's value percentage
-				monsterHealth -= taskValue * numOfCompleteTasks; // Calculate health based on completed tasks
-			}
-			return monsterHealth;
-		};
-
-		let monsterHealth = calculateMonsterHealth(numOfTasks, numOfCompleteTasks);
-		const healthBar = document.querySelector('.health-bar');
-		healthBar.style.width = `${monsterHealth}%`;
 	});
 
 	// EVENT LISTENERS
