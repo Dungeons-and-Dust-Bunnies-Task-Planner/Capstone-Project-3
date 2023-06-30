@@ -4,7 +4,8 @@
             <p class="welcome-text">Email:</p>
             <div class="newsletter justify-center">
                 <form th:action="@{/welcome}" th:method="post">
-                    <input class="email-input w-100" type="email" id="email" name="emailNews" placeholder="Welcome Letter" required>
+                    <input class="email-input w-100" type="email" id="email" name="emailNews"
+                           placeholder="Welcome Letter" required>
                     <button class="email-btn-submit w-100" type="submit">Sign up</button>
                 </form>
             </div>
@@ -17,8 +18,11 @@
             <div class="column">
                 <a class="footer-link" th:href="@{/profile}">Profile</a>
             </div>
+            <div class="column">
+                <a class="footer-link" th:href="@{/about}">The Devs</a>
+            </div>
             <div>
-                <a class="footer-link" th:href="@{/contact}">Contact</a>
+                <a class="footer-link" th:href="@{/contact}">Contact Us</a>
             </div>
         </div>
         <div class="rightFoot row">
@@ -27,14 +31,16 @@
                 <img src="https://clipartcraft.com/images/facebook-logo-png-format-6.png" alt="Facebook Icon">
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//dndb.me/" target="_blank"
-               class="socialLong footer-link">Facebook</a><p class="rightFootShort"> | </p>
+               class="socialLong footer-link">Facebook</a>
+            <p class="rightFootShort"> | </p>
 
             <a href="https://twitter.com/intent/tweet?text=Check%20out%20DNDB!%20Conquer%20Chores,%20Battle%20Beasts!%20Unleash%20the%20hero%20within%20and%20conquer%20your%20chores%20with%20DnDB!%20%20%0A-%20https%3A//dndb.me/"
                target="_blank" class="Socials-short hidden"><img
                     src="https://cdn4.iconfinder.com/data/icons/free-large-twitter-icons/512/Round_button.png"
                     alt="Twitter Icon"></a>
             <a href="https://twitter.com/intent/tweet?text=Check%20out%20DNDB!%20Conquer%20Chores,%20Battle%20Beasts!%20Unleash%20the%20hero%20within%20and%20conquer%20your%20chores%20with%20DnDB!%20%20%0A-%20https%3A//dndb.me/"
-               target="_blank" class="socialLong footer-link">Twitter</a><p class="rightFootShort"> | </p>
+               target="_blank" class="socialLong footer-link">Twitter</a>
+            <p class="rightFootShort"> | </p>
 
             <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//dndb.me/" target="_blank"
                class="Socials-short hidden"><img

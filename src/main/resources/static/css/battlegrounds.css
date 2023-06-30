@@ -501,10 +501,15 @@
 
 .battle-chat-box{
   width:100%;
-  height:20vh;
+  height: fit-content;
   background:var(--background);
   border:2px solid gray;
   border-radius:var(--br);
+}
+
+.chatgptFont {
+  font-weight: 300;
+  font-size: 1.1em;
 }
 
 .hidden{
@@ -580,6 +585,10 @@
 
 @media (min-width: 20rem) and (max-width: 30rem) {
 
+  .complete-task-alert {
+    width: 90vw;
+  }
+
   .battle-icon-banner-text{
     font-size: 29px;
     position: relative;
@@ -619,6 +628,7 @@
 }
 
 @media (min-width: 30rem) and (max-width: 65rem) {
+
   .tasks{
     min-width: 35vw;
   }

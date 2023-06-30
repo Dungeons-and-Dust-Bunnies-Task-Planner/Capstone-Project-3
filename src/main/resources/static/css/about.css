@@ -69,13 +69,18 @@
 }
 
 /* PERSONAL MONSTER     */
-.personalMonster {
-    width: 5vw;
-    height: fit-content;
-    position: sticky;
-    margin-left: -3vw;
-    margin-top: 36vh;
+.personalMonsters {
+    display: flex;
+    position: absolute;
+    z-index: 20;
+    justify-content: end;
+    align-self: end;
+    align-items: end;
+    bottom: 3vh;
+}
 
+.personalMonster {
+    width: 6vw;
 }
 
 @media (min-width: 30rem) and (max-width: 65rem) {
@@ -98,12 +103,20 @@
         flex-direction: column;
     }
 
+    .personalMonsters {
+        display: flex;
+        position: absolute;
+        z-index: 20;
+        justify-content: end;
+        align-self: end;
+        align-items: end;
+       bottom: unset;
+        top: 23vh;
+    }
+
+
     .personalMonster {
         width: 7vw;
-        position: sticky;
-        margin-left: -5vw;
-        margin-top: 19vh;
-
     }
 }
 
@@ -121,10 +134,18 @@
         font-size: 1.3rem;
     }
 
+    .personalMonsters {
+        display: flex;
+        position: absolute;
+        z-index: 20;
+        justify-content: end;
+        align-self: end;
+        align-items: end;
+        bottom: unset;
+        top: 23vh;
+    }
+
     .personalMonster {
-        width: 16vw;
-        position: sticky;
-        margin-left: -11vw;
-        margin-top: 31vh;
+        width: 20vw;
     }
 }
