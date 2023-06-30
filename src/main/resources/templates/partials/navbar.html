@@ -19,7 +19,7 @@
                 <a th:href="@{/battleList}">Battlegrounds</a>
                 <ul class="dropdown-content">
                     <li>
-                        <a th:href="@{/monsterlist}">The Monsters</a>
+                        <a th:href="@{/monsterList}">The Monsters</a>
                     </li>
                     <li>
                         <a th:href="@{/how-to}">Tutorial</a>
@@ -47,7 +47,7 @@
                 <a sec:authorize="isAuthenticated()" th:href="@{/profile}"><li>Profile</li></a>
                 <a th:href="@{/battleList}"><li>Battlegrounds</li></a>
                 <a th:href="@{/how-to}"><li>Tutorial</li></a>
-                <a th:href="@{/monsterlist}"><li>The Monsters</li></a>
+                <a th:href="@{/monsterList}"><li>The Monsters</li></a>
                 <a th:href="@{/contact}"><li>Contact Us</li></a>
                 <a th:href="@{/about}"><li>About The Devs</li></a>
                 <a sec:authorize="!isAuthenticated()" th:href="@{/register}"><li>Register</li></a>
