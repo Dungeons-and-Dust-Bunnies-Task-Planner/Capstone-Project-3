@@ -76,7 +76,7 @@
 
 	const monsterTalkParent = document.querySelector('.monsterTalkParent');
 	let monsterResponse = await sendOpenAIRequest("You are a unclean monster who hates people cleaning! A cleaner attacks you! Respond with a quirky funny answer in only three sentences! you want them to not clean anything!")
-	monsterTalkParent.innerHTML = `<h2>${monsterResponse.choices[0].text}</h2>`;
+	monsterTalkParent.innerHTML = `<h2 class="chatgptFont">${monsterResponse.choices[0].text}</h2>`;
 
 	document.addEventListener('DOMContentLoaded', function () {
 		console.log('Dynamic elements loaded'); //DEBUG
