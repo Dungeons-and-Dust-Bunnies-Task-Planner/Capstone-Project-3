@@ -1,6 +1,6 @@
 .battle-icon{
   position:fixed;
-  top:105px;
+  top:11vh;
   left:0;
   z-index:3;
   height:100px;
@@ -31,7 +31,7 @@
 
 .battle-icon-banner{
   position:fixed;
-  top:105px;
+  top:11vh;
   left:3px;
   z-index:2;
   display:flex;
@@ -232,8 +232,8 @@
   display:flex;
   flex-direction:column;
   width:30%;
-  padding:110px 15px 15px 15px;
-  margin-top:101px;
+  padding:11vh 15px 15px 15px;
+  margin-top:11vh;
   background:rgba(255, 255, 255, .4);
   border-radius:var(--br);
 }
@@ -250,6 +250,7 @@
 }
 
 .task,
+.complete:hover,
 .edit-task-form,
 .create-task-form{
   position:relative;
@@ -265,6 +266,10 @@
   overflow:hidden;
   cursor:pointer;
   transition:var(--trans);;
+}
+
+.complete:hover{
+  text-decoration:none;
 }
 
 .alert-overlay{
@@ -291,6 +296,14 @@
   box-shadow:var(--cta-inset-shadow);
   background:var(--fade-dark-purple);
   z-index:99;
+}
+
+.complete-task-form{
+  text-align:center;
+  display:grid;
+  grid-template-rows: 3fr 1fr;
+  height:100%;
+  width:100%;
 }
 
 .alert-btn-wrap{
@@ -337,6 +350,7 @@
   color:#000;
   text-decoration:line-through;
 }
+
 
 /*.task.complete .task-body{*/
 /*  background:var(--fade-dark-purple);*/
@@ -466,7 +480,7 @@
   flex-direction:column;
   background:var(--background);
   border-radius:var(--br);
-  margin-top:101px;
+  margin-top:11vh;
   width:70%;
 }
 
@@ -497,20 +511,20 @@
   display:none;
 }
 
-.complete-task-form{
-  display:block;
-}
+/*.complete-task-form{*/
+/*  display:block;*/
+/*}*/
 
-.complete-task-btn{
-  left:268px;
-  z-index:99;
-  background:transparent;
-  width:77px;
-  height:31px;
-  position:relative;
-  box-shadow:none;
-  border:none;
-}
+/*.complete-task-btn{*/
+/*  left:268px;*/
+/*  z-index:99;*/
+/*  background:transparent;*/
+/*  width:77px;*/
+/*  height:31px;*/
+/*  position:relative;*/
+/*  box-shadow:none;*/
+/*  border:none;*/
+/*}*/
 
 /* HEALTH BAR */
 .health-bar-container{
@@ -564,51 +578,51 @@
   font-weight:700;
 }
 
-@media (min-width: 20rem) and (max-width: 30rem) {
+/*@media (min-width: 20rem) and (max-width: 30rem) {*/
 
-  #battlegrounds-row{
-    flex-direction: column;
-  }
+/*  #battlegrounds-row{*/
+/*    flex-direction: column;*/
+/*  }*/
 
-  .tasks{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    padding:110px 15px 15px 15px;
-    margin-top:45px;
-    background:rgba(255, 255, 255, .4);
-    border-radius:var(--br);
-  }
+/*  .tasks{*/
+/*    display:flex;*/
+/*    flex-direction:column;*/
+/*    width:100%;*/
+/*    padding:110px 15px 15px 15px;*/
+/*    margin-top:45px;*/
+/*    background:rgba(255, 255, 255, .4);*/
+/*    border-radius:var(--br);*/
+/*  }*/
 
-  .battle-icon-banner{
-    width: 100%;
-    position: absolute;
-    top: 105px;
-    left: 3px;
-  }
+/*  .battle-icon-banner{*/
+/*    width: 100%;*/
+/*    position: absolute;*/
+/*    top: 105px;*/
+/*    left: 3px;*/
+/*  }*/
 
-  .battle-icon{
-    position: relative;
-  }
+/*  .battle-icon{*/
+/*    position: relative;*/
+/*  }*/
 
-  .monsters {
-    margin-top: 9px;
-    width: 100%;
-  }
-}
-@media (min-width: 30rem) and (max-width: 65rem) {
-  .tasks{
-    min-width: 35vw;
-  }
-  .battle-icon-banner{
-    position: absolute;
-    top: 101px;
-    left: 20px;
-  }
-  .battle-icon{
-    position: absolute;
-    top: 101px;
-    left: 0;
-  }
+/*  .monsters {*/
+/*    margin-top: 9px;*/
+/*    width: 100%;*/
+/*  }*/
+/*}*/
+/*@media (min-width: 30rem) and (max-width: 65rem) {*/
+/*  .tasks{*/
+/*    min-width: 35vw;*/
+/*  }*/
+/*  .battle-icon-banner{*/
+/*    position: absolute;*/
+/*    top: 101px;*/
+/*    left: 20px;*/
+/*  }*/
+/*  .battle-icon{*/
+/*    position: absolute;*/
+/*    top: 101px;*/
+/*    left: 0;*/
+/*  }*/
 
-}
+/*}*/

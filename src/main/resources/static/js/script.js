@@ -1,31 +1,35 @@
-(async () => {
-// CHAT GPT API KEY
+;(async () => {
+	// CHAT GPT API KEY
 	const apiKey = openAiKey;
-// DOM ELEMENTS
+	// DOM ELEMENTS
+	const alertOverlay = document.querySelector('.alert-overlay');
 	const battleIcon = document.querySelector('.battle-icon');
 	const battleIconBanner = document.querySelector('.battle-icon-banner');
-	const battleIconBannerText = document.querySelector('.battle-icon-banner-text');
-// BATTLES
+	const battleIconBannerText = document.querySelector(
+			'.battle-icon-banner-text'
+	);
+	// BATTLES
 	const battleSlideOut = document.querySelector('.battle-slide-out');
-// CREATE BATTLE
+	// CREATE BATTLE
 	const createBattleForm = document.querySelector('.create-battle-form');
 	const createBattleInput = document.querySelector('.create-battle-input');
 	const createBattleBtn = document.querySelector('.create-battle-btn');
-// SHOW BATTLE
+	// SHOW BATTLE
 	const battlesList = document.querySelector('.battles-list');
 	const battle = document.querySelectorAll('.battle');
 	const battleTitle = document.querySelectorAll('.battle-title');
-// TASKS
+
+	// TASKS
 	const tasks = document.querySelector('.tasks');
 	const task = document.querySelectorAll('.task');
-// SHOW TASKSAll
+	// SHOW TASKSAll
 	const tasksList = document.querySelectorAll('.tasks-list');
 	const monster = document.querySelector('.monster');
-// HEALTH-BAR
+	// HEALTH-BAR
 	const healthBar = document.querySelector('.health-bar');
 	const healthBarContainer = document.querySelector('.health-bar-container');
 
-// FUNCTIONS
+	// FUNCTIONS
 	function removeActiveBattles() {
 		battle.forEach(battle => {
 			battle.classList.add('inactive');
@@ -38,6 +42,10 @@
 			list.classList.add('hidden');
 		});
 	}
+
+	const checkForClass = (element, className) => {
+		return element.classList.contains(className);
+	};
 
 	document.addEventListener('DOMContentLoaded', function () {
 		console.log('Dynamic elements loaded'); //DEBUG
@@ -67,7 +75,8 @@
 
 		const calculateMonsterHealth = (numOfTasks, numOfCompleteTasks) => {
 			let monsterHealth = 100; // 100% health initially
-			if (numOfTasks > 0) { // To avoid division by zero
+			if (numOfTasks > 0) {
+				// To avoid division by zero
 				let taskValue = 100 / numOfTasks; // Each task's value percentage
 				monsterHealth -= taskValue * numOfCompleteTasks; // Calculate health based on completed tasks
 			}
@@ -77,10 +86,9 @@
 		let monsterHealth = calculateMonsterHealth(numOfTasks, numOfCompleteTasks);
 		const healthBar = document.querySelector('.health-bar');
 		healthBar.style.width = `${monsterHealth}%`;
-
 	});
 
-// EVENT LISTENERS
+	// EVENT LISTENERS
 	battleIcon.addEventListener('click', () => {
 		battleSlideOut.classList.toggle('open');
 		if (battleSlideOut.classList.contains('open')) {
@@ -90,25 +98,38 @@
 		}
 	});
 
+	alertOverlay.addEventListener('click', () => {
+		alertOverlay.classList.add('hidden');
+		const alert = document.querySelectorAll('.complete-task-alert');
+		if (checkForClass(alert, 'hidden')) {
+			alert.classList.add('hidden');
+		}
+	});
+
 	task.forEach(task => {
 		const taskId = task.dataset.taskId;
 		const taskComplete = task.dataset.taskComplete;
 		const tasksBattleTitle = task.querySelector('.tasks-battle-title');
 		const taskBody = task.querySelector('.task-body');
-		const completeTaskBtn = task.querySelector('.complete-task-btn');
+		const completeTaskForm = task.querySelector('.complete-task-form');
+		const taskAlert = task.querySelector('.complete-task-alert');
 		const openEditBtn = task.querySelector('.open-edit-task-btn');
-		const openEditBtnImg = document.querySelector('.open-edit-task-btn-img');
+		const openEditBtnImg = task.querySelector('.open-edit-task-btn-img');
 		const editTaskForm = task.querySelector('.edit-task-form');
 		const editTaskInput = task.querySelector('.edit-task-input');
 		const editTaskSubmitBtn = task.querySelector('.edit-task-submit-btn');
 		const deleteTaskBtn = task.querySelector('.delete-task-btn');
-		const deleteTaskBtnImg = document.querySelector('.delete-task-btn-img');
+		const deleteTaskBtnImg = task.querySelector('.delete-task-btn-img');
 		const deleteTaskForm = task.querySelector('.delete-task-form');
 		const createTaskForm = task.querySelector('.create-task-form');
 		const createTaskInput = task.querySelector('.create-task-input');
 		const createTaskBtn = task.querySelector('.create-task-btn');
-		const createTaskBtnImg = document.querySelector('.create-task-btn-img');
-		//COMPUTED STYLES
+		const createTaskBtnImg = task.querySelector('.create-task-btn-img');
+		//CUSTOM ALERT
+		const customAlert = task.querySelector('.complete-task-alert');
+		const alertTitle = task.querySelector('.alert-title');
+		const cancelBtn = task.querySelector('.cancel-btn');
+		const confirmBtn = task.querySelector('.confirm-btn');
 
 		openEditBtn.addEventListener('click', function () {
 			task.classList.toggle('edit');
@@ -134,12 +155,20 @@
 		});
 
 		taskBody.addEventListener('click', () => {
-			if (taskBody.classList.contains('not-complete') && confirm(`Are you sure you want to mark this task as 'Completed'?`)) {
-				completeTaskBtn.click();
-			}
-			if (taskBody.classList.contains('complete') && confirm(`Are you sure you want to mark this task as 'Not complete'?`)) {
-				completeTaskBtn.click();
-			}
+			customAlert.classList.remove('hidden');
+			alertOverlay.classList.remove('hidden');
+			alertTitle.textContent = taskBody.classList.contains('not-complete') ? 'Are you ready to complete this task?' : 'Are you sure you want to reactivate this task?';
+		});
+
+		cancelBtn.addEventListener('click', e => {
+			e.preventDefault();
+			alertOverlay.click();
+		});
+
+		confirmBtn.addEventListener('click', e => {
+			e.preventDefault();
+			alertOverlay.click();
+			completeTaskForm.submit();
 		});
 
 		deleteTaskForm.addEventListener('submit', () => {
@@ -149,7 +178,6 @@
 			openEditBtn.classList.toggle('edit');
 			openEditBtnImg.src = '/images/green-edit.png';
 			editTaskSubmitBtn.classList.toggle('edit');
-
 		});
 
 		deleteTaskBtn.addEventListener('click', () => {
