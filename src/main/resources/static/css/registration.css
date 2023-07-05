@@ -35,7 +35,11 @@
     align-content: center;
     margin-top: 1em;
 }
-
+.already-exists {
+    font-size: 1rem;
+    font-weight: 500;
+    color: red;
+}
 .loginForm {
     z-index: 99;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
