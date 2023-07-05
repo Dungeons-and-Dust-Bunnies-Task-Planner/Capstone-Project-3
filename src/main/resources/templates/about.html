@@ -20,20 +20,21 @@
                 <img src="/images/dustBunny.png" alt="Avatar" class="avatar">
               </div>
             </div>
-            <div class="column">
+            <div class="bioColumn">
               <div class="row nameRow">
                 <h2>Dev Team D&DB</h2>
               </div>
               <br>
               <div class="row grow">
-                <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dolor odio possimus quia suscipit. Culpa dicta, dolorum eligendi quaerat quam sed veniam. Dolor nemo quo rem. Id sed sunt voluptatibus?</p>
+                <p class="bio">Each member of the D&DB team is a graduate of Codeup's Full Stack Development program. This 5-month coding boot camp teaches full-stack software development through 670 contact hours of hands-on technical training (20% more time than 4-year degree majors require). Students hone skills in modern web technologies, computer science, software engineering, and application architecture while gaining project experience with pair programming, debugging, troubleshooting, agile project management, user stories, feature lists, UI/UX, wireframing, and relational database design.This 5-month coding boot camp teaches full-stack software development through 670 contact hours of hands-on technical training (20% more time than 4-year degree majors require). Students hone skills in modern web technologies, computer science, software engineering, and application architecture while gaining project experience with pair programming, debugging, troubleshooting, agile project management, user stories, feature lists, UI/UX, wireframing, and relational database design.<br> <br>
+                  Skills: Web Development · Microsoft Office · Functional Programming · Workflow Design · Debuggers · Design · Programming · Web Applications · Databases · Web Technologies · Server Side · Agile Environment · Stack · Full-Stack Development · Front-End Development · Back-End Web Development</p>
               </div>
               <br>
               <br>
               <div class="row linkRow">
-                  <p></p>
-                  <p></p>
-                  <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
 
               </div>
             </div>
@@ -52,7 +53,7 @@
                 <img src="https://cdn.discordapp.com/attachments/415980182021603329/1120457238633533590/IMG_1853.png" alt="monster" class="personalMonster">
               </div>
             </div>
-            <div class="column">
+            <div class="bioColumn">
               <div class="row nameRow">
                 <h2 class="dev-name">Ezra Marama</h2>
               </div>
@@ -83,10 +84,10 @@
                 <img src="/images/headshotdawson.jpg" alt="Avatar" class="avatar">
               </div>
               <div class="personalMonsters">
-                <img src="https://cdn.discordapp.com/attachments/415980182021603329/1120457238633533590/IMG_1853.png" alt="monster" class="personalMonster">
+                <img src="https://cdn.discordapp.com/attachments/526187085741162498/1126153549433290793/IMG_1901.png" alt="monster" class="personalMonster">
               </div>
             </div>
-            <div class="column">
+            <div class="bioColumn">
               <div class="row nameRow">
                 <h2 class="dev-name">Dawson Schroeder</h2>
               </div>
@@ -116,17 +117,16 @@
                 <img src="https://cdn.discordapp.com/attachments/526187085741162498/1124055670271000696/cu-5-23_0010.jpg" alt="Lennox Avatar" class="avatar">
               </div>
               <div class="personalMonsters">
-                <img src="https://cdn.discordapp.com/attachments/526187085741162498/1124432816093003786/Untitled_Artwork.png" alt="monster" class="personalMonster">
+                <img src="https://cdn.discordapp.com/attachments/526187085741162498/1126153330402525194/Untitled_Artwork.png" alt="monster" class="personalMonster">
               </div>
             </div>
-            <div class="column">
+            <div class="bioColumn">
               <div class="row nameRow">
                 <h2 class="dev-name">Lennox Ballard</h2>
               </div>
               <br>
               <div class="row grow">
-                <p class="bio">Professional Software Developer with experience in coding and debugging, managing projects, and finding solutions to complex challenges. Adaptable worker and creative thinker with a passion for programming to build innovative, secure, and accessible solutions that contribute to the growth of productive software applications. I Enjoy applying an understanding of UI/UE with frontend development to create a great user-friendly web application.
-                </p>
+                <p class="bio">Full-stack web developer with experience in coding and debugging, managing projects, and finding solutions to complex challenges. I have a deep passion for front-end design, UI/UX, and the intricacies of back-end development. My dedication to creating visually appealing and user-friendly interfaces is matched only by my enthusiasm for solving complex back-end challenges.</p>
               </div>
               <br>
               <br>
@@ -150,10 +150,10 @@
                 <img src="/images/kelvynheadshot.jpg" alt="Avatar" class="avatar">
               </div>
               <div class="personalMonsters">
-                <img src="https://cdn.discordapp.com/attachments/415980182021603329/1120457238633533590/IMG_1853.png" alt="monster" class="personalMonster">
+                <img src="https://cdn.discordapp.com/attachments/526187085741162498/1126153281589235742/Untitled_Artwork.png" alt="monster" class="personalMonster">
               </div>
             </div>
-            <div class="column">
+            <div class="bioColumn">
               <div class="row nameRow">
                 <h2 class="dev-name">Kelvyn Medellin</h2>
               </div>
@@ -183,10 +183,10 @@
                 <img src="https://cdn.discordapp.com/attachments/1124376117327958169/1124376327013810266/IMG_2087.jpeg" alt="Avatar" class="avatar">
               </div>
               <div class="personalMonsters">
-                <img src="https://cdn.discordapp.com/attachments/415980182021603329/1120457238633533590/IMG_1853.png" alt="monster" class="personalMonster">
+                <img src="https://cdn.discordapp.com/attachments/526187085741162498/1126153228736811079/Untitled_Artwork.png" alt="monster" class="personalMonster">
               </div>
             </div>
-            <div class="column">
+            <div class="bioColumn">
               <div class="row nameRow">
                 <h2 class="dev-name">Jared Orler</h2>
               </div>
@@ -223,7 +223,7 @@
     </div>
   </div>
 </div>
-  <div th:insert="~{partials/footer :: footer}"></div>
+<div th:insert="~{partials/footer :: footer}"></div>
 </body>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -231,7 +231,7 @@
 
     function animateCards() {
       let cards = document.getElementsByClassName("aboutCard");
-      let offset = 351; // controls when the card comes into view
+      let offset = 275; // controls when the card comes into view
 
       for (let i = 0; i < cards.length; i++) {
         let card = cards[i];
