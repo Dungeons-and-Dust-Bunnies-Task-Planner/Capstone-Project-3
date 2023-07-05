@@ -81,6 +81,9 @@
         width: 90vw;
         display: flex;
         align-self: center;
+        padding: 0 10px;
+        font-size: 1em;
+        text-align: start;
     }
 
 
@@ -116,7 +119,9 @@
         width: 90vw;
         display: flex;
         align-self: center;
-
+        padding: 0 10px;
+        font-size: 1em;
+        text-align: start;
     }
 
     .h1MonsterTitle {
