@@ -72,27 +72,34 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@RequestParam(name="username") String username,
-                               @RequestParam(name="email") String email,
+    public String registerUser(@RequestParam(name = "username") String username,
+                               @RequestParam(name = "email") String email,
                                @RequestParam(name = "password") String password,
                                @RequestParam(name = "passwordConfirmation") String passwordConfirm,
-                               RedirectAttributes redirectAttributes){
+                               RedirectAttributes redirectAttributes,
+                               HttpServletRequest request) {
+
         String defaultAvatar = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
         String defaultBackground = "https://cdn.filestackcontent.com/yhkFzlgzQtejKwLdOo51";
         User existingUser = usersDao.findUserByUsername(username);
         User existingEmail = usersDao.findUserByEmail(email);
+
         if (existingUser != null || existingEmail != null) {
             redirectAttributes.addAttribute("userExists", true);
-            return "redirect:/register";
+            return "redirect:/register?error";
         }
-        if(password.equals(passwordConfirm)){
+
+        if (password.equals(passwordConfirm)) {
             password = passwordEncoder.encode(password);
             usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground, 0));
             return "redirect:/home";
         } else {
-            return "redirect:/login";
+            redirectAttributes.addAttribute("passwordMismatch", true);
+            return "redirect:/register?error";
         }
     }
+
+
 
     @GetMapping("/profile")
     public String showProfile(Model model) throws Exception {
