@@ -44,12 +44,12 @@
             <ul id="menu">
                 <li class="nav-welcome-username" sec:authorize="isAuthenticated()">Welcome, @<strong th:text="${#authentication.name}"></strong></li>
                 <a th:href="@{/}"><li>Home</li></a>
-                <a sec:authorize="isAuthenticated()" th:href="@{/profile}"><li>Profile</li></a>
+                <a th:href="@{/about}"><li>The Devs</li></a>
                 <a th:href="@{/battleList}"><li>Battlegrounds</li></a>
-                <a th:href="@{/how-to}"><li>Tutorial</li></a>
                 <a th:href="@{/monsterList}"><li>The Monsters</li></a>
+                <a th:href="@{/how-to}"><li>Tutorial</li></a>
                 <a th:href="@{/contact}"><li>Contact Us</li></a>
-                <a th:href="@{/about}"><li>About The Devs</li></a>
+                <a sec:authorize="isAuthenticated()" th:href="@{/profile}"><li>Profile</li></a>
                 <a sec:authorize="!isAuthenticated()" th:href="@{/register}"><li>Register</li></a>
                 <a sec:authorize="!isAuthenticated()" th:href="@{/login}"><li class="nav-drodown-li">Login</li></a>
                 <a sec:authorize="isAuthenticated()" id="logOutButtonDD"><li>Logout</li></a>
