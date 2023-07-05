@@ -1,15 +1,16 @@
 package com.example.capstoneprojectteam3.controllers;
 
-import com.example.capstoneprojectteam3.models.*;
-import com.example.capstoneprojectteam3.models.OpenAI.OpenAIResponse;
+import com.example.capstoneprojectteam3.models.Badge;
+import com.example.capstoneprojectteam3.models.Battle;
+import com.example.capstoneprojectteam3.models.MonsterImage;
+import com.example.capstoneprojectteam3.models.User;
 import com.example.capstoneprojectteam3.repositories.BattleRepository;
 import com.example.capstoneprojectteam3.repositories.MonsterImageRepository;
 import com.example.capstoneprojectteam3.repositories.MonsterRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
-import com.example.capstoneprojectteam3.utils.OpenAIRequest;
+import com.example.capstoneprojectteam3.services.DustBunniesUserDetailsService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -31,7 +33,7 @@ public class UserController {
     private final BattleRepository battlesDao;
 
 
-    public UserController(UserRepository usersDao, MonsterRepository monstersDao, MonsterImageRepository monsterImagesDao, PasswordEncoder passwordEncoder, BattleRepository battlesDao){
+    public UserController(UserRepository usersDao, MonsterRepository monstersDao, MonsterImageRepository monsterImagesDao, PasswordEncoder passwordEncoder, BattleRepository battlesDao, DustBunniesUserDetailsService dustBunniesUserDetailsService){
         this.monstersDao = monstersDao;
         this.monsterImagesDao = monsterImagesDao;
         this.passwordEncoder = passwordEncoder;
@@ -53,9 +55,12 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String showLoginForm(Model model){
+    public String showLoginForm(@RequestParam(value = "error", required = false) String error, Model model) {
         List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
         model.addAttribute("monsterImages", monsterImages);
+        if (error != null) {
+            model.addAttribute("loginError", true);
+        }
         return "login";
     }
 
@@ -67,20 +72,34 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@RequestParam(name="username") String username,
-                               @RequestParam(name="email") String email,
+    public String registerUser(@RequestParam(name = "username") String username,
+                               @RequestParam(name = "email") String email,
                                @RequestParam(name = "password") String password,
-                               @RequestParam(name = "passwordConfirmation") String passwordConfirm){
+                               @RequestParam(name = "passwordConfirmation") String passwordConfirm,
+                               RedirectAttributes redirectAttributes,
+                               HttpServletRequest request) {
+
         String defaultAvatar = "https://cdn.filestackcontent.com/6Vs83AuzQoW2tCNsAB17";
         String defaultBackground = "https://cdn.filestackcontent.com/yhkFzlgzQtejKwLdOo51";
-        if(password.equals(passwordConfirm)){
+        User existingUser = usersDao.findUserByUsername(username);
+        User existingEmail = usersDao.findUserByEmail(email);
+
+        if (existingUser != null || existingEmail != null) {
+            redirectAttributes.addAttribute("userExists", true);
+            return "redirect:/register?error";
+        }
+
+        if (password.equals(passwordConfirm)) {
             password = passwordEncoder.encode(password);
             usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground, 0));
             return "redirect:/home";
         } else {
-            return "redirect:/register";
+            redirectAttributes.addAttribute("passwordMismatch", true);
+            return "redirect:/register?error";
         }
     }
+
+
 
     @GetMapping("/profile")
     public String showProfile(Model model) throws Exception {
@@ -97,8 +116,6 @@ public class UserController {
                 hasActiveBattles = true;
             }
         }
-
-
         model.addAttribute("user", user);
         model.addAttribute("badges", badges);
         model.addAttribute("battles", battles);

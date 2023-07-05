@@ -8,7 +8,9 @@
         <div class="row justify-center">
             <div class="column shrink loginForm">
                 <h1>Log In</h1><br>
-
+                <div th:if="${loginError}" class="row error-message">
+                    <p class="already-exists">Username or password is incorrect</p>
+                </div>
                 <form th:action="@{/login}" th:method="post">
                     <label for="username">Username</label><br>
                     <input class="row" type="text" id="username" name="username" autofocus ><br>
@@ -18,6 +20,7 @@
                     <div class="row register-link">
                         <a th:href="@{/register}">Not Registered? Sign Up!</a>
                     </div>
+
                 </form>
             </div>
             <div class="anchor"></div>

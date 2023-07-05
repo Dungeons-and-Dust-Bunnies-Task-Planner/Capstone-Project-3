@@ -1,4 +1,3 @@
-
 .aboutCard {
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
     background: var(--fade-dark-purple);
@@ -41,6 +40,7 @@
 
 .poppaRow {
     justify-content: center;
+    margin-top:2em;
 
 }
 
@@ -60,6 +60,13 @@
 .linkRow {
     justify-content: flex-end;
 
+}
+
+.bioColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .bio {
@@ -110,13 +117,17 @@
         justify-content: end;
         align-self: end;
         align-items: end;
-       bottom: unset;
+        bottom: unset;
         top: 23vh;
     }
 
 
     .personalMonster {
         width: 7vw;
+    }
+
+    .linkRow {
+        justify-content: center;
     }
 }
 
@@ -147,5 +158,9 @@
 
     .personalMonster {
         width: 20vw;
+    }
+
+    .linkRow {
+        justify-content: center;
     }
 }

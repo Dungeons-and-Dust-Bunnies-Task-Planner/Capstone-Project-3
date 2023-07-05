@@ -3,6 +3,11 @@
     margin-top: 1em;
 }
 
+.error-message {
+    display: flex;
+    justify-content: center;
+}
+
 .register-link a {
     text-decoration: none;
     padding: 10px 10px;
@@ -35,7 +40,12 @@
     align-content: center;
     margin-top: 1em;
 }
-
+.already-exists {
+    font-size: 1rem;
+    font-weight: 500;
+    color: red;
+    text-align: center;
+}
 .loginForm {
     z-index: 99;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
@@ -248,6 +258,13 @@
 
 /* Small */
 @media (min-width: 20rem) and (max-width: 30rem) {
+    .kyle {
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 75vw;
+        align-content: start;
+    }
+
     .contact-form {
         box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
         background: var(--fade-dark-purple);
