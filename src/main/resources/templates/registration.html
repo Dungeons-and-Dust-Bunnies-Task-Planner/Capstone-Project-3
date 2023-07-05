@@ -7,7 +7,10 @@
   <div class="container grow align-center justify-center" style="margin-top: 100px">
     <div class="row justify-center align-center">
       <div class="column register-form align-center">
-        <h1>Join the Fight!</h1><br><br>
+        <h1>Join the Fight!</h1>
+          <div th:if="${param.userExists}">
+              <p class="already-exists">Username or Email Already Registered</p>
+          </div>
         <form th:action="@{/register}" th:method="post">
             <label for="username">Username</label><br>
             <input class="row" type="text" id="username" name="username" required><br>

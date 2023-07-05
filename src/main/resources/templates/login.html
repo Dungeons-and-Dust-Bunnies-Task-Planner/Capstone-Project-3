@@ -18,6 +18,9 @@
                     <div class="row register-link">
                         <a th:href="@{/register}">Not Registered? Sign Up!</a>
                     </div>
+                    <div th:if="${loginError}" class="row error-message">
+                        <p>Username or password is incorrect</p>
+                    </div>
                 </form>
             </div>
             <div class="anchor"></div>
