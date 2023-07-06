@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/task")
 public class TaskRestController {
@@ -21,7 +20,7 @@ public class TaskRestController {
     }
 
     @GetMapping("/task-list")
-    public List<Task> getTaskListById(@RequestParam(name = "battleId") Long battleId){
+    public List<Task> getTaskListById(@RequestParam(name = "battleId") Long battleId) {
         List<Task> tasks = tasksDao.findAllByBattleId(battleId);
         return tasks;
     }
@@ -31,10 +30,10 @@ public class TaskRestController {
     public ModelAndView completeTask(@RequestParam("taskId") Long taskId) {
         Task task = tasksDao.findTaskById(taskId);
         Long battleId = task.getBattle().getId();
-        if(task == null) {
+        if (task == null) {
             System.out.println("Could not find taskId to Complete Task!");
         }
-        if (task.getTaskComplete() == 0){
+        if (task.getTaskComplete() == 0) {
             task.setTaskComplete(1);
             System.out.println("taskId: " + taskId + " " + task.getTaskBody() + " task marked as complete!");
             tasksDao.save(task);
@@ -44,8 +43,7 @@ public class TaskRestController {
             tasksDao.save(task);
         }
 
-        // Create a ModelAndView object and set the view name and model attributes
-        ModelAndView modelAndView = new ModelAndView("redirect:/battlegrounds/"+ battleId); // Replace "viewName" with the actual name of your HTML view
+        ModelAndView modelAndView = new ModelAndView("redirect:/battlegrounds/" + battleId);
         return modelAndView;
     }
 }

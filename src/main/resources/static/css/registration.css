@@ -40,12 +40,14 @@
     align-content: center;
     margin-top: 1em;
 }
+
 .already-exists {
     font-size: 1rem;
     font-weight: 500;
     color: red;
     text-align: center;
 }
+
 .loginForm {
     z-index: 99;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
@@ -58,7 +60,7 @@
 .login-register-Btn {
     height: 50px;
     background-color: var(--cta);
-    color:white;
+    color: white;
     font-weight: bolder;
     font-size: 2rem;
     border-radius: 10px;
@@ -67,7 +69,7 @@
     background-size: 0 100%;
     background-position-x: right;
     transition: background-size 400ms;
-    text-shadow: 0 0 10px black;
+    text-shadow: var(--text-shadow);
 }
 
 .login-register-Btn:hover {
@@ -137,43 +139,39 @@
     z-index: -1;
 }
 
-
-
-/* Medium (641px to 1007px) */
 @media (min-width: 641px) and (max-width: 1007px) {
 
     .monster-sneak1 {
-       display: none;
+        display: none;
     }
 
     .monster-sneak3 {
         display: none;
     }
+
     .monster-sneak4 {
         display: none;
     }
 }
 
-
-
-/* Small (less than 640px) */
 @media (max-width: 639px) {
 
     .monster-sneak1 {
         display: none;
     }
+
     .monster-sneak2 {
         display: none;
     }
+
     .monster-sneak3 {
         display: none;
     }
+
     .monster-sneak4 {
         display: none;
     }
 }
-
-/*--------------------- CONTACT US PAGE ---------------------*/
 
 .formCSS {
     width: 60vw;
@@ -195,7 +193,7 @@
     padding: 30px;
 }
 
-.sbmt-btn-ct{
+.sbmt-btn-ct {
     display: flex;
     width: 100%;
     margin-top: 15px;
@@ -204,10 +202,9 @@
     justify-content: center;
     align-items: center;
     background-color: var(--cta);
-    color:white;
+    color: white;
     font-weight: bolder;
     font-size: 2rem;
-    /* Pink Hover This down */
     background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
     background-repeat: no-repeat;
     background-size: 0% 100%;
@@ -215,48 +212,50 @@
     transition: background-size 400ms;
 
 }
+
 .sbmt-btn-ct:hover {
     background-size: 100% 100%;
     background-position-x: left;
 }
-    /* END PINK HOVER CODE */
-.ne-form{
-    display:flex;
+
+.ne-form {
+    display: flex;
     flex-direction: row;
     width: 80%;
-    height:50px;
+    height: 50px;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     font-weight: bold;
     font-size: x-large;
-    background-color: rgb(32,33,36);
+    background-color: rgb(32, 33, 36);
     color: white;
     padding-bottom: 10px;
 }
+
 .kyle {
     flex-direction: row;
     padding-bottom: 20px;
-    /*width: 75vw;*/
 }
+
 .msg-area {
     display: flex;
-    /*width: 75vw;*/
     height: 200px;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background-color: rgb(32,33,36);
+    background-color: rgb(32, 33, 36);
     color: white;
 }
-.margin-bottom-1rem{
+
+.margin-bottom-1rem {
     margin-bottom: 1rem;
 }
-.margin-bottom-2rem{
+
+.margin-bottom-2rem {
     margin-bottom: 2rem;
 }
 
-/* Small */
 @media (min-width: 20rem) and (max-width: 30rem) {
     .kyle {
         flex-direction: column;
@@ -275,10 +274,12 @@
         justify-content: flex-start;
         padding: 30px;
     }
+
     .feedback-header {
         display: flex;
         font-size: 1.5rem;
     }
+
     .msg-area {
         display: flex;
         width: 60vw;
@@ -286,7 +287,7 @@
         justify-content: center;
         align-items: center;
         border-radius: 10px;
-        background-color: rgb(32,33,36);
+        background-color: rgb(32, 33, 36);
         color: white;
     }
 }

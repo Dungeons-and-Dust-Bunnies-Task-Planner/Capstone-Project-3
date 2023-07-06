@@ -7,12 +7,8 @@
     flex-direction: column;
     align-items: center;
     row-gap: 20px;
-    /*height: 75vh;*/
-    /*overflow: scroll;*/
     margin-top: 31vh;
 }
-
-/* CREATE BATTLE ROW */
 
 .createBattleContainer {
     position: relative;
@@ -53,7 +49,6 @@
     background: var(--fade-dark-purple);
 }
 
-/* EDIT BATTLE BUTTONS */
 .large-cta-btn {
     width: 100%;
     height: 7vh;
@@ -181,7 +176,6 @@
     justify-content: end;
 }
 
-/* BATTLES */
 .battles-list-edit-battle-btn {
     display: contents;
 }
@@ -200,7 +194,6 @@
     background: var(--solid-background);
     border-radius: var(--br);
     box-shadow: var(--cta) inset 0 0 2px 2px;
-    /*overflow: hidden;*/
     margin-bottom: 10px;
 }
 
@@ -260,7 +253,6 @@
     aspect-ratio: auto;
 }
 
-
 @media (min-width: 20rem) and (max-width: 30rem) {
     .large-cta-btn, .large-cta-btn>h3{
         font-size: 1.4rem;
@@ -298,7 +290,6 @@
         width: 100vw;
         position: relative;
     }
-
 }
 
 @media (min-width: 30rem) and (max-width: 65rem) {

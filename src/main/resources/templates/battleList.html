@@ -8,7 +8,6 @@
 
     <div class="container createBattleContainer">
         <div class="row">
-            <!-- CREATE BATTLE FORM -->
             <form th:action="@{/battlegrounds/create-battle}" th:method="post">
                 <div class="hidden-form-wrap">
                     <input class="create-battle-input" type="text" placeholder="Add your battle..." name="battleTitle"
@@ -20,7 +19,6 @@
     </div>
     <div class="container grow">
         <div class="row grow full-width no-padding align-center justify-center">
-            <!-- BATTLE -->
             <div class="battles-list-container">
                 <div class="row">
                     <div class="battleColumnSize">
@@ -39,7 +37,7 @@
                                     th:data-battle-id="${battle.id}">
                                 <img class="editImage" src="/images/green-edit.png" alt="icon">
                             </button>
-                            <!-- EDIT BATTLE FORM -->
+
                             <div class="edit-modal-overlay hidden"></div>
                             <div class="editModal hidden justify-space-between grow d-flex"
                                  th:data-battle-id="${battle.id}">
@@ -58,7 +56,8 @@
                                     </div>
                                     <div class="row grow justify-center">
                                         <select id="largeSelect" name="monsterSelectId">
-                                            <option th:value="${battle.monster.id}" hidden selected>Select one...</option>
+                                            <option th:value="${battle.monster.id}" hidden selected>Select one...
+                                            </option>
                                             <option th:value="${2}">Dust Bunny Prime</option>
                                             <option th:value="${3}">OctoRizz</option>
                                             <option th:value="${4}">Sir Owlbear</option>
@@ -74,7 +73,6 @@
                                         style="align-self: center; padding-bottom: 10px">Delete Battle
                                 </button>
                                 <div class="delete-confirm-modal container hidden">
-                                    <!-- DELETE BATTLE -->
                                     <h2>Are you sure?</h2>
                                     <div class="row flex-direction-column">
                                         <form th:action="@{/battlegrounds/delete-battle}" th:method="post"

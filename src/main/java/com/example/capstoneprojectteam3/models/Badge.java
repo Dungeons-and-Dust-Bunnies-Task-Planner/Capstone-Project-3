@@ -1,13 +1,12 @@
 package com.example.capstoneprojectteam3.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name="badges")
+@Table(name = "badges")
 public class Badge {
 
     @Id
@@ -31,8 +30,6 @@ public class Badge {
     private List<Task> tasks;
 
 
-//    ----- Constructors START -----
-
     public Badge() {
     }
 
@@ -42,18 +39,12 @@ public class Badge {
         this.badgeBody = badgeBody;
     }
 
-    public Badge(String badgeTitle, String badgeBody, Set<User> users, List<Task> tasks){
+    public Badge(String badgeTitle, String badgeBody, Set<User> users, List<Task> tasks) {
         this.badgeTitle = badgeTitle;
         this.badgeBody = badgeBody;
         this.users = users;
         this.tasks = tasks;
     }
-
-    //    ----- Constructors END -----
-
-    // =========================
-
-//    ----- Getters and Setters START -----
 
     public long getId() {
         return id;
@@ -88,11 +79,11 @@ public class Badge {
         this.users = users;
     }
 
-    public List<Task> getTasks(){
+    public List<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<Task> tasks){
+    public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
 
@@ -103,8 +94,5 @@ public class Badge {
     public void setBadgeImage(String badgeImage) {
         this.badgeImage = badgeImage;
     }
-
-    //    ----- Getters and Setters END -----
-
 
 }

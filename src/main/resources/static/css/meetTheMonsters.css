@@ -1,4 +1,4 @@
-/*      TOP CONTAINER       */
+
 .topRow {
     margin: 75px 0;
 }
@@ -8,7 +8,6 @@
     font-size: xxx-large;
 }
 
-/* CARD CONTAINER       */
 .mainRow {
     width: 100vw;
     display: flex;
@@ -33,7 +32,6 @@
     width: 600px;
 }
 
-/*      TEXT STUFF      */
 .descriptionmTm {
     width: 45vw;
     display: flex;
@@ -70,7 +68,6 @@
         width: 90vw;
     }
 
-
     .h2monsterName {
         margin: 20px 0;
         display: flex;
@@ -85,8 +82,6 @@
         font-size: 1em;
         text-align: start;
     }
-
-
 }
 
 @media (max-width: 640px) {
