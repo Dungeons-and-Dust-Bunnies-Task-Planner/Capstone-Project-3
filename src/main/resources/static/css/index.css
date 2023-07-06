@@ -10,7 +10,6 @@
     font-weight: 400;
 }
 
-
 .land-h2 a {
     text-decoration: none;
     padding: 10px 10px;
@@ -30,7 +29,6 @@
     transition: all ease-in .3s;
     padding: 10px 15px;
     max-height: 10px;
-    /*font-size: 1.2em;*/
 }
 
 
@@ -39,18 +37,11 @@
     color: inherit;
 }
 
-
-/*  CONTAINER FOR THE MAIN INPUT    */
 .tooRight {
     display: flex;
     max-width: none;
     justify-content: space-between;
 }
-
-
-
-/*      LEFT SIDE STUFF     */
-
 
 .leftSide {
     display: flex;
@@ -59,7 +50,6 @@
     margin: 20px;
 
 }
-
 
 .description {
     display: flex;
@@ -79,9 +69,6 @@
     font-size: 2.5rem;
 }
 
-
-
-/*      RIGHT SIDE STUFF        */
 .rightSide {
     display: flex;
     width: 40vw;
@@ -98,7 +85,6 @@
     padding: 10px 10px;
 }
 
-/*Med*/
 @media (min-width: 30rem) and (max-width: 65rem) {
     .slogan {
         font-size: 3.5rem;
@@ -135,8 +121,6 @@
     }
 }
 
-
-/* Small */
 @media (min-width: 20rem) and (max-width: 30rem) {
     .slogan {
         font-size: 2.5rem;
@@ -185,7 +169,6 @@
     }
 }
 
-/*  smallest    */
 @media (min-width: 0rem) and (max-width: 19rem) {
     .slogan {
         font-size: 2.5rem;

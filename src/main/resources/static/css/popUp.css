@@ -1,10 +1,9 @@
-/*whole box */
+
 #popup {
     max-width: 25vw;
     position: absolute;
     bottom: 0;
 }
-
 
 .factContainer {
     width: 30vw;
@@ -27,7 +26,6 @@
     backdrop-filter: blur(20px);
 }
 
-/* contents */
 .factsColumn {
     position: absolute;
     top: 0;
@@ -44,7 +42,6 @@
     font-weight: 300;
 }
 
-/* images   */
 .monsterPopup {
     width: 10vw;
     max-width: 10vw;
@@ -54,7 +51,6 @@
     bottom: 0;
     right: 0;
 }
-
 
 #close-btn {
     position: absolute;
