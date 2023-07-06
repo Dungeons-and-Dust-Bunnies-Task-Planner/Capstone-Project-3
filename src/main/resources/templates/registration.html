@@ -50,10 +50,14 @@
         let confirmPassword = document.getElementById(`passwordConfirmation`).value;
         let message = document.getElementById(`message`);
         if (password === confirmPassword) {
-            message.style.color = `teal`;
+            message.style.color = `var(--cta)`;
+            message.style.fontWeight = '800';
+            message.style.fontSize = '1.3rem';
             message.innerHTML = `Passwords match.`
         } else {
             message.style.color = `red`;
+            message.style.fontWeight = '800';
+            message.style.fontSize = '1.3rem';
             message.innerHTML = `Passwords do not match.`
         }
         document.getElementById(`password`).onkeyup = passConfirm;
