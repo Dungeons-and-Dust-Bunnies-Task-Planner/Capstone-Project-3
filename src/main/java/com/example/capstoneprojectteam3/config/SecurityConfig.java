@@ -33,7 +33,7 @@ public class SecurityConfig {
 //                        )
 //                --------------------------------------------------------------
 
-                .formLogin((login) -> login.loginPage("/login").defaultSuccessUrl("/home"))
+                .formLogin((login) -> login.loginPage("/login").defaultSuccessUrl("/profile"))
                 .logout((logout) -> logout.logoutSuccessUrl("/home"))
                 .csrf(csrf -> csrf
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))

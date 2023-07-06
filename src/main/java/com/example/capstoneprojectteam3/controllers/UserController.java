@@ -64,6 +64,11 @@ public class UserController {
         return "login";
     }
 
+    @PostMapping("/login")
+    public String login() {
+        return "redirect:/profile";
+    }
+
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
@@ -92,7 +97,7 @@ public class UserController {
         if (password.equals(passwordConfirm)) {
             password = passwordEncoder.encode(password);
             usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground, 0));
-            return "redirect:/home";
+            return "redirect:/login";
         } else {
             redirectAttributes.addAttribute("passwordMismatch", true);
             return "redirect:/register?error";
