@@ -161,7 +161,7 @@
   padding:15px;
   font-size:1.4em;
   color:#fff;
-  text-shadow:var(--dark-shadow);
+  text-shadow:var(--text-shadow);
   z-index:1;
   transition:var(--trans);
 }
@@ -259,7 +259,7 @@
   background:var(--fade-dark-purple);
   box-shadow:var(--cta-inset-shadow);
   color:#fff;
-  text-shadow:var(--dark-shadow);
+  text-shadow:var(--text-shadow);
   height:100px;
   display:flex;
   align-items:center;
@@ -327,7 +327,7 @@
   font-weight:bolder;
   font-size:2rem;
   border-radius:10px;
-  text-shadow:0 0 10px black;
+  text-shadow:var(--text-shadow);
   box-shadow:var(--cta-inset-shadow);
   transition:var(--br);
 }
@@ -351,6 +351,17 @@
   text-decoration:line-through;
 }
 
+.task {
+  order: 1;
+}
+
+.task[data-task-complete='1'] {
+  order: 2;
+}
+
+.create-task-form {
+  order: 3;
+}
 
 /*.task.complete .task-body{*/
 /*  background:var(--fade-dark-purple);*/
@@ -501,15 +512,15 @@
 
 .battle-chat-box{
   width:100%;
-  height: fit-content;
+  height:fit-content;
   background:var(--background);
   border:2px solid gray;
   border-radius:var(--br);
 }
 
-.chatgptFont {
-  font-weight: 300;
-  font-size: 1.1em;
+.chatgptFont{
+  font-weight:300;
+  font-size:1.1em;
 }
 
 .hidden{
@@ -553,7 +564,7 @@
 }
 
 .monster-health-text{
-  z-index:89;
+  z-index:3;
 }
 
 .health-bar{
@@ -579,24 +590,24 @@
   box-shadow:inset black 0 0 2px 1px;
   border:none;
   font-size:2rem;
-  text-shadow:0 0 10px black;
+  text-shadow:var(--text-shadow);
   font-weight:700;
 }
 
-@media (min-width: 20rem) and (max-width: 30rem) {
+@media (min-width:20rem) and (max-width:30rem){
 
-  .complete-task-alert {
-    width: 90vw;
+  .complete-task-alert{
+    width:90vw;
   }
 
   .battle-icon-banner-text{
-    font-size: 29px;
-    position: relative;
-    left: 20px;
+    font-size:29px;
+    position:relative;
+    left:20px;
   }
 
   #battlegrounds-row{
-    flex-direction: column;
+    flex-direction:column;
   }
 
   .tasks{
@@ -610,7 +621,7 @@
   }
 
   .battle-icon-banner{
-    display: none;
+    display:none;
     /*width: 100%;*/
     /*position: absolute;*/
     /*top: 105px;*/
@@ -618,40 +629,41 @@
   }
 
   .battle-icon{
-    position: relative;
-    top: 104px;
+    position:relative;
+    top:104px;
   }
 
-  .monsters {
-    margin-top: 9px;
-    width: 100%;
+  .monsters{
+    margin-top:9px;
+    width:100%;
   }
 }
 
-@media (min-width: 30rem) and (max-width: 65rem) {
+@media (min-width:30rem) and (max-width:65rem){
 
   .tasks{
-    min-width: 35vw;
+    min-width:35vw;
   }
+
   .battle-icon-banner{
-    display: none;
+    display:none;
     /*position: absolute;*/
     /*top: 101px;*/
     /*left: 20px;*/
   }
 
   .battle-icon{
-    position: absolute;
-    top: 101px;
-    left: 0;
+    position:absolute;
+    top:101px;
+    left:0;
   }
 
-  .battle-chat-box {
-    align-self: start;
-    max-width: 63vw;
+  .battle-chat-box{
+    align-self:start;
+    max-width:63vw;
   }
 
-  .tasks-list {
-    margin-top: 3em;
+  .tasks-list{
+    margin-top:3em;
   }
 }

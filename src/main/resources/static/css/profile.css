@@ -103,7 +103,7 @@
 input.submit-btn, .submit-btn{
     color: white;
     background: var(--cta);
-    text-shadow: 0 0 10px black;
+    text-shadow: var(--text-shadow);
 }
 
 input.submit-btn:hover, .submit-btn:hover {
@@ -120,7 +120,7 @@ input.submit-btn:hover, .submit-btn:hover {
     height: 70px;
     box-shadow: inset #000 0 0 3px 1px;
     background: hotpink;
-    text-shadow: 0 1px 3px #000;
+    text-shadow: var(--text-shadow);
     color: #fff;
     font-size: 2em;
     border: none;
@@ -165,7 +165,7 @@ input.submit-btn:hover, .submit-btn:hover {
     background-position-x: right;
     transition: background-size 400ms;
     background-color: var(--cta);
-    text-shadow: 0 0 10px black;
+    text-shadow: var(--text-shadow);
 }
 .image-add:hover {
     background-size: 100% 100%;
@@ -237,7 +237,7 @@ input.submit-btn:hover, .submit-btn:hover {
     background-size: 0 100%;
     background-position-x: right;
     transition: background-size 400ms;
-    text-shadow: 0 0 10px black;
+    text-shadow: var(--text-shadow);
 }
 .editButton:hover{
     background-size: 100% 100%;

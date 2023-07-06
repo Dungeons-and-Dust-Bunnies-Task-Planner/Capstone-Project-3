@@ -21,7 +21,7 @@
     box-shadow: inset black 0 0 2px 1px;
     border: none;
     font-size: 2rem;
-    text-shadow: 0 0 10px black;
+    text-shadow: var(--text-shadow);
 }
 
 .land-h2 a:hover {

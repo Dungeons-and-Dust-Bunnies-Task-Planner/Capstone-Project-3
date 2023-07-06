@@ -24,8 +24,7 @@
         <ul class="tasks-list">
 
           <!--TASK-->
-          <li class="task" th:each="task : ${battle.tasks}" th:data-task-id="${task.getId()}">
-
+          <li class="task" th:each="task : ${battle.tasks}" th:data-task-id="${task.getId()}" th:data-task-complete="${task.getTaskComplete()}">
 
             <!--ADD COMPLETE TO THE CLASS FOR PRODUCTION SO THAT ONLY ONE OR THE OTHER SHOWS-->
             <p th:if="${task.taskComplete == 0}" class="task-body not-complete"
