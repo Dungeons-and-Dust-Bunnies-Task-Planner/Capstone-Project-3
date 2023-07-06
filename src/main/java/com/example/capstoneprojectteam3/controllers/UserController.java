@@ -92,7 +92,7 @@ public class UserController {
         if (password.equals(passwordConfirm)) {
             password = passwordEncoder.encode(password);
             usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground, 0));
-            return "redirect:/home";
+            return "redirect:/login";
         } else {
             redirectAttributes.addAttribute("passwordMismatch", true);
             return "redirect:/register?error";

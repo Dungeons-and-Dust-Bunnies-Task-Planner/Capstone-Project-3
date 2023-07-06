@@ -67,6 +67,7 @@
                         <!-- The bottom code checks for battles in progress and displays them -->
                         <div th:if="${!hasActiveBattles}" class="battleCard">
                             <div class="column battleTitle">
+                                <button class="non-Btn2 hover"><a th:href="@{/how-to}">View Tutorial</a></button>
                                 <h2 class="battleTitle">No Active Battles</h2>
                                 <button class="non-Btn"><a th:href="@{/battleList}" >Create Battle</a></button>
                             </div>
