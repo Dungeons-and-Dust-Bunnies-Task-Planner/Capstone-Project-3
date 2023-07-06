@@ -1,7 +1,5 @@
-console.log("inside filepicker.js");
 
 window.addEventListener('DOMContentLoaded', function(){
-    console.log("dom content loaded");
     const client = filestack.init(filePickerKey);
     const profilePicker = client.picker(profileOptions);
     const backgroundPicker = client.picker(backgroundOptions);

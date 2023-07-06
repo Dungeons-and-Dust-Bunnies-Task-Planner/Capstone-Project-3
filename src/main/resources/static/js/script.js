@@ -26,9 +26,6 @@
 	const numOfTasks = monster.dataset.tasks;
 	const numOfCompleteTasks = monster.dataset.complete;
 
-	console.log(numOfTasks);
-	console.log(numOfCompleteTasks);
-
 	const calculateMonsterHealth = (numOfTasks, numOfCompleteTasks) => {
 		let monsterHealth = 100;
 		if (numOfTasks > 0) {
@@ -71,7 +68,6 @@
 	monsterTalkParent.innerHTML = `<h2 class="chatgptFont">${monsterResponse.choices[0].text}</h2>`;
 
 	document.addEventListener('DOMContentLoaded', function () {
-		console.log('Dynamic elements loaded'); //DEBUG
 		document.querySelectorAll('.battle').forEach((battle, idx) => {
 			battle.addEventListener('click', () => {
 				removeActiveBattles();

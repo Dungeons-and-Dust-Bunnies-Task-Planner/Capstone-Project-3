@@ -79,6 +79,7 @@ body{
 
 .row.full-width{
   max-width:unset;
+  min-height: 100%;
 }
 
 .row.align-center{
