@@ -4,149 +4,132 @@
 <body>
 
 <nav th:insert="~{partials/navbar :: navbar}"></nav>
-    <div class="page-wrapper">
-        <div class="container picParent">
-            <!--        COVER PHOTO     -->
-            <img class="coverPhoto" th:src="${user.backgroundImage}" alt="Background Image">
-
-            <!--    AVATAR PHOTO        -->
-            <div class="avatarPlacement row grow">
-                <div class="picName">
-                    <img class="avatar-wrapper" th:src="${user.avatarImage}" alt="Avatar Photo">
-
-                    <!--                USERNAME            -->
-                    <div class="column profileColumn username">
-                        <h1 class="h1Profile" th:text="'@' + ${user.username}">Username</h1>
-                    </div>
+<div class="page-wrapper">
+    <div class="container picParent">
+        <img class="coverPhoto" th:src="${user.backgroundImage}" alt="Background Image">
+        <div class="avatarPlacement row grow">
+            <div class="picName">
+                <img class="avatar-wrapper" th:src="${user.avatarImage}" alt="Avatar Photo">
+                <div class="column profileColumn username">
+                    <h1 class="h1Profile" th:text="'@' + ${user.username}">Username</h1>
                 </div>
-                <!--                EDIT PROFILE BUTTON         -->
-
-                <div class="edit-modal-overlay hidden"></div>
-                <div class="edit-modal hidden">
-                    <form th:action="@{/edit/profile}" th:method="post">
-                        <div class="column filestack-btns">
-                            <div class="image-add" id="profile-image-add">Profile Img</div>
-                            <input th:value="${user.avatarImage}" type="hidden" id="profile-image-url" name="profile-image-url"/>
-                            <div class="image-add" id="background-image-add">Banner</div>
-                            <input th:value="${user.backgroundImage}" type="hidden" id="background-image-url" name="background-image-url"/>
-                        </div>
-
-                        <label for="username">Edit Username</label><br>
-                        <input th:value="${user.username}" class="row usernameRow" type="text" id="username" name="username"><br>
-                        <label for="email">Edit Email</label><br>
-                        <input th:value="${user.email}" class="row emailRow" type="email" id="email" name="email"><br>
-                        <label for="password">Edit Password</label><br>
-                        <input class="row passwordRow" type="password" id="password" name="password"><br>
-                        <label for="password">Confirm Password</label><br>
-                        <input class="row confirmPasswordRow" type="password" id="passwordConfirmation" name="passwordConfirmation"><br>
-                        <input class="row submit-btn" type="submit" value="Confirm"><br>
-
+            </div>
+            <div class="edit-modal-overlay hidden"></div>
+            <div class="edit-modal hidden">
+                <form th:action="@{/edit/profile}" th:method="post">
+                    <div class="column filestack-btns">
+                        <div class="image-add" id="profile-image-add">Profile Img</div>
+                        <input th:value="${user.avatarImage}" type="hidden" id="profile-image-url"
+                               name="profile-image-url"/>
+                        <div class="image-add" id="background-image-add">Banner</div>
+                        <input th:value="${user.backgroundImage}" type="hidden" id="background-image-url"
+                               name="background-image-url"/>
+                    </div>
+                    <label for="username">Edit Username</label><br>
+                    <input th:value="${user.username}" class="row usernameRow" type="text" id="username"
+                           name="username"><br>
+                    <label for="email">Edit Email</label><br>
+                    <input th:value="${user.email}" class="row emailRow" type="email" id="email" name="email"><br>
+                    <label for="password">Edit Password</label><br>
+                    <input class="row passwordRow" type="password" id="password" name="password"><br>
+                    <label for="password">Confirm Password</label><br>
+                    <input class="row confirmPasswordRow" type="password" id="passwordConfirmation"
+                           name="passwordConfirmation"><br>
+                    <input class="row submit-btn" type="submit" value="Confirm"><br>
+                </form>
+                <div class="column deleteAccount">
+                    <form th:action="@{/profile/{id}/delete(id=${id})}" method="POST">
+                        <input class="deleteAccount" type="submit" value="Delete Account">
                     </form>
-                    <div class="column deleteAccount">
-                        <form th:action="@{/profile/{id}/delete(id=${id})}" method="POST">
-                            <input class="deleteAccount" type="submit" value="Delete Account">
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="row edit-delete-btns">
-                <div class="column profileColumn editProfile">
-                    <button class="editButton profileColumn">Edit</button>
                 </div>
             </div>
         </div>
+        <div class="row edit-delete-btns">
+            <div class="column profileColumn editProfile">
+                <button class="editButton profileColumn">Edit</button>
+            </div>
+        </div>
+    </div>
 
-
-        <!--    BATTLE SECTION       -->
-        <div class="container grow">
-            <br>
-            <h1>Battlegrounds</h1>
-            <div class="row battleRow grow">
-                <div class="battleArea">
-                    <div class="row cardRow">
-                        <!-- The bottom code checks for battles in progress and displays them -->
-                        <div th:if="${!hasActiveBattles}" class="battleCard">
-                            <div class="column battleTitle">
-                                <button class="non-Btn2 hover"><a th:href="@{/how-to}">View Tutorial</a></button>
-                                <h2 class="battleTitle">No Active Battles</h2>
-                                <button class="non-Btn"><a th:href="@{/battleList}" >Create Battle</a></button>
-                            </div>
+    <div class="container grow">
+        <br>
+        <h1>Battlegrounds</h1>
+        <div class="row battleRow grow">
+            <div class="battleArea">
+                <div class="row cardRow">
+                    <div th:if="${!hasActiveBattles}" class="battleCard">
+                        <div class="column battleTitle">
+                            <button class="non-Btn2 hover"><a th:href="@{/how-to}">View Tutorial</a></button>
+                            <h2 class="battleTitle">No Active Battles</h2>
+                            <button class="non-Btn"><a th:href="@{/battleList}">Create Battle</a></button>
                         </div>
-                        <div th:if="${hasActiveBattles and battle.status == 0}" th:each="battle : ${battles}" class="battleCard">
-                            <div th:if="${battle.status == 0}" class="column battleImageMonster">
-                                    <img class="battleImageMonster" th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}" th:src="${battle.monster.monsterImages[0].monster_img}" alt="Battle monster image">
-                            </div>
-                            <div th:if="${battle.status == 0}" class="column battleTitle">
-                                <h2 th:if="${battle.status == 0}"><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>
-                                <p th:if="${battle.status == 0}" class="battleTasks">In Progress</p>
-                            </div>
+                    </div>
+                    <div th:if="${hasActiveBattles and battle.status == 0}" th:each="battle : ${battles}"
+                         class="battleCard">
+                        <div th:if="${battle.status == 0}" class="column battleImageMonster">
+                            <img class="battleImageMonster"
+                                 th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}"
+                                 th:src="${battle.monster.monsterImages[0].monster_img}" alt="Battle monster image">
+                        </div>
+                        <div th:if="${battle.status == 0}" class="column battleTitle">
+                            <h2 th:if="${battle.status == 0}"><a th:href="@{/battlegrounds/{id}(id=${battle.id})}"
+                                                                 class="battleTitle" th:text="${battle.title}"></a></h2>
+                            <p th:if="${battle.status == 0}" class="battleTasks">In Progress</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--    BADGES AREA        -->
-        <div class="container grow">
-            <br>
-            <h1>Badges</h1>
-            <div class="row badgeRow grow">
-                <div class="badgeArea">
-
-                    <div class="activeBadgeRow">
-                        <div th:if="${user.getBattlesComplete() == 0}">
-                            <h1 class="profile-no-badges">Fight Monsters to Earn Rewards!</h1>
-                        </div>
-                        <div th:each="badge : ${badges}" class="badgeCard">
-                            <div>
+    </div>
+    <div class="container grow">
+        <br>
+        <h1>Badges</h1>
+        <div class="row badgeRow grow">
+            <div class="badgeArea">
+                <div class="activeBadgeRow">
+                    <div th:if="${user.getBattlesComplete() == 0}">
+                        <h1 class="profile-no-badges">Fight Monsters to Earn Rewards!</h1>
+                    </div>
+                    <div th:each="badge : ${badges}" class="badgeCard">
+                        <div>
                             <img class="activeBadgeImage" th:src="${badge.badgeImage}" alt="Active Badge Image">
-                            </div>
-                            <div>
+                        </div>
+                        <div>
                             <h2 class="badgeTitle" th:text="${badge.badgeTitle}"></h2>
                             <p class="badgeBody" th:text="${badge.badgeBody}"></p>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--    BATTLE HISTORY SECTION       -->
-
-        <div class="container grow">
-            <br>
-            <h1>Battle History</h1>
-            <div class="row battleRow grow">
-                <div class="battleArea">
-                    <div class="row cardRow">
-
-<!--                        <div th:if="${!hasActiveBattles}" class="battleCard">-->
-<!--                            <div class="column battleTitle">-->
-<!--                                <h2 class="battleTitle">Theres no Active Battles!</h2>-->
-<!--                                <button class="non-Btn"><a th:href="@{/battleList}" >Create Battle</a></button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <div th:if="${battles.size() >= 1 and battle.status == 1}" th:each="battle : ${battles}" class="battleCard">
-                            <div th:if="${battle.status == 1}" class="column battleImageMonster">
-                                <img class="battleImageMonster" th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}" th:src="${battle.monster.monsterImages[4].monster_img}" alt="Battle monster image">
-                            </div>
-                            <div th:if="${battle.status == 1}" class="column battleTitle">
-                                <h2 th:if="${battle.status == 1}"><a th:href="@{/battlegrounds/{id}(id=${battle.id})}" class="battleTitle" th:text="${battle.title}"></a></h2>
-                                <p th:if="${battle.status == 1}" class="battleTasks">Monster Slain</p>
-                            </div>
-                        </div>
-<!--                        <div th:if="${!hasActiveBattles}" class="battleCard">-->
-<!--                            <div class="column battleTitle">-->
-<!--                                <h2 class="battleTitle">Theres no Active Battles!</h2>-->
-<!--                                <button class="non-Btn"><a th:href="@{/battleList}" >Create Battle</a></button>-->
-<!--                            </div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
     </div>
-        <div th:insert="~{partials/footer :: footer}"></div>
+    <div class="container grow">
+        <br>
+        <h1>Battle History</h1>
+        <div class="row battleRow grow">
+            <div class="battleArea">
+                <div class="row cardRow">
+
+                    <div th:if="${battles.size() >= 1 and battle.status == 1}" th:each="battle : ${battles}"
+                         class="battleCard">
+                        <div th:if="${battle.status == 1}" class="column battleImageMonster">
+                            <img class="battleImageMonster"
+                                 th:if="${battle != null && battle.monster != null && !battle.monster.monsterImages.isEmpty() && battle.monster.monsterImages[0].monster_img != null}"
+                                 th:src="${battle.monster.monsterImages[4].monster_img}" alt="Battle monster image">
+                        </div>
+                        <div th:if="${battle.status == 1}" class="column battleTitle">
+                            <h2 th:if="${battle.status == 1}"><a th:href="@{/battlegrounds/{id}(id=${battle.id})}"
+                                                                 class="battleTitle" th:text="${battle.title}"></a></h2>
+                            <p th:if="${battle.status == 1}" class="battleTasks">Monster Slain</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div th:insert="~{partials/footer :: footer}"></div>
 <script src="/js/profile.js"></script>
 <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
 <script type="module" src="/js/filepicker.js"></script>

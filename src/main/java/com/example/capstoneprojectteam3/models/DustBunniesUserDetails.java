@@ -31,8 +31,7 @@ public class DustBunniesUserDetails extends User implements UserDetails {
         return true;
     }
 
-    public DustBunniesUserDetails(){
-
+    public DustBunniesUserDetails() {
     }
 
     public DustBunniesUserDetails(long id, String username, String email, String password) {

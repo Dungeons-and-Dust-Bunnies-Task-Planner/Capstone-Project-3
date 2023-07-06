@@ -1,21 +1,14 @@
 (async () => {
-	// CHAT GPT API KEY
 	const apiKey = openAiKey;
-	// DOM ELEMENTS
 	const alertOverlay = document.querySelector('.alert-overlay');
 	const battleIcon = document.querySelector('.battle-icon');
 	const battleIconBannerText = document.querySelector('.battle-icon-banner-text');
-	// BATTLES
 	const battleSlideOut = document.querySelector('.battle-slide-out');
 	const battle = document.querySelectorAll('.battle');
-	// TASKS
 	const task = document.querySelectorAll('.task');
-	// SHOW TASKSAll
 	const tasksList = document.querySelectorAll('.tasks-list');
-	// CUSTOM ALERT
 	const customAlert = document.querySelector('.complete-task-alert');
 
-	// FUNCTIONS
 	function removeActiveBattles() {
 		battle.forEach(battle => {
 			battle.classList.add('inactive');
@@ -29,10 +22,6 @@
 		});
 	}
 
-	const checkForClass = (element, className) => {
-		return element.classList.contains(className);
-	};
-
 	const monster = document.querySelector('#monster');
 	const numOfTasks = monster.dataset.tasks;
 	const numOfCompleteTasks = monster.dataset.complete;
@@ -41,11 +30,10 @@
 	console.log(numOfCompleteTasks);
 
 	const calculateMonsterHealth = (numOfTasks, numOfCompleteTasks) => {
-		let monsterHealth = 100; // 100% health initially
+		let monsterHealth = 100;
 		if (numOfTasks > 0) {
-			// To avoid division by zero
-			let taskValue = 100 / numOfTasks; // Each task's value percentage
-			monsterHealth -= taskValue * numOfCompleteTasks; // Calculate health based on completed tasks
+			let taskValue = 100 / numOfTasks;
+			monsterHealth -= taskValue * numOfCompleteTasks;
 		}
 		return monsterHealth;
 	};
@@ -86,11 +74,9 @@
 		console.log('Dynamic elements loaded'); //DEBUG
 		document.querySelectorAll('.battle').forEach((battle, idx) => {
 			battle.addEventListener('click', () => {
-				// console.log('battle click event fired')
 				removeActiveBattles();
 				battle.classList.remove('inactive');
 				battle.classList.add('active');
-				// console.log('e.target click event fired')
 
 				const battles = document.querySelectorAll('.battle');
 				const battleTasks = document.querySelectorAll('.tasks-list');
@@ -100,10 +86,8 @@
 				}
 			});
 		});
-
 	});
 
-	// EVENT LISTENERS
 	battleIcon.addEventListener('click', () => {
 		battleSlideOut.classList.toggle('open');
 		if (battleSlideOut.classList.contains('open')) {
@@ -128,7 +112,6 @@
 		const editTaskSubmitBtn = task.querySelector('.edit-task-submit-btn');
 		const deleteTaskBtn = task.querySelector('.delete-task-btn');
 		const deleteTaskForm = task.querySelector('.delete-task-form');
-		//CUSTOM ALERT
 		const customAlert = task.querySelector('.complete-task-alert');
 		const alertTitle = task.querySelector('.alert-title');
 		const cancelBtn = task.querySelector('.cancel-btn');

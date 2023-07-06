@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,900;0,1000;1,800;1,900;1,1000&display=swap');
 
-/* FONT FOR PAGE */
-
 .h1Profile {
     font-family: 'Nunito', sans-serif;
     font-size: 75px;
@@ -17,9 +15,11 @@
 .h4Profile {
     font-family: 'Nunito', sans-serif;
 }
-.battleImageMonster{
+
+.battleImageMonster {
     height: 15vh;
 }
+
 .profile-no-badges {
     font-size: 1.5rem;
 }
@@ -29,7 +29,6 @@
     flex: 0 0 1;
 }
 
-/* COVER PHOTO */
 .coverPhoto {
     width: 100vw;
     height: 300px;
@@ -45,7 +44,6 @@
     width: 100vw;
 }
 
-/*  EDIT PROFILE MODAL  */
 .edit-modal {
     position: fixed;
     flex-direction: column;
@@ -64,7 +62,6 @@
     color: white;
     z-index: 3;
 }
-
 
 .edit-modal > form {
     height: 95%;
@@ -90,17 +87,20 @@
     background-position-x: right;
     transition: background-size 400ms;
 }
-.deleteAccount{
+
+.deleteAccount {
     display: flex;
     background: transparent;
     color: white;
     align-items: flex-end;
     border: none;
 }
+
 .deleteAccount:hover {
-   color: var(--cta);
+    color: var(--cta);
 }
-input.submit-btn, .submit-btn{
+
+input.submit-btn, .submit-btn {
     color: white;
     background: var(--cta);
     text-shadow: var(--text-shadow);
@@ -152,8 +152,8 @@ input.submit-btn:hover, .submit-btn:hover {
     text-align: center;
     text-decoration: none;
     display: flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5rem;
     margin: 20px 2px;
     cursor: pointer;
@@ -167,20 +167,19 @@ input.submit-btn:hover, .submit-btn:hover {
     background-color: var(--cta);
     text-shadow: var(--text-shadow);
 }
+
 .image-add:hover {
     background-size: 100% 100%;
     background-position-x: left;
     cursor: pointer;
 }
+
 .filestack-btns {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-/* AVATAR */
-
-/* AVATAR */
 .picName {
     display: flex;
 }
@@ -202,7 +201,6 @@ input.submit-btn:hover, .submit-btn:hover {
     justify-content: space-between;
 }
 
-/* USER NAME */
 .username {
     font-family: 'Nunito', sans-serif;
     color: #fff;
@@ -212,14 +210,12 @@ input.submit-btn:hover, .submit-btn:hover {
     align-items: start;
 }
 
-/* EDIT BUTTON */
 .editProfile {
     max-width: 150px;
     margin-bottom: 35px;
     flex-wrap: wrap;
     justify-content: end;
 }
-
 
 .editButton {
     display: flex;
@@ -239,19 +235,20 @@ input.submit-btn:hover, .submit-btn:hover {
     transition: background-size 400ms;
     text-shadow: var(--text-shadow);
 }
-.editButton:hover{
+
+.editButton:hover {
     background-size: 100% 100%;
     background-position-x: left;
     cursor: pointer;
 }
+
 .edit-delete-btns {
     display: flex;
     justify-content: flex-end;
 }
 
-/* BATTLE AREA */
 .battleRow {
-    margin: 0px 50px 50px 50px;
+    margin: 0 50px 50px 50px;
     width: 75vw;
     display: flex;
     justify-content: center;
@@ -287,9 +284,8 @@ input.submit-btn:hover, .submit-btn:hover {
     cursor: pointer;
 }
 
-
 .battleCardImage {
-height: 15vh;
+    height: 15vh;
 }
 
 .activeBattleRow {
@@ -311,6 +307,7 @@ height: 15vh;
     width: 40vw;
     text-align: center;
 }
+
 .non-Btn {
     height: 50px;
     background: var(--cta);
@@ -324,6 +321,7 @@ height: 15vh;
     background-position-x: right;
     transition: background-size 400ms;
 }
+
 .non-Btn2 {
     background: none;
     border: none;
@@ -332,14 +330,12 @@ height: 15vh;
     color: white;
 }
 
-
 .non-Btn:hover {
     background-size: 100% 100%;
     background-position-x: left;
     cursor: pointer;
 }
 
-/* BADGES */
 .badgeRow {
     margin: 0px 50px 50px 50px;
     width: 75vw;
@@ -369,9 +365,7 @@ height: 15vh;
     gap: 15px;
 }
 
-
 .badgeCard {
-    /*height: 500px;*/
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
     display: flex;
@@ -388,30 +382,32 @@ height: 15vh;
     text-align: center;
 }
 
-/*  MEDIA QUERY         */
-
-/* Small */
 @media (min-width: 20rem) and (max-width: 30rem) {
-    .battleTitle{
+    .battleTitle {
         font-size: 1.5rem;
     }
-    .non-Btn{
+
+    .non-Btn {
         font-size: 1rem;
     }
+
     .editButton {
         width: 20vw;
         height: 4vh;
         margin-top: 3vh;
     }
+
     .edit-modal > form {
         height: 90%;
     }
+
     .edit-modal > form > input {
         height: 5vh;
         font-size: 1.2rem;
         border-radius: 6px;
     }
-    .image-add{
+
+    .image-add {
         height: 30px;
         padding: 0 0;
         display: flex;
@@ -420,10 +416,12 @@ height: 15vh;
         border-radius: 6px;
         font-size: 1.2rem;
     }
-    .edit-modal{
+
+    .edit-modal {
         max-width: 80vw;
         height: 70vh;
     }
+
     .avatarPlacement {
         margin-top: -100px;
     }
@@ -447,6 +445,7 @@ height: 15vh;
         margin-top: -35px;
         top: 8vh;
     }
+
     .battleCard {
         max-height: fit-content;
         flex-direction: column;
@@ -454,22 +453,24 @@ height: 15vh;
     }
 }
 
-/*Med*/
 @media (min-width: 30rem) and (max-width: 65rem) {
     .editButton {
         width: 50px;
         height: 4vh;
         margin-top: 3vh;
     }
+
     .edit-modal > form {
         height: 90%;
     }
+
     .edit-modal > form > input {
         height: 6vh;
         font-size: 1.5rem;
         border-radius: 6px;
     }
-    .image-add{
+
+    .image-add {
         height: 6vh;
         padding: 0 0;
         display: flex;
@@ -477,10 +478,12 @@ height: 15vh;
         justify-content: center;
         border-radius: 6px;
     }
-    .edit-modal{
+
+    .edit-modal {
         max-width: 80vw;
         height: 80vh;
     }
+
     .avatarPlacement {
         margin-top: -150px;
     }
@@ -500,6 +503,7 @@ height: 15vh;
         margin-top: 0;
         top: 11vh;
     }
+
     .battleCard {
         max-height: fit-content;
         flex-direction: column;

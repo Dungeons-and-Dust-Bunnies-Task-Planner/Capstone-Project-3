@@ -11,14 +11,13 @@ public class KeyController {
     @Autowired
     private KeyService keyService;
 
-
     @GetMapping(value = "/keys.js", produces = "application/javascript")
-    public String getKeys(){
+    public String getKeys() {
         return String.format(
                 """
-                        const openAiKey = "%s";
-                        const filePickerKey = "%s";
-                """
+                                const openAiKey = "%s";
+                                const filePickerKey = "%s";
+                        """
                 , keyService.getOpenAiKey(), keyService.getFilePickerKey());
     }
 }
