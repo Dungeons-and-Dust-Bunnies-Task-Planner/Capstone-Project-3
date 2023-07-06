@@ -20,6 +20,7 @@
   --cta-shadow:var(--cta) 0 0 2px 1px;
   --dark-inset-shadow:#000 inset 0 0 2px 1px;
   --dark-shadow:#000 0 0 2px 1px;
+  --text-shadow: #000 1px 1px 1px;
   --br:.3em;
   --trans:all ease-out .4s
 }
