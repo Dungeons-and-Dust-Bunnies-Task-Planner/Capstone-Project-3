@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="tasks")
+@Table(name = "tasks")
 public class Task {
 
     @Id
@@ -28,10 +28,8 @@ public class Task {
     @ManyToMany(mappedBy = "tasks")
     private List<Badge> badges;
 
-
-    //    ----- Constructors START -----
-
-    public Task() {}
+    public Task() {
+    }
 
     public Task(String taskBody, Battle battle) {
         this.taskBody = taskBody;
@@ -50,18 +48,12 @@ public class Task {
         this.battle = battle;
     }
 
-    public Task(String taskBody, Battle battle, List<Badge> badges, int taskComplete){
+    public Task(String taskBody, Battle battle, List<Badge> badges, int taskComplete) {
         this.taskBody = taskBody;
         this.battle = battle;
         this.badges = badges;
         this.taskComplete = taskComplete;
     }
-
-    //    ----- Constructors END -----
-
-    // =========================
-
-    //    ----- Getters and Setters START -----
 
     public int getTaskComplete() {
         return taskComplete;
@@ -95,15 +87,11 @@ public class Task {
         this.battle = battle;
     }
 
-    public List<Badge> getBadges(){
+    public List<Badge> getBadges() {
         return badges;
     }
 
-    public void setBadges(List<Badge> badges){
+    public void setBadges(List<Badge> badges) {
         this.badges = badges;
     }
-
-
-    //    ----- Getters and Setters END -----
-
 }

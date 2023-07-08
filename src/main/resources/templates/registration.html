@@ -3,63 +3,64 @@
 <head th:replace="partials/head :: head ('Register for Dungeons and Dust Bunnies')"></head>
 <body>
 <div class="page-wrapper">
-  <header th:replace="partials/navbar :: navbar"></header>
-  <div class="container grow align-center justify-center" style="margin-top: 100px">
-    <div class="row justify-center align-center">
-      <div class="column register-form align-center">
-        <h1>Join the Fight!</h1>
-<!--          <div th:if="${param.error != null}">-->
-<!--              <p class="already-exists">Registration failed. Please re-enter information.</p>-->
-<!--          </div>-->
-          <div th:if="${param.passwordMismatch != null}">
-              <p class="already-exists">Passwords do not match.</p>
-          </div>
-          <div th:if="${param.userExists}">
-              <p class="already-exists">Username or Email Already Registered</p>
-          </div>
-        <form th:action="@{/register}" th:method="post">
-            <label for="username">Username</label><br>
-            <input class="row" type="text" id="username" name="username" required><br>
-            <label for="email">Email</label><br>
-            <input class="row" type="email" id="email" name="email" required><br>
-            <label for="password">Password</label><br>
-            <input class="row" type="password" id="password" name="password" onkeyup="passConfirm()" required><br>
-            <label for="password">Confirm Password</label><br>
-            <input class="row" type="password" id="passwordConfirmation" name="passwordConfirmation" onkeyup="passConfirm()" required><br>
-
-            <div class="justify-center align-center text-center" id="message"></div>
-
-            <input class="row justify-center submit login-register-Btn" type="submit" value="Sign me up !"><br>
-          <div class="row register-link">
-              <a th:href="@{/login}">Already Registered? Login!</a>
-          </div>
-        </form>
-      </div>
+    <header th:replace="partials/navbar :: navbar"></header>
+    <div class="container grow align-center justify-center" style="margin-top: 100px">
+        <div class="row justify-center align-center">
+            <div class="column register-form align-center">
+                <h1>Join the Fight!</h1>
+                <div th:if="${param.passwordMismatch != null}">
+                    <p class="already-exists">Passwords do not match.</p>
+                </div>
+                <div th:if="${param.userExists}">
+                    <p class="already-exists">Username or Email Already Registered</p>
+                </div>
+                <form th:action="@{/register}" th:method="post">
+                    <label for="username">Username</label><br>
+                    <input class="row" type="text" id="username" name="username" required><br>
+                    <label for="email">Email</label><br>
+                    <input class="row" type="email" id="email" name="email" required><br>
+                    <label for="password">Password</label><br>
+                    <input class="row" type="password" id="password" name="password" onkeyup="passConfirm()"
+                           required><br>
+                    <label for="password">Confirm Password</label><br>
+                    <input class="row" type="password" id="passwordConfirmation" name="passwordConfirmation"
+                           onkeyup="passConfirm()" required><br>
+                    <div class="justify-center align-center text-center" id="message"></div>
+                    <input class="row justify-center submit login-register-Btn" type="submit" value="Sign me up !"><br>
+                    <div class="row register-link">
+                        <a th:href="@{/login}">Already Registered? Login!</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row" style="height: 50px">
+            <img class="monster-sneak3" th:if="${monsterImages.size() > 0}"
+                 th:src="${monsterImages.get(2).getMonster_img()}" alt="peeking monster 3">
+            <img class="monster-sneak4" th:if="${monsterImages.size() > 0}"
+                 th:src="${monsterImages.get(3).getMonster_img()}" alt="peeking monster 4">
+        </div>
     </div>
-      <div class="row" style="height: 50px">
-          <img class="monster-sneak3" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(2).getMonster_img()}">
-          <img class="monster-sneak4" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(3).getMonster_img()}">
-      </div>
-  </div>
 </div>
 <footer th:replace="partials/footer :: footer"></footer>
 <script>
-
     function passConfirm() {
         let password = document.getElementById(`password`).value;
         let confirmPassword = document.getElementById(`passwordConfirmation`).value;
         let message = document.getElementById(`message`);
         if (password === confirmPassword) {
-            message.style.color = `teal`;
+            message.style.color = `var(--cta)`;
+            message.style.fontWeight = '800';
+            message.style.fontSize = '1.3rem';
             message.innerHTML = `Passwords match.`
         } else {
             message.style.color = `red`;
+            message.style.fontWeight = '800';
+            message.style.fontSize = '1.3rem';
             message.innerHTML = `Passwords do not match.`
         }
         document.getElementById(`password`).onkeyup = passConfirm;
         document.getElementById(`confirm_password`).onkeyup = passConfirm;
     }
-
 </script>
 </body>
 </html>

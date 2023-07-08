@@ -6,7 +6,6 @@ import com.example.capstoneprojectteam3.models.MonsterImage;
 import com.example.capstoneprojectteam3.models.User;
 import com.example.capstoneprojectteam3.repositories.BattleRepository;
 import com.example.capstoneprojectteam3.repositories.MonsterImageRepository;
-import com.example.capstoneprojectteam3.repositories.MonsterRepository;
 import com.example.capstoneprojectteam3.repositories.UserRepository;
 import com.example.capstoneprojectteam3.services.DustBunniesUserDetailsService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,28 +26,27 @@ import java.util.List;
 public class UserController {
 
     private final UserRepository usersDao;
-    private final MonsterRepository monstersDao;
     private final MonsterImageRepository monsterImagesDao;
     private final PasswordEncoder passwordEncoder;
     private final BattleRepository battlesDao;
 
 
-    public UserController(UserRepository usersDao, MonsterRepository monstersDao, MonsterImageRepository monsterImagesDao, PasswordEncoder passwordEncoder, BattleRepository battlesDao, DustBunniesUserDetailsService dustBunniesUserDetailsService){
-        this.monstersDao = monstersDao;
+    public UserController(UserRepository usersDao, MonsterImageRepository monsterImagesDao, PasswordEncoder passwordEncoder, BattleRepository battlesDao, DustBunniesUserDetailsService dustBunniesUserDetailsService) {
         this.monsterImagesDao = monsterImagesDao;
         this.passwordEncoder = passwordEncoder;
         this.usersDao = usersDao;
         this.battlesDao = battlesDao;
     }
+
     @GetMapping("/home")
-    public String showHome(Model model){
+    public String showHome(Model model) {
         List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
         model.addAttribute("monsterImages", monsterImages);
         return "index";
     }
 
     @GetMapping("/")
-    public String showIndex(Model model){
+    public String showIndex(Model model) {
         List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
         model.addAttribute("monsterImages", monsterImages);
         return "index";
@@ -64,8 +62,13 @@ public class UserController {
         return "login";
     }
 
+    @PostMapping("/login")
+    public String login() {
+        return "redirect:/profile";
+    }
+
     @GetMapping("/register")
-    public String showRegistrationForm(Model model){
+    public String showRegistrationForm(Model model) {
         List<MonsterImage> monsterImages = monsterImagesDao.findAllByMonster_stage(1L);
         model.addAttribute("monsterImages", monsterImages);
         return "registration";
@@ -92,13 +95,12 @@ public class UserController {
         if (password.equals(passwordConfirm)) {
             password = passwordEncoder.encode(password);
             usersDao.save(new User(username, email, password, defaultAvatar, defaultBackground, 0));
-            return "redirect:/home";
+            return "redirect:/login";
         } else {
             redirectAttributes.addAttribute("passwordMismatch", true);
             return "redirect:/register?error";
         }
     }
-
 
 
     @GetMapping("/profile")
@@ -110,7 +112,6 @@ public class UserController {
         List<Battle> battles = battlesDao.findAllByUserId(userId);
         boolean hasActiveBattles = false;
 
-        //Loop through battles, and if any battles are active, set hasActiveBattles to true
         for (Battle battle : battles) {
             if (battle.getStatus() == 0) {
                 hasActiveBattles = true;
@@ -125,7 +126,7 @@ public class UserController {
     }
 
     @PostMapping("/claim/badge")
-    public String claimBadge(@RequestParam(name="badgeId") long badgeId){
+    public String claimBadge(@RequestParam(name = "badgeId") long badgeId) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         long userId = user.getId();
         user = usersDao.findUserById(userId);
@@ -137,15 +138,15 @@ public class UserController {
 
     @PostMapping("/edit/profile")
     public String changeProfile(
-            @RequestParam(name="email") String email,
+            @RequestParam(name = "email") String email,
             @RequestParam(name = "username") String username,
             @RequestParam(name = "password") String password,
             @RequestParam(name = "passwordConfirmation") String passwordConfirm,
             @RequestParam(name = "profile-image-url") String profileImageUrl,
             @RequestParam(name = "background-image-url") String backgroundImageUrl
-            ){
+    ) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (password.isEmpty() && passwordConfirm.isEmpty()){
+        if (password.isEmpty() && passwordConfirm.isEmpty()) {
             long userId = user.getId();
             user = usersDao.findUserById(userId);
             user.setUsername(username);
@@ -157,7 +158,7 @@ public class UserController {
             System.out.println("This is conditional where password fields are empty");
             usersDao.save(user);
         } else {
-            if (password.equals(passwordConfirm)){
+            if (password.equals(passwordConfirm)) {
                 password = passwordEncoder.encode(password);
                 long userId = user.getId();
                 user = usersDao.findUserById(userId);
@@ -185,13 +186,10 @@ public class UserController {
         }
         usersDao.deleteById(userId);
         SecurityContextHolder.clearContext();
-            HttpSession session = request.getSession(false);
-            if (session != null) {
-                session.invalidate();
-            }
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
         return "redirect:/home";
     }
-
-
-
 }

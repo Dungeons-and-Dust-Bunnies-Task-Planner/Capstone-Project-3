@@ -13,14 +13,12 @@ footer {
     margin-top: 50px;
 }
 
-
 .footerWrap {
     display: flex;
     flex-direction: row;
     width: 100vw;
 }
 
-/*      LEFT    */
 .newsletter {
     display: flex;
     flex-direction: row;
@@ -34,7 +32,6 @@ footer {
     align-items: flex-start;
 }
 
-/*      MIDDLE      */
 .middleFooter {
     display: flex;
     flex-direction: column;
@@ -44,7 +41,6 @@ footer {
     gap: 10px;
 }
 
-/*      RIGHT       */
 .rightFoot {
     display: flex;
     justify-content: end;
@@ -52,9 +48,10 @@ footer {
     font-size: 1.3rem;
     padding: 25px;
 }
+
 .email-btn-submit {
     background-color: var(--cta);
-    color:white;
+    color: white;
     font-weight: bolder;
     font-size: 1rem;
     background-image: linear-gradient(to bottom, hotpink 0%, hotpink 90%, hotpink 90%, hotpink 100%);
@@ -62,7 +59,7 @@ footer {
     background-size: 0% 100%;
     background-position-x: right;
     transition: background-size 400ms;
-    text-shadow: 0 0 10px black;
+    text-shadow: var(--text-shadow);
 }
 
 .email-btn-submit:hover {
@@ -70,29 +67,34 @@ footer {
     background-position-x: left;
     cursor: pointer;
 }
-.email-input{
+
+.email-input {
     display: flex;
 }
+
 .w-100 {
     width: 100%;
 }
-.welcome-text{
+
+.welcome-text {
     font-size: 1.3rem;
     font-weight: 400;
 }
-.footer-link{
+
+.footer-link {
     color: white;
 }
-.footer-link:hover{
+
+.footer-link:hover {
     color: hotpink;
 }
-
 
 @media only screen and (max-width: 710px) {
     .socialLong {
         display: none;
     }
-    .rightFootShort{
+
+    .rightFootShort {
         display: none;
     }
 
@@ -100,21 +102,24 @@ footer {
         display: flex;
         width: 35px;
     }
-    .leftFoot{
+
+    .leftFoot {
         width: 50vw;
     }
+
     .middleFooter {
         width: 40vw;
         padding: 0;
         margin-top: 1em;
         font-size: 1.3em;
     }
+
     .rightFoot {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap:5px;
+        gap: 5px;
         width: 30vw;
     }
 

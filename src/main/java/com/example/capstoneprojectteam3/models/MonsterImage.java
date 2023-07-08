@@ -1,6 +1,5 @@
 package com.example.capstoneprojectteam3.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -18,15 +17,10 @@ public class MonsterImage {
     @Column(name = "stage")
     private int monster_stage;
 
-//    @Column(name = "hp")
-//    private int hp;  // New property for representing HP
-
     @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "monster_img_id")
     private Monster monster;
-
-    // Constructors
 
     public MonsterImage() {
     }
@@ -42,9 +36,6 @@ public class MonsterImage {
         this.monster_img = monster_img;
         this.monster_stage = monster_stage;
     }
-
-    // Getters and Setters
-
 
     public Monster getMonster() {
         return monster;
@@ -68,7 +59,6 @@ public class MonsterImage {
 
     public void setMonster_stage(int monster_stage) {
         this.monster_stage = monster_stage;
-//        updateImageBasedOnHP();  // Call the method to update the image based on the new monster stage
     }
 
     public void setId(Long id) {
@@ -78,40 +68,4 @@ public class MonsterImage {
     public Long getId() {
         return id;
     }
-
-
-
-//    private void updateImageBasedOnHP() {
-//        MonsterImage monsterImage = getMonsterImages();
-//        int currentHP = getHp();
-//        int currentStage = monsterImage.getMonster_stage();
-//
-//        if (currentHP > 76) {
-//            if (currentStage != 1) {
-//                monsterImage.setMonster_stage(1);
-//                monsterImagesDao.save(monsterImage);
-//            }
-//        } else if (currentHP > 51) {
-//            if (currentStage != 2) {
-//                monsterImage.setMonster_stage(2);
-//                monsterImagesDao.save(monsterImage);
-//            }
-//        } else if (currentHP > 26) {
-//            if (currentStage != 3) {
-//                monsterImage.setMonster_stage(3);
-//                monsterImagesDao.save(monsterImage);
-//            }
-//        } else if (currentHP > 1) {
-//            if (currentStage != 4) {
-//                monsterImage.setMonster_stage(4);
-//                monsterImagesDao.save(monsterImage);
-//            }
-//        } else {
-//            if (currentStage != 5) {
-//                monsterImage.setMonster_stage(5);
-//                monsterImagesDao.save(monsterImage);
-//            }
-//        }
-//    }
-
 }

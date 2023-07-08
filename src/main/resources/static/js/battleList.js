@@ -1,8 +1,6 @@
 const editButtons = document.querySelectorAll('.editBattle');
 const editModals = document.querySelectorAll('.editModal');
 const editModalOverlays = document.querySelectorAll('.edit-modal-overlay');
-// const blur = document.getElementById('battleDiv');
-// const editModalOverlay = document.querySelector('.edit-modal-overlay');
 const deleteModals = document.querySelectorAll('.delete-confirm-modal');
 const cancelDeleteBtns = document.querySelectorAll('#cancel-delete');
 const openDeleteBtns = document.querySelectorAll('#delete-confirm-open-btn');

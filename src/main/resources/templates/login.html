@@ -20,16 +20,14 @@
                     <div class="row register-link">
                         <a th:href="@{/register}">Not Registered? Sign Up!</a>
                     </div>
-
                 </form>
             </div>
             <div class="anchor"></div>
         </div>
         <div class="row" style="height: 50px">
-            <img class="monster-sneak1" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(0).getMonster_img()}">
-            <img class="monster-sneak2" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(1).getMonster_img()}">
+            <img class="monster-sneak1" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(0).getMonster_img()}" alt="peeking monster 1">
+            <img class="monster-sneak2" th:if="${monsterImages.size() > 0}" th:src="${monsterImages.get(1).getMonster_img()}" alt="peeking monster 2">
         </div>
-
     </div>
 </div>
 <footer th:replace="~{partials/footer :: footer}"></footer>
